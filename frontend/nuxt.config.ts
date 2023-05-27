@@ -1,20 +1,8 @@
 // nuxt main config.
-import vuetify        from 'vite-plugin-vuetify';
-import {isProduction} from 'std-env';
+import vuetify          from 'vite-plugin-vuetify';
+import { isProduction } from 'std-env';
 
 export default defineNuxtConfig({
-    css: [
-        'vuetify/lib/styles/main.sass',
-        '@mdi/font/css/materialdesignicons.min.css'
-    ],
-    build: {
-        transpile: ['vuetify']
-    },
-    vite: {
-        define: {
-            'process.env.DEBUG': true
-        },
-    },
     app: {
         head: {
             title    : 'Martin Bullman - Personal App',
@@ -32,6 +20,25 @@ export default defineNuxtConfig({
             }]
         },
         pageTransition: { name: 'page', mode: 'out-in' }
+    },
+    css: [
+        'vuetify/lib/styles/main.sass',
+        '@fortawesome/fontawesome-svg-core/styles.css'
+    ],
+    build: {
+        transpile: [
+            'vuetify',
+            "@fortawesome/vue-fontawesome",
+            "@fortawesome/fontawesome-svg-core",
+            "@fortawesome/pro-solid-svg-icons",
+            "@fortawesome/pro-regular-svg-icons",
+            "@fortawesome/free-brands-svg-icons",
+        ]
+    },
+    vite: {
+        define: {
+            'process.env.DEBUG': true
+        },
     },
     runtimeConfig: {
         // the private keys which are only available server-side.
