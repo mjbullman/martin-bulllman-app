@@ -2,17 +2,21 @@
 
     <v-main>
 
-        <!-- nuxt router to load pages -->
+        <!-- nuxt router navigation-->
         <nuxt-page></nuxt-page>
 
     </v-main>
 
 </template>
 
-<script setup>
+<script setup lang="ts">
 
 </script>
 
 <style scoped>
+
+    .v-main {
+        --v-layout-top: 64px !important;
+    }
 
 </style>
