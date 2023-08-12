@@ -13,7 +13,6 @@
 
         </v-app-bar-title>
 
-
         <!-- links -->
         <div>
 
@@ -54,7 +53,7 @@
 
 </template>
 
-<script setup>
+<script setup lang="js">
 
     import ThemeToggle from '~/components/buttons/themeToggle.vue';
 
