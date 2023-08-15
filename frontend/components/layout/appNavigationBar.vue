@@ -5,22 +5,22 @@
         <!-- logo -->
         <v-app-bar-title >
 
-            <a href="/">
+            <nuxt-link to="/">
 
                 <nuxt-img src="/img/logo.svg" width="220" alt="Martin Bullman Logo"></nuxt-img>
 
-            </a>
+            </nuxt-link>
 
         </v-app-bar-title>
 
         <!-- links -->
         <div>
 
-            <v-btn href="/projects">Projects</v-btn>
+            <v-btn to="/projects">Projects</v-btn>
 
-            <v-btn href="/blog">Blog</v-btn>
+            <v-btn to="/blog">Blog</v-btn>
 
-            <v-btn href="/contact">Contact</v-btn>
+            <v-btn to="/contact">Contact</v-btn>
 
         </div>
 
@@ -33,17 +33,27 @@
             <theme-toggle></theme-toggle>
 
             <!-- toggle mobile menu -->
-            <v-menu left bottom class="d-none">
+            <v-menu>
 
-                <template v-slot:activator="{ on, attrs }">
+                <template v-slot:activator="{ props }">
 
-                    <v-btn icon size="small" v-bind="attrs" v-on="on">
+                    <v-btn v-bind="props" icon size="small">
 
-                        <v-icon color="primary" icon="fa-solid fa-bars"></v-icon>
+                        <v-icon v-bind="props" color="primary" icon="fa-solid fa-bars"></v-icon>
 
                     </v-btn>
 
                 </template>
+
+                <v-list>
+
+                    <v-list-item>
+
+                        <v-list-item-title>Martin Bullman</v-list-item-title>
+
+                    </v-list-item>
+
+                </v-list>
 
             </v-menu>
 

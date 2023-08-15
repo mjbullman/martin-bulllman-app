@@ -20,9 +20,12 @@ export default defineNuxtConfig({
             {
                 name    : 'author',
                 content : 'Martin Bullman'
-            }]
+            }],
         },
-        pageTransition: { name: 'page', mode: 'out-in' }
+        pageTransition : {
+            name: 'page',
+            mode: 'out-in'
+        },
     },
     css: [
         '@/assets/scss/app.scss',
@@ -72,6 +75,8 @@ export default defineNuxtConfig({
         // pinia state management to manage application state.
         '@pinia/nuxt',
         '@pinia-plugin-persistedstate/nuxt',
+        // vueuse motion for animation effects.
+        '@vueuse/motion/nuxt',
         // vuetify tree shaking configuration: https://next.vuetifyjs.com/en/features/treeshaking/
         async (options, nuxt) => {
             nuxt.hooks.hook('vite:extendConfig', (config) => {
