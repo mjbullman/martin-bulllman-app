@@ -1,6 +1,6 @@
 <template>
 
-    <h1>Contact</h1>
+    <h1>Blog</h1>
 
 </template>
 
