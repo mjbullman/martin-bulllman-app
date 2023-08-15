@@ -3,6 +3,7 @@ import vuetify          from 'vite-plugin-vuetify';
 import { isProduction } from 'std-env';
 
 export default defineNuxtConfig({
+    ssr: true,
     app: {
         head: {
             title    : 'Martin Bullman - Personal App',
@@ -11,10 +12,12 @@ export default defineNuxtConfig({
             meta: [{
                 name    : 'description',
                 content : "Martin Bullman Personal App"
-            }, {
+            },
+            {
                 name    : 'keywords',
                 content : 'Martin Bullman,Django,Vue,Vuetify,Nuxt'
-            }, {
+            },
+            {
                 name    : 'author',
                 content : 'Martin Bullman'
             }]
@@ -22,17 +25,18 @@ export default defineNuxtConfig({
         pageTransition: { name: 'page', mode: 'out-in' }
     },
     css: [
+        '@/assets/scss/app.scss',
         'vuetify/lib/styles/main.sass',
         '@fortawesome/fontawesome-svg-core/styles.css'
     ],
     build: {
         transpile: [
             'vuetify',
-            "@fortawesome/vue-fontawesome",
-            "@fortawesome/fontawesome-svg-core",
-            "@fortawesome/pro-solid-svg-icons",
-            "@fortawesome/pro-regular-svg-icons",
-            "@fortawesome/free-brands-svg-icons",
+            '@fortawesome/vue-fontawesome',
+            '@fortawesome/fontawesome-svg-core',
+            '@fortawesome/pro-solid-svg-icons',
+            '@fortawesome/pro-regular-svg-icons',
+            '@fortawesome/free-brands-svg-icons'
         ]
     },
     vite: {
@@ -72,7 +76,7 @@ export default defineNuxtConfig({
         async (options, nuxt) => {
             nuxt.hooks.hook('vite:extendConfig', (config) => {
                 config?.plugins?.push(vuetify());
-           });
+            });
         }
     ]
 });
