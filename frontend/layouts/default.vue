@@ -1,11 +1,12 @@
 <template>
 
+    <!-- vuetify application wrapper -->
     <v-app>
 
-        <!-- main navigation -->
+        <!-- application navigation -->
         <app-navigation-bar></app-navigation-bar>
 
-        <!-- main body -->
+        <!-- application routes render -->
         <app-main></app-main>
 
     </v-app>
