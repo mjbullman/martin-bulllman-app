@@ -42,10 +42,13 @@ const customDarkTheme: ThemeDefinition = {
 
 // vuetify nuxt plugin configuration.
 export default defineNuxtPlugin(nuxtApp => {
+    // get the users dark mode pref from cookie.
+    const darkMode = useCookie('dark-mode')
+
     const vuetify = createVuetify({
         ssr: true,
         theme: {
-            defaultTheme: 'customLightTheme',
+            defaultTheme: darkMode && !darkMode.value ? 'customLightTheme' : 'customDarkTheme' ,
             themes: {
                 customDarkTheme,
                 customLightTheme
