@@ -38,8 +38,20 @@ export default defineNuxtConfig({
     vite: {
         define: {
             'process.env.DEBUG': true
-        },
+        }
     },
+    image: {
+        // the screen sizes predefined by `@nuxt/image`:
+        screens: {
+            xs  : 320,
+            sm  : 640,
+            md  : 768,
+            lg  : 1024,
+            xl  : 1280,
+            xxl : 1536,
+        },
+      },
+
     runtimeConfig: {
         // the private keys which are only available server-side.
         apiSecret: '',
@@ -51,7 +63,9 @@ export default defineNuxtConfig({
         }
     },
     modules: [
-        // pinia state management.
+        // nuxt image to render images ssr.
+        '@nuxt/image',
+        // pinia state management to manage application state.
         '@pinia/nuxt',
         '@pinia-plugin-persistedstate/nuxt',
         // vuetify tree shaking configuration: https://next.vuetifyjs.com/en/features/treeshaking/

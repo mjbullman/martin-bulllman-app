@@ -14,7 +14,7 @@
 
             <v-col>
 
-                <v-img :src="settings.darkMode ? '/img/web_app/developer_developing_dark.svg' : '/img/web_app/developer_developing_light.svg'"></v-img>
+                <nuxt-img :src="settings.darkMode ? '/img/web_app/developer_developing_dark.svg' : '/img/web_app/developer_developing_light.svg'" alt="Developer working at his desk"></nuxt-img>
 
             </v-col>
 

@@ -7,7 +7,7 @@
 
             <a href="/">
 
-                <v-img src="/img/logo.svg" width="220"></v-img>
+                <nuxt-img src="/img/logo.svg" width="220" alt="Martin Bullman Logo"></nuxt-img>
 
             </a>
 
