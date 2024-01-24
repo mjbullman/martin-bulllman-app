@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 
-    import AppMain          from '~/components/layout/appMain.vue';
-    import AppNavigationBar from '~/components/layout/appNavigationBar.vue';
+    import AppMain          from '~/components/layout/AppMain.vue'
+    import AppNavigationBar from '~/components/layout/AppNavigationBar.vue'
 
 </script>

@@ -3,11 +3,11 @@
     <v-app-bar scroll-behavior="elevate">
 
         <!-- logo -->
-        <v-app-bar-title >
+        <v-app-bar-title>
 
             <nuxt-link to="/">
 
-                <nuxt-img src="/img/logo.svg" width="220" alt="Martin Bullman Logo"></nuxt-img>
+                <nuxt-img src="/img/logo.svg" width="200" class="mt-2" role="link" alt="Martin Bullman Logo"></nuxt-img>
 
             </nuxt-link>
 
