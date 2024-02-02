@@ -3,6 +3,7 @@
 
 # backend ignore files and folders.
 backend/env
+backend/martinbullman/.env
 
 # fontend ignore files and folders.
 /frontend/.env
