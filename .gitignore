@@ -1,11 +1,20 @@
-.env
+# project ignore files and folders.
 .idea
-.nuxt
-.nitro
-.cache
-.output
-.DS_Store
-*.log*
-node_modules
-/backend/venv
+
+# backend ignore files and folders.
+backend/env
+
+# fontend ignore files and folders.
+/frontend/.env
+/frontend/.nuxt
+/frontend/.nitro
+/frontend/.cache
+/frontend/.output
 /frontend/dist
+frontend/node_modules
+
+# ignore files with extensions.
+*.pyc
+*.DS_Store
+*.log*
+
