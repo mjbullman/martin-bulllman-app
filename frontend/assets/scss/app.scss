@@ -1,0 +1,39 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.text-gradient-animation {
+    background: linear-gradient(
+        to right,
+        rgb(var(--v-theme-primary)) 20%,
+        rgb(var(--v-theme-secondary)) 50%,
+        rgb(var(--v-theme-primary)) 80%
+    );
+
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 500% auto;
+    animation: gradientAnimation 5s linear infinite;
+}
+
+@keyframes gradientAnimation {
+    to {
+        background-position: 100% center;
+    }
+}
+
+.page-enter-active, .page-leave-active {
+    transition: all .4s;
+}
+
+.page-enter-from, .page-leave-to {
+    opacity: 0;
+    //filter: blur(1rem);
+}
+
+.medium-font {
+    font-size: 20px;
+}
