@@ -4,21 +4,24 @@ import { isProduction } from 'std-env';
 
 export default defineNuxtConfig({
     ssr: true,
+    devtools: {
+        enabled: false
+    },
     app: {
         head: {
-            title    : 'Martin Bullman - Personal App',
-            charset  : 'utf-8',
+            title : 'Martin Bullman - Personal App',
+            charset : 'utf-8',
             viewport : 'width=device-width, initial-scale=1',
-            meta: [{
-                name    : 'description',
+            meta : [{
+                name : 'description',
                 content : "Martin Bullman Personal App"
             },
             {
-                name    : 'keywords',
+                name : 'keywords',
                 content : 'Martin Bullman,Django,Vue,Vuetify,Nuxt'
             },
             {
-                name    : 'author',
+                name : 'author',
                 content : 'Martin Bullman'
             }],
         },
@@ -27,13 +30,13 @@ export default defineNuxtConfig({
             mode: 'out-in'
         },
     },
-    css: [
+    css : [
         '@/assets/scss/app.scss',
         'vuetify/lib/styles/main.sass',
         '@fortawesome/fontawesome-svg-core/styles.css'
     ],
-    build: {
-        transpile: [
+    build : {
+        transpile : [
             'vuetify',
             '@fortawesome/vue-fontawesome',
             '@fortawesome/fontawesome-svg-core',
@@ -42,12 +45,12 @@ export default defineNuxtConfig({
             '@fortawesome/free-brands-svg-icons'
         ]
     },
-    vite: {
-        define: {
-            'process.env.DEBUG': true
+    vite : {
+        define : {
+            'process.env.DEBUG' : true
         }
     },
-    image: {
+    image : {
         // the screen sizes predefined by `@nuxt/image`:
         screens: {
             xs  : 320,
@@ -59,17 +62,17 @@ export default defineNuxtConfig({
         },
       },
 
-    runtimeConfig: {
+    runtimeConfig : {
         // the private keys which are only available server-side.
-        apiSecret: '',
+        apiSecret : '',
         // keys within public are also exposed client-side.
-        public: {
-            apiBase           : '',
-            isProduction      : isProduction,
+        public : {
+            apiBase : '',
+            isProduction : isProduction,
             googleAnalyticsId : process.env.GOOGLE_ANALYTICS_ID
         }
     },
-    modules: [
+    modules : [
         // nuxt image to render images ssr.
         '@nuxt/image',
         // pinia state management to manage application state.
