@@ -65,7 +65,7 @@
 
 <script setup lang="js">
 
-    import ThemeToggle from '~/components/buttons/themeToggle.vue';
+    import ThemeToggle from '~/components/buttons/ThemeToggle.vue';
 
 </script>
 
