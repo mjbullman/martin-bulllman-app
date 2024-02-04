@@ -1,9 +1,9 @@
 // vuetify plugin.
-import { createVuetify, ThemeDefinition } from 'vuetify';
+import { createVuetify } from 'vuetify';
 import { aliases, fa } from 'vuetify/iconsets/fa-svg';
 
 // light theme configuration.
-const customLightTheme: ThemeDefinition = {
+const customLightTheme = {
     dark: false,
     colors: {
         primary               : '#2196F3',
@@ -22,7 +22,7 @@ const customLightTheme: ThemeDefinition = {
 }
 
 // dark theme configuration.
-const customDarkTheme: ThemeDefinition = {
+const customDarkTheme = {
     dark: true,
     colors: {
         primary               : '#2196F3',
