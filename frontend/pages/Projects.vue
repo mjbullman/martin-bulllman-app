@@ -58,6 +58,30 @@
                                 QuickMinutes transforms the process of meeting management into an efficient and
                                 satisfying activity.
 
+                                <div class="mt-3">
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        Vue
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        Vuetify
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        Laravel
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        PHP
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary">
+                                        Azure
+                                    </v-chip>
+
+                                </div>
+
                             </v-card-text>
 
                             <v-card-actions>
@@ -99,6 +123,18 @@
                                 <br><br>
 
                                 Published in the 2016 5th IEEE International Conference on Cloud Networking (CloudNet).
+
+                                <div class="mt-3">
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        Java
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        RabbitMQ
+                                    </v-chip>
+
+                                </div>
 
                             </v-card-text>
 
@@ -149,6 +185,30 @@
 
                                 Digital profiles are accessible by QR code on an aluminium plate, letting anyone access treasured memories.
 
+                                <div class="mt-3">
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        Vue
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        Vuetify
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        Laravel
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        PHP
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary">
+                                        Azure
+                                    </v-chip>
+
+                                </div>
+
                             </v-card-text>
 
                             <v-card-actions>
@@ -193,6 +253,22 @@
 
                                 Monitors the numbers, flows and dwell times of people.
 
+                                <div class="mt-3">
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        PHP
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        Javascript
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary">
+                                        AWS
+                                    </v-chip>
+
+                                </div>
+
                             </v-card-text>
 
                             <v-card-actions>
@@ -233,6 +309,22 @@
                                 <br><br>
 
                                 We do this using a mixture of traditional fingerprint techniques, behaviour detection and side channel detection.
+
+                                <div class="mt-3">
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        Python
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        Django
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary">
+                                        AWS
+                                    </v-chip>
+
+                                </div>
 
                             </v-card-text>
 
@@ -275,6 +367,18 @@
                                 <br><br>
 
                                 Published in the 2014 Insight Center for Data Analytics Conference.
+
+                                <div class="mt-3">
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        Python
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        Bash
+                                    </v-chip>
+
+                                </div>
 
                             </v-card-text>
 
@@ -331,6 +435,22 @@
 
                                 Because Wagerr has the lowest juice in the world, bettors get a bigger edge when they bet on the Wagerr network.
 
+                                <div class="mt-3">
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        C++
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        Vue
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary">
+                                        Google Cloud
+                                    </v-chip>
+
+                                </div>
+
                             </v-card-text>
 
                             <v-card-actions>
@@ -379,6 +499,18 @@
                                 <br><br>
 
                                 Discover NFTs from verified collections and build your web3 social page with DropSwipe.
+
+                                <div class="mt-3">
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        Solidity
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        React
+                                    </v-chip>
+
+                                </div>
 
                             </v-card-text>
 
