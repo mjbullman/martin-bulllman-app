@@ -31,7 +31,7 @@
                         <!-- QuickMinutes Project -->
                         <v-card v-motion="animations.fadeUp.value" class="grid-item grid-item-large d-flex flex-column" link hover>
 
-                            <v-img src="/img/projects/quickminutes_banner.webp" cover eagar></v-img>
+                            <v-img src="/img/projects/quickminutes_banner.webp" cover></v-img>
 
                             <v-card-title class="pt-5">
 
@@ -60,9 +60,6 @@
 
                             </v-card-text>
 
-                                                        <v-spacer></v-spacer>
-
-
                             <v-card-actions>
 
                                 <v-btn href="https://quickminutes.com" target="_blank" variant="text" color="primary">
@@ -70,42 +67,6 @@
                                     View
 
                                 </v-btn>
-
-<!--                                <v-spacer></v-spacer>-->
-
-<!--                                <v-btn href="https://www.facebook.com/QuickMinutes/" icon size="x-small" class="ml-0">-->
-
-<!--                                    <v-icon size="x-large" color="primary" icon="fa-brands fa-facebook"></v-icon>-->
-
-<!--                                </v-btn>-->
-
-<!--                                <v-btn href="https://www.instagram.com/quickminutes/" icon size="x-small" class="ml-0">-->
-
-<!--                                    <v-icon size="x-large" color="primary" icon="fa-brands fa-instagram"></v-icon>-->
-
-<!--                                </v-btn>-->
-
-<!--                                <v-btn href="https://twitter.com/quick_minutes" icon size="x-small" class="ml-0">-->
-
-<!--                                    <v-icon size="x-large" color="primary" icon="fa-brands fa-x-twitter"></v-icon>-->
-
-<!--                                </v-btn>-->
-
-<!--                                <v-btn href="https://www.linkedin.com/company/quickminutes/mycompany/" icon size="x-small" class="ml-0">-->
-
-<!--                                    <v-icon size="x-large" color="primary" icon="fa-brands fa-linkedin-in"></v-icon>-->
-
-<!--                                    <i class="fa-brands fa-linkedin"></i>-->
-
-<!--                                </v-btn>-->
-
-<!--                                <v-btn href="https://www.youtube.com/channel/UCsp-P8kuNNZ1jHAMdEnPudQ" icon size="x-small" class="ml-0">-->
-
-<!--                                    <v-icon size="x-large" color="primary" icon="fa-brands fa-youtube"></v-icon>-->
-
-<!--                                    <i class="fa-brands fa-linkedin"></i>-->
-
-<!--                                </v-btn>-->
 
                             </v-card-actions>
 
@@ -162,7 +123,7 @@
                         <!-- The Story Of Project -->
                         <v-card v-motion="animations.fadeUp.value" class="grid-item grid-item-large d-flex flex-column" link hover>
 
-                            <v-img src="/img/projects/thestoryof_banner.webp" cover eager></v-img>
+                            <v-img src="/img/projects/thestoryof_banner.webp" cover></v-img>
 
                             <v-card-title class="pt-5">
 
@@ -198,34 +159,6 @@
 
                                 </v-btn>
 
-<!--                                <v-spacer></v-spacer>-->
-
-<!--                                <v-btn href="https://www.facebook.com/thestoryof.io/" icon size="x-small" class="ml-0">-->
-
-<!--                                    <v-icon size="x-large" color="primary" icon="fa-brands fa-facebook"></v-icon>-->
-
-<!--                                </v-btn>-->
-
-<!--                                <v-btn href="https://www.instagram.com/thestoryof_io/" icon size="x-small" class="ml-0">-->
-
-<!--                                    <v-icon size="x-large" color="primary" icon="fa-brands fa-instagram"></v-icon>-->
-
-<!--                                </v-btn>-->
-
-<!--                                <v-btn href="https://twitter.com/thestoryof_io" icon size="x-small" class="ml-0">-->
-
-<!--                                    <v-icon size="x-large" color="primary" icon="fa-brands fa-x-twitter"></v-icon>-->
-
-<!--                                </v-btn>-->
-
-<!--                                <v-btn href="https://www.linkedin.com/company/thestoryofio/" icon size="x-small" class="ml-0">-->
-
-<!--                                    <v-icon size="x-large" color="primary" icon="fa-brands fa-linkedin-in"></v-icon>-->
-
-<!--                                    <i class="fa-brands fa-linkedin"></i>-->
-
-<!--                                </v-btn>-->
-
                             </v-card-actions>
 
                         </v-card>
@@ -233,7 +166,7 @@
                          <!-- Crowd Insights Project -->
                         <v-card v-motion="animations.fadeUp.value" class="grid-item grid-item-large d-flex flex-column" link hover>
 
-                            <v-img height="220" src="/img/projects/taoglas_banner.webp" cover eager></v-img>
+                            <v-img src="/img/projects/taoglas_banner.webp" cover></v-img>
 
                             <v-card-title class="pt-5">
 
@@ -372,7 +305,7 @@
                         <!-- Wagerr Project -->
                         <v-card class="grid-item grid-item-large d-flex flex-column" link hover>
 
-                            <v-img src="/img/projects/wagerr_banner.webp" cover eager></v-img>
+                            <v-img src="/img/projects/wagerr_banner.webp" cover></v-img>
 
                             <v-card-title class="pt-5">
 
@@ -413,42 +346,6 @@
                                     Whitepaper
 
                                 </v-btn>
-
-<!--                                <v-spacer></v-spacer>-->
-
-<!--                                <v-btn href="https://www.facebook.com/wagerr" icon size="x-small" class="ml-0">-->
-
-<!--                                    <v-icon size="x-large" color="primary" icon="fa-brands fa-facebook"></v-icon>-->
-
-<!--                                </v-btn>-->
-
-<!--                                <v-btn href="https://www.instagram.com/wagerrsportsbet/" icon size="x-small" class="ml-0">-->
-
-<!--                                    <v-icon size="x-large" color="primary" icon="fa-brands fa-instagram"></v-icon>-->
-
-<!--                                </v-btn>-->
-
-<!--                                <v-btn href="https://twitter.com/wagerrx" icon size="x-small" class="ml-0">-->
-
-<!--                                    <v-icon size="x-large" color="primary" icon="fa-brands fa-x-twitter"></v-icon>-->
-
-<!--                                </v-btn>-->
-
-<!--                                <v-btn href="https://www.linkedin.com/company/wagerr/" icon size="x-small" class="ml-0">-->
-
-<!--                                    <v-icon size="x-large" color="primary" icon="fa-brands fa-linkedin-in"></v-icon>-->
-
-<!--                                    <i class="fa-brands fa-linkedin"></i>-->
-
-<!--                                </v-btn>-->
-
-<!--                                <v-btn href="https://www.youtube.com/wagerr" icon size="x-small" class="ml-0">-->
-
-<!--                                    <v-icon size="x-large" color="primary" icon="fa-brands fa-youtube"></v-icon>-->
-
-<!--                                    <i class="fa-brands fa-linkedin"></i>-->
-
-<!--                                </v-btn>-->
 
                             </v-card-actions>
 
