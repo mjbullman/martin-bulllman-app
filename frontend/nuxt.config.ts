@@ -69,7 +69,6 @@ export default defineNuxtConfig({
         public : {
             apiBase : '',
             isProduction : isProduction,
-            googleAnalyticsId : process.env.GOOGLE_ANALYTICS_ID
         }
     },
     modules : [
@@ -80,11 +79,16 @@ export default defineNuxtConfig({
         '@pinia-plugin-persistedstate/nuxt',
         // vueuse motion for animation effects.
         '@vueuse/motion/nuxt',
+        // Google Tag Analytics.
+        'nuxt-gtag',
         // vuetify tree shaking configuration: https://next.vuetifyjs.com/en/features/treeshaking/
         async (options, nuxt) => {
             nuxt.hooks.hook('vite:extendConfig', (config) => {
                 config?.plugins?.push(vuetify());
             });
         }
-    ]
+    ],
+    gtag: {
+        id: process.env.GOOGLE_ANALYTICS_ID
+    }
 });
