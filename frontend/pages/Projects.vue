@@ -179,11 +179,13 @@
 
                             <v-card-text class="text-subtitle-1">
 
-                                Capture you or your loved ones' stories. Safeguard them on a dedicated webpage. Share them with a QR code.
+                                Capture you or your loved ones' stories. Safeguard them on a dedicated webpage. Share
+                                them with a QR code.
 
                                 <br><br>
 
-                                Digital profiles are accessible by QR code on an aluminium plate, letting anyone access treasured memories.
+                                Digital profiles are accessible by QR code on an aluminium plate, letting anyone access
+                                treasured memories.
 
                                 <div class="mt-3">
 
@@ -251,7 +253,8 @@
 
                                 <br><br>
 
-                                Monitors the numbers, flows and dwell times of people.
+                                Provides real-time insights and alerts on crowd and queuing situations with reports or
+                                via a city/enterprise dashboard
 
                                 <div class="mt-3">
 
@@ -308,7 +311,8 @@
 
                                 <br><br>
 
-                                We do this using a mixture of traditional fingerprint techniques, behaviour detection and side channel detection.
+                                We do this using a mixture of traditional fingerprint techniques, behaviour detection
+                                and side channel detection.
 
                                 <div class="mt-3">
 
@@ -361,8 +365,8 @@
 
                             <v-card-text class="text-subtitle-1">
 
-                                This research project addresses real-time decision-making using wireless networks and Intel
-                                Galileo microcontrollers.
+                                This research project addresses real-time decision-making using wireless networks
+                                and Intel Galileo microcontrollers.
 
                                 <br><br>
 
@@ -429,11 +433,13 @@
 
                             <v-card-text class="text-subtitle-1">
 
-                                Wagerr is a decentralized sports book that brings trustless sports betting to the entire world.
+                                Wagerr is a decentralized sports book that brings trustless sports betting to the
+                                entire world.
 
                                 <br><br>
 
-                                Because Wagerr has the lowest juice in the world, bettors get a bigger edge when they bet on the Wagerr network.
+                                Because Wagerr has the lowest juice in the world, bettors get a bigger edge when they
+                                bet on the Wagerr network.
 
                                 <div class="mt-3">
 
@@ -482,8 +488,6 @@
 
                                 </h2>
 
-                                <v-img src="/img/logos/drop_magnet_logo.jpg" class="flex-shrink-1" height="30" width="30"></v-img>
-
                             </v-card-title>
 
                             <v-card-subtitle>
@@ -529,7 +533,75 @@
                         </v-card>
 
                         <!-- Dash Boost -->
-                        <v-card class="grid-item d-flex flex-column">DashBoost</v-card>
+                        <v-card class="grid-item d-flex flex-column" link hover>
+
+                            <v-card-title class="pt-5 d-flex">
+
+                                <h2 class="text-medium-emphasis flex-grow-1">
+
+                                    Dash Boost
+
+                                </h2>
+
+                                <v-chip size="x-small" variant="outlined" color="error" class="mt-2">
+
+                                    Discontinued
+
+                                </v-chip>
+
+                            </v-card-title>
+
+                            <v-card-subtitle>
+
+                                Dash Micro Proposals
+
+                            </v-card-subtitle>
+
+                            <v-card-text class="text-subtitle-1">
+
+                                DashBoost aims to introduce the concept of a micro-proposal to the Dash community.
+
+                                <br><br>
+
+                                A micro proposal is a mechanism to enable low budget proposals access funds from the Dash
+                                DOA treasury.
+
+                                <div class="mt-3">
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        NodeJS
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        PHP
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        Javascript
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+                                        Google Cloud
+                                    </v-chip>
+
+                                </div>
+
+                            </v-card-text>
+
+                            <v-spacer></v-spacer>
+
+                            <v-card-actions >
+
+                                <v-btn href="https://www.dashcentral.org/p/gc-dash-boost" target="_blank" variant="text" color="primary">
+
+                                    Dash Central Proposal
+
+                                </v-btn>
+
+                            </v-card-actions>
+
+                        </v-card>
+
                     </div>
 
                 </v-col>
