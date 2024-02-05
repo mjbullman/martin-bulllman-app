@@ -16,9 +16,9 @@
         <!-- links -->
         <div>
 
-            <v-btn to="/projects">Projects</v-btn>
+            <v-btn to="/about">About</v-btn>
 
-            <v-btn to="/blog">Blog</v-btn>
+            <v-btn to="/projects">Projects</v-btn>
 
             <v-btn to="/contact">Contact</v-btn>
 
@@ -65,7 +65,7 @@
 
 <script setup lang="js">
 
-    import ThemeToggle from '~/components/buttons/ThemeToggle.vue';
+    import ThemeToggle from '~/components/buttons/ThemeToggle.vue'
 
 </script>
 
