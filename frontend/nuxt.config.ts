@@ -48,7 +48,14 @@ export default defineNuxtConfig({
     vite : {
         define : {
             'process.env.DEBUG' : true
-        }
+        },
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    additionalData: '@use "~/assets/scss/_colors.scss" as *; @use "~/assets/scss/_fonts.scss" as *; @use "~/assets/scss/_animations.scss" as *;'
+                },
+            },
+        },
     },
     image : {
         // the screen sizes predefined by `@nuxt/image`:
