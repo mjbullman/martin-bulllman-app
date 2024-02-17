@@ -2,23 +2,7 @@
 
     <v-container fluid>
 
-        <v-container>
-
-            <v-row>
-
-                <v-col cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="pt-5 pb-5 pt-md-12 pb-md-12">
-
-                    <h1 class="text-h2 text-md-h1 pb-5 text-center font-weight-bold text-gradient-animation">
-
-                        Projects
-
-                    </h1>
-
-                </v-col>
-
-            </v-row>
-
-        </v-container>
+        <page-heading heading-text="Projects"></page-heading>
 
         <v-container fluid class="pa-0">
 
@@ -61,23 +45,33 @@
                                 <div class="mt-3">
 
                                     <v-chip size="small" color="secondary" class="mr-1">
+
                                         Vue
+
                                     </v-chip>
 
                                     <v-chip size="small" color="secondary" class="mr-1">
+
                                         Vuetify
+
                                     </v-chip>
 
                                     <v-chip size="small" color="secondary" class="mr-1">
+
                                         Laravel
+
                                     </v-chip>
 
                                     <v-chip size="small" color="secondary" class="mr-1">
+
                                         PHP
+
                                     </v-chip>
 
                                     <v-chip size="small" color="secondary">
+
                                         Azure
+
                                     </v-chip>
 
                                 </div>
@@ -127,11 +121,15 @@
                                 <div class="mt-3">
 
                                     <v-chip size="small" color="secondary" class="mr-1">
+
                                         Java
+
                                     </v-chip>
 
                                     <v-chip size="small" color="secondary" class="mr-1">
+
                                         RabbitMQ
+
                                     </v-chip>
 
                                 </div>
@@ -142,7 +140,7 @@
 
                                 <v-btn href="https://github.com/Martin-Bullman/interoperability-of-cloud-monitoring-Data/tree/main" target="_blank" variant="text" color="primary">
 
-                                    Source
+                                    GitHub
 
                                 </v-btn>
 
@@ -189,24 +187,34 @@
 
                                 <div class="mt-3">
 
-                                    <v-chip size="small" color="secondary" class="mr-1">
-                                        Vue
-                                    </v-chip>
-
-                                    <v-chip size="small" color="secondary" class="mr-1">
-                                        Vuetify
-                                    </v-chip>
-
-                                    <v-chip size="small" color="secondary" class="mr-1">
-                                        Laravel
-                                    </v-chip>
-
-                                    <v-chip size="small" color="secondary" class="mr-1">
-                                        PHP
-                                    </v-chip>
-
                                     <v-chip size="small" color="secondary">
+
                                         Azure
+
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+
+                                        Vue
+
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+
+                                        Vuetify
+
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+
+                                        Laravel
+
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+
+                                        PHP
+
                                     </v-chip>
 
                                 </div>
@@ -259,15 +267,27 @@
                                 <div class="mt-3">
 
                                     <v-chip size="small" color="secondary" class="mr-1">
-                                        PHP
+
+                                        AWS
+
                                     </v-chip>
 
                                     <v-chip size="small" color="secondary" class="mr-1">
-                                        Javascript
+
+                                        PHP
+
                                     </v-chip>
 
-                                    <v-chip size="small" color="secondary">
-                                        AWS
+                                    <v-chip size="small" color="secondary" class="mr-1">
+
+                                        Javascript
+
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+
+                                        Git
+
                                     </v-chip>
 
                                 </div>
@@ -316,16 +336,22 @@
 
                                 <div class="mt-3">
 
-                                    <v-chip size="small" color="secondary" class="mr-1">
-                                        Python
-                                    </v-chip>
-
-                                    <v-chip size="small" color="secondary" class="mr-1">
-                                        Django
-                                    </v-chip>
-
                                     <v-chip size="small" color="secondary">
+
                                         AWS
+
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+
+                                        Python
+
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+
+                                        Django
+
                                     </v-chip>
 
                                 </div>
@@ -375,11 +401,21 @@
                                 <div class="mt-3">
 
                                     <v-chip size="small" color="secondary" class="mr-1">
+
                                         Python
+
                                     </v-chip>
 
                                     <v-chip size="small" color="secondary" class="mr-1">
+
                                         Bash
+
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+
+                                        Git
+
                                     </v-chip>
 
                                 </div>
@@ -390,7 +426,7 @@
 
                                 <v-btn href="https://github.com/Martin-Bullman/multi-agenda-decision-making-over-wireless-networks" target="_blank" variant="text" color="primary">
 
-                                    Source
+                                    GitHub
 
                                 </v-btn>
 
@@ -444,15 +480,21 @@
                                 <div class="mt-3">
 
                                     <v-chip size="small" color="secondary" class="mr-1">
+
                                         C++
+
                                     </v-chip>
 
                                     <v-chip size="small" color="secondary" class="mr-1">
+
                                         Vue
+
                                     </v-chip>
 
                                     <v-chip size="small" color="secondary">
+
                                         Google Cloud
+
                                     </v-chip>
 
                                 </div>
@@ -507,11 +549,15 @@
                                 <div class="mt-3">
 
                                     <v-chip size="small" color="secondary" class="mr-1">
+
                                         Solidity
+
                                     </v-chip>
 
                                     <v-chip size="small" color="secondary" class="mr-1">
+
                                         React
+
                                     </v-chip>
 
                                 </div>
@@ -525,6 +571,79 @@
                                 <v-btn href="https://dropmagnet.com/" target="_blank" variant="text" color="primary">
 
                                     View
+
+                                </v-btn>
+
+                            </v-card-actions>
+
+                        </v-card>
+
+                        <!-- Tech Squad -->
+                        <v-card class="grid-item d-flex flex-column" link hover>
+
+                            <v-card-title class="pt-5 d-flex">
+
+                                <h2 class="text-medium-emphasis flex-grow-1">
+
+                                    TechSquad
+
+                                </h2>
+
+                                <v-chip size="x-small" variant="outlined" color="error" class="mt-2">
+
+                                    Discontinued
+
+                                </v-chip>
+
+                            </v-card-title>
+
+                            <v-card-subtitle>
+
+                                Blockchain Development
+
+                            </v-card-subtitle>
+
+                            <v-card-text class="text-subtitle-1">
+
+                                TechSquad specializes in blockchain development, harnessing the power of
+                                decentralized technology.
+
+                                <br><br>
+
+                                Driving innovation and value by offering expertise in smart contracts,
+                                DApp development, and other blockchain solutions.
+
+                                <div class="mt-3">
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+
+                                        HTML
+
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+
+                                        CSS
+
+                                    </v-chip>
+
+                                    <v-chip size="small" color="secondary" class="mr-1">
+
+                                        Javascript
+
+                                    </v-chip>
+
+                                </div>
+
+                            </v-card-text>
+
+                            <v-spacer></v-spacer>
+
+                            <v-card-actions >
+
+                                <v-btn href="https://www.dashcentral.org/p/gc-dash-boost" target="_blank" variant="text" color="primary">
+
+                                    Dash Central Proposal
 
                                 </v-btn>
 
@@ -615,6 +734,8 @@
 </template>
 
 <script setup lang="ts">
+
+    import PageHeading from '~/components/general/PageHeading.vue'
 
     import { useAnimations } from '~/composables/animations'
 
