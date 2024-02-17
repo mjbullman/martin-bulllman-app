@@ -2,17 +2,37 @@
 
     <v-container fluid>
 
+        <page-heading heading-text="About"></page-heading>
+
         <v-container>
 
             <v-row>
 
-                <v-col cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="pt-5 pb-5 pt-md-12 pb-md-12">
+                <v-col cols="12" sm="12" md="12" lg="12" xl="12" class="text-center">
 
-                    <h1 class="text-h2 text-md-h1 pb-5 text-center font-weight-bold text-gradient-animation">
+                    <div class="grid-container">
 
-                        About
+                        <div class="text-h4 text-medium-emphasis mb-10">
 
-                    </h1>
+                            I'm a software engineer working remotely from {{ data.current.feelslike_c }}&deg;C
+                            Tallinn, Estonia.
+
+                        </div>
+
+                        <div class="text-h6 mb-5">
+
+                            Experienced Senior Software Engineer with nearly a decade of hands-on experience in
+                            conceptualizing, building, and refining software solutions.
+
+                        </div>
+
+                        <div class="text-h6">
+
+                            Currently serving as the CTO at QuickMinutes, I bring a highly ambitious and
+                            performance-driven approach to my role.
+                        </div>
+
+                    </div>
 
                 </v-col>
 
@@ -20,11 +40,23 @@
 
         </v-container>
 
+        <!-- work history timeline -->
+        <work-history-timeline></work-history-timeline>
+
     </v-container>
 
 </template>
 
 <script setup lang="ts">
+
+    import PageHeading         from '~/components/general/PageHeading.vue'
+    import WorkHistoryTimeline from '~/components/timelines/WorkHistoryTimeline.vue'
+
+    import { useConfig } from '~/composables/config'
+
+    const config = useConfig()
+
+    const { data, error, pending, refresh } = await useFetch(config.apiUrl.value + '/weather')
 
 </script>
 
