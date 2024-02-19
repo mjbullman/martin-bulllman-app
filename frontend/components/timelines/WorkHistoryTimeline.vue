@@ -11,7 +11,7 @@
                     <v-timeline-item
                         v-for="(job, i) in jobs"
                         :key="i"
-                        :dot-color="text-primary"
+                        dot-color="text-primary"
                         size="small">
 
                         <template v-slot:opposite>
