@@ -13,8 +13,10 @@
 
         </v-app-bar-title>
 
+        <v-spacer></v-spacer>
+
         <!-- links -->
-        <div>
+        <div class="nav d-none d-md-flex">
 
             <v-btn to="/about">About</v-btn>
 
@@ -31,6 +33,10 @@
 
             <!-- toggle dark mode -->
             <theme-toggle></theme-toggle>
+
+            <github></github>
+
+            <facebook></facebook>
 
             <!-- toggle mobile menu -->
             <v-menu>
@@ -70,5 +76,15 @@
 </script>
 
 <style scoped>
+
+    .v-toolbar-title {
+        flex: unset;
+        width: 200px;
+    }
+
+    :deep(.v-toolbar__append) {
+        width: 200px;
+        justify-content: flex-end;
+    }
 
 </style>
