@@ -1,28 +1,30 @@
 <template>
 
-    <v-container class="fill-height">
+    <v-container>
 
-        <v-row class="d-flex flex-column flex-sm-row align-content-space-between flex-al mt-5 mt-md-0" justify="center" align="center">
-
-            <v-col class="text-center text-sm-left">
-
-                <h1 class="text-h4 text-md-h2">
-
-                    Hi, I'm Martin
-
-                </h1>
-
-                <h3 class="text-h6 text-md-h4 text-medium-emphasis">
-
-                    FullStack Developer & Crypto Enthusiast
-
-                </h3>
-
-            </v-col>
+        <v-row class="text-center" align="center" justify="center" style="height: 90vh">
 
             <v-col>
 
-                <nuxt-img :src="settings.darkMode ? '/img/index/developer_developing_dark.svg' : '/img/index/developer_developing_light.svg'" alt="Developer working at his desk"></nuxt-img>
+                <h1 class="text-h2 text-md-h1 ma-5" v-motion="animations.fadeUp.value">
+
+                    Hi, I'm <span class="text-gradient-animation ">Martin</span>
+
+                </h1>
+
+                <h3 class="text-h6 text-md-h4 text-medium-emphasis ma-5" v-motion-pop-visible>
+
+                    Software Engineer & Full Stack Developer
+
+                </h3>
+
+                <div class="ma-5" v-motion-pop-visible>
+
+                    Crafting innovative solutions for a digital world
+
+                </div>
+
+                <music-waves v-motion-slide-visible-once-bottom></music-waves>
 
             </v-col>
 
@@ -34,11 +36,38 @@
 
 <script setup lang="ts">
 
+    import {onMounted} from 'vue'
+
     // imports.
     import { useSettingsStore } from '@/stores/settings';
 
     // state.
     const settings = useSettingsStore();
+
+    import { useConfig } from '~/composables/config'
+    import MusicWaves from '~/components/music/MusicWaves.vue'
+
+    import { useAnimations } from '~/composables/animations'
+
+    const animations = useAnimations()
+
+    const config = useConfig()
+
+    onMounted(() => {
+        const {data, error, pending, refresh } = useFetch(config.apiUrl.value + '/spotify/currently_playing', {
+            onResponse({ request, response, options }) {
+
+                console.log(response._data)
+
+            },
+            onResponseError({ request, response, options }) {
+                console.log(response)
+            }
+        })
+
+        console.log(data.value)
+        console.log(error.value)
+    })
 
 </script>
 
