@@ -14,7 +14,7 @@
 
                         <div class="text-h4 text-medium-emphasis mb-10">
 
-                            I'm a software engineer working remotely from {{ data.current.feelslike_c }}&deg;C
+                            I'm a software engineer working remotely from {{ temperature }}&deg;C
                             Tallinn, Estonia.
 
                         </div>
@@ -54,9 +54,18 @@
 
     import { useConfig } from '~/composables/config'
 
+    let temperature = ref(0)
+
     const config = useConfig()
 
-    const { data, error, pending, refresh } = await useFetch(config.apiUrl.value + '/weather')
+    await useFetch(config.apiUrl.value + '/weather/current', {
+        onResponse({ request, response, options }) {
+            temperature = response._data.current.temp_c
+        },
+        onResponseError({ request, response, options }) {
+            console.log(response)
+        }
+    })
 
 </script>
 
