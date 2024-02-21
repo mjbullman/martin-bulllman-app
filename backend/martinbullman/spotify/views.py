@@ -9,7 +9,7 @@ spotify_api_url       = 'https://api.spotify.com/v1'
 spotify_api_token_url = 'https://accounts.spotify.com/api/token'
 
 
-def spotify_refresh_access_token():
+def spotify_refresh_access_token ():
     """ Refresh Spotify access token using refresh token """
     headers = {
         'content-type': 'application/x-www-form-urlencoded'
@@ -30,11 +30,11 @@ def spotify_refresh_access_token():
         return False
 
 
-class CurrentlyPlaying(APIView):
+class CurrentlyPlaying (APIView):
     """ Currently playing track from Spotify API """
     throttle_classes = [UserRateThrottle]
 
-    def get(self, request):
+    def get (self, request):
         access_token = spotify_refresh_access_token()
 
         if access_token:
@@ -55,11 +55,11 @@ class CurrentlyPlaying(APIView):
                 return False
 
 
-class RecentlyPlayed(APIView):
+class RecentlyPlayed (APIView):
     """ Recently played songs from Spotify API """
     throttle_classes = [UserRateThrottle]
 
-    def get(self, request):
+    def get (self, request):
         access_token = spotify_refresh_access_token()
 
         if access_token:
@@ -80,11 +80,11 @@ class RecentlyPlayed(APIView):
 
 
 
-class TopTracks(APIView):
+class TopTracks (APIView):
     """ Top tracks from Spotify API """
     throttle_classes = [UserRateThrottle]
 
-    def get(self, request):
+    def get (self, request):
         access_token = spotify_refresh_access_token()
 
         if access_token:
@@ -108,11 +108,11 @@ class TopTracks(APIView):
             return False
 
 
-class Playlist(APIView):
+class Playlist (APIView):
     """ Playlist from Spotify API """
     throttle_classes = [UserRateThrottle]
 
-    def get(self, request):
+    def get (self, request):
         access_token = spotify_refresh_access_token()
 
         if access_token:
