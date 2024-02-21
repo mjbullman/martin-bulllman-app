@@ -9,20 +9,20 @@ export default defineNuxtConfig({
     },
     app: {
         head: {
-            title    : 'Martin Bullman - Personal App',
-            charset  : 'utf-8',
-            viewport : 'width=device-width, initial-scale=1',
-            meta : [{
-                name    : 'description',
-                content : "Martin Bullman Personal App"
+            title: 'Martin Bullman - Personal App',
+            charset: 'utf-8',
+            viewport: 'width=device-width, initial-scale=1',
+            meta: [{
+                name: 'description',
+                content: "Martin Bullman Personal App"
             },
             {
-                name    : 'keywords',
-                content : 'Martin Bullman,Django,Vue,Vuetify,Nuxt'
+                name: 'keywords',
+                content: 'Martin Bullman,Django,Vue,Vuetify,Nuxt'
             },
             {
-                name    : 'author',
-                content : 'Martin Bullman'
+                name: 'author',
+                content: 'Martin Bullman'
             }],
         },
         pageTransition : {
@@ -30,23 +30,23 @@ export default defineNuxtConfig({
             mode: 'out-in'
         },
     },
-    css : [
+    css: [
         '@/assets/scss/app.scss',
         'vuetify/lib/styles/main.sass',
         '@fortawesome/fontawesome-svg-core/styles.css'
     ],
-    build : {
+    build: {
         transpile : [
             'vuetify',
             '@fortawesome/vue-fontawesome',
-            '@fortawesome/fontawesome-svg-core',
             '@fortawesome/pro-solid-svg-icons',
+            '@fortawesome/fontawesome-svg-core',
             '@fortawesome/pro-regular-svg-icons',
             '@fortawesome/free-brands-svg-icons'
         ]
     },
-    vite : {
-        define : {
+    vite: {
+        define: {
             'process.env.DEBUG' : true
         },
         css: {
@@ -57,7 +57,7 @@ export default defineNuxtConfig({
             },
         },
     },
-    image : {
+    image: {
         // the screen sizes predefined by `@nuxt/image`:
         screens: {
             xs  : 320,
@@ -68,30 +68,26 @@ export default defineNuxtConfig({
             xxl : 1536
         },
     },
-    runtimeConfig : {
+    runtimeConfig: {
         // the private keys which are only available server-side.
-        apiSecret : '',
+        apiSecret: '',
         // keys within public are also exposed client-side.
-        public : {
-            apiBase          : '',
-            isProduction     : isProduction,
-            recaptchaSiteKey : process.env.GOOGLE_RECAPTCHA_SITE_KEY
+        public: {
+            apiBase: '',
+            isProduction: isProduction,
+            recaptchaSiteKey: process.env.GOOGLE_RECAPTCHA_SITE_KEY
         }
     },
     modules : [
-        // nuxt image to render images ssr.
-        '@nuxt/image',
-        // pinia state management to manage application state.
-        '@pinia/nuxt',
-        '@pinia-plugin-persistedstate/nuxt',
-        // vueuse motion for animation effects.
-        '@vueuse/motion/nuxt',
-        // Google Tag Analytics.
         'nuxt-gtag',
+        '@nuxt/image',
+        '@pinia/nuxt',
+        '@vueuse/motion/nuxt',
+        '@pinia-plugin-persistedstate/nuxt',
         // vuetify tree shaking configuration: https://next.vuetifyjs.com/en/features/treeshaking/
         async (options, nuxt) => {
             nuxt.hooks.hook('vite:extendConfig', (config) => {
-                config?.plugins?.push(vuetify());
+                config?.plugins?.push(vuetify())
             });
         }
     ],
