@@ -1,6 +1,6 @@
 // nuxt main config.
-import vuetify          from 'vite-plugin-vuetify';
-import { isProduction } from 'std-env';
+import vuetify          from 'vite-plugin-vuetify'
+import { isProduction } from 'std-env'
 
 export default defineNuxtConfig({
     ssr: true,
@@ -9,19 +9,19 @@ export default defineNuxtConfig({
     },
     app: {
         head: {
-            title : 'Martin Bullman - Personal App',
-            charset : 'utf-8',
+            title    : 'Martin Bullman - Personal App',
+            charset  : 'utf-8',
             viewport : 'width=device-width, initial-scale=1',
             meta : [{
-                name : 'description',
+                name    : 'description',
                 content : "Martin Bullman Personal App"
             },
             {
-                name : 'keywords',
+                name    : 'keywords',
                 content : 'Martin Bullman,Django,Vue,Vuetify,Nuxt'
             },
             {
-                name : 'author',
+                name    : 'author',
                 content : 'Martin Bullman'
             }],
         },
@@ -65,17 +65,17 @@ export default defineNuxtConfig({
             md  : 768,
             lg  : 1024,
             xl  : 1280,
-            xxl : 1536,
+            xxl : 1536
         },
-      },
-
+    },
     runtimeConfig : {
         // the private keys which are only available server-side.
         apiSecret : '',
         // keys within public are also exposed client-side.
         public : {
-            apiBase : '',
-            isProduction : isProduction,
+            apiBase          : '',
+            isProduction     : isProduction,
+            recaptchaSiteKey : process.env.GOOGLE_RECAPTCHA_SITE_KEY
         }
     },
     modules : [
