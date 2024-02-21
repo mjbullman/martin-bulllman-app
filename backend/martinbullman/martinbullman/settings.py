@@ -63,23 +63,23 @@ WSGI_APPLICATION = 'martinbullman.wsgi.application'
 # Database settings
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_DATABASE'),
-        'USER': config('DB_USERNAME'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
+        'NAME'     : config('DB_DATABASE'),
+        'USER'     : config('DB_USERNAME'),
+        'HOST'     : config('DB_HOST'),
+        'PORT'     : config('DB_PORT'),
+        'ENGINE'   : 'django.db.backends.postgresql',
+        'PASSWORD' : config('DB_PASSWORD')
     }
 }
 
 # Email settings
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT')
-EMAIL_HOST_USER = config('EMAIL_USER')
+EMAIL_HOST          = config('EMAIL_HOST')
+EMAIL_PORT          = config('EMAIL_PORT')
+EMAIL_USE_TLS       = True
+EMAIL_USE_SSL       = False
+EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST_USER     = config('EMAIL_USERNAME')
 EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
