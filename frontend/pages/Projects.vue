@@ -13,7 +13,7 @@
                     <div class="grid-container">
 
                         <!-- QuickMinutes Project -->
-                        <v-card v-motion="animations.fadeUp.value" class="grid-item grid-item-large d-flex flex-column" link hover>
+                        <v-card class="grid-item grid-item-large d-flex flex-column" link hover>
 
                             <v-img src="/img/projects/quickminutes_banner.webp" cover></v-img>
 
@@ -91,7 +91,7 @@
                         </v-card>
 
                         <!-- Data Interoperability Project -->
-                        <v-card v-motion="animations.fadeUp.value" class="grid-item d-flex flex-column" link hover>
+                        <v-card class="grid-item d-flex flex-column" link hover>
 
                             <v-card-title class="pt-5">
 
@@ -155,7 +155,7 @@
                         </v-card>
 
                         <!-- The Story Of Project -->
-                        <v-card v-motion="animations.fadeUp.value" class="grid-item grid-item-large d-flex flex-column" link hover>
+                        <v-card class="grid-item grid-item-large d-flex flex-column" link hover>
 
                             <v-img src="/img/projects/thestoryof_banner.webp" cover></v-img>
 
@@ -234,7 +234,7 @@
                         </v-card>
 
                          <!-- Crowd Insights Project -->
-                        <v-card v-motion="animations.fadeUp.value" class="grid-item grid-item-large d-flex flex-column" link hover>
+                        <v-card class="grid-item grid-item-large d-flex flex-column" link hover>
 
                             <v-img src="/img/projects/taoglas_banner.webp" cover></v-img>
 
