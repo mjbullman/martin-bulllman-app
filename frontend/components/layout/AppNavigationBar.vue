@@ -34,10 +34,6 @@
             <!-- toggle dark mode -->
             <theme-toggle></theme-toggle>
 
-            <github></github>
-
-            <facebook></facebook>
-
             <!-- toggle mobile menu -->
             <v-menu>
 
@@ -82,9 +78,6 @@
         width: 200px;
     }
 
-    :deep(.v-toolbar__append) {
-        width: 200px;
-        justify-content: flex-end;
-    }
+
 
 </style>
