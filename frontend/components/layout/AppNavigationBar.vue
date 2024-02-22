@@ -7,7 +7,11 @@
 
             <nuxt-link to="/">
 
-                <nuxt-img src="/img/logo.svg" width="200" class="mt-2" role="link" alt="Martin Bullman Logo"></nuxt-img>
+                <!-- show icon on small devices -->
+                <nuxt-img src="/img/icon.svg" width="50" class="mt-2 d-md-none" role="link" alt="Martin Bullman Logo"></nuxt-img>
+
+                <!-- show logo on large devices -->
+                <nuxt-img src="/img/logo.svg" width="200" class="d-none d-md-flex" role="link" alt="Martin Bullman Logo"></nuxt-img>
 
             </nuxt-link>
 
@@ -39,7 +43,7 @@
 
                 <template v-slot:activator="{ props }">
 
-                    <v-btn v-bind="props" icon size="small">
+                    <v-btn v-bind="props" icon size="small" class="d-md-none">
 
                         <v-icon v-bind="props" color="primary" icon="fa-solid fa-bars"></v-icon>
 
@@ -49,9 +53,21 @@
 
                 <v-list>
 
-                    <v-list-item>
+                    <v-list-item to="/about" link>
 
-                        <v-list-item-title>Martin Bullman</v-list-item-title>
+                        <v-list-item-title>About</v-list-item-title>
+
+                    </v-list-item>
+
+                    <v-list-item to="/projects" link>
+
+                        <v-list-item-title>Projects</v-list-item-title>
+
+                    </v-list-item>
+
+                    <v-list-item to="/contact" link>
+
+                        <v-list-item-title>Contact</v-list-item-title>
 
                     </v-list-item>
 
@@ -78,6 +94,9 @@
         width: 200px;
     }
 
-
+    :deep(.v-toolbar__append) {
+        width: 200px;
+        justify-content: flex-end;
+    }
 
 </style>
