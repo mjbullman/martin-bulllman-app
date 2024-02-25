@@ -47,4 +47,4 @@ jobs:
         WEATHER_API_URL: ${{ secrets.WEATHER_API_URL }}
         WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
       run: |
-        cd backend/martinbullman && python manage.py test
+        python ./manage.py test
