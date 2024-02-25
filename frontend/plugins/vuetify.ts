@@ -1,6 +1,6 @@
 // vuetify plugin.
-import { createVuetify } from 'vuetify';
-import { aliases, fa } from 'vuetify/iconsets/fa-svg';
+import { createVuetify } from 'vuetify'
+import { aliases, fa }   from 'vuetify/iconsets/fa-svg'
 
 // light theme configuration.
 const customLightTheme = {
@@ -48,7 +48,7 @@ export default defineNuxtPlugin(nuxtApp => {
     const vuetify = createVuetify({
         ssr: true,
         theme: {
-            defaultTheme: darkMode && !darkMode.value ? 'customLightTheme' : 'customDarkTheme' ,
+            defaultTheme: 'customDarkTheme',
             themes: {
                 customDarkTheme,
                 customLightTheme
@@ -59,7 +59,7 @@ export default defineNuxtPlugin(nuxtApp => {
             aliases,
             sets: { fa }
         }
-    });
+    })
 
-    nuxtApp.vueApp.use(vuetify);
-});
+    nuxtApp.vueApp.use(vuetify)
+})
