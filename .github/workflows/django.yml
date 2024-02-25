@@ -26,5 +26,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r backend/martinbullman/requirements.txt
     - name: Run Tests
+      env:
+        SECRET_KEY: rn(20g7%1j-^h0m#6nr1qsppkqq__io2nt^kngiv!#ph_1$wce
       run: |
         python backend/martinbullman/manage.py test
