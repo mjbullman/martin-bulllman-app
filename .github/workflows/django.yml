@@ -27,6 +27,9 @@ jobs:
         pip install -r backend/martinbullman/requirements.txt
     - name: Run Tests
       env:
-        SECRET_KEY: rn(20g7%1j-^h0m#6nr1qsppkqq__io2nt^kngiv!#ph_1$wce
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        DB_HOST: ${{ secrets.DB_HOST }}
+        DB_PORT: ${{ secrets.DB_PORT }}
+        DB_DATABASE: ${{ secrets.DB_DATABASE }}
       run: |
         python backend/martinbullman/manage.py test
