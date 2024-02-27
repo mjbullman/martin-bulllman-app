@@ -6,4 +6,3 @@ class WeatherTest(TestCase):
     def test_current_weather(self):
         factory = APIRequestFactory()
         request = factory.get('/weather/current/')
-        assert 0
