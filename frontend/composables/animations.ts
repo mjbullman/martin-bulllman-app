@@ -1,27 +1,53 @@
 import { ref } from 'vue'
+import {de} from "vuetify/locale";
 
 export function useAnimations () {
 
-    const fadeUp = ref({
+
+    const minimalFastFadeDown = ref({
         initial: {
             opacity: 0,
-            y: -30
-        },
-        enter: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 300
-            }
+            y: -50
         },
         visible: {
             opacity: 1,
             y: 0,
             transition: {
-                duration: 300
+                duration: 200
             }
         }
     })
 
-    return { fadeUp }
+    const minimalFastFadeUp = ref({
+        initial: {
+            opacity: 0,
+            y: 50
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 200
+            }
+        }
+    })
+
+    function visibleUpDown (delay: number, start: number, duration: number) {
+        return {
+            initial: {
+                opacity: 0,
+                y: start
+            },
+            visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                    duration: duration,
+                    delay: delay
+                }
+            }
+        }
+    }
+
+    return { minimalFastFadeDown, minimalFastFadeUp, visibleUpDown }
 }

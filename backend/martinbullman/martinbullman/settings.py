@@ -69,8 +69,21 @@ DATABASES = {
         'PORT'     : config('DB_PORT'),
         'ENGINE'   : 'django.db.backends.postgresql',
         'PASSWORD' : config('DB_PASSWORD')
+    },
+    'test': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+if os.environ.get('GITHUB_WORKFLOW'):
+    # Database settings
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # Email settings
 EMAIL_HOST          = config('EMAIL_HOST')

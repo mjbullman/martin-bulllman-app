@@ -16,7 +16,7 @@ jobs:
         python-version: [3.11]
 
     steps:
-    - uses: ./manage.py test
+    - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
@@ -26,6 +26,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r backend/martinbullman/requirements.txt
     - name: Run Tests
+
+      run: |
+        cd backend/martinbullman/
+        python manage.py test
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         DB_HOST: ${{ secrets.DB_HOST }}
@@ -46,5 +50,3 @@ jobs:
 
         WEATHER_API_URL: ${{ secrets.WEATHER_API_URL }}
         WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
-      run: |
-        python ./manage.py test
