@@ -1,12 +1,17 @@
 from rest_framework import status
-from rest_framework.test import APITestCase
+from rest_framework.test import APITestCase, APIClient
 
 # weather api url.
 weather_api_url = '/api/v1/weather'
 
 
-class WeatherTest(APITestCase):
+class WeatherTest (APITestCase):
     """ Test the weather app API endpoints """
+
+    def setUp (self):
+        """ Set up API client used for testing the spotify app """
+        self.client = APIClient()
+
     def test_weather_current (self):
         """ Test the current weather API endpoint """
         response = self.client.get(weather_api_url + '/current', format='json')
