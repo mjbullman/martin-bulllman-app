@@ -8,10 +8,7 @@
             <nuxt-link to="/">
 
                 <!-- show icon on small devices -->
-                <nuxt-img src="/img/icon.svg" width="50" class="mt-2 d-md-none" role="link" alt="Martin Bullman Logo"></nuxt-img>
-
-                <!-- show logo on large devices -->
-                <nuxt-img src="/img/logo.svg" width="200" class="d-none d-md-flex" role="link" alt="Martin Bullman Logo"></nuxt-img>
+                <nuxt-img src="/img/icon.svg" width="50" class="mt-2" role="link" alt="Martin Bullman Logo"></nuxt-img>
 
             </nuxt-link>
 
@@ -32,11 +29,14 @@
 
         <v-spacer></v-spacer>
 
-        <!-- options -->
+        <!-- settings & resume -->
         <template v-slot:append>
 
-            <!-- toggle dark mode -->
-            <theme-toggle></theme-toggle>
+            <!-- change theme -->
+            <theme></theme>
+
+            <!-- download resume -->
+            <!--<resume></resume>-->
 
             <!-- toggle mobile menu -->
             <v-menu>
@@ -83,7 +83,8 @@
 
 <script setup lang="js">
 
-    import ThemeToggle from '~/components/buttons/ThemeToggle.vue'
+    import Theme  from '~/components/buttons/Theme.vue'
+    import Resume from '~/components/buttons/Resume.vue'
 
 </script>
 
