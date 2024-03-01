@@ -8,11 +8,17 @@
 
             <v-row>
 
-                <v-col cols="12" sm="12" md="12" lg="12" xl="12" class="text-center">
+                <v-col cols="12" sm="12" md="4" lg="4" xl="4" class="text-center">
+
+                    <nuxt-img src="/img/personal/martin_hektor_container_hotel.webp" width="300px" alt="Martin at Hektor Container Hotel"></nuxt-img>
+
+                </v-col>
+
+                <v-col cols="12" sm="12" md="8" lg="8" xl="8" class="text-center">
 
                     <div class="grid-container">
 
-                        <div class="text-h4 text-medium-emphasis mb-10">
+                        <div class="text-h3 text-medium-emphasis mb-10">
 
                             I'm a software engineer working remotely from {{ temperature }}&deg;C
                             Tallinn, Estonia.
