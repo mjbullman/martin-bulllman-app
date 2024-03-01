@@ -7,6 +7,12 @@ export default defineNuxtConfig({
     devtools: {
         enabled: false
     },
+    site: {
+        url: process.env.APP_URL,
+        name: 'Martin Bullman Portfolio',
+        description: 'The portfolio of Martin Bullman, Software Engineer & Full Stack Developer.!',
+        defaultLocale: 'en'
+    },
     app: {
         head: {
             title: 'Martin Bullman - Personal App',
@@ -14,11 +20,11 @@ export default defineNuxtConfig({
             viewport: 'width=device-width, initial-scale=1',
             meta: [{
                 name: 'description',
-                content: "Martin Bullman Personal App"
+                content: 'The portfolio of Martin Bullman, Software Engineer & Full Stack Developer.!'
             },
             {
                 name: 'keywords',
-                content: 'Martin Bullman,Django,Vue,Vuetify,Nuxt'
+                content: 'Martin Bullman,Django,Vue,Vuetify,Nuxt, Software Engineering, Portfolio, Projects, Web Development, Mobile App Development, Data Analysis, Expertise, Skills, Innovation, Solutions, Excellence, Technical Abilities, Articles, Insights, Knowledge, Developer, Employer, Technology, Innovation, Expert'
             },
             {
                 name: 'author',
@@ -82,6 +88,7 @@ export default defineNuxtConfig({
         'nuxt-gtag',
         '@nuxt/image',
         '@pinia/nuxt',
+        '@nuxtjs/seo',
         '@vueuse/motion/nuxt',
         '@pinia-plugin-persistedstate/nuxt',
         // vuetify tree shaking configuration: https://next.vuetifyjs.com/en/features/treeshaking/
@@ -93,5 +100,13 @@ export default defineNuxtConfig({
     ],
     gtag: {
         id: process.env.GOOGLE_ANALYTICS_ID
-    }
+    },
+    schemaOrg: {
+        identity: {
+            type: 'Person',
+            name: 'Martin Bullman',
+            url: process.env.APP_URL,
+            logo: process.env.APP_URL + '/img/logo.svg'
+        }
+  }
 });
