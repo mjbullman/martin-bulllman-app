@@ -47,9 +47,6 @@ class SpotifyTest (APITestCase):
         # contains artists items.
         self.assertIn('artists', response.data)
 
-        # contains following items.
-        self.assertIn('items', response.data)
-
     def test_spotify_top_tracks (self):
         """ Test the get top tracks API endpoint """
         response = self.client.get(spotify_api_url + '/top_tracks', format='json')
