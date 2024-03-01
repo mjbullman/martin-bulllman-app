@@ -1,0 +1,15 @@
+.social-link {
+    transition: transform 250ms;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+}
+
+.social-link svg {
+    transition: stroke 250ms ease-in-out;
+}
+
+.social-link:hover svg {
+    stroke: rgb(var(--v-theme-secondary));
+}
