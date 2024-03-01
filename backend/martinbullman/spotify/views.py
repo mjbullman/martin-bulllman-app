@@ -1,6 +1,7 @@
 import requests
 from decouple import config
 
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.throttling import UserRateThrottle
@@ -30,11 +31,33 @@ def spotify_refresh_access_token ():
         return False
 
 
-def spotify_headers (access_token):
+def spotify_headers (access_token: dict):
     """ Created the spotify headers dictionary with Spotify access token """
     return {
         'Authorization': 'Bearer ' + access_token['access_token']
     }
+
+
+class Profile (APIView):
+    """ My profile from Spotify API """
+    throttle_classes = [UserRateThrottle]
+
+    def get (self, request):
+        access_token = spotify_refresh_access_token()
+
+        if access_token:
+            headers = spotify_headers(access_token)
+
+            params = {}
+
+            response = requests.get(spotify_api_url + '/me', params=params, headers=headers)
+
+            if response.status_code == 200:
+                return Response(response.json(), 200)
+            else:
+                return Response("Error getting profile from Spotify", 500)
+        else:
+            return Response("Error refreshing Spotify access token.", 500)
 
 
 class Playlist (APIView):
@@ -45,14 +68,12 @@ class Playlist (APIView):
         access_token = spotify_refresh_access_token()
 
         if access_token:
-            headers = {
-                'Authorization': 'Bearer ' + access_token['access_token']
-            }
+            headers = spotify_headers(access_token)
 
             params = {
-                'limit'      : 5,
-                'offset'     : 5,
-                'time_range' : 'medium_term'
+                'limit'      : 10,
+                'offset'     : 0,
+                'time_range' : 'short_term'
             }
 
             response = requests.get(spotify_api_url + '/me/playlists', params=params, headers=headers)
@@ -61,6 +82,30 @@ class Playlist (APIView):
                 return Response(response.json(), 200)
             else:
                 return Response("Error getting playlists from Spotify", 500)
+        else:
+            return Response("Error refreshing Spotify access token.", 500)
+
+
+class Following (APIView):
+    """ Artists I'm following from Spotify API """
+    throttle_classes = [UserRateThrottle]
+
+    def get (self, request):
+        access_token = spotify_refresh_access_token()
+
+        if access_token:
+            headers = spotify_headers(access_token)
+
+            params = {
+                'type' : 'artist'
+            }
+
+            response = requests.get(spotify_api_url + '/me/following', params=params, headers=headers)
+
+            if response.status_code == 200:
+                return Response(response.json(), 200)
+            else:
+                return Response("Error getting artists I'm following from Spotify", 500)
         else:
             return Response("Error refreshing Spotify access token.", 500)
 
@@ -76,9 +121,9 @@ class TopTracks (APIView):
             headers = spotify_headers(access_token)
 
             params = {
-                'limit'      : 5,
-                'offset'     : 5,
-                'time_range' : 'medium_term'
+                'limit'      : 10,
+                'offset'     : 0,
+                'time_range' : 'short_term'
             }
 
             response = requests.get(spotify_api_url + '/me/top/tracks', params=params, headers=headers)
@@ -87,6 +132,32 @@ class TopTracks (APIView):
                 return Response(response.json())
             else:
                 return Response("Error getting top tracks from Spotify", 500)
+        else:
+            return Response("Error refreshing Spotify access token.", 500)
+
+
+class TopArtists (APIView):
+    """ My top artists from Spotify API """
+    throttle_classes = [UserRateThrottle]
+
+    def get (self, request):
+        access_token = spotify_refresh_access_token()
+
+        if access_token:
+            headers = spotify_headers(access_token)
+
+            params = {
+                'limit'      : 10,
+                'offset'     : 0,
+                'time_range' : 'long_term'
+            }
+
+            response = requests.get(spotify_api_url + '/me/top/artists', params=params, headers=headers)
+
+            if response.status_code == 200:
+                return Response(response.json())
+            else:
+                return Response("Error getting top artists from Spotify", 500)
         else:
             return Response("Error refreshing Spotify access token.", 500)
 
@@ -110,9 +181,9 @@ class RecentlyPlayed (APIView):
             if response.status_code == 200:
                 return Response(response.json())
             else:
-                return Response("Error getting recently played tracks from Spotify", 500)
+                return Response('Error getting recently played tracks from Spotify', 500)
         else:
-            return Response("Error refreshing Spotify access token.", 500)
+            return Response('Error refreshing Spotify access token.', 500)
 
 
 class CurrentlyPlaying (APIView):
@@ -132,9 +203,12 @@ class CurrentlyPlaying (APIView):
 
             response = requests.get(spotify_api_url + '/me/player/currently_playing', params=params, headers=headers)
 
-            if response.status_code == 200 or response.status_code == 204:
-                return Response(response)
+            if response.status_code == 200:
+                return Response(response.json(), status.HTTP_200_OK)
+            elif response.status_code == 204:
+                return Response('Currently no tracks playing.', status.HTTP_204_NO_CONTENT)
             else:
-                return Response("Error getting currently playing track from Spotify", 500)
+                return Response('Error getting currently playing track from Spotify.',
+                                status.HTTP_500_INTERNAL_SERVER_ERROR)
         else:
-            return Response("Error refreshing Spotify access token.", 500)
+            return Response('Error refreshing Spotify access token.',  status.HTTP_500_INTERNAL_SERVER_ERROR)
