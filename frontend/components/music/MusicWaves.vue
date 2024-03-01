@@ -1,6 +1,6 @@
 <template>
 
-    <div class="loader ma-5">
+    <div class="loader">
 
         <span class="bar"></span>
         <span class="bar"></span>
@@ -21,7 +21,7 @@
 <style scoped lang="scss">
 
     .loader {
-        height: 50px;
+        height: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -36,9 +36,9 @@
             rgb(var(--v-theme-secondary))
         );
         height: 100%;
-        width: 10px;
+        width: 5px;
         border-radius: 50px;
-        margin: 0 5px;
+        margin: 0 2px;
         animation: animate 1.2s linear infinite;
     }
     
@@ -78,8 +78,5 @@
     .bar:nth-child(1) {
         animation-delay: 0s;
     }
-
-
-
 
 </style>
