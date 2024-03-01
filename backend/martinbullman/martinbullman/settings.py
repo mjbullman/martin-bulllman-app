@@ -22,7 +22,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'core',
     'spotify',
-    'weather'
+    'weather',
+    'openai'
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -131,7 +132,7 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.UserRateThrottle'
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '100/hour',
-        'user': '1000/day'
+        'anon': '100000/hour',
+        'user': '100000/day'
     }
 }
