@@ -42,10 +42,10 @@
 
 <script setup lang="ts">
 
+    import Spotify    from '~/components/sections/Spotify.vue'
     import MusicWaves from '~/components/music/MusicWaves.vue'
 
-    import { useAnimations }    from '~/composables/animations'
-    import Spotify from '~/components/sections/Spotify.vue'
+    import { useAnimations } from '~/composables/animations'
 
     const animations = useAnimations()
 
