@@ -2,33 +2,39 @@
 
     <v-container>
 
-        <v-row class="text-center" align="center" justify="center" style="height: 90vh">
+        <v-row class="text-center full-height" align="center" justify="center">
 
             <v-col>
 
-                <h1 class="text-h2 text-md-h1 ma-5" v-motion="animations.fadeUp.value">
+                <h1 class="text-h2 text-md-h1 ma-5" v-motion="animations.visibleUpDown(0, -30, 200)">
 
-                    Hi, I'm <span class="text-gradient-animation ">Martin</span>
+                   <span class="text-gradient-animation">Martin Bullman</span>
 
                 </h1>
 
-                <h3 class="text-h6 text-md-h4 text-medium-emphasis ma-5" v-motion-pop-visible>
+                <h3 class="text-h6 text-md-h4 text-medium-emphasis ma-5" v-motion="animations.visibleUpDown(100, -30, 200)">
 
                     Software Engineer & Full Stack Developer
 
                 </h3>
 
-                <div class="ma-5" v-motion-pop-visible>
+                <div class="text-body-1 ma-5" v-motion="animations.visibleUpDown(200, -30, 200)">
 
                     Crafting innovative solutions for a digital world
 
                 </div>
 
-                <music-waves v-motion-slide-visible-once-bottom></music-waves>
+                <div v-motion="animations.visibleUpDown(400, -50, 200)">
+
+                    <music-waves></music-waves>
+
+                </div>
 
             </v-col>
 
         </v-row>
+
+        <spotify></spotify>
 
     </v-container>
 
@@ -36,41 +42,19 @@
 
 <script setup lang="ts">
 
-    import {onMounted} from 'vue'
-
-    // imports.
-    import { useSettingsStore } from '@/stores/settings';
-
-    // state.
-    const settings = useSettingsStore();
-
-    import { useConfig } from '~/composables/config'
     import MusicWaves from '~/components/music/MusicWaves.vue'
 
-    import { useAnimations } from '~/composables/animations'
+    import { useAnimations }    from '~/composables/animations'
+    import Spotify from '~/components/sections/Spotify.vue'
 
     const animations = useAnimations()
-
-    const config = useConfig()
-
-    onMounted(() => {
-        const {data, error, pending, refresh } = useFetch(config.apiUrl.value + '/spotify/currently_playing', {
-            onResponse({ request, response, options }) {
-
-                console.log(response._data)
-
-            },
-            onResponseError({ request, response, options }) {
-                console.log(response)
-            }
-        })
-
-        console.log(data.value)
-        console.log(error.value)
-    })
 
 </script>
 
 <style scoped>
+
+    .full-height {
+        height: 90vh;
+    }
 
 </style>
