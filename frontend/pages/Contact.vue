@@ -1,6 +1,6 @@
 <template>
 
-    <v-container fluid>
+    <v-container>
 
         <page-heading heading-text="Contact"></page-heading>
 
@@ -8,27 +8,44 @@
 
             <v-row>
 
-                <v-col cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="pt-12 pb-12">
+                <v-col cols="12" sm="12" md="6" lg="6" xl="6" class="text-medium-emphasis ">
 
-                    <p class="mb-2">Hello there,</p>
+                    <p class="text-h3 mb-5">
 
-                    <p class="mb-2">
-                        Thanks for dropping by! Whether you have questions, exciting opportunities, or just want to say hello,
-                        I'm all ears. Feel free to reach out using the form below or connect with me on social media.
+                        Let's Connect
+
                     </p>
 
-                    <p class="mb-2">
-                        I'm ready to dive into projects, share ideas, or even have a virtual coffee chat.
-                        Let's turn your thoughts into reality!
+                    <p class="mb-5">
+                        Whether you're interested in collaborating on a project, discussing a potential opportunity, or
+                        just want to chat about all things tech, I'd love to hear from you.
                     </p>
 
-                    <p class="mb-2">
-                        Looking forward to hearing from you,
+                    <p class="mb-5">
+                        Feel free to reach out via the contact form or through my social media channels, and I'll get
+                        back to you as soon as possible.</p>
+
+                    <p class="mb-5">
+                        Thanks for dropping by!
                     </p>
+
+                    <div>
+
+                        <git-hub :size="'large'" :width="30" :height="30" :color="'#B9B9B9'"></git-hub>
+
+                        <linked-in :size="'large'" :width="30" :height="30" :color="'#B9B9B9'"></linked-in>
+
+                        <instagram :size="'large'" :width="30" :height="30" :color="'#B9B9B9'"></instagram>
+
+                        <facebook :size="'large'" :width="30" :height="30" :color="'#B9B9B9'"></facebook>
+
+                        <twitter :size="'large'" :width="30" :height="30" :color="'#B9B9B9'"></twitter>
+
+                    </div>
 
                 </v-col>
 
-                <v-col cols="12" sm="12" md="6" lg="6" xl="4" align-self="center">
+                <v-col cols="12" sm="12" md="6" lg="6" xl="4">
 
                     <form @submit.prevent="submit">
 
@@ -37,7 +54,7 @@
                             :error-messages="name.errorMessage.value"
                             label="Name"
                             color="primary"
-                            class="mb-3"
+                            class="mb-5"
                             variant="outlined"
                             prepend-inner-icon="fa-regular fa-user">
                         </v-text-field>
@@ -47,7 +64,7 @@
                             :error-messages="email.errorMessage.value"
                             label="Email"
                             color="primary"
-                            class="mb-3"
+                            class="mb-5"
                             variant="outlined"
                             prepend-inner-icon="fa-regular fa-envelope">
                         </v-text-field>
@@ -57,18 +74,18 @@
                             :error-messages="message.errorMessage.value"
                             label="Message"
                             color="primary"
-                            class="mb-3"
+                            class="mb-5"
                             variant="outlined"
                             prepend-inner-icon="fa-regular fa-message">
                         </v-textarea>
 
-                        <v-btn class="me-4" type="submit">
+                        <v-btn :loading="loading" class="me-4" type="submit" @click="handleSubmit" color="primary">
 
                             submit
 
                         </v-btn>
 
-                        <v-btn @click="handleReset">
+                        <v-btn @click="handleReset" variant="text">
 
                           clear
 
@@ -88,8 +105,24 @@
 
 <script setup lang="ts">
 
-    import { useField, useForm } from 'vee-validate';
-    import PageHeading from "~/components/general/PageHeading.vue";
+    import GitHub      from '~/components/icons/GitHub.vue'
+    import Twitter    from '~/components/icons/Twitter.vue'
+    import Facebook    from '~/components/icons/Facebook.vue'
+    import LinkedIn    from '~/components/icons/LinkedIn.vue'
+    import Instagram   from '~/components/icons/Instagram.vue'
+    import PageHeading from '~/components/general/PageHeading.vue'
+
+    import { useConfig }         from '~/composables/config'
+    import { useNotifications }  from '~/stores/notifications'
+    import { useField, useForm } from 'vee-validate'
+
+    import useGoogleRecaptcha, {RecaptchaAction,} from '~/composables/recaptcha'
+
+    const config               = useConfig()
+    const notifications        = useNotifications()
+    const { executeRecaptcha } = useGoogleRecaptcha()
+
+    let loading = ref(false)
 
     interface ContactForm {
         name    ?: string | null;
@@ -130,9 +163,49 @@
     const email   = useField('email');
     const message = useField('message');
 
-    const submit = handleSubmit(values => {
-        useFetch('http://localhost:8000/api/v1/test').then(resp => {
-            console.log(resp.data.value)
+    const submit = handleSubmit(async values => {
+        loading.value   = true
+        const { token } = await executeRecaptcha(RecaptchaAction.contact)
+
+        useFetch(config.apiUrl.value + '/contact', {
+            method: 'POST',
+            body: {
+                name            : values.name,
+                email           : values.email,
+                message         : values.message,
+                recaptcha_token : token
+            }
+        })
+        .then(response => {
+            handleReset()
+
+            console.log(response.data.value)
+
+            notifications.updateSnackbarData({
+                text       : response.data.value,
+                color      : 'info',
+                toggle     : true,
+                timeout    : 6000,
+                variant    : 'elevated',
+                location   : 'top',
+                multiLine  : false,
+                closeDelay : 100
+            })
+        })
+        .catch(error => {
+            notifications.updateSnackbarData({
+                text       : 'asdasdasd',
+                color      : 'error',
+                toggle     : true,
+                timeout    : 6000,
+                variant    : 'elevated',
+                location   : 'top',
+                multiLine  : false,
+                closeDelay : 100
+            })
+        })
+        .finally(() => {
+            loading.value = false
         })
     })
 
