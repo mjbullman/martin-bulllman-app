@@ -22,7 +22,7 @@
         "@fortawesome/vue-fontawesome": "^3.0.3",
         "@pinia/nuxt": "^0.5.1",
         "@vueuse/motion": "^2.0.0",
-        "nuxt": "^3.9.0",
+        "nuxt": "^3.10.3",
         "sass": "^1.62.1",
         "typescript": "^5.0.4",
         "vee-validate": "^4.11.1",
