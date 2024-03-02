@@ -304,11 +304,11 @@
         watch: [counter]
     })
 
-    onNuxtReady (() => {
-        setInterval(() => {
-            counter.value = counter.value += 1
-        }, 1000)
-    })
+    // onNuxtReady (() => {
+    //     setInterval(() => {
+    //         counter.value = counter.value += 1
+    //     }, 1000)
+    // })
 
     function millisToMinutesAndSeconds(millis:number) {
         let minutes:number = Math.floor(millis / 60000);
