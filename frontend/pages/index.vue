@@ -2,6 +2,7 @@
 
     <v-container>
 
+        <!-- main section -->
         <v-row class="text-center full-height" align="center" justify="center">
 
             <v-col>
@@ -34,6 +35,7 @@
 
         </v-row>
 
+        <!-- spotify component -->
         <spotify></spotify>
 
     </v-container>
