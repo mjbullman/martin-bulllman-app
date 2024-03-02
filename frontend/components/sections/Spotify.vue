@@ -1,6 +1,6 @@
 <template>
 
-    <v-row v-if="profile && playlists && tracks && following && artists">
+    <v-row v-if="profile && following && playlists">
 
         <v-col cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="text-center">
 
@@ -88,7 +88,7 @@
         </v-col>
 
         <!-- now playing -->
-        <v-col v-if="playing" cols="12" sm="8" offset-sm="2" md="6" offset-md="3" lg="4" offset="4" xl="12" align-self="center" class="pb-10">
+        <v-col v-if="playing" cols="12" sm="8" offset-sm="2" md="6" offset-md="3" lg="4" offset-lg="4" xl="12" align-self="center" class="pb-10">
 
             <div class="text-secondary text-center pa-2">
 
@@ -96,7 +96,7 @@
 
             </div>
 
-            <v-card rounded="100">
+            <v-card variant="outlined" color="primary">
 
                 <v-list lines="two" class="pa-0" aria-label="currently playing spotify track">
 
@@ -128,31 +128,35 @@
 
                 <div class="pl-4 pr-4 pb-2 pt-2 d-flex align-center">
 
-                        <div class="pr-5">
+                    <div class="pr-5">
 
-                            {{ millisToMinutesAndSeconds(playing.progress_ms) }}
-
-                        </div>
-
-                        <v-progress-linear
-                            :model-value="playing.progress_ms / playing.item.duration_ms * 100"
-                            color="secondary"
-                            rounded
-                            aria-label="currently playing progress bar"
-                            role="progressbar">
-                        </v-progress-linear>
-
-                        <div class="pl-5">
-
-                            {{ millisToMinutesAndSeconds(playing.item.duration_ms) }}
-
-                        </div>
+                        {{ millisToMinutesAndSeconds(playing.progress_ms) }}
 
                     </div>
+
+                    <v-progress-linear
+                        :model-value="playing.progress_ms / playing.item.duration_ms * 100"
+                        color="secondary"
+                        rounded
+                        aria-label="currently playing progress bar"
+                        role="progressbar">
+                    </v-progress-linear>
+
+                    <div class="pl-5">
+
+                        {{ millisToMinutesAndSeconds(playing.item.duration_ms) }}
+
+                    </div>
+
+                </div>
 
             </v-card>
 
         </v-col>
+
+    </v-row>
+
+    <v-row v-if="playlists && tracks && artists">
 
         <!-- top tracks -->
         <v-col cols="12" sm="12" md="4" lg="4" xl="4" align-self="center">
@@ -163,7 +167,7 @@
 
             </h3>
 
-            <v-card variant="outlined" rounded color="primary">
+            <v-card variant="outlined" color="primary">
 
                 <v-list lines="two" class="pa-0" aria-label="my spotify top tracks list">
 
@@ -210,7 +214,7 @@
 
             </h3>
 
-            <v-card variant="outlined" rounded color="primary">
+            <v-card variant="outlined" color="primary">
 
                 <v-list lines="two" class="pa-0" aria-label="my spotify top playlists">
 
