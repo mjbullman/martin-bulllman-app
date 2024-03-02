@@ -15,7 +15,7 @@
                         <!-- QuickMinutes Project -->
                         <v-card class="grid-item grid-item-large d-flex flex-column" link hover>
 
-                            <v-img src="/img/projects/quickminutes_banner.webp" cover></v-img>
+                            <nuxt-img src="/img/projects/quickminutes_banner.webp" alt="QuickMinutes banner image"></nuxt-img>
 
                             <v-card-title class="pt-5">
 
@@ -157,7 +157,7 @@
                         <!-- The Story Of Project -->
                         <v-card class="grid-item grid-item-large d-flex flex-column" link hover>
 
-                            <v-img src="/img/projects/thestoryof_banner.webp" cover></v-img>
+                            <nuxt-img src="/img/projects/thestoryof_banner.webp" alt="TheStoryOf banner image"></nuxt-img>
 
                             <v-card-title class="pt-5">
 
@@ -236,7 +236,7 @@
                          <!-- Crowd Insights Project -->
                         <v-card class="grid-item grid-item-large d-flex flex-column" link hover>
 
-                            <v-img src="/img/projects/taoglas_banner.webp" cover></v-img>
+                            <nuxt-img src="/img/projects/taoglas_banner.webp" alt="Taoglas banner image"></nuxt-img>
 
                             <v-card-title class="pt-5">
 
@@ -449,7 +449,7 @@
                         <!-- Wagerr Project -->
                         <v-card class="grid-item grid-item-large d-flex flex-column" link hover>
 
-                            <v-img src="/img/projects/wagerr_banner.webp" cover></v-img>
+                            <nuxt-img src="/img/projects/wagerr_banner.webp" alt="Wagerr banner image"></nuxt-img>
 
                             <v-card-title class="pt-5">
 
