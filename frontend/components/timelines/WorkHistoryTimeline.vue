@@ -28,11 +28,11 @@
 
                             </h2>
 
-                            <h4 class="mt-n1 font-weight-light mb-4" :class="i % 2 == 0 ? 'text-primary' : 'text-secondary'">
+                            <h3 class="mt-n1 font-weight-light mb-4" :class="i % 2 == 0 ? 'text-primary' : 'text-secondary'">
 
                                 {{ job.company }}
 
-                            </h4>
+                            </h3>
 
                             <div>
 
