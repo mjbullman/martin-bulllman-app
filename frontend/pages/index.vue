@@ -12,11 +12,11 @@
 
                 </h1>
 
-                <h3 class="text-h6 text-md-h4 text-medium-emphasis ma-5" >
+                <h2 class="text-h6 text-md-h4 text-medium-emphasis ma-5" >
 
                     Software Engineer & Full Stack Developer
 
-                </h3>
+                </h2>
 
                 <div class="text-body-1 ma-5">
 

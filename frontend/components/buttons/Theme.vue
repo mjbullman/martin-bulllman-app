@@ -1,6 +1,6 @@
 <template>
 
-    <v-btn @click="darkModeToggle()" icon size="small">
+    <v-btn @click="darkModeToggle()" icon size="small" aria-label="change theme">
 
         <v-icon color="primary" :icon="store.getDarkMode ? 'fa-regular fa-moon' : 'fa-regular fa-sun'"></v-icon>
 

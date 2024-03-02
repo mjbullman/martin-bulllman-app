@@ -88,35 +88,45 @@
         </v-col>
 
         <!-- now playing -->
-        <v-col v-if="playing" cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="d-flex justify-center pb-10">
+        <v-col v-if="playing" cols="12" sm="8" offset-sm="2" md="6" offset-md="3" lg="4" offset="4" xl="12" align-self="center" class="pb-10">
 
-            <v-card variant="outlined" rounded color="primary" min-width="400" max-width="500">
+            <div class="text-secondary text-center pa-2">
 
-                <v-list lines="two" class="pa-0" color="primary">
+                Now Playing!
 
-                     <v-list-item
-                         :key="playing.item.id"
-                         :title="playing.item.name"
-                         :subtitle="playing.item.artists[0].name"
-                         :href="playing.item.external_urls.spotify"
-                         link color="primary" target="_blank">
+            </div>
 
-                         <template v-slot:prepend>
+            <v-card rounded="100">
+
+                <v-list lines="two" class="pa-0" aria-label="currently playing spotify track">
+
+                    <v-list-item
+                        :key="playing.item.id"
+                        :title="playing.item.name"
+                        :subtitle="playing.item.artists[0].name"
+                        :href="playing.item.external_urls.spotify"
+                        link
+                        target="_blank"
+                        role="option"
+                        aria-selected="false">
+
+                        <template v-slot:prepend>
 
                             <v-avatar size="large" :image="playing.item.album.images[0].url"></v-avatar>
 
-                         </template>
+                        </template>
 
-                         <template v-slot:append>
+                        <template v-slot:append>
 
-                             <music-waves class="pl-2"></music-waves>
+                            <music-waves class="pl-2"></music-waves>
 
-                         </template>
+                        </template>
 
-                     </v-list-item>
+                    </v-list-item>
 
+                </v-list>
 
-                    <div class="pl-4 pr-4 pb-2 pt-2 d-flex align-center">
+                <div class="pl-4 pr-4 pb-2 pt-2 d-flex align-center">
 
                         <div class="pr-5">
 
@@ -127,7 +137,9 @@
                         <v-progress-linear
                             :model-value="playing.progress_ms / playing.item.duration_ms * 100"
                             color="secondary"
-                            rounded>
+                            rounded
+                            aria-label="currently playing progress bar"
+                            role="progressbar">
                         </v-progress-linear>
 
                         <div class="pl-5">
@@ -137,14 +149,6 @@
                         </div>
 
                     </div>
-
-                    <div class="text-secondary text-center pa-2">
-
-                        Now Playing!
-
-                    </div>
-
-                </v-list>
 
             </v-card>
 
@@ -161,14 +165,17 @@
 
             <v-card variant="outlined" rounded color="primary">
 
-                <v-list lines="two" class="pa-0">
+                <v-list lines="two" class="pa-0" aria-label="my spotify top tracks list">
 
                     <v-list-item
                         v-for="track in tracks.items"
                         :key="track.id"
                         :title="track.name"
                         :href="track.external_urls.spotify"
-                        link :rounded="100" target="_blank">
+                        link
+                        target="_blank"
+                        role="option"
+                        aria-selected="false">
 
                         <template v-slot:prepend>
 
@@ -205,7 +212,7 @@
 
             <v-card variant="outlined" rounded color="primary">
 
-                <v-list lines="two" class="pa-0">
+                <v-list lines="two" class="pa-0" aria-label="my spotify top playlists">
 
                     <v-list-item
                         v-for="playlist in playlists.items"
@@ -213,7 +220,10 @@
                         :title="playlist.name"
                         :subtitle="playlist.owner.display_name"
                         :href="playlist.external_urls.spotify"
-                        link :rounded="100" target="_blank">
+                        link
+                        target="_blank"
+                        role="option"
+                        aria-selected="false">
 
                         <template v-slot:prepend>
 
@@ -240,14 +250,17 @@
 
             <v-card variant="outlined" rounded color="primary">
 
-                <v-list lines="two" class="pa-0">
+                <v-list lines="two" class="pa-0" aria-label="my spotify top artists list">
 
                     <v-list-item
                         v-for="artist in artists.items"
                         :key="artist.id"
                         :title="artist.name"
                         :href="artist.external_urls.spotify"
-                        link :rounded="100" target="_blank">
+                        link
+                        target="_blank"
+                        role="option"
+                        aria-selected="false">
 
                         <template v-slot:prepend>
 

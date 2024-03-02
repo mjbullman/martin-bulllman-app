@@ -45,7 +45,7 @@
 
                     <v-btn v-bind="props" icon size="small" class="d-md-none">
 
-                        <v-icon v-bind="props" color="primary" icon="fa-solid fa-bars"></v-icon>
+                        <v-icon v-bind="props" color="primary" icon="fa-solid fa-bars" aria-label="open navigation menu"></v-icon>
 
                     </v-btn>
 
