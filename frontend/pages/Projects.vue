@@ -589,7 +589,7 @@
 
                                 </h2>
 
-                                <v-chip size="x-small" variant="outlined" color="error" class="mt-2">
+                                <v-chip size="x-small" variant="outlined" color="warning" class="mt-2">
 
                                     Discontinued
 
@@ -662,7 +662,7 @@
 
                                 </h2>
 
-                                <v-chip size="x-small" variant="outlined" color="error" class="mt-2">
+                                <v-chip size="x-small" variant="outlined" color="warning" class="mt-2">
 
                                     Discontinued
 
@@ -688,19 +688,27 @@
                                 <div class="mt-3">
 
                                     <v-chip size="small" color="secondary" class="mr-1">
+
                                         NodeJS
+
                                     </v-chip>
 
                                     <v-chip size="small" color="secondary" class="mr-1">
+
                                         PHP
+
                                     </v-chip>
 
                                     <v-chip size="small" color="secondary" class="mr-1">
+
                                         Javascript
+
                                     </v-chip>
 
                                     <v-chip size="small" color="secondary" class="mr-1">
+
                                         Google Cloud
+
                                     </v-chip>
 
                                 </div>
