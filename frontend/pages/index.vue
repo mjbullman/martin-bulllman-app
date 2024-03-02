@@ -6,25 +6,25 @@
 
             <v-col>
 
-                <h1 class="text-h2 text-md-h1 ma-5" v-motion="animations.visibleUpDown(0, -30, 200)">
+                <h1 class="text-h2 text-md-h1 ma-5" >
 
                    <span class="text-gradient-animation">Martin Bullman</span>
 
                 </h1>
 
-                <h3 class="text-h6 text-md-h4 text-medium-emphasis ma-5" v-motion="animations.visibleUpDown(100, -30, 200)">
+                <h3 class="text-h6 text-md-h4 text-medium-emphasis ma-5" >
 
                     Software Engineer & Full Stack Developer
 
                 </h3>
 
-                <div class="text-body-1 ma-5" v-motion="animations.visibleUpDown(200, -30, 200)">
+                <div class="text-body-1 ma-5">
 
                     Crafting innovative solutions for a digital world
 
                 </div>
 
-                <div v-motion="animations.visibleUpDown(400, -50, 200)">
+                <div>
 
                     <music-waves></music-waves>
 
