@@ -1,8 +1,6 @@
 import { ref } from 'vue'
-import {de} from "vuetify/locale";
 
 export function useAnimations () {
-
 
     const minimalFastFadeDown = ref({
         initial: {

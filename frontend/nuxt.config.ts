@@ -79,7 +79,8 @@ export default defineNuxtConfig({
         apiSecret: '',
         // keys within public are also exposed client-side.
         public: {
-            apiBase: '',
+            baseUrl: process.env.BASE_URL,
+            apiBaseUrl: process.env.API_BASE_URL,
             isProduction: isProduction,
             recaptchaSiteKey: process.env.GOOGLE_RECAPTCHA_SITE_KEY
         }
