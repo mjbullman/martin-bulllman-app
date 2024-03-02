@@ -1,6 +1,11 @@
 <template>
 
-    <v-btn variant="text" icon :size="size" href="https://instagram.com/martybullman" target="_blank" class="social-link">
+    <v-btn
+        variant="text" icon :size="size"
+        href="https://instagram.com/martybullman"
+        target="_blank"
+        class="social-link"
+        aria-label="View my Instagram profile">
 
         <svg xmlns="http://www.w3.org/2000/svg" :width="width" :height="height" viewBox="0 0 24 24" fill="none" :stroke="color" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
 
