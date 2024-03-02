@@ -269,38 +269,36 @@
 
 <script setup lang="ts">
 
-    import { useConfig } from '~/composables/config'
-
-    const config = useConfig()
+    const runtimeConfig = useRuntimeConfig()
 
     let counter = ref(0)
 
-    const { data: profile } = useFetch(config.apiUrl.value + '/spotify/profile', {
+    const { data: profile } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/profile', {
         lazy   : true,
         server : false
     })
 
-    const { data: playlists } = useFetch(config.apiUrl.value + '/spotify/playlists', {
+    const { data: playlists } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/playlists', {
         lazy   : true,
         server : false
     })
 
-    const { data: tracks } = useFetch(config.apiUrl.value + '/spotify/top_tracks', {
+    const { data: tracks } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/top_tracks', {
         lazy   : true,
         server : false
     })
 
-    const { data: artists } = useFetch(config.apiUrl.value + '/spotify/top_artists', {
+    const { data: artists } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/top_artists', {
         lazy   : true,
         server : false
     })
 
-    const { data: following } = useFetch(config.apiUrl.value + '/spotify/following', {
+    const { data: following } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/following', {
         lazy   : true,
         server : false
     })
 
-    let { data: playing } = useFetch(config.apiUrl.value + '/spotify/currently_playing', {
+    let { data: playing } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/currently_playing', {
         lazy   : true,
         server : false,
         watch: [counter]

@@ -20,7 +20,7 @@
 
                         <div class="text-h3 text-medium-emphasis mb-10">
 
-                            I'm a software engineer working remotely from {{ temperature }}&deg;C
+                            I'm a software engineer working remotely from {{ weather ? weather.current.temp_c : 0 }}&deg;C
                             Tallinn, Estonia.
 
                         </div>
@@ -58,20 +58,9 @@
     import PageHeading         from '~/components/general/PageHeading.vue'
     import WorkHistoryTimeline from '~/components/timelines/WorkHistoryTimeline.vue'
 
-    import { useConfig } from '~/composables/config'
+    const runtimeConfig = useRuntimeConfig()
 
-    let temperature = ref(0)
-
-    const config = useConfig()
-
-    await useFetch(config.apiUrl.value + '/weather/current', {
-        onResponse({ request, response, options }) {
-            temperature = response._data.current.temp_c
-        },
-        onResponseError({ request, response, options }) {
-            console.log(response)
-        }
-    })
+    const { data: weather } = useFetch(runtimeConfig.public.apiBaseUrl + '/weather/current')
 
 </script>
 

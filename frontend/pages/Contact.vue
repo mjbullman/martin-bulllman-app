@@ -106,19 +106,17 @@
 <script setup lang="ts">
 
     import GitHub      from '~/components/icons/GitHub.vue'
-    import Twitter    from '~/components/icons/Twitter.vue'
+    import Twitter     from '~/components/icons/Twitter.vue'
     import Facebook    from '~/components/icons/Facebook.vue'
     import LinkedIn    from '~/components/icons/LinkedIn.vue'
     import Instagram   from '~/components/icons/Instagram.vue'
     import PageHeading from '~/components/general/PageHeading.vue'
 
-    import { useConfig }         from '~/composables/config'
     import { useNotifications }  from '~/stores/notifications'
     import { useField, useForm } from 'vee-validate'
+    import useGoogleRecaptcha, {RecaptchaAction} from '~/composables/recaptcha'
 
-    import useGoogleRecaptcha, {RecaptchaAction,} from '~/composables/recaptcha'
-
-    const config               = useConfig()
+    const runtimeConfig        = useRuntimeConfig()
     const notifications        = useNotifications()
     const { executeRecaptcha } = useGoogleRecaptcha()
 
@@ -167,7 +165,7 @@
         loading.value   = true
         const { token } = await executeRecaptcha(RecaptchaAction.contact)
 
-        useFetch(config.apiUrl.value + '/contact', {
+        useFetch(runtimeConfig.public.apiBaseUrl+ '/contact', {
             method: 'POST',
             body: {
                 name            : values.name,
@@ -178,8 +176,6 @@
         })
         .then(response => {
             handleReset()
-
-            console.log(response.data.value)
 
             notifications.updateSnackbarData({
                 text       : response.data.value,
@@ -193,8 +189,10 @@
             })
         })
         .catch(error => {
+            console.log(error)
+
             notifications.updateSnackbarData({
-                text       : 'asdasdasd',
+                text       : error.data.value,
                 color      : 'error',
                 toggle     : true,
                 timeout    : 6000,
