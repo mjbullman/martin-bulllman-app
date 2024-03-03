@@ -9,22 +9,24 @@ export default defineNuxtConfig({
     },
     site: {
         url: process.env.APP_URL,
-        name: 'Martin Bullman Portfolio',
-        description: 'The portfolio of Martin Bullman, Software Engineer & Full Stack Developer.!',
+        name: 'Martin Bullman | Software Engineer & Full Stack Developer',
+        description: 'The portfolio of Martin Bullman, Software Engineer & Full Stack Developer.',
         defaultLocale: 'en'
     },
     app: {
         head: {
-            title: 'Martin Bullman - Personal App',
+            title: 'Martin Bullman | Software Engineer & Full Stack Developer',
             charset: 'utf-8',
             viewport: 'width=device-width, initial-scale=1',
             meta: [{
                 name: 'description',
-                content: 'The portfolio of Martin Bullman, Software Engineer & Full Stack Developer.!'
+                content: 'The portfolio of Martin Bullman, Software Engineer & Full Stack Developer.'
             },
             {
                 name: 'keywords',
-                content: 'Martin Bullman,Django,Vue,Vuetify,Nuxt, Software Engineering, Portfolio, Projects, Web Development, Mobile App Development, Data Analysis, Expertise, Skills, Innovation, Solutions, Excellence, Technical Abilities, Articles, Insights, Knowledge, Developer, Employer, Technology, Innovation, Expert'
+                content: 'Martin Bullman,Django,Vue,Vuetify,Nuxt,Software Engineering,Portfolio,Projects,' +
+                    'Web Development,Data Analysis,Expertise,Skills,Innovation,Solutions,Excellence,Technical Abilities,' +
+                    'Developer, Technology'
             },
             {
                 name: 'author',
