@@ -8,7 +8,7 @@ export default defineNuxtConfig({
         enabled: false
     },
     site: {
-        url: process.env.APP_URL,
+        url: process.env.BASE_URL,
         name: 'Martin Bullman | Software Engineer & Full Stack Developer',
         description: 'The portfolio of Martin Bullman, Software Engineer & Full Stack Developer.',
         defaultLocale: 'en'
@@ -108,8 +108,8 @@ export default defineNuxtConfig({
         identity: {
             type: 'Person',
             name: 'Martin Bullman',
-            url: process.env.APP_URL,
-            logo: process.env.APP_URL + '/img/logo.svg'
+            url: process.env.BASE_URL,
+            logo: process.env.BASE_URL + '/img/logo.svg'
         }
   }
 });
