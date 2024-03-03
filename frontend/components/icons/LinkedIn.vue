@@ -2,7 +2,7 @@
 
     <v-btn
         variant="text" icon :size="size"
-        href="https://linkedin.com/in/martybullman"
+        href="https://linkedin.com/in/mjbullman"
         target="_blank"
         class="social-link"
         aria-label="View my LinkedIn profile">

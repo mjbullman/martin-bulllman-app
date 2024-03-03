@@ -2,7 +2,7 @@
 
     <v-btn
         variant="text" icon :size="size"
-        href="https://instagram.com/martybullman"
+        href="https://instagram.com/mjbullman"
         target="_blank"
         class="social-link"
         aria-label="View my Instagram profile">

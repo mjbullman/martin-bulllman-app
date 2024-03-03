@@ -2,7 +2,7 @@
 
     <v-btn
         variant="text" icon :size="size"
-        href="https://facebook.com/martybullman"
+        href="https://facebook.com/mjbullman"
         target="_blank"
         class="social-link"
         aria-label="View my Facebook profile">
