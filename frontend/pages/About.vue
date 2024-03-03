@@ -20,7 +20,7 @@
 
                         <div class="text-h3 text-medium-emphasis mb-10">
 
-                            I'm a software engineer working remotely from {{ weather ? weather.current.temp_c : 0 }}&deg;C
+                            I'm a <span class="text-primary">Software Engineer</span> working remotely from {{ weather ? weather.current.temp_c : 0 }}&deg;C
                             Tallinn, Estonia.
 
                         </div>
