@@ -1,6 +1,6 @@
 <template>
 
-    <v-container>
+    <v-container fluid class="pa-0">
 
         <page-heading heading-text="Contact"></page-heading>
 

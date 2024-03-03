@@ -1,6 +1,8 @@
 <template>
 
-    <v-container fluid>
+    <v-container fluid pa="0">
+
+        <h2 class="text-h3 text-gradient-animation text-center pa-10">Work History</h2>
 
         <v-row>
 

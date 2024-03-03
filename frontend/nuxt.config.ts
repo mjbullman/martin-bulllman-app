@@ -111,5 +111,5 @@ export default defineNuxtConfig({
             url: process.env.BASE_URL,
             logo: process.env.BASE_URL + '/img/logo.svg'
         }
-  }
+    }
 });

@@ -1,6 +1,6 @@
 <template>
 
-    <v-container fluid>
+    <v-container fluid class="pa-0">
 
         <page-heading heading-text="Projects"></page-heading>
 

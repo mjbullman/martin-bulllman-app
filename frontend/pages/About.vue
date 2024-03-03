@@ -1,42 +1,42 @@
 <template>
 
-    <v-container fluid>
-
+    <v-container fluid class="pa-0">
         <page-heading heading-text="About"></page-heading>
 
         <v-container>
 
             <v-row>
 
-                <v-col cols="12" sm="12" md="4" lg="4" xl="4" class="text-center">
+                <v-col cols="12" sm="12" md="4" lg="5" xl="5" class="text-center">
 
                     <nuxt-img src="/img/personal/martin_hektor_container_hotel.webp" width="300px" alt="Martin at Hektor Container Hotel"></nuxt-img>
 
                 </v-col>
 
-                <v-col cols="12" sm="12" md="8" lg="8" xl="8" class="text-center">
+                <v-col cols="12" sm="12" md="8" lg="7" xl="7" class="text-center">
 
-                    <div class="grid-container">
+                    <h2 class="text-h4 text-medium-emphasis mb-10">
 
-                        <div class="text-h3 text-medium-emphasis mb-10">
+                        Welcome to my digital corner! I'm Martin, a Software Engineer crafting code and solutions
+                        from {{ weather ? weather.current.temp_c : 0 }}&deg;C Tallinn, Estonia
 
-                            I'm a <span class="text-primary">Software Engineer</span> working remotely from {{ weather ? weather.current.temp_c : 0 }}&deg;C
-                            Tallinn, Estonia.
+                    </h2>
 
-                        </div>
+                    <div class="mb-5">
 
-                        <div class="text-h6 mb-5">
+                        From a young age, I was captivated by the infinite possibilities that technology presented.
+                        What began as a curiosity quickly blossomed into a full-fledged passion as I delved deeper
+                        into the world of software development. Over the years, I've honed my skills, embracing
+                        new technologies and methodologies to stay at the forefront of this dynamic field.
 
-                            Experienced Senior Software Engineer with nearly a decade of hands-on experience in
-                            conceptualizing, building, and refining software solutions.
+                    </div>
 
-                        </div>
+                    <div>
 
-                        <div class="text-h6">
-
-                            Currently serving as the CTO at QuickMinutes, I bring a highly ambitious and
-                            performance-driven approach to my role.
-                        </div>
+                        With a foundation built on a diverse array of programming languages and frameworks, I thrive
+                        on tackling complex problems head-on. Whether it's crafting elegant algorithms, architecting
+                        scalable systems, or optimizing user experiences, I approach each challenge with creativity,
+                        precision, and a relentless pursuit of excellence.
 
                     </div>
 
