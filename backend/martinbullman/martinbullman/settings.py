@@ -8,7 +8,13 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('APP_DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '54.77.170.96', 'martinbullman.xyz']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    '54.77.170.96',
+    'martinbullman.xyz',
+    'www.martinbullman.xyz'
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -28,7 +34,8 @@ INSTALLED_APPS = [
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
-    'https://martinbullman.xyz'
+    'https://martinbullman.xyz',
+    'https://www.martinbullman.xyz'
 ]
 
 MIDDLEWARE = [
