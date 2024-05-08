@@ -110,7 +110,7 @@
     import Facebook    from '~/components/icons/Facebook.vue'
     import LinkedIn    from '~/components/icons/LinkedIn.vue'
     import Instagram   from '~/components/icons/Instagram.vue'
-    import PageHeading from '~/components/general/PageHeading.vue'
+    import PageHeading from '~/components/layout/PageHeading.vue'
 
     import { useNotifications }  from '~/stores/notifications'
     import { useField, useForm } from 'vee-validate'
