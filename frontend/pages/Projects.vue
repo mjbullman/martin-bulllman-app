@@ -639,13 +639,7 @@
 
                             <v-spacer></v-spacer>
 
-                            <v-card-actions >
-
-                                <v-btn href="https://www.dashcentral.org/p/gc-dash-boost" target="_blank" variant="text" color="primary">
-
-                                    Dash Central Proposal
-
-                                </v-btn>
+                            <v-card-actions>
 
                             </v-card-actions>
 
@@ -678,12 +672,12 @@
 
                             <v-card-text class="text-subtitle-1">
 
-                                DashBoost aims to introduce the concept of a micro-proposal to the Dash community.
+                                Dash Boost enables community members to submit micro proposals to the treasury with a reduced proposal fee.
 
                                 <br><br>
 
                                 A micro proposal is a mechanism to enable low budget proposals access funds from the Dash
-                                DOA treasury.
+                                DOA.
 
                                 <div class="mt-3">
 
@@ -743,7 +737,7 @@
 
 <script setup lang="ts">
 
-    import PageHeading from '~/components/general/PageHeading.vue'
+    import PageHeading from '~/components/layout/PageHeading.vue'
 
     import { useAnimations } from '~/composables/animations'
 
