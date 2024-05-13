@@ -23,7 +23,7 @@
         "@nuxtjs/sitemap": "^5.1.5",
         "@pinia/nuxt": "^0.5.1",
         "@vueuse/motion": "^2.0.0",
-        "nuxt": "^3.11.2",
+        "nuxt": "^3.10.3",
         "nuxt-schema-org": "^3.3.6",
         "nuxt-sitemap": "^1.0.0",
         "sass": "^1.62.1",
