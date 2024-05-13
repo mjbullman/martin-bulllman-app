@@ -11,8 +11,7 @@ DEBUG = config('APP_DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    '54.77.170.96',
-    '52.31.195.51',
+    '52.31.195.51'
     'martinbullman.xyz',
     'www.martinbullman.xyz'
 ]
