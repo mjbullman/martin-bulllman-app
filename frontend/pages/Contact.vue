@@ -165,7 +165,7 @@
         loading.value   = true
         const { token } = await executeRecaptcha(RecaptchaAction.contact)
 
-        useFetch(runtimeConfig.public.apiBaseUrl+ '/contact', {
+        useFetch(runtimeConfig.public.apiBaseUrl + '/contact', {
             method: 'POST',
             body: {
                 name            : values.name,
