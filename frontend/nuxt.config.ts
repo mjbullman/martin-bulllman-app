@@ -18,20 +18,25 @@ export default defineNuxtConfig({
             title: 'Martin Bullman | Software Engineer & Full Stack Developer',
             charset: 'utf-8',
             viewport: 'width=device-width, initial-scale=1',
-            meta: [{
-                name: 'description',
-                content: 'The portfolio of Martin Bullman, Software Engineer & Full Stack Developer.'
+            htmlAttrs: {
+                lang: 'en',
             },
-            {
-                name: 'keywords',
-                content: 'Martin Bullman,Django,Vue,Vuetify,Nuxt,Software Engineering,Portfolio,Projects,' +
-                    'Web Development,Data Analysis,Expertise,Skills,Innovation,Solutions,Excellence,Technical Abilities,' +
-                    'Developer, Technology'
-            },
-            {
-                name: 'author',
-                content: 'Martin Bullman'
-            }],
+            meta: [
+                {
+                    name: 'description',
+                    content: 'The portfolio of Martin Bullman, Software Engineer & Full Stack Developer.'
+                },
+                {
+                    name: 'keywords',
+                    content: 'Martin Bullman,Django,Vue,Vuetify,Nuxt,Software Engineering,Portfolio,Projects,' +
+                        'Web Development,Data Analysis,Expertise,Skills,Innovation,Solutions,Excellence,Technical Abilities,' +
+                        'Developer, Technology'
+                },
+                {
+                    name: 'author',
+                    content: 'Martin Bullman'
+                }
+            ],
         },
         pageTransition : {
             name: 'page',
