@@ -91,7 +91,8 @@ export default defineNuxtConfig({
         'nuxt-gtag',
         '@nuxt/image',
         '@pinia/nuxt',
-        '@nuxtjs/seo',
+        '@nuxtjs/sitemap',
+        'nuxt-schema-org',
         '@vueuse/motion/nuxt',
         '@pinia-plugin-persistedstate/nuxt',
         // vuetify tree shaking configuration: https://next.vuetifyjs.com/en/features/treeshaking/
