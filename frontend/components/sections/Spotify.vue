@@ -96,7 +96,7 @@
 
             </div>
 
-            <v-card variant="outlined" color="primary">
+            <v-card variant="outlined" color="primary" class="spotify-container rounded-lg">
 
                 <v-list lines="two" class="pa-0" aria-label="currently playing spotify track">
 
@@ -126,7 +126,7 @@
 
                 </v-list>
 
-                <div class="pl-4 pr-4 pb-2 pt-2 d-flex align-center">
+                <v-card flat rounded="0" class="pl-4 pr-4 pb-2 pt-2 d-flex align-center">
 
                     <div class="pr-5">
 
@@ -148,7 +148,7 @@
 
                     </div>
 
-                </div>
+                </v-card>
 
             </v-card>
 
@@ -167,7 +167,7 @@
 
             </h3>
 
-            <v-card variant="outlined" color="primary">
+            <v-card variant="outlined" color="primary" class="spotify-container rounded-xl">
 
                 <v-list lines="two" class="pa-0" aria-label="my spotify top tracks list">
 
@@ -214,7 +214,7 @@
 
             </h3>
 
-            <v-card variant="outlined" color="primary">
+            <v-card variant="outlined" color="primary" class="spotify-container rounded-xl">
 
                 <v-list lines="two" class="pa-0" aria-label="my spotify top playlists">
 
@@ -252,7 +252,7 @@
 
             </h3>
 
-            <v-card variant="outlined" rounded color="primary">
+            <v-card variant="outlined" color="primary" class="spotify-container rounded-xl">
 
                 <v-list lines="two" class="pa-0" aria-label="my spotify top artists list">
 
@@ -288,8 +288,6 @@
 
     const runtimeConfig = useRuntimeConfig()
 
-    let counter = ref(0)
-
     const { data: profile } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/profile', {
         lazy   : true,
         server : false
@@ -317,15 +315,8 @@
 
     let { data: playing } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/currently_playing', {
         lazy   : true,
-        server : false,
-        watch: [counter]
+        server : false
     })
-
-    // onNuxtReady (() => {
-    //     setInterval(() => {
-    //         counter.value = counter.value += 1
-    //     }, 1000)
-    // })
 
     function millisToMinutesAndSeconds(millis:number) {
         let minutes:number = Math.floor(millis / 60000);
@@ -345,6 +336,13 @@
     :deep(.v-progress-linear) {
         left: unset !important;
         transform: unset !important;
+    }
+
+    .spotify-container {
+        border: solid 1px transparent;
+        background-image: linear-gradient(white, white), linear-gradient(to bottom, rgb(var(--v-theme-primary)), rgb(var(--v-theme-secondary)));
+        background-origin: border-box;
+        background-clip: content-box, border-box;
     }
 
 </style>
