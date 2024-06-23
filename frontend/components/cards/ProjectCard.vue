@@ -1,17 +1,23 @@
 <template>
 
-    <!-- QuickMinutes Project -->
+    <!-- Project Card -->
     <v-card class="grid-item grid-item-large d-flex flex-column" hover>
 
         <nuxt-img v-if="project.img" :src="project.img.href" :alt="project.img.alt"></nuxt-img>
 
-        <v-card-title class="pt-5">
+        <v-card-title class="pt-5 d-flex">
 
-            <h2 class="text-medium-emphasis">
+            <h2 class="text-medium-emphasis flex-grow-1">
 
                 {{ project.title }}
 
             </h2>
+
+            <v-chip v-if="project.chips" v-for="chip in project.chips" size="x-small" variant="outlined" color="warning" class="mt-3">
+
+                {{ chip }}
+
+            </v-chip>
 
         </v-card-title>
 
