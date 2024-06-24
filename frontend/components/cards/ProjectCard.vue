@@ -1,9 +1,9 @@
 <template>
 
     <!-- Project Card -->
-    <v-card class="grid-item grid-item-large d-flex flex-column" hover>
+    <v-card class="d-flex flex-column" :class="'item' + project.id">
 
-        <nuxt-img v-if="project.img" :src="project.img.href" :alt="project.img.alt"></nuxt-img>
+        <nuxt-img v-if="project.img" :src="project.img.href" :alt="project.img.alt" height=""></nuxt-img>
 
         <v-card-title class="pt-5 d-flex">
 
