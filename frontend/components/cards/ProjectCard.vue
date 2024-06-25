@@ -71,8 +71,4 @@
 
 <style scoped>
 
-    .grid-item-large {
-        grid-row: span 2;
-    }
-
 </style>
