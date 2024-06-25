@@ -1,3 +1,5 @@
+@import 'colors';
+
 html, body {
     height: 100%;
     margin: 0;
@@ -12,6 +14,14 @@ html, body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.border-gradient {
+    border: solid 1px transparent!important;
+    background-image: linear-gradient(white, white), linear-gradient(to bottom, $primary-color, $secondary-color)!important;
+    background-origin: border-box!important;
+    background-clip: content-box, border-box!important;
+}
+
 
 .medium-font {
     font-size: 20px;
