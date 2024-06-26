@@ -1,7 +1,6 @@
-
 export function useProjects () {
 
-    let projects: object = [
+    const projects: object[] = [
         {
             id: 1,
             title: 'QuickMinutes',
@@ -58,9 +57,9 @@ export function useProjects () {
                 href: '/img/projects/thestoryof_banner.webp',
                 alt: 'TheStoryOf banner image'
             },
-            text: 'Capture you or your loved ones stories and safeguard them on a dedicated webpage. Share' +
-                  'them with a QR code. <br><br> Digital profiles are accessible by QR code on an aluminium plate, ' +
-                  'letting anyone access treasured memories.',
+            text: 'Capture you or your loved ones stories and safeguard them on a dedicated ' +
+                  'webpage. <br><br> Digital profiles are accessible by QR code on an aluminium ' +
+                  'plate, letting anyone access treasured memories.',
             technologies: [
                 'Azure',
                 'VueJS',
