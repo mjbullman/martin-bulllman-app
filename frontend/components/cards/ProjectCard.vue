@@ -1,7 +1,7 @@
 <template>
 
     <!-- Project Card -->
-    <v-card class="d-flex flex-column" :class="'item' + project.id">
+    <v-card class="d-flex flex-column item" :class="'item' + project.id">
 
         <nuxt-img v-if="project.img" :src="project.img.href" :alt="project.img.alt" height=""></nuxt-img>
 
