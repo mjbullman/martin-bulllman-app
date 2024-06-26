@@ -2,7 +2,7 @@
 
     <v-container>
 
-        <!-- main section -->
+        <!-- intro -->
         <v-row class="text-center full-height" align="center" justify="center">
 
             <v-col>
@@ -35,7 +35,13 @@
 
         </v-row>
 
-        <!-- spotify component -->
+        <!-- projects -->
+        <in-progress></in-progress>
+
+        <!-- publications -->
+        <publications></publications>
+
+        <!-- spotify -->
         <spotify></spotify>
 
     </v-container>
@@ -44,12 +50,10 @@
 
 <script setup lang="ts">
 
-    import Spotify    from '~/components/sections/Spotify.vue'
-    import MusicWaves from '~/components/music/MusicWaves.vue'
-
-    import { useAnimations } from '~/composables/animations'
-
-    const animations = useAnimations()
+    import Spotify      from '~/components/sections/Spotify.vue'
+    import MusicWaves   from '~/components/music/MusicWaves.vue'
+    import InProgress   from '~/components/sections/InProgress.vue'
+    import Publications from '~/components/sections/Publications.vue'
 
 </script>
 
