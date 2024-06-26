@@ -13,7 +13,7 @@
                     <div class="masonry">
 
                         <!-- Projects List -->
-                        <project-card v-for="(project) in projects.projects" :project="project" class="item"></project-card>
+                        <project-card v-for="(project) in projects.projects" :project="project"></project-card>
 
                     </div>
 
@@ -30,7 +30,7 @@
 <script setup lang="ts">
 
     import ProjectCard from '~/components/cards/ProjectCard.vue'
-    import PageHeading from '~/components/layout/PageHeading.vue'
+    import PageHeading from '~/components/headings/PageHeading.vue'
 
     import { useProjects }   from '~/composables/projects'
     import { useAnimations } from '~/composables/animations'

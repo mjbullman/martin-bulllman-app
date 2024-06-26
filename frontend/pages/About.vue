@@ -56,7 +56,7 @@
 
 <script setup lang="ts">
 
-    import PageHeading         from '~/components/layout/PageHeading.vue'
+    import PageHeading         from '~/components/headings/PageHeading.vue'
     import WorkHistoryTimeline from '~/components/timelines/WorkHistoryTimeline.vue'
 
     const runtimeConfig = useRuntimeConfig()
