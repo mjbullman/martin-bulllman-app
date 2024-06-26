@@ -28,18 +28,18 @@
     opacity: 0;
 }
 
-.social-link {
+.slide-up {
     transition: transform 250ms;
 }
 
-.social-link:hover {
+.slide-up:hover {
     transform: translateY(-3px);
 }
 
-.social-link svg {
+.slide-up svg {
     transition: stroke 250ms ease-in-out;
 }
 
-.social-link:hover svg {
+.slide-up:hover svg {
     stroke: rgb(var(--v-theme-secondary));
 }
