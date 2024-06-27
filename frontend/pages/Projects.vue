@@ -63,16 +63,12 @@
         transform: translateY(-10px);
     }
 
-    .item1 { grid-row: span 20;  }
-    .item2 { grid-row: span 12;  }
-    .item3 { grid-row: span 20;  }
-    .item4 { grid-row: span 20;  }
-    .item5 { grid-row: span 12;  }
-    .item6 { grid-row: span 12;  }
-    .item7 { grid-row: span 20;  }
-    .item8 { grid-row: span 12; }
-    .item9 { grid-row: span 12;  }
-    .item10 { grid-row: span 12; }
-    .item11 { grid-row: span 12; }
+    .item1, .item3, .item4, .item7 {
+        grid-row: span 20;
+    }
+
+    .item2, .item5, .item6, .item58, .item9, .item10, .item11 {
+        grid-row: span 12;
+    }
 
 </style>
