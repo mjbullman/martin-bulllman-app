@@ -96,7 +96,7 @@
 
             </div>
 
-            <v-card variant="outlined" color="primary" class="spotify-container rounded-lg">
+            <v-card variant="outlined" color="primary" class="border-gradient rounded-lg">
 
                 <v-list lines="two" class="pa-0" aria-label="currently playing spotify track">
 
@@ -167,7 +167,7 @@
 
             </h3>
 
-            <v-card variant="outlined" color="primary" class="spotify-container rounded-xl">
+            <v-card variant="outlined" color="primary" class="border-gradient rounded-xl">
 
                 <v-list lines="two" class="pa-0" aria-label="my spotify top tracks list">
 
@@ -214,7 +214,7 @@
 
             </h3>
 
-            <v-card variant="outlined" color="primary" class="spotify-container rounded-xl">
+            <v-card variant="outlined" color="primary" class="border-gradient rounded-xl">
 
                 <v-list lines="two" class="pa-0" aria-label="my spotify top playlists">
 
@@ -252,7 +252,7 @@
 
             </h3>
 
-            <v-card variant="outlined" color="primary" class="spotify-container rounded-xl">
+            <v-card variant="outlined" color="primary" class="border-gradient rounded-xl">
 
                 <v-list lines="two" class="pa-0" aria-label="my spotify top artists list">
 
@@ -336,13 +336,6 @@
     :deep(.v-progress-linear) {
         left: unset !important;
         transform: unset !important;
-    }
-
-    .spotify-container {
-        border: solid 1px transparent;
-        background-image: linear-gradient(white, white), linear-gradient(to bottom, rgb(var(--v-theme-primary)), rgb(var(--v-theme-secondary)));
-        background-origin: border-box;
-        background-clip: content-box, border-box;
     }
 
 </style>
