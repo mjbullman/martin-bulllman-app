@@ -67,7 +67,7 @@
         grid-row: span 20;
     }
 
-    .item2, .item5, .item6, .item58, .item9, .item10, .item11 {
+    .item2, .item5, .item6, .item8, .item9, .item10, .item11 {
         grid-row: span 12;
     }
 
