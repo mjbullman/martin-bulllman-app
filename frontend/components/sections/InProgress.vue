@@ -2,7 +2,7 @@
 
     <v-row class="mb-15">
 
-        <page-sub-heading :sub-heading-text="'In Progress'"></page-sub-heading>
+        <page-sub-heading :sub-heading-text="'Projects In Progress'"></page-sub-heading>
 
         <v-col cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="text-center">
 
@@ -19,9 +19,9 @@
 
         <v-col cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="text-center">
 
-            <v-btn variant="outlined" color="primary">
+            <v-btn to="/projects" variant="outlined" color="primary">
 
-                All Projects
+                View All Projects
 
             </v-btn>
 
