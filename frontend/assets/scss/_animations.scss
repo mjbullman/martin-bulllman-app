@@ -43,3 +43,7 @@
 .slide-up:hover svg {
     stroke: rgb(var(--v-theme-secondary));
 }
+
+.slide-up:hover .font-awesome, .slide-up:hover svg .font-awesome {
+    fill: rgb(var(--v-theme-secondary));
+}
