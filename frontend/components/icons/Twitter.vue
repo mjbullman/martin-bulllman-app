@@ -7,9 +7,9 @@
         class="slide-up"
         aria-label="View my X profile">
 
-        <svg xmlns="http://www.w3.org/2000/svg" :width="width" :height="height" viewBox="0 0 24 24" fill="none" :stroke="color" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
+        <svg xmlns="http://www.w3.org/2000/svg" :width="width" :height="height" viewBox="0 0 512 512" :stroke="color" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+            <path class="font-awesome" fill="#b9b9b9" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
 
         </svg>
 
