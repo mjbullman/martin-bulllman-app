@@ -28,4 +28,4 @@ sqlparse==0.4.4
 status==0.2.5
 tqdm==4.66.2
 typing_extensions==4.9.0
-urllib3==2.2.0
+urllib3==2.2.2
