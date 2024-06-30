@@ -29,3 +29,17 @@ html, body {
 .spotify-green-text {
     color: $spotify-green
 }
+
+.section-padding {
+  margin-top: 100px;
+}
+
+.link {
+    text-decoration: none;
+    color: $secondary-color;
+    transition: color .5s;
+}
+
+.link:hover {
+    color: white;
+}
