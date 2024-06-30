@@ -5,12 +5,12 @@
         <!-- logo -->
         <v-app-bar-title>
 
-            <nuxt-link to="/">
+            <NuxtLink to="/">
 
                 <!-- show icon on small devices -->
                 <nuxt-img src="/img/icon.svg" width="50" class="mt-2" role="link" alt="Martin Bullman Logo"></nuxt-img>
 
-            </nuxt-link>
+            </NuxtLink>
 
         </v-app-bar-title>
 
