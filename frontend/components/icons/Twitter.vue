@@ -5,7 +5,7 @@
         href="https://twitter.com/mjbullman"
         target="_blank"
         class="slide-up"
-        aria-label="View my X profile">
+        aria-label="View my Twitter X profile">
 
         <svg xmlns="http://www.w3.org/2000/svg" :width="width" :height="height" viewBox="0 0 512 512" :stroke="color" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 
