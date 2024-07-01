@@ -42,7 +42,7 @@
 
                             <v-icon color="primary" :icon="link.icon"></v-icon>
 
-                            <v-tooltip open-delay="300" activator="parent" location="top">
+                            <v-tooltip open-delay="300" activator="parent" location="top" :aria-label="link.label">
 
                                 {{ link.title }}
 
@@ -61,7 +61,7 @@
 
                             <v-icon color="primary" :icon="link.icon"></v-icon>
 
-                            <v-tooltip open-delay="300" activator="parent" location="top">
+                            <v-tooltip open-delay="300" activator="parent" location="top" :aria-label="link.label">
 
                                 {{ link.title }}
 

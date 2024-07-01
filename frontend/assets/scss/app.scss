@@ -36,10 +36,10 @@ html, body {
 
 .link {
     text-decoration: none;
-    color: $secondary-color;
+    color: white;
     transition: color .5s;
 }
 
 .link:hover {
-    color: white;
+    color: $secondary-color;
 }

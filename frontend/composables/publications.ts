@@ -8,8 +8,7 @@ export function usePublications() {
             text: 'Vincent C. Emeakaroha, Martin J. Bullman, John P. Morrison (2016) Towards ' +
                   'Automated Cost-Efficient Data Management for Federated Cloud Services 2016 ' +
                   '5th IEEE International Conference on Cloud Networking ' +
-                  '(<a href="https://ieeexplore.ieee.org/document/7776594" ' +
-                  'class="text-decoration-none" target="_blank">Cloudnet</a>) Pisa, Italy,',
+                  '(Cloudnet) Pisa, Italy,',
             links: [
                 {
                     title: 'Publication',
