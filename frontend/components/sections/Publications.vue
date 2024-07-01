@@ -6,10 +6,10 @@
 
         <v-col cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="">
 
-            <v-list lines="two">
+            <v-list lines="two" aria-label="My publications">
 
                 <v-list-item v-for="publication in publications.publications"
-                    :key="publication.title">
+                    :key="publication.title" role="option" aria-selected="false">
 
                     <template v-slot:prepend>
 
