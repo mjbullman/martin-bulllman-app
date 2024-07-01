@@ -2,7 +2,7 @@
 
     <v-row class="mb-15">
 
-        <page-sub-heading :sub-heading-text="'Projects In Progress'"></page-sub-heading>
+        <page-sub-heading :sub-heading-text="'Projects'"></page-sub-heading>
 
         <v-col cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="text-center">
 
@@ -12,6 +12,10 @@
                 <project-card :project="projects.projects[0]" class="item"></project-card>
 
                 <project-card :project="projects.projects[2]" class="item"></project-card>
+
+                <project-card :project="projects.projects[6]" class="item"></project-card>
+
+                <project-card :project="projects.projects[3]" class="item"></project-card>
 
             </div>
 
