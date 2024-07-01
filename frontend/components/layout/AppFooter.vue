@@ -18,6 +18,8 @@
 
                 <spotify :size="'large'" :width="35" :height="35" :color="'#B9B9B9'"></spotify>
 
+                <good-reads :size="'large'" :width="30" :height="30" :color="'#B9B9B9'"></good-reads>
+
             </v-col>
 
             <v-col cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="text-center text-primary">
@@ -59,6 +61,7 @@
     import Facebook  from '~/components/icons/Facebook.vue'
     import LinkedIn  from '~/components/icons/LinkedIn.vue'
     import Instagram from '~/components/icons/Instagram.vue'
+    import GoodReads from '~/components/icons/GoodReads.vue'
 
     let year = new Date().getFullYear();
 
