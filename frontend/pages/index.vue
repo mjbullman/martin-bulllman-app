@@ -6,13 +6,16 @@
         <intro></intro>
 
         <!-- projects -->
-        <in-progress></in-progress>
+        <projects></projects>
+
+        <!-- projects -->
+        <toolkit></toolkit>
 
         <!-- publications -->
         <publications></publications>
 
-        <!-- spotify -->
-        <spotify></spotify>
+<!--        &lt;!&ndash; spotify &ndash;&gt;-->
+<!--        <spotify></spotify>-->
 
     </v-container>
 
@@ -22,7 +25,8 @@
 
     import Intro        from '~/components/sections/Intro.vue'
     import Spotify      from '~/components/sections/Spotify.vue'
-    import InProgress   from '~/components/sections/InProgress.vue'
+    import Toolkit      from '~/components/sections/Toolkit.vue'
+    import projects     from '~/components/sections/Projects.vue'
     import Publications from '~/components/sections/Publications.vue'
 
 </script>
@@ -30,7 +34,7 @@
 <style scoped>
 
     .full-height {
-        height: 90vh;
+        height: 92vh;
     }
 
 </style>
