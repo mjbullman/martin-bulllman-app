@@ -62,7 +62,7 @@
         box-sizing: border-box;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
-        transition: transform 0.3s;
+        transition: transform 0.6s;
         font-size: 1.2em;
         height: auto;
     }
