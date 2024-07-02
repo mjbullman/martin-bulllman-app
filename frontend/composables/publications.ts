@@ -1,4 +1,4 @@
-export function usePublications() {
+export function usePublications(): object {
 
     const publications: object[] = [
         {
