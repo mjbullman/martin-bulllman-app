@@ -55,13 +55,13 @@
 
 <script setup lang="ts">
 
-    import GitHub    from '~/components/icons/GitHub.vue'
-    import Twitter   from '~/components/icons/Twitter.vue'
-    import Spotify   from '~/components/icons/Spotify.vue'
-    import Facebook  from '~/components/icons/Facebook.vue'
-    import LinkedIn  from '~/components/icons/LinkedIn.vue'
-    import Instagram from '~/components/icons/Instagram.vue'
-    import GoodReads from '~/components/icons/GoodReads.vue'
+    import GitHub    from '~/components/icons/social/GitHub.vue'
+    import Twitter   from '~/components/icons/social/Twitter.vue'
+    import Spotify   from '~/components/icons/social/Spotify.vue'
+    import Facebook  from '~/components/icons/social/Facebook.vue'
+    import LinkedIn  from '~/components/icons/social/LinkedIn.vue'
+    import Instagram from '~/components/icons/social/Instagram.vue'
+    import GoodReads from '~/components/icons/social/GoodReads.vue'
 
     let year = new Date().getFullYear();
 
