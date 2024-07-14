@@ -29,20 +29,6 @@
                         Thanks for dropping by!
                     </p>
 
-                    <div>
-
-                        <git-hub :size="'large'" :width="30" :height="30" :color="'#B9B9B9'"></git-hub>
-
-                        <linked-in :size="'large'" :width="30" :height="30" :color="'#B9B9B9'"></linked-in>
-
-                        <instagram :size="'large'" :width="30" :height="30" :color="'#B9B9B9'"></instagram>
-
-                        <facebook :size="'large'" :width="30" :height="30" :color="'#B9B9B9'"></facebook>
-
-                        <twitter :size="'large'" :width="30" :height="30" :color="'#B9B9B9'"></twitter>
-
-                    </div>
-
                 </v-col>
 
                 <v-col cols="12" sm="12" md="6" lg="6" xl="4">
@@ -105,11 +91,6 @@
 
 <script setup lang="ts">
 
-    import GitHub      from '~/components/icons/social/GitHub.vue'
-    import Twitter     from '~/components/icons/social/Twitter.vue'
-    import Facebook    from '~/components/icons/social/Facebook.vue'
-    import LinkedIn    from '~/components/icons/social/LinkedIn.vue'
-    import Instagram   from '~/components/icons/social/Instagram.vue'
     import PageHeading from '~/components/headings/PageHeading.vue'
 
     import { useNotifications }  from '~/stores/notifications'
