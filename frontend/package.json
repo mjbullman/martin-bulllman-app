@@ -20,7 +20,7 @@
         "@fortawesome/free-regular-svg-icons": "^6.5.2",
         "@fortawesome/free-solid-svg-icons": "^6.5.2",
         "@fortawesome/vue-fontawesome": "^3.0.3",
-        "@nuxtjs/sitemap": "^5.2.0",
+        "@nuxtjs/sitemap": "^5.2.2",
         "@pinia/nuxt": "^0.5.1",
         "@vueuse/motion": "^2.0.0",
         "nuxt": "^3.10.3",
