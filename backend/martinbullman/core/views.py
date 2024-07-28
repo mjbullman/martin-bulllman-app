@@ -1,6 +1,7 @@
 import requests
 from decouple import config
 
+from mailjet_rest import Client
 from django.core.mail import send_mail
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -22,10 +23,17 @@ class ContactForm(APIView):
             'response': token
         }
 
-        response = requests.post('https://www.google.com/recaptcha/api/siteverify', data=recaptcha_data)
+        response = requests.post(
+            'https://www.google.com/recaptcha/api/siteverify',
+            data=recaptcha_data
+        )
 
         result = response.json()
         if result.get('success') and result.get('score') > 0.5:
+
+            
+
+
             send_mail(
                 subject='New Message from: ' + name,
                 message=message,
