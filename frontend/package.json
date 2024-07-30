@@ -28,7 +28,7 @@
         "nuxt-sitemap": "^1.0.0",
         "sass": "^1.77.2",
         "typescript": "^5.0.4",
-        "vee-validate": "^4.11.1",
+        "vee-validate": "^4.13.2",
         "vite-plugin-vuetify": "^1.0.2",
         "vue-recaptcha-v3": "^2.0.1",
         "vuetify": "^3.6.6"
