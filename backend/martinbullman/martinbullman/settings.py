@@ -5,7 +5,6 @@ from decouple import config, Csv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
-
 DEBUG = config('APP_DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = [
@@ -16,7 +15,7 @@ ALLOWED_HOSTS = [
     'www.martinbullman.xyz'
 ]
 
-# Application definition
+# Application definition.
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -29,7 +28,8 @@ INSTALLED_APPS = [
     'core',
     'spotify',
     'weather',
-    'openai'
+    'openai',
+    'utils'
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -69,7 +69,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'martinbullman.wsgi.application'
 
-# Database settings
+# Database settings.
 DATABASES = {
     'default': {
         'NAME'     : config('DB_DATABASE'),
@@ -84,8 +84,8 @@ DATABASES = {
     }
 }
 
+# Database settings GitHub actions.
 if os.environ.get('GITHUB_WORKFLOW'):
-    # Database settings
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -93,7 +93,7 @@ if os.environ.get('GITHUB_WORKFLOW'):
         }
     }
 
-# Email settings
+# Email settings.
 EMAIL_HOST          = config('EMAIL_HOST')
 EMAIL_PORT          = config('EMAIL_PORT')
 EMAIL_USE_TLS       = True
@@ -102,7 +102,7 @@ EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST_USER     = config('EMAIL_USERNAME')
 EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
 
-# Password validation
+# Password validation.
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -118,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
+# Internationalization.
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -127,11 +127,11 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+# Static files (CSS, JavaScript, Images).
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = 'static/'
 
-# Default primary key field type
+# Default primary key field type.
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
@@ -144,3 +144,38 @@ REST_FRAMEWORK = {
         'user': '100000/day'
     }
 }
+
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'detailed': {
+            'format': '{asctime} {levelname} {name} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'level': 'ERROR',  # Capture only ERROR and CRITICAL logs
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/errors.log'),  # Specify the file where errors are logged
+            'formatter': 'detailed',  # Use the detailed formatter
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'ERROR',  # Log only errors and critical issues
+            'propagate': True,
+        },
+    },
+}
+
