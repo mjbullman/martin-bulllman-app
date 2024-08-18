@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework.throttling import UserRateThrottle
 
 
+
 class ContactForm(APIView):
     """ Handle the contact form submission and send email to me. """
     throttle_classes = [UserRateThrottle]
@@ -30,8 +31,10 @@ class ContactForm(APIView):
 
         if result.get('success') and result.get('score') > float(config('GOOGLE_RECAPTCHA_SCORE')):
 
-            receipt_result = send_contact_form_receipt_email(name, email)
-            message_result = send_contact_form_message_email(name, email, message)
+            # send receipt email to customer.
+            send_contact_form_receipt_email(name, email)
+            # send message email to me.
+            send_contact_form_message_email(name, email, message)
 
             return Response('Thank you for reaching out! I\'ll get back to you as soon as possible.', 200)
         else:
