@@ -21,8 +21,13 @@
         "@fortawesome/free-solid-svg-icons": "^6.6.0",
         "@fortawesome/vue-fontawesome": "^3.0.3",
         "@nuxtjs/sitemap": "^5.3.5",
+<<<<<<< HEAD
         "@pinia/nuxt": "^0.5.4",
         "@vueuse/motion": "^2.0.0",
+=======
+        "@pinia/nuxt": "^0.5.1",
+        "@vueuse/motion": "^2.2.5",
+>>>>>>> origin/snyk-upgrade-951be8e37035b4aa749f621e1bf92d69
         "nuxt-schema-org": "^3.3.9",
         "nuxt": "^3.13.0",
         "nuxt-sitemap": "^1.0.0",
