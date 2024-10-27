@@ -42,33 +42,4 @@
 
 <style scoped>
 
-    .masonry {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr));
-        grid-template-rows: masonry;
-        gap: 20px;
-        padding: 15px;
-    }
-
-    .item {
-        box-sizing: border-box;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        transition: transform .6s;
-        font-size: 1.2em;
-        height: auto;
-    }
-
-    .item:hover {
-        transform: translateY(-10px);
-    }
-
-    .item1, .item3, .item4, .item7 {
-        grid-row: span 20;
-    }
-
-    .item2, .item5, .item6, .item8, .item9, .item10, .item11 {
-        grid-row: span 12;
-    }
-
 </style>

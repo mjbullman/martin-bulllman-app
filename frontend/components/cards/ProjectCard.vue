@@ -71,4 +71,12 @@
 
 <style scoped>
 
+    .item1, .item3, .item4, .item7, .item9 {
+        grid-row: span 20;
+    }
+
+    .item2, .item5, .item6, .item8, .item10, .item11, .item12, .item13 {
+        grid-row: span 12;
+    }
+
 </style>
