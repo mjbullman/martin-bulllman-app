@@ -10,9 +10,14 @@
     },
     "devDependencies": {
         "@nuxt/image": "^1.0.0-rc.1",
+        "@nuxtjs/sitemap": "^5.3.5",
         "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
         "@types/node": "^20.10.0",
-        "nuxt-gtag": "^1.1.2"
+        "nuxt-gtag": "^1.1.2",
+        "nuxt-sitemap": "^1.0.0",
+        "sass": "^1.58.0",
+        "typescript": "^5.0.4",
+        "vite-plugin-vuetify": "^2.0.4"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^6.6.0",
@@ -20,16 +25,12 @@
         "@fortawesome/free-regular-svg-icons": "^6.6.0",
         "@fortawesome/free-solid-svg-icons": "^6.6.0",
         "@fortawesome/vue-fontawesome": "^3.0.3",
-        "@nuxtjs/sitemap": "^5.3.5",
         "@pinia/nuxt": "^0.5.4",
         "@vueuse/motion": "^2.2.5",
-        "nuxt-schema-org": "^3.3.9",
         "nuxt": "^3.13.1",
-        "nuxt-sitemap": "^1.0.0",
-        "sass": "^1.77.8",
-        "typescript": "^5.0.4",
+        "nuxt-schema-org": "^3.3.9",
         "vee-validate": "^4.13.2",
-        "vite-plugin-vuetify": "^1.0.2",
+        "vite": "^5.4.10",
         "vue-recaptcha-v3": "^2.0.1",
         "vuetify": "^3.7.1"
     },
