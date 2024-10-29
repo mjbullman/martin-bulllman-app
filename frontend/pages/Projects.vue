@@ -42,4 +42,25 @@
 
 <style scoped>
 
+    .item {
+        box-sizing: border-box;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        transition: transform .6s;
+        font-size: 1.2em;
+        height: auto;
+    }
+
+    .item:hover {
+        transform: translateY(-10px);
+    }
+
+    .item1, .item3, .item4, .item7, .item9 {
+        grid-row: span 20;
+    }
+
+    .item2, .item5, .item6, .item8, .item10, .item11, .item12, .item13 {
+        grid-row: span 12;
+    }
+
 </style>

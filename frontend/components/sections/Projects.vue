@@ -13,9 +13,9 @@
 
                 <project-card :project="projects.projects[2]" class="item"></project-card>
 
-                <project-card :project="projects.projects[6]" class="item"></project-card>
-
                 <project-card :project="projects.projects[3]" class="item"></project-card>
+
+                <project-card :project="projects.projects[8]" class="item"></project-card>
 
             </div>
 
@@ -49,6 +49,19 @@
 </script>
 
 <style scoped>
+
+    .item {
+        box-sizing: border-box;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        transition: transform 0.6s;
+        font-size: 1.2em;
+        height: auto;
+    }
+
+    .item:hover {
+        transform: translateY(-5px);
+    }
     
     @media only screen and (min-width: 1920px) {
         .masonry {
