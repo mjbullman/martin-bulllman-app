@@ -3,6 +3,50 @@ export function useProjects () {
     const projects: object[] = [
         {
             id: 1,
+            title: 'Yester',
+            subTitle: 'Manage Company Everyday Workflows',
+            img: {
+                href: '/img/projects/yester_banner.webp',
+                alt: 'QuickMinutes banner image'
+            },
+            text: 'Yester is a tool that helps you to create and manage your everyday processes. <br><br> ' +
+                   'You can create workflows unique to your company or choose one from our library.',
+            technologies: [
+                'AWS',
+                'VueJS',
+                'Vuetify',
+                'Java'
+            ],
+            links: [
+                {
+                    title: 'View',
+                    href: 'https://quickminutes.com'
+                }
+            ]
+        },
+        {
+            id: 2,
+            title: 'Bitcoin Custodial Wallet',
+            subTitle: 'Demos an end-to-end purchase of bitcoin with fiat.',
+            text: 'Users sign up with an email, provide basic details, link a sandbox bank account, ' +
+                  'and get a unique bitcoin address.<br><br> Authenticated users with linked ' +
+                  'accounts can purchase regtest bitcoin and see their balance update.',
+            technologies: [
+                'React',
+                'JavaScript',
+                'NodeJS',
+                'Bitcoin Core',
+                'Plaid'
+            ],
+            links: [
+                {
+                    title: 'GitHub',
+                    href: 'https://github.com/mjbullman/bitcoin-custodial-wallet'
+                }
+            ]
+        },
+        {
+            id: 3,
             title: 'QuickMinutes',
             subTitle: 'Meeting Agenda & Minutes Simplified',
             img: {
@@ -28,29 +72,7 @@ export function useProjects () {
             ]
         },
         {
-            id: 2,
-            title: 'Data Interoperability',
-            subTitle: 'Interoperability Of Cloud Monitoring Data (FYP)',
-            text: 'This project addresses the challenge of incompatible data interchange formats in cloud monitoring ' +
-                  'data.<br><br> Published in the 2016 5th IEEE International Conference on Cloud Networking ' +
-                  '(CloudNet).',
-            technologies: [
-                'Java',
-                'RabbitMQ'
-            ],
-            links: [
-                {
-                    title: 'GitHub',
-                    href: 'https://github.com/Martin-Bullman/interoperability-of-cloud-monitoring-Data/tree/main'
-                },
-                {
-                    title: 'Publication',
-                    href: '/documents/management_for_federated_cloud_services.pdf'
-                }
-            ]
-        },
-        {
-            id: 3,
+            id: 4,
             title: 'TheStoryOf',
             subTitle: 'Leave Behind More Than Just Memories',
             img: {
@@ -76,7 +98,57 @@ export function useProjects () {
             ]
         },
         {
-            id: 4,
+            id: 5,
+            title: 'Data Interoperability',
+            subTitle: 'Interoperability Of Cloud Monitoring Data (FYP)',
+            text: 'This project addresses the challenge of incompatible data interchange formats in cloud monitoring ' +
+                  'data.<br><br> Published in the 2016 5th IEEE International Conference on Cloud Networking ' +
+                  '(CloudNet).',
+            technologies: [
+                'Java',
+                'RabbitMQ'
+            ],
+            links: [
+                {
+                    title: 'GitHub',
+                    href: 'https://github.com/Martin-Bullman/interoperability-of-cloud-monitoring-Data/tree/main'
+                },
+                {
+                    title: 'Publication',
+                    href: '/documents/management_for_federated_cloud_services.pdf'
+                }
+            ]
+        },
+        {
+            id: 6,
+            title: 'Intel Galileo Project',
+            subTitle: 'Multi Agenda Decision Making Over Wireless Networks',
+            text: 'This research project addresses real-time decision-making using wireless networks and Intel ' +
+                  'Galileo microcontrollers. <br><br> Published in the 2014 Insight Center for Data Analytics ' +
+                  'Conference.',
+            technologies: [
+                'Python',
+                'Bash',
+                'Git',
+                'Intel Galileo'
+            ],
+            links: [
+                {
+                    title: 'GitHub',
+                    href: 'https://github.com/Martin-Bullman/multi-agenda-decision-making-over-wireless-networks'
+                },
+                {
+                    title: 'Publication',
+                    href: '/documents/multi_agent_decision_making_over_wireless_networks_paper.pdf'
+                },
+                {
+                    title: 'Poster',
+                    href: '/documents/multi_agent_decision_making_over_wireless_networks_poster.pdf'
+                }
+            ]
+        },
+        {
+            id: 7,
             title: 'Taoglas Crowd Insights',
             subTitle: 'People Movement Analytics',
             img: {
@@ -101,7 +173,7 @@ export function useProjects () {
             ]
         },
         {
-            id: 5,
+            id: 8,
             title: 'WatchBots',
             subTitle: 'The next generation of bot detection.',
             text: 'Our goal is to provide our clients with the deepest possible insight into their users.<br><br>' +
@@ -121,34 +193,7 @@ export function useProjects () {
             ]
         },
         {
-            id: 6,
-            title: 'Intel Galileo Project',
-            subTitle: 'Multi Agenda Decision Making Over Wireless Networks',
-            text: 'This research project addresses real-time decision-making using wireless networks and Intel ' +
-                  'Galileo microcontrollers. <br><br> Published in the 2014 Insight Center for Data Analytics ' +
-                  'Conference.',
-            technologies: [
-                'Python',
-                'Bash',
-                'Git'
-            ],
-            links: [
-                {
-                    title: 'GitHub',
-                    href: 'https://github.com/Martin-Bullman/multi-agenda-decision-making-over-wireless-networks'
-                },
-                {
-                    title: 'Publication',
-                    href: '/documents/multi_agent_decision_making_over_wireless_networks_paper.pdf'
-                },
-                {
-                    title: 'Poster',
-                    href: '/documents/multi_agent_decision_making_over_wireless_networks_poster.pdf'
-                }
-            ]
-        },
-        {
-            id: 7,
+            id: 9,
             title: 'Wagerr',
             subTitle: 'Decentralised Sports Book Powered by Blockchain',
             img: {
@@ -166,12 +211,12 @@ export function useProjects () {
             ],
             links: [
                 {
-                    title: 'View',
-                    href: 'https://wagerr.com'
+                    title: 'GitHub',
+                    href: 'https://github.com/wagerr/wagerr'
                 },
                 {
-                    title: 'GitHub',
-                    href: '/documents/multi_agent_decision_making_over_wireless_networks_poster.pdf'
+                    title: 'Wallet',
+                    href: 'https://github.com/wagerr/wagerr-electron-app'
                 },
                 {
                     title: 'Whitepaper',
@@ -180,7 +225,7 @@ export function useProjects () {
             ]
         },
         {
-            id: 8,
+            id: 10,
             title: 'Dash Boost',
             subTitle: 'Dash DOA Micro Proposals',
             chips: ['Discontinued'],
@@ -195,12 +240,12 @@ export function useProjects () {
             links: [
                 {
                     title: 'View',
-                    href: 'https://dropmagnet.com/'
+                    href: 'https://www.dashcentral.org/p/gc-dash-boost'
                 }
             ]
         },
         {
-            id: 9,
+            id: 11,
             title: 'Drop Magnet',
             subTitle: 'NFT Marketplace',
             text: 'The all-in-one, multi-chain, NFT marketplace aggregator and utility-adding ' +
@@ -217,27 +262,7 @@ export function useProjects () {
                     href: 'https://dropmagnet.com/'
                 }
             ]
-        },
-        {
-            id: 10,
-            title: 'TechSquad',
-            subTitle: 'Blockchain Development',
-            chips: ['Discontinued'],
-            text: 'TechSquad specializes in blockchain development, harnessing the power of ' +
-                  'decentralized technology. <br><br> Driving innovation and value by offering ' +
-                  'expertise in smart contracts, DApp development, and other blockchain solutions.',
-            technologies: [
-                'HTML',
-                'CSS',
-                'JavaScript'
-            ],
-            links: [
-                {
-                    title: 'View',
-                    href: 'https://dropmagnet.com/'
-                }
-            ]
-        },
+        }
     ]
 
     return { projects }
