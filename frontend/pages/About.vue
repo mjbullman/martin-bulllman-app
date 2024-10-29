@@ -45,10 +45,10 @@
 
             </v-row>
 
-        </v-container>
+            <!-- spotify -->
+            <spotify></spotify>
 
-        <!-- work history timeline -->
-        <work-history-timeline></work-history-timeline>
+        </v-container>
 
     </v-container>
 
@@ -56,8 +56,8 @@
 
 <script setup lang="ts">
 
-    import PageHeading         from '~/components/headings/PageHeading.vue'
-    import WorkHistoryTimeline from '~/components/timelines/WorkHistoryTimeline.vue'
+    import Spotify     from '~/components/sections/Spotify.vue'
+    import PageHeading from '~/components/headings/PageHeading.vue'
 
     const runtimeConfig = useRuntimeConfig()
 
