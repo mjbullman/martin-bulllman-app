@@ -19,6 +19,7 @@
 
 <script setup lang="ts">
 
+    // props.
     defineProps({
         size   : String,
         color  : String,

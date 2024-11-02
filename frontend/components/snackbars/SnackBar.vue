@@ -27,8 +27,10 @@
 
 <script setup>
 
+    // store.
     import { useNotifications } from '~/stores/notifications'
 
+    // composable.
     const notification = useNotifications()
 
 </script>

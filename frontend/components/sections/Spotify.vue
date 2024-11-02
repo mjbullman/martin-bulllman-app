@@ -286,8 +286,10 @@
 
 <script setup lang="ts">
 
+    // composable.
     const runtimeConfig = useRuntimeConfig()
 
+    // api requests.
     const { data: profile } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/profile', {
         lazy   : true,
         server : false
@@ -318,6 +320,7 @@
         server : false
     })
 
+    // methods.
     function millisToMinutesAndSeconds(millis:number) {
         let minutes:number = Math.floor(millis / 60000);
         let seconds:number = ((millis % 60000) / 1000);

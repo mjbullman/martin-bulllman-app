@@ -36,6 +36,7 @@
 
 <script setup lang="ts">
 
+    // components.
     import MusicWaves from '~/components/music/MusicWaves.vue'
 
 </script>

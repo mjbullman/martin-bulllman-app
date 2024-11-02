@@ -20,6 +20,7 @@
 
 <script setup lang="ts">
 
+    // props.
     defineProps({
         label: { type: String, default: '' }
     });

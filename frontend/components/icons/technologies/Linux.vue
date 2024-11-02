@@ -831,6 +831,7 @@
 
 <script setup lang="ts">
 
+    // components.
     import BaseIcon from '~/components/icons/technologies/BaseIcon.vue'
 
 </script>

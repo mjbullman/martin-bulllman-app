@@ -58,12 +58,7 @@
 
 <script setup lang="ts">
 
-    import { computed } from 'vue'
-
-    let colorClass = computed(() => {
-
-    })
-
+    // variables.
     const jobs = ref([
         {
             company: 'QuickMinutes',

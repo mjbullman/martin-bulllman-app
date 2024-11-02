@@ -78,6 +78,7 @@
 
 <script setup lang="ts">
 
+    // icon components.
     import Git          from '~/components/icons/technologies/Git.vue'
     import CSS          from '~/components/icons/technologies/CSS.vue'
     import PHP          from '~/components/icons/technologies/PHP.vue'

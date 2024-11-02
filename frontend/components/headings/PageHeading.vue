@@ -22,6 +22,7 @@
 
 <script setup lang="ts">
 
+    // props.
     const props = defineProps<{
         headingText?: String
     }>()

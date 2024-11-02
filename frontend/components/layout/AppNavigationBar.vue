@@ -83,8 +83,8 @@
 
 <script setup lang="js">
 
+    // components.
     import Theme  from '~/components/buttons/Theme.vue'
-    import Resume from '~/components/buttons/Resume.vue'
 
 </script>
 

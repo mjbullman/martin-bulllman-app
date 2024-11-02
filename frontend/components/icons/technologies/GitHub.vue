@@ -22,7 +22,6 @@
     // composable.
     const settings = useSettingsStore()
 
-
 </script>
 
 <style scoped>

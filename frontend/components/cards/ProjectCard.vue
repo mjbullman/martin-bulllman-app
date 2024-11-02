@@ -63,6 +63,7 @@
 
 <script setup lang="ts">
 
+    // props.
     defineProps<{
         project: object
     }>()

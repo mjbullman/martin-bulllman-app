@@ -37,12 +37,15 @@
 
 <script setup lang="ts">
 
+    // components.
     import ProjectCard    from '~/components/cards/ProjectCard.vue'
     import PageSubHeading from '~/components/headings/PageSubHeading.vue'
 
+    // composable.
     import { useProjects }   from '~/composables/projects'
     import { useAnimations } from '~/composables/animations'
 
+    // variables.
     const projects   = useProjects()
     const animations = useAnimations()
 
