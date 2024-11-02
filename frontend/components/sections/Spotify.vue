@@ -1,6 +1,6 @@
 <template>
 
-    <v-row v-if="profile && following && playlists">
+    <v-row v-if="profile && following && playlists" class="mt-10">
 
         <v-col cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="text-center">
 
