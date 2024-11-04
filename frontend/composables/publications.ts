@@ -1,4 +1,22 @@
-export function usePublications(): object {
+import { Publication } from '~/types/publication'
+
+/**
+ * A custom hook that retrieves a list of research publications.
+ *
+ * This function provides an array of publication objects, each containing
+ * details such as the publication id, year, title, descriptive text,
+ * and related links for further reference.
+ *
+ * Each publication object includes:
+ * - id: a unique identifier for the publication
+ * - year: the year the publication was made
+ * - title: the title of the publication
+ * - text: a brief description of the publication
+ * - links: an array of associated links (e.g., publication files, conference pages, source code)
+ *
+ * @returns {object} an object containing an array of publications.
+ */
+export function usePublications(): { publications: Publication[] } {
 
     const publications: object[] = [
         {

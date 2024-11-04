@@ -1,4 +1,24 @@
-export function useProjects () {
+import { Project } from '~/types/project'
+
+/**
+ * A custom hook that retrieves a list of projects.
+ *
+ * This function provides an array of project objects, each containing
+ * details such as the project id, title, subtitle, descriptive text,
+ * technologies used, and related links for further reference.
+ *
+ * Each project object includes:
+ * - id: a unique identifier for the project
+ * - title: the title of the project
+ * - subTitle: a brief subtitle describing the project
+ * - img: an object containing the image source and alt text (optional)
+ * - text: a detailed description of the project
+ * - technologies: an array of technologies used in the project
+ * - links: an array of associated links (e.g., project websites, repositories, publications)
+ *
+ * @returns {object} an object containing an array of projects.
+ */
+export function useProjects(): { projects: Project[] } {
 
     const projects: object[] = [
         {
