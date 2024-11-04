@@ -29,12 +29,15 @@
 
 <script setup lang="ts">
 
+    // components.
     import ProjectCard from '~/components/cards/ProjectCard.vue'
     import PageHeading from '~/components/headings/PageHeading.vue'
 
+    // composable.
     import { useProjects }   from '~/composables/projects'
     import { useAnimations } from '~/composables/animations'
 
+    // variables.
     const projects   = useProjects()
     const animations = useAnimations()
 
