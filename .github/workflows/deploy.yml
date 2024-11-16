@@ -28,7 +28,7 @@ jobs:
       run: zip -r build.zip .next public package.json
 
     - name: Transfer Build Artifacts to Lightsail
-      uses: appleboy/scp-action@v0.1.8
+      uses: appleboy/scdcp-action@v0.1.7
       with:
         host: ${{ secrets.LIGHTSAIL_HOST }}
         username: ${{ secrets.LIGHTSAIL_USER }}
