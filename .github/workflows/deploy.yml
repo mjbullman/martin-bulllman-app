@@ -33,7 +33,7 @@ jobs:
           ssh-add /home/runner/.ssh/github_actions
 
     - name: Test SSH Connection
-      run: ssh -o StrictHostKeyChecking=no -i /home/runner/.ssh/github_actions "echo Connection Successful"
+      run: ssh -o StrictHostKeyChecking=no -i /home/runner/.ssh/github_actions ${{ secrets.LIGHTSAIL_USER }}@${{ secrets.LIGHTSAIL_HOST }} "echo Connection Successful"
 
     - name: Install Dependencies
       working-directory: ./frontend/
