@@ -72,7 +72,7 @@ jobs:
         username: ${{ secrets.LIGHTSAIL_USER }}
         key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
         script: |
-          unzip -o /home/ubuntu/build.zip -d /home/ubuntu/app
-          cd /home/ubuntu/app
+          unzip -o /home/ubuntu/build.zip -d /home/ubuntu
+          cd /home/ubuntu
           npm install --production
           pm2 restart all
