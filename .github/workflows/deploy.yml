@@ -30,6 +30,7 @@ jobs:
       run: npm run build
 
     - name: Archive Build Artifacts
+      working-directory: ./frontend/
       run: zip -r build.zip .next public package.json
 
     - name: Transfer Build Artifacts to Lightsail
