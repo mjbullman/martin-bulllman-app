@@ -21,6 +21,9 @@ jobs:
     - name: List project files
       run: ls -la
 
+    - name: Test SSH Connection
+      run: ssh -o StrictHostKeyChecking=no -i ${{ secrets.LIGHTSAIL_SSH_KEY }} ${{ secrets.LIGHTSAIL_USER }}@${{ secrets.LIGHTSAIL_HOST }} "echo Connection Successful"
+
     - name: Install Dependencies
       working-directory: ./frontend/
       run: npm install
