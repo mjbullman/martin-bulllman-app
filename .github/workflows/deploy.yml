@@ -18,9 +18,12 @@ jobs:
       with:
         node-version: 20
 
+    - name: List project files
+      run: ls -la
+
     - name: Install Dependencies
       run: npm install
-      working-directory: ./frontend
+      working-directory: ./frontend/
 
     - name: Build Application
       run: npm run build
