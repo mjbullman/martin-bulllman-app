@@ -56,6 +56,15 @@ jobs:
         source: build.zip
         target: /home/ubuntu/build.zip
 
+    - name: Debug File Location
+      uses: appleboy/ssh-action@v0.1.8
+      with:
+        host: ${{ secrets.LIGHTSAIL_HOST }}
+        username: ubuntu
+        key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+        script: |
+          ls -l /home/ubuntu    
+
     - name: Deploy Application
       uses: appleboy/ssh-action@v0.1.8
       with:
