@@ -21,6 +21,17 @@ jobs:
     - name: List project files
       run: ls -la
 
+    - name: Add SSH key
+      env:
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      run: |
+          mkdir -p /home/runner/.ssh
+          ssh-keyscan "${{ secrets.LIGHTSAIL_HOST }}" >> /home/runner/.ssh/known_hosts
+          echo "${{ secrets.LIGHTSAIL_SSH_KEY }}" > /home/runner/.ssh/github_actions
+          chmod 600 /home/runner/.ssh/github_actions
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null	
+          ssh-add /home/runner/.ssh/github_actions
+
     - name: Test SSH Connection
       run: ssh -o StrictHostKeyChecking=no -i ${{ secrets.LIGHTSAIL_SSH_KEY }} ${{ secrets.LIGHTSAIL_USER }}@${{ secrets.LIGHTSAIL_HOST }} "echo Connection Successful"
 
