@@ -12,17 +12,6 @@ env:
   NODE_VERSION: v20.10.0
 
 jobs:
-  test-application:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run Tests
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${}
-
-
-
   deploy:
     runs-on: ubuntu-latest
 
