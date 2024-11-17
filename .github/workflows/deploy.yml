@@ -59,7 +59,7 @@ jobs:
         host: ${{ secrets.LIGHTSAIL_HOST }}
         username: ${{ secrets.LIGHTSAIL_USER }}
         key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
-        source: build.zip
+        source: ./frontend/build.zip
         target: /home/ubuntu/build.zip
 
     - name: Debug File Location
