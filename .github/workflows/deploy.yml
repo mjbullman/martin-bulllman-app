@@ -4,8 +4,25 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  NODE_VERSION: v20.10.0
 
 jobs:
+  test-application:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Tests
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${}
+
+
+
   deploy:
     runs-on: ubuntu-latest
 
@@ -48,7 +65,7 @@ jobs:
       run: zip -r build.zip .output public package.json
 
     - name: Transfer Build Artifacts to Lightsail
-      uses: appleboy/ssh-action@v0.1.8
+      uses: appleboy/scp-action@latest
       with:
         host: ${{ secrets.LIGHTSAIL_HOST }}
         username: ${{ secrets.LIGHTSAIL_USER }}
