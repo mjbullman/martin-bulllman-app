@@ -23,6 +23,11 @@ jobs:
           node-version: 20
           cache: npm
       - run: |
+          touch .env  
+          echo GITHUB_SHA=${{github.sha}} >> .env
+          echo BASE_URL=${{ secrets.BASE_URL }} >> .env
+          echo RELEASE_VERSION=${{ GITHUB_REF }} >> .env
+          echo API_BASE_URL=${{ secrets.API_BASE_URL }} >> .env
           npm install
           npm build
           cp .env .output/server/.env
@@ -32,10 +37,21 @@ jobs:
         with:
           name: app-artifacts
           path: ${{ github.sha }}.tar.gz
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
+#      - name: Add SSH key
+#        env:
+#          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+#        run: |
+#          mkdir -p /home/runner/.ssh
+#          ssh-keyscan "${{ secrets.LIGHTSAIL_HOST }}" >> /home/runner/.ssh/known_hosts
+#          echo "${{ secrets.LIGHTSAIL_SSH_KEY }}" > /home/runner/.ssh/github_actions
+#          chmod 600 /home/runner/.ssh/github_actions
+#          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+#          ssh-add /home/runner/.ssh/github_actions
       - uses: actions/download-artifacts@v3
         with:
           name: app-artifacts
@@ -46,3 +62,51 @@ jobs:
           username: ubuntu
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           target: /home/ubuntu
+
+
+
+#
+#    - name: Test SSH Connection
+#      run: ssh -o StrictHostKeyChecking=no -i /home/runner/.ssh/github_actions ${{ secrets.LIGHTSAIL_USER }}@${{ secrets.LIGHTSAIL_HOST }} "echo Connection Successful"
+#
+#    - name: Install Dependencies
+#      working-directory: ./frontend/
+#      run: npm install
+#
+#    - name: Build Application
+#      working-directory: ./frontend/
+#      run: npm run build
+#
+#    - name: Archive Build Artifacts
+#      working-directory: ./frontend/
+#      run: zip -r build.zip .output
+#
+#    - name: Transfer Build Artifacts to Lightsail
+#      uses: appleboy/scp-action@master
+#      with:
+#        host: ${{ secrets.LIGHTSAIL_HOST }}
+#        username: ${{ secrets.LIGHTSAIL_USER }}
+#        key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+#        source: ./frontend/build.zip
+#        target: /home/ubuntu/
+#
+#    - name: Debug File Location
+#      uses: appleboy/ssh-action@v0.1.8
+#      with:
+#        host: ${{ secrets.LIGHTSAIL_HOST }}
+#        username: ubuntu
+#        key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+#        script: |
+#          ls -l /home/ubuntu
+#
+#    - name: Deploy Application
+#      uses: appleboy/ssh-action@v0.1.8
+#      with:
+#        host: ${{ secrets.LIGHTSAIL_HOST }}
+#        username: ${{ secrets.LIGHTSAIL_USER }}
+#        key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+#        script: |
+#          unzip -o /home/ubuntu/build.zip -d /home/ubuntu
+#          cd /home/ubuntu
+#          npm install --production
+#          pm2 restart all
