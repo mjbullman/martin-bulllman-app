@@ -19,11 +19,11 @@ jobs:
 
     steps:
       - name: Install Dependencies
-        working-directory: ./frontend/
+        working-directory: /frontend
         run: npm install
 
       - name: Build Application
-        working-directory: ./frontend/
+        working-directory: /frontend
         run: npm run build
 
       - name: Archive Artifacts
