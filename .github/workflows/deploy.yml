@@ -33,11 +33,14 @@ jobs:
         working-directory: ./frontend/
         run: tar czf ../"${{ env.GITHUB_SHA }}".tar.gz .output
 
+      - name: List Build Output
+        run: ls -lah
+
       - name: Store Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: app-artifacts
-          path: ${{ env.GITHUB_SHA }}.tar.gz
+          path: ../${{ env.GITHUB_SHA }}.tar.gz
 
   deploy:
     needs: build
@@ -48,6 +51,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: app-artifacts
+          path: ./downloaded-artifacts
 
       - name: Add SSH key
         env:
