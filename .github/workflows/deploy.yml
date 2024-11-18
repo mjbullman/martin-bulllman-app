@@ -71,9 +71,19 @@ jobs:
           username: ubuntu
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           target: /home/ubuntu
-          source: ./downloaded-artifacts/${{ env.GITHUB_SHA }}.tar.gz
+          source: ./artifacts/${{ env.GITHUB_SHA }}.tar.gz
 
-
+      - name: Extract Artifacts
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.LIGHTSAIL_HOST }}
+          username: ${{ secrets.LIGHTSAIL_USER }}
+          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+          script: |
+            mkdir -p "/home/ubuntu/releases/${{ env.GITHUB_SHA }}"
+            tar xzf "/home/ubuntu/artifacts/${{ env.GITHUB_SHA }}.tar.gz" -C "/home/ubuntu/MartinBullman/frontens"
+            tar xzf "/home/ubuntu/artifacts/${{ env.GITHUB_SHA }}.tar.gz" -C "/home/ubuntu/releases/${{ env.GITHUB_SHA }}"
+            pm2 restart all
 
 #
 #    - name: Test SSH Connection
