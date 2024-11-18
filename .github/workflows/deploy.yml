@@ -31,7 +31,7 @@ jobs:
           npm install
           npm build
           cp .env .output/server/.env
-          tar czf "${{ GITHUB_SHA }}".tar.gz .output
+          tar czf "${{ github.sha }}".tar.gz .output
       - name: Store Artifacts
         uses: actions/upload-artifact@v3
         with:
