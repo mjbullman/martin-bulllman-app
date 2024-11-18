@@ -9,7 +9,9 @@ on:
       - main
 
 env:
-  NODE_VERSION: v20.10.0
+  NODE_VERSION: 20
+  GITHUB_SHA: ${{ github.sha }}
+  GITHUB_REF: ${{ github.ref }}
 
 jobs:
   build:
@@ -24,19 +26,19 @@ jobs:
           cache: npm
       - run: |
           touch .env  
-          echo GITHUB_SHA=${{github.sha}} >> .env
+          echo GITHUB_SHA=${{ env.GITHUB_SHA }} >> .env
           echo BASE_URL=${{ secrets.BASE_URL }} >> .env
-          echo RELEASE_VERSION=${{ github.ref }} >> .env
+          echo RELEASE_VERSION=${{ env.GITHUB_REF }} >> .env
           echo API_BASE_URL=${{ secrets.API_BASE_URL }} >> .env
           npm install
           npm build
           cp .env .output/server/.env
-          tar czf "${{ github.sha }}".tar.gz .output
+          tar czf "${{ env.GITHUB_SHA }}".tar.gz .output
       - name: Store Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: app-artifacts
-          path: ${{ github.sha }}.tar.gz
+          path: ${{ env.GITHUB_SHA }}.tar.gz
 
   deploy:
     needs: build
