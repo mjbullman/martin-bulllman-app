@@ -49,6 +49,17 @@ jobs:
         with:
           name: app-artifacts
 
+      - name: Add SSH key
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |  
+          mkdir -p /home/runner/.ssh  
+          ssh-keyscan "${{ secrets.LIGHTSAIL_HOST }}" >> /home/runner/.ssh/known_hosts  
+          echo "${{ secrets.LIGHTSAIL_SSH_KEY }}" > /home/runner/.ssh/github_actions  
+          chmod 600 /home/runner/.ssh/github_actions  
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null  
+          ssh-add /home/runner/.ssh/github_actions      
+
       - name: Deploy Artifacts
         uses: appleboy/scp-action@master
         with:
