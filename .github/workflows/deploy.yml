@@ -31,7 +31,7 @@ jobs:
 
       - name: Archive Artifacts
         working-directory: ./frontend/
-        run: tar czf "${{ env.GITHUB_SHA }}".tar.gz .output
+        run: tar czf ../"${{ env.GITHUB_SHA }}".tar.gz .output
 
       - name: Store Artifacts
         uses: actions/upload-artifact@v3
