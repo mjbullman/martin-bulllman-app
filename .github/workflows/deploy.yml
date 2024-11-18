@@ -26,7 +26,7 @@ jobs:
           touch .env  
           echo GITHUB_SHA=${{github.sha}} >> .env
           echo BASE_URL=${{ secrets.BASE_URL }} >> .env
-          echo RELEASE_VERSION=${{ GITHUB_REF }} >> .env
+          echo RELEASE_VERSION=${{ github.ref }} >> .env
           echo API_BASE_URL=${{ secrets.API_BASE_URL }} >> .env
           npm install
           npm build
