@@ -18,23 +18,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Build Artifacts
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: npm
-      - run: |
-          touch .env  
-          echo GITHUB_SHA=${{ env.GITHUB_SHA }} >> .env
-          echo BASE_URL=${{ secrets.BASE_URL }} >> .env
-          echo RELEASE_VERSION=${{ env.GITHUB_REF }} >> .env
-          echo API_BASE_URL=${{ secrets.API_BASE_URL }} >> .env
-          npm install
-          npm build
-          cp .env .output/server/.env
-          tar czf "${{ env.GITHUB_SHA }}".tar.gz .output
-        working-directory: ./frontend
+      - name: Install Dependencies
+        working-directory: ./frontend/
+        run: npm install
+
+      - name: Build Application
+        working-directory: ./frontend/
+        run: npm run build
+
+      - name: Archive Artifacts
+        working-directory: ./frontend/
+        run: tar czf "${{ env.GITHUB_SHA }}".tar.gz .output
+
       - name: Store Artifacts
         uses: actions/upload-artifact@v3
         with:
