@@ -2,10 +2,10 @@
     "name": "martin-bullman-app",
     "private": true,
     "scripts": {
-        "build": "nuxt build",
         "dev": "nuxt dev",
-        "generate": "nuxt generate",
+        "build": "nuxt build",
         "preview": "nuxt preview",
+        "generate": "nuxt generate",
         "postinstall": "nuxt prepare"
     },
     "devDependencies": {
