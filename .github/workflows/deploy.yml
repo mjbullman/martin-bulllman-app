@@ -81,8 +81,8 @@ jobs:
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           script: |
             mkdir -p "/home/ubuntu/releases/${{ env.GITHUB_SHA }}"
-            tar xzf "/home/ubuntu/downloaded-artifacts/${{ env.GITHUB_SHA }}.tar.gz" -C "/home/ubuntu/MartinBullmanApp/frontend" --overwrite-dir
-            cp -r "/home/ubuntu/MartinBullmanApp/frontend/.output" "/home/ubuntu/releases/${{ env.GITHUB_SHA }}" --overwrite-dir
+            tar xzf "/home/ubuntu/downloaded-artifacts/${{ env.GITHUB_SHA }}.tar.gz" -C "/home/ubuntu/MartinBullmanApp/frontend"
+            cp -r "/home/ubuntu/MartinBullmanApp/frontend/.output" "/home/ubuntu/releases/${{ env.GITHUB_SHA }}" --overwrite
             /home/ubuntu/.nvm/versions/node/v20.13.1/bin/pm2 restart all
 
 # tar xzf "/home/ubuntu/artifacts/${{ env.GITHUB_SHA }}.tar.gz" -C "/home/ubuntu/releases/${{ env.GITHUB_SHA }}"
