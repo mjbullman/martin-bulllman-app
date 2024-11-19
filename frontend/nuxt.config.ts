@@ -24,13 +24,14 @@ export default defineNuxtConfig({
           meta: [
               {
                   name: 'description',
-                  content: 'The portfolio of Martin Bullman, Software Engineer & Full Stack Developer.'
+                  content: 'The portfolio of Martin Bullman, Software Engineer & Full ' +
+                      'Stack Developer.'
               },
               {
                   name: 'keywords',
-                  content: 'Martin Bullman,Django,Vue,Vuetify,Nuxt,Software Engineering,Portfolio,Projects,' +
-                      'Web Development,Data Analysis,Expertise,Skills,Innovation,Solutions,Excellence,Technical Abilities,' +
-                      'Developer, Technology'
+                  content: 'Martin Bullman,Django,Vue,Vuetify,Nuxt,Software Engineering,' +
+                      'Portfolio,Projects,Web Development,Data Analysis,Expertise,Skills,' +
+                      'Innovation,Solutions,Excellence,Technical Abilities,Developer,Technology'
               },
               {
                   name: 'author',
@@ -68,7 +69,10 @@ export default defineNuxtConfig({
       css: {
           preprocessorOptions: {
               scss: {
-                  additionalData: '@use "~/assets/scss/_colors.scss" as *; @use "~/assets/scss/_fonts.scss" as *; @use "~/assets/scss/_animations.scss" as *;'
+                  additionalData:
+                      '@use "~/assets/scss/_colors.scss" as *; ' +
+                      '@use "~/assets/scss/_fonts.scss" as *;' +
+                      ' @use "~/assets/scss/_animations.scss" as *;'
               },
           },
       },
