@@ -84,10 +84,8 @@ jobs:
           key: ${{ secrets.lightsail_ssh_key }}
           script: |
             mkdir -p "/home/ubuntu/releases/${{ env.github_sha }}"
-            tar xzf "/home/ubuntu/downloaded-artifacts/${{ env.github_sha }}.tar.gz" \
-              -C "/home/ubuntu/martinbullmanapp/frontend"
-            cp -r "/home/ubuntu/martinbullmanapp/frontend/.output" \
-              "/home/ubuntu/releases/${{ env.github_sha }}"
+            tar xzf "/home/ubuntu/downloaded-artifacts/${{ env.github_sha }}.tar.gz" -C "/home/ubuntu/martinbullmanapp/frontend"
+            cp -r "/home/ubuntu/martinbullmanapp/frontend/.output" "/home/ubuntu/releases/${{ env.github_sha }}"
             
             # ensure node.js environment is loaded
             export nvm_dir="$home/.nvm"
