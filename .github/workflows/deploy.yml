@@ -1,6 +1,9 @@
-name: Deploy Frontend
+# GitHub action to deploy martinbullmanapp frontend.
+
+name: deploy frontend
 
 on:
+  # trigger workflow on pushes to the main branch or pull requests targeting the main branch.
   push:
     branches:
       - main
@@ -9,85 +12,101 @@ on:
       - main
 
 env:
-  NODE_VERSION: 20
-  GITHUB_SHA: ${{ github.sha }}
-  GITHUB_REF: ${{ github.ref }}
+  # set environment variables for node.js version and github context values.
+  node_version: 20
+  github_sha: ${{ github.sha }}
+  github_ref: ${{ github.ref }}
 
 jobs:
   build:
+    # build job runs on the latest ubuntu environment.
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      # step 1: checkout the code from the repository.
+      - name: checkout code
         uses: actions/checkout@v4
 
-      - name: Install Dependencies
+      # step 2: install necessary dependencies for the frontend project.
+      - name: install dependencies
         working-directory: ./frontend
-        run: npm install
+        run: npm install --production
 
-      - name: Build Application
+      # step 3: build the frontend application.
+      - name: build application
         working-directory: ./frontend
         run: npm run build
 
-      - name: Archive Artifacts
+      # step 4: archive the build output into a tarball.
+      - name: archive artifacts
         working-directory: ./frontend/
-        run: tar czf ../"${{ env.GITHUB_SHA }}".tar.gz .output
+        run: tar czf ../"${{ env.github_sha }}".tar.gz .output
 
-      - name: List Build Output
+      # step 5: list the contents of the build directory for debugging.
+      - name: list build output
         run: ls -lah
 
-      - name: Store Artifacts
+      # step 6: upload the archived artifacts for later use in deployment.
+      - name: store artifacts
         uses: actions/upload-artifact@v4
         with:
           name: app-artifacts
-          path: ${{ env.GITHUB_SHA }}.tar.gz
+          path: ${{ env.github_sha }}.tar.gz
 
   deploy:
+    # deployment job depends on the build job.
     needs: build
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download Artifacts
+      # step 1: download the build artifacts from the build job.
+      - name: download artifacts
         uses: actions/download-artifact@v4
         with:
           name: app-artifacts
           path: ./downloaded-artifacts
 
-      - name: Add SSH key
+      # step 2: add the ssh key to establish a secure connection to the server.
+      - name: add ssh key
         env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          ssh_auth_sock: /tmp/ssh_agent.sock
         run: |  
           mkdir -p /home/runner/.ssh  
-          ssh-keyscan "${{ secrets.LIGHTSAIL_HOST }}" >> /home/runner/.ssh/known_hosts  
-          echo "${{ secrets.LIGHTSAIL_SSH_KEY }}" > /home/runner/.ssh/github_actions  
+          ssh-keyscan "${{ secrets.lightsail_host }}" >> /home/runner/.ssh/known_hosts  
+          echo "${{ secrets.lightsail_ssh_key }}" > /home/runner/.ssh/github_actions  
           chmod 600 /home/runner/.ssh/github_actions  
-          ssh-agent -a $SSH_AUTH_SOCK > /dev/null  
+          ssh-agent -a $ssh_auth_sock > /dev/null  
           ssh-add /home/runner/.ssh/github_actions      
 
-      - name: Deploy Artifacts
+      # step 3: copy the archived artifacts to the remote server.
+      - name: deploy artifacts
         uses: appleboy/scp-action@master
         with:
-          host: ${{ secrets.LIGHTSAIL_HOST }}
+          host: ${{ secrets.lightsail_host }}
           username: ubuntu
-          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+          key: ${{ secrets.lightsail_ssh_key }}
           target: /home/ubuntu
-          source: ./downloaded-artifacts/${{ env.GITHUB_SHA }}.tar.gz
+          source: ./downloaded-artifacts/${{ env.github_sha }}.tar.gz
 
-      - name: Extract Artifacts
+      # step 4: extract the artifacts and restart the application.
+      - name: extract artifacts
         uses: appleboy/ssh-action@v0.1.8
         with:
-          host: ${{ secrets.LIGHTSAIL_HOST }}
-          username: ${{ secrets.LIGHTSAIL_USER }}
-          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+          host: ${{ secrets.lightsail_host }}
+          username: ${{ secrets.lightsail_user }}
+          key: ${{ secrets.lightsail_ssh_key }}
           script: |
-            set -e # Exit on any command failure
-            mkdir -p "/home/ubuntu/releases/${{ env.GITHUB_SHA }}"
-            tar xzf "/home/ubuntu/downloaded-artifacts/${{ env.GITHUB_SHA }}.tar.gz" -C "/home/ubuntu/MartinBullmanApp/frontend"
-            cp -r "/home/ubuntu/MartinBullmanApp/frontend/.output" "/home/ubuntu/releases/${{ env.GITHUB_SHA }}"
+            set -e # exit on any command failure
+            mkdir -p "/home/ubuntu/releases/${{ env.github_sha }}"
+            tar xzf "/home/ubuntu/downloaded-artifacts/${{ env.github_sha }}.tar.gz" \
+              -c "/home/ubuntu/martinbullmanapp/frontend"
+            cp -r "/home/ubuntu/martinbullmanapp/frontend/.output" \
+              "/home/ubuntu/releases/${{ env.github_sha }}"
             
-            # Ensure Node.js environment is loaded
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            # ensure node.js environment is loaded
+            export nvm_dir="$home/.nvm"
+            [ -s "$nvm_dir/nvm.sh" ] && \. "$nvm_dir/nvm.sh"
             nvm use 20.13.1
             
+            # restart the application using pm2
             /home/ubuntu/.nvm/versions/node/v20.13.1/bin/pm2 restart all
