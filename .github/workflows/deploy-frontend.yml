@@ -84,12 +84,12 @@ jobs:
           key: ${{ secrets.lightsail_ssh_key }}
           script: |
             mkdir -p "/home/ubuntu/releases/${{ env.github_sha }}"
-            tar xzf "/home/ubuntu/downloaded-artifacts/${{ env.github_sha }}.tar.gz" -C "/home/ubuntu/martinbullmanapp/frontend"
-            cp -r "/home/ubuntu/martinbullmanapp/frontend/.output" "/home/ubuntu/releases/${{ env.github_sha }}"
+            tar xzf "/home/ubuntu/downloaded-artifacts/${{ env.github_sha }}.tar.gz" -C "/home/ubuntu/MartinBullmanApp/frontend"
+            cp -r "/home/ubuntu/MartinBullmanApp/frontend/.output" "/home/ubuntu/releases/${{ env.github_sha }}"
             
-            # ensure node.js environment is loaded
-            export nvm_dir="$home/.nvm"
-            [ -s "$nvm_dir/nvm.sh" ] && \. "$nvm_dir/nvm.sh"
+            # Ensure Node.js environment is loaded
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             nvm use 20.13.1
             
             # restart the application using pm2
