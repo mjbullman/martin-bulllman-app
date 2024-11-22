@@ -66,18 +66,6 @@ jobs:
           name: app-artifacts
           path: ./downloaded-artifacts
 
-      # step 2: add the ssh key to establish a secure connection to the server.
-#      - name: add ssh key
-#        env:
-#          ssh_auth_sock: /tmp/ssh_agent.sock
-#        run: |  
-#          mkdir -p /home/runner/.ssh
-#          ssh-keyscan "${{ secrets.lightsail_host }}" >> /home/runner/.ssh/known_hosts
-#          echo "${{ secrets.lightsail_ssh_key }}" > /home/runner/.ssh/github_actions
-#          chmod 600 /home/runner/.ssh/github_actions
-#          ssh-agent -a $ssh_auth_sock > /dev/null
-#          ssh-add /home/runner/.ssh/github_actions
-
       # step 3: copy the archived artifacts to the remote server.
       - name: deploy artifacts
         uses: appleboy/scp-action@master
@@ -96,7 +84,6 @@ jobs:
           username: ${{ secrets.lightsail_user }}
           key: ${{ secrets.lightsail_ssh_key }}
           script: |
-            set -e # exit on any command failure
             mkdir -p "/home/ubuntu/releases/${{ env.github_sha }}"
             tar xzf "/home/ubuntu/downloaded-artifacts/${{ env.github_sha }}.tar.gz" \
               -c "/home/ubuntu/martinbullmanapp/frontend"
