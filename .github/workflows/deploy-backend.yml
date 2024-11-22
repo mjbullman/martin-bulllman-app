@@ -53,5 +53,4 @@ jobs:
         SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
         SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
 
-        WEATHER_API_URL: ${{ secrets.WEATHER_API_URL }}
         WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}

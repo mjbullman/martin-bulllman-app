@@ -41,11 +41,7 @@ jobs:
         working-directory: ./frontend/
         run: tar czf ../"${{ env.github_sha }}".tar.gz .output
 
-      # step 5: list the contents of the build directory for debugging.
-      - name: list build output
-        run: ls -lah
-
-      # step 6: upload the archived artifacts for later use in deployment.
+      # step 5: upload the archived artifacts for later use in deployment.
       - name: store artifacts
         uses: actions/upload-artifact@v4
         with:
