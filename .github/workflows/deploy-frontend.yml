@@ -30,7 +30,7 @@ jobs:
       # step 2: install necessary dependencies for the frontend project.
       - name: install dependencies
         working-directory: ./frontend
-        run: npm install --production
+        run: npm install --omit=dev
 
       # step 3: build the frontend application.
       - name: build application
