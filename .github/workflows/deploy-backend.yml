@@ -11,6 +11,10 @@ on:
       - main
 
 jobs:
+
+
+
+
   build:
 
     runs-on: ubuntu-latest
@@ -48,6 +52,9 @@ jobs:
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         EMAIL_FROM_ADDRESS: ${{ secrets.EMAIL_FROM_ADDRESS }}
         EMAIL_FROM_NAME: ${{secrets.EMAIL_FROM_NAME}}
+
+        MAILJET_API_KEY: ${{secrets.MAILJET_API_KEY}}
+        MAILJET_API_SECRET: ${{secrets.MAILJET_API_SECRET}}
 
         SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
         SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
