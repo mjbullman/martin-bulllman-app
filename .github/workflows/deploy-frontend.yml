@@ -67,16 +67,16 @@ jobs:
           path: ./downloaded-artifacts
 
       # step 2: add the ssh key to establish a secure connection to the server.
-      - name: add ssh key
-        env:
-          ssh_auth_sock: /tmp/ssh_agent.sock
-        run: |  
-          mkdir -p /home/runner/.ssh  
-          ssh-keyscan "${{ secrets.lightsail_host }}" >> /home/runner/.ssh/known_hosts  
-          echo "${{ secrets.lightsail_ssh_key }}" > /home/runner/.ssh/github_actions  
-          chmod 600 /home/runner/.ssh/github_actions  
-          ssh-agent -a $ssh_auth_sock > /dev/null  
-          ssh-add /home/runner/.ssh/github_actions      
+#      - name: add ssh key
+#        env:
+#          ssh_auth_sock: /tmp/ssh_agent.sock
+#        run: |  
+#          mkdir -p /home/runner/.ssh
+#          ssh-keyscan "${{ secrets.lightsail_host }}" >> /home/runner/.ssh/known_hosts
+#          echo "${{ secrets.lightsail_ssh_key }}" > /home/runner/.ssh/github_actions
+#          chmod 600 /home/runner/.ssh/github_actions
+#          ssh-agent -a $ssh_auth_sock > /dev/null
+#          ssh-add /home/runner/.ssh/github_actions
 
       # step 3: copy the archived artifacts to the remote server.
       - name: deploy artifacts
