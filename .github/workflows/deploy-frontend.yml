@@ -1,6 +1,5 @@
 # GitHub action to deploy martinbullmanapp frontend.
-
-name: deploy frontend
+name: deploy-frontend
 
 on:
   # trigger workflow on pushes to the main branch or pull requests targeting the main branch.
@@ -86,7 +85,7 @@ jobs:
           script: |
             mkdir -p "/home/ubuntu/releases/${{ env.github_sha }}"
             tar xzf "/home/ubuntu/downloaded-artifacts/${{ env.github_sha }}.tar.gz" \
-              -c "/home/ubuntu/martinbullmanapp/frontend"
+              -C "/home/ubuntu/martinbullmanapp/frontend"
             cp -r "/home/ubuntu/martinbullmanapp/frontend/.output" \
               "/home/ubuntu/releases/${{ env.github_sha }}"
             

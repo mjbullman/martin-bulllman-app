@@ -1,10 +1,14 @@
-name: Django CI
+# GitHub action to deploy martinbullmanapp backend.
+name: deploy-backend
 
 on:
+  # trigger workflow on pushes to the main branch or pull requests targeting the main branch.
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build:
