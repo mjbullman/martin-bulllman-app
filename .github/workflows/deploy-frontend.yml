@@ -1,4 +1,4 @@
-# GitHub action to deploy martinbullmanapp frontend.
+# GitHub action to deploy MartinBullmanApp frontend.
 name: deploy-frontend
 
 on:
@@ -23,26 +23,26 @@ jobs:
 
     steps:
       # step 1: checkout the code from the repository.
-      - name: checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       # step 2: install necessary dependencies for the frontend project.
-      - name: install dependencies
+      - name: Install Dependencies
         working-directory: ./frontend
         run: npm install --omit=dev
 
       # step 3: build the frontend application.
-      - name: build application
+      - name: Build Application
         working-directory: ./frontend
         run: npm run build
 
       # step 4: archive the build output into a tarball.
-      - name: archive artifacts
+      - name: Archive Artifacts
         working-directory: ./frontend/
         run: tar czf ../"${{ env.github_sha }}".tar.gz .output
 
       # step 5: upload the archived artifacts for later use in deployment.
-      - name: store artifacts
+      - name: Store Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: app-artifacts
@@ -55,14 +55,14 @@ jobs:
 
     steps:
       # step 1: download the build artifacts from the build job.
-      - name: download artifacts
+      - name: Download Artifacts
         uses: actions/download-artifact@v4
         with:
           name: app-artifacts
           path: ./downloaded-artifacts
 
       # step 3: copy the archived artifacts to the remote server.
-      - name: deploy artifacts
+      - name: Deploy Artifacts
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.lightsail_host }}
@@ -72,7 +72,7 @@ jobs:
           source: ./downloaded-artifacts/${{ env.github_sha }}.tar.gz
 
       # step 4: extract the artifacts and restart the application.
-      - name: extract artifacts
+      - name: Extract Artifacts
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.lightsail_host }}
