@@ -1,3 +1,3 @@
-from django.contrib import admin
-
-# Register your models here.
+"""
+Admin configurations for the core module of Martin Bullman application.
+"""
