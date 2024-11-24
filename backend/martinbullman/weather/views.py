@@ -7,6 +7,7 @@ interacting with an external Weather API.
 """
 
 import requests
+from constants import *
 from decouple import config
 
 from rest_framework import status
@@ -14,8 +15,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import APIException
 from rest_framework.throttling import UserRateThrottle
-
-WEATHER_API_URL = 'https://api.weatherapi.com/v1'
 
 
 class WeatherAPIException(APIException):
