@@ -12,7 +12,6 @@ on:
 
 env:
   # set environment variables for node.js version and github context values.
-  PYTHON_VERSION: 3.11
   GITHUB_SHA: ${{ github.sha }}
   GITHUB_REF: ${{ github.ref }}
 
@@ -21,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ 3.11, 3.12 ]
+        python-version: [ 3.12 ]
     steps:
       # step 1: checkout the code from the repository.
       - name: Checkout Code
@@ -57,7 +56,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
+          python-version: ${{ matrix.python-version }}
 
       - name: Install Dependencies
         working-directory: ./backend/martinbullman
@@ -66,13 +65,16 @@ jobs:
             pip install -r requirements.txt    
 
       - name: Run Tests
+        working-directory: ./backend/martinbullman
         run: |
           python manage.py test    
 
 
   build:
     # build job runs on the latest ubuntu environment.
+    needs: test
     runs-on: ubuntu-latest
+
 
     steps:
     - uses: actions/checkout@v3
