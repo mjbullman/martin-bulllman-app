@@ -108,14 +108,14 @@ class Profile(SpotifyBaseView):
 
             return Response(response.json())
 
-        except RequestException as e:
-            print(f"Error fetching Spotify profile: {e}")
+        except RequestException as exception:
+            print(f"Error fetching Spotify profile: {exception}")
             raise SpotifyAPIException(detail = "Error fetching Spotify profile.")
 
-        except Exception as e:
-            print(f"Unexpected error: {e}")
+        except Exception as exception:
+            print(f"Unexpected error: {exception}")
             raise APIException(
-                detail = f"An unexpected error occurred. {e}",
+                detail = f"An unexpected error occurred.",
                 code = status.HTTP_500_INTERNAL_SERVER_ERROR
             )
 
@@ -138,12 +138,12 @@ class Playlist(SpotifyBaseView):
 
             return Response(response.json())
 
-        except RequestException as e:
-            print(f"Error fetching Spotify playlists: {e}")
+        except RequestException as exception:
+            print(f"Error fetching Spotify playlists: {exception}")
             raise SpotifyAPIException(detail = "Error fetching Spotify playlists.")
 
-        except Exception as e:
-            print(f"Unexpected error: {e}")
+        except Exception as exception:
+            print(f"Unexpected error: {exception}")
             raise APIException(
                 detail = "An unexpected error occurred.",
                 code = status.HTTP_500_INTERNAL_SERVER_ERROR
@@ -168,12 +168,12 @@ class Following(SpotifyBaseView):
 
             return Response(response.json())
 
-        except RequestException as e:
-            print(f"Error fetching followed artists: {e}")
+        except RequestException as exception:
+            print(f"Error fetching followed artists: {exception}")
             raise SpotifyAPIException(detail = "Error fetching followed artists from Spotify.")
 
-        except Exception as e:
-            print(f"Unexpected error: {e}")
+        except Exception as exception:
+            print(f"Unexpected error: {exception}")
             raise APIException(
                 detail = "An unexpected error occurred while fetching followed artists.",
                 code = status.HTTP_500_INTERNAL_SERVER_ERROR
@@ -203,12 +203,12 @@ class TopTracks(SpotifyBaseView):
 
             return Response(response.json())
 
-        except RequestException as e:
-            print(f"Error fetching top tracks: {e}")
+        except RequestException as exception:
+            print(f"Error fetching top tracks: {exception}")
             raise SpotifyAPIException(detail = "Error fetching top tracks from Spotify.")
 
-        except Exception as e:
-            print(f"Unexpected error: {e}")
+        except Exception as exception:
+            print(f"Unexpected error: {exception}")
             raise APIException(
                 detail = "An unexpected error occurred while fetching top tracks.",
                 code = status.HTTP_500_INTERNAL_SERVER_ERROR
@@ -238,12 +238,12 @@ class TopArtists(SpotifyBaseView):
 
             return Response(response.json())
 
-        except RequestException as e:
-            print(f"Error fetching top artists: {e}")
+        except RequestException as exception:
+            print(f"Error fetching top artists: {exception}")
             raise SpotifyAPIException(detail="Error fetching top artists from Spotify.")
 
-        except Exception as e:
-            print(f"Unexpected error: {e}")
+        except Exception as exception:
+            print(f"Unexpected error: {exception}")
             raise APIException(
                 detail="An unexpected error occurred while fetching top artists.",
                 code=status.HTTP_500_INTERNAL_SERVER_ERROR
@@ -268,12 +268,12 @@ class RecentlyPlayed(SpotifyBaseView):
 
             return Response(response.json())
 
-        except RequestException as e:
-            print(f"Error fetching recently played tracks: {e}")
+        except RequestException as exception:
+            print(f"Error fetching recently played tracks: {exception}")
             raise SpotifyAPIException(detail="Error fetching recently played tracks from Spotify.")
 
-        except Exception as e:
-            print(f"Unexpected error: {e}")
+        except Exception as exception:
+            print(f"Unexpected error: {exception}")
             raise APIException(
                 detail="An unexpected error occurred while fetching recently played tracks.",
                 code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -296,17 +296,17 @@ class CurrentlyPlaying(SpotifyBaseView):
             response.raise_for_status()
 
             # check if there is no currently playing track
-            if response.status_code == 204:
+            if response.status_code == status.HTTP_204_NO_CONTENT:
                 return Response('Currently no tracks playing.', status.HTTP_204_NO_CONTENT)
 
             return Response(response.json(), status.HTTP_200_OK)
 
-        except RequestException as e:
-            print(f"Error fetching currently playing track: {e}")
+        except RequestException as exception:
+            print(f"Error fetching currently playing track: {exception}")
             raise SpotifyAPIException(detail="Error fetching currently playing track from Spotify.")
 
-        except Exception as e:
-            print(f"Unexpected error: {e}")
+        except Exception as exception:
+            print(f"Unexpected error: {exception}")
             raise APIException(
                 detail="An unexpected error occurred while fetching the currently playing track.",
                 code=status.HTTP_500_INTERNAL_SERVER_ERROR
