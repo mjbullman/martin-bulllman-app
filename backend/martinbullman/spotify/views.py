@@ -6,6 +6,7 @@ It handles Spotify's OAuth token refresh and API requests for personalized data.
 """
 
 import requests
+from constants import *
 from decouple import config
 
 from rest_framework import status
@@ -14,9 +15,6 @@ from rest_framework.response import Response
 from requests.exceptions import RequestException
 from rest_framework.exceptions import APIException
 from rest_framework.throttling import UserRateThrottle
-
-SPOTIFY_API_URL   = 'https://api.spotify.com/v1'
-SPOTIFY_TOKEN_URL = 'https://accounts.spotify.com/api/token'
 
 
 def create_spotify_headers(access_token: str) -> dict:
