@@ -1,150 +1,227 @@
+"""
+This module defines API views for interacting with Spotify.
+
+Including user profile, playlists, following artists, and top tracks or artists.
+It handles Spotify's OAuth token refresh and API requests for personalized data.
+"""
+
 import requests
 from decouple import config
 
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from requests.exceptions import RequestException
+from rest_framework.exceptions import APIException
 from rest_framework.throttling import UserRateThrottle
 
-spotify_api_url       = 'https://api.spotify.com/v1'
-spotify_api_token_url = 'https://accounts.spotify.com/api/token'
+SPOTIFY_API_URL   = 'https://api.spotify.com/v1'
+SPOTIFY_TOKEN_URL = 'https://accounts.spotify.com/api/token'
 
 
-def spotify_refresh_access_token ():
-    """ Refresh Spotify access token using refresh token """
+def create_spotify_headers(access_token: str) -> dict:
+    """
+    Create the headers for Spotify API requests.
+
+    Args:
+        access_token (str): The access token for Spotify API.
+
+    Returns:
+        dict: Headers including the authorization token.
+    """
+    return {'Authorization': 'Bearer ' + access_token}
+
+
+def refresh_spotify_access_token() -> Response:
+    """
+    Refresh Spotify access token using the refresh token.
+
+    Returns:
+        Response: A dictionary containing the refreshed access token and additional metadata.
+    """
     headers = {
         'content-type': 'application/x-www-form-urlencoded'
     }
 
     params = {
-        'grant_type'     : 'refresh_token',
-        'client_id'      : config('SPOTIFY_CLIENT_ID'),
-        'client_secret'  : config('SPOTIFY_CLIENT_SECRET'),
-        'refresh_token'  : config('SPOTIFY_REFRESH_TOKEN')
+        'grant_type'    : 'refresh_token',
+        'client_id'     : config('SPOTIFY_CLIENT_ID'),
+        'client_secret' : config('SPOTIFY_CLIENT_SECRET'),
+        'refresh_token' : config('SPOTIFY_REFRESH_TOKEN')
     }
 
-    response = requests.post(spotify_api_token_url, params=params, headers=headers)
+    try:
+        response = requests.post(SPOTIFY_TOKEN_URL, params=params, headers=headers)
+        response.raise_for_status()
 
-    if response.status_code == 200:
         return response.json()
-    else:
-        return False
+
+    except requests.RequestException as e:
+        print(f"Error refreshing Spotify access token: {e}")
+        raise SpotifyTokenException(detail=str(e))
 
 
-def spotify_headers (access_token: dict):
-    """ Created the spotify headers dictionary with Spotify access token """
-    return {
-        'Authorization': 'Bearer ' + access_token['access_token']
-    }
+class SpotifyTokenException(APIException):
+    """ Custom exception for Spotify token-related errors. """
+    status_code    = status.HTTP_401_UNAUTHORIZED
+    default_code   = 'spotify_token_error'
+    default_detail = 'Failed to refresh Spotify access token.'
 
 
-class Profile (APIView):
-    """ My profile from Spotify API """
+class SpotifyAPIException(APIException):
+    """ Custom exception for Spotify API-related errors. """
+    status_code    = status.HTTP_500_INTERNAL_SERVER_ERROR
+    default_code   = 'spotify_api_error'
+    default_detail = 'Error communicating with the Spotify API.'
+
+
+class SpotifyBaseView(APIView):
+    """
+    Base view for Spotify API interactions, providing common functionality.
+    """
     throttle_classes = [UserRateThrottle]
 
-    def get (self, request):
-        access_token = spotify_refresh_access_token()
+    def get_access_token(self) -> str:
+        """
+        Retrieve a refreshed access token.
 
-        if access_token:
-            headers = spotify_headers(access_token)
+        Returns:
+            str: The access token if successful.
 
-            params = {}
-
-            response = requests.get(spotify_api_url + '/me', params=params, headers=headers)
-
-            if response.status_code == 200:
-                return Response(response.json(), 200)
-            else:
-                return Response("Error getting profile from Spotify", 500)
-        else:
-            return Response("Error refreshing Spotify access token.", 500)
+        Raises:
+            SpotifyTokenException: If the token cannot be refreshed.
+        """
+        token_data = refresh_spotify_access_token()
+        return token_data['access_token']
 
 
-class Playlist (APIView):
-    """ My playlist from Spotify API """
-    throttle_classes = [UserRateThrottle]
+class Profile(SpotifyBaseView):
+    """ Fetch the user's Spotify profile information. """
 
-    def get (self, request):
-        access_token = spotify_refresh_access_token()
+    def get(self, request) -> Response:
+        try:
+            token   = self.get_access_token()
+            headers = create_spotify_headers(token)
 
-        if access_token:
-            headers = spotify_headers(access_token)
+            response = requests.get(f"{SPOTIFY_API_URL}/me", headers=headers)
+            response.raise_for_status()
+
+            return Response(response.json())
+
+        except RequestException as e:
+            print(f"Error fetching Spotify profile: {e}")
+            raise SpotifyAPIException(detail = "Error fetching Spotify profile.")
+
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            raise APIException(
+                detail = f"An unexpected error occurred. {e}",
+                code = status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+
+class Playlist(SpotifyBaseView):
+    """ Fetch the user's playlists from Spotify. """
+
+    def get(self, request) -> Response:
+        try:
+            token   = self.get_access_token()
+            params  = {'limit': 10, 'offset': 0}
+            headers = create_spotify_headers(token)
+
+            response = requests.get(
+                f"{SPOTIFY_API_URL}/me/playlists",
+                headers = headers,
+                params = params
+            )
+            response.raise_for_status()
+
+            return Response(response.json())
+
+        except RequestException as e:
+            print(f"Error fetching Spotify playlists: {e}")
+            raise SpotifyAPIException(detail = "Error fetching Spotify playlists.")
+
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            raise APIException(
+                detail = "An unexpected error occurred.",
+                code = status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+
+class Following(SpotifyBaseView):
+    """ Fetch the artists the user is following on Spotify. """
+
+    def get(self, request) -> Response:
+        try:
+            token   = self.get_access_token()
+            params  = {'type': 'artist'}
+            headers = create_spotify_headers(token)
+
+            response = requests.get(
+                f"{SPOTIFY_API_URL}/me/following",
+                headers = headers,
+                params = params
+            )
+            response.raise_for_status()
+
+            return Response(response.json())
+
+        except RequestException as e:
+            print(f"Error fetching followed artists: {e}")
+            raise SpotifyAPIException(detail = "Error fetching followed artists from Spotify.")
+
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            raise APIException(
+                detail = "An unexpected error occurred while fetching followed artists.",
+                code = status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+
+class TopTracks(SpotifyBaseView):
+    """ Fetch the user's top tracks from Spotify API """
+
+    def get(self, request):
+        try:
+            token   = self.get_access_token()
+            headers = create_spotify_headers(token)
 
             params = {
-                'limit'      : 10,
-                'offset'     : 0,
-                'time_range' : 'short_term'
+                'limit': 10,
+                'offset': 0,
+                'time_range': 'short_term'
             }
 
-            response = requests.get(spotify_api_url + '/me/playlists', params=params, headers=headers)
+            response = requests.get(
+                f"{SPOTIFY_API_URL}/me/top/tracks",
+                headers=headers,
+                params=params
+            )
+            response.raise_for_status()
 
-            if response.status_code == 200:
-                return Response(response.json(), 200)
-            else:
-                return Response("Error getting playlists from Spotify", 500)
-        else:
-            return Response("Error refreshing Spotify access token.", 500)
+            return Response(response.json())
 
+        except RequestException as e:
+            print(f"Error fetching top tracks: {e}")
+            raise SpotifyAPIException(detail = "Error fetching top tracks from Spotify.")
 
-class Following (APIView):
-    """ Artists I'm following from Spotify API """
-    throttle_classes = [UserRateThrottle]
-
-    def get (self, request):
-        access_token = spotify_refresh_access_token()
-
-        if access_token:
-            headers = spotify_headers(access_token)
-
-            params = {
-                'type' : 'artist'
-            }
-
-            response = requests.get(spotify_api_url + '/me/following', params=params, headers=headers)
-
-            if response.status_code == 200:
-                return Response(response.json(), 200)
-            else:
-                return Response("Error getting artists I'm following from Spotify", 500)
-        else:
-            return Response("Error refreshing Spotify access token.", 500)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            raise APIException(
+                detail = "An unexpected error occurred while fetching top tracks.",
+                code = status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
 
 
-class TopTracks (APIView):
-    """ My top tracks from Spotify API """
-    throttle_classes = [UserRateThrottle]
+class TopArtists(SpotifyBaseView):
+    """ Fetch the user's top artists from Spotify API """
 
-    def get (self, request):
-        access_token = spotify_refresh_access_token()
-
-        if access_token:
-            headers = spotify_headers(access_token)
-
-            params = {
-                'limit'      : 10,
-                'offset'     : 0,
-                'time_range' : 'short_term'
-            }
-
-            response = requests.get(spotify_api_url + '/me/top/tracks', params=params, headers=headers)
-
-            if response.status_code == 200:
-                return Response(response.json())
-            else:
-                return Response("Error getting top tracks from Spotify", 500)
-        else:
-            return Response("Error refreshing Spotify access token.", 500)
-
-
-class TopArtists (APIView):
-    """ My top artists from Spotify API """
-    throttle_classes = [UserRateThrottle]
-
-    def get (self, request):
-        access_token = spotify_refresh_access_token()
-
-        if access_token:
-            headers = spotify_headers(access_token)
+    def get(self, request) -> Response:
+        try:
+            access_token = self.get_access_token()
+            headers = create_spotify_headers(access_token)
 
             params = {
                 'limit'      : 10,
@@ -152,63 +229,85 @@ class TopArtists (APIView):
                 'time_range' : 'long_term'
             }
 
-            response = requests.get(spotify_api_url + '/me/top/artists', params=params, headers=headers)
+            response = requests.get(
+                f"{SPOTIFY_API_URL}/me/top/artists",
+                headers = headers,
+                params = params
+            )
+            response.raise_for_status()
 
-            if response.status_code == 200:
-                return Response(response.json())
-            else:
-                return Response("Error getting top artists from Spotify", 500)
-        else:
-            return Response("Error refreshing Spotify access token.", 500)
+            return Response(response.json())
 
+        except RequestException as e:
+            print(f"Error fetching top artists: {e}")
+            raise SpotifyAPIException(detail="Error fetching top artists from Spotify.")
 
-class RecentlyPlayed (APIView):
-    """ My recently played songs from Spotify API """
-    throttle_classes = [UserRateThrottle]
-
-    def get (self, request):
-        access_token = spotify_refresh_access_token()
-
-        if access_token:
-            headers = spotify_headers(access_token)
-
-            params = {
-                'limit' : 10
-            }
-
-            response = requests.get(spotify_api_url + '/me/player/recently-played', params=params, headers=headers)
-
-            if response.status_code == 200:
-                return Response(response.json())
-            else:
-                return Response('Error getting recently played tracks from Spotify', 500)
-        else:
-            return Response('Error refreshing Spotify access token.', 500)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            raise APIException(
+                detail="An unexpected error occurred while fetching top artists.",
+                code=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
 
 
-class CurrentlyPlaying (APIView):
-    """ Currently playing track from Spotify API """
-    throttle_classes = [UserRateThrottle]
+class RecentlyPlayed(SpotifyBaseView):
+    """ Fetch the user's recently played tracks from Spotify API """
 
-    def get (self, request):
-        access_token = spotify_refresh_access_token()
+    def get(self, request):
+        try:
+            token   = self.get_access_token()
+            params  = {'limit': 10}
+            headers = create_spotify_headers(token)
 
-        if access_token:
-            headers = spotify_headers(access_token)
+            response = requests.get(
+                f"{SPOTIFY_API_URL}/me/player/recently-played",
+                headers=headers,
+                params=params
+            )
+            response.raise_for_status()
 
-            params = {
-                'market'           : 'IE',
-                'additional_types' : 'track'
-            }
+            return Response(response.json())
 
-            response = requests.get(spotify_api_url + '/me/player/currently_playing', params=params, headers=headers)
+        except RequestException as e:
+            print(f"Error fetching recently played tracks: {e}")
+            raise SpotifyAPIException(detail="Error fetching recently played tracks from Spotify.")
 
-            if response.status_code == 200:
-                return Response(response.json(), status.HTTP_200_OK)
-            elif response.status_code == 204:
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            raise APIException(
+                detail="An unexpected error occurred while fetching recently played tracks.",
+                code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class CurrentlyPlaying(SpotifyBaseView):
+    """ Fetch the currently playing track from Spotify API """
+
+    def get(self, request):
+        try:
+            token   = self.get_access_token()
+            params  = {'market': 'IE', 'additional_types': 'track'}
+            headers = create_spotify_headers(token)
+
+            response = requests.get(
+                f"{SPOTIFY_API_URL}/me/player/currently_playing",
+                headers=headers,
+                params=params
+            )
+            response.raise_for_status()
+
+            # check if there is no currently playing track
+            if response.status_code == 204:
                 return Response('Currently no tracks playing.', status.HTTP_204_NO_CONTENT)
-            else:
-                return Response('Error getting currently playing track from Spotify.',
-                                status.HTTP_500_INTERNAL_SERVER_ERROR)
-        else:
-            return Response('Error refreshing Spotify access token.',  status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+            return Response(response.json(), status.HTTP_200_OK)
+
+        except RequestException as e:
+            print(f"Error fetching currently playing track: {e}")
+            raise SpotifyAPIException(detail="Error fetching currently playing track from Spotify.")
+
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            raise APIException(
+                detail="An unexpected error occurred while fetching the currently playing track.",
+                code=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
