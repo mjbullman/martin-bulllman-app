@@ -44,7 +44,8 @@ jobs:
           pylint $(git ls-files '*.py')
 
   test:
-    # build job runs on the latest ubuntu environment.
+    # test job depends on the lint job.
+    # needs: lint
     runs-on: ubuntu-latest
 
     steps:
@@ -64,6 +65,7 @@ jobs:
             pip install -r requirements.txt    
 
       - name: Run Tests
+        working-directory: ./backend/martinbullman
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
           DB_HOST: ${{ secrets.DB_HOST }}
@@ -92,7 +94,7 @@ jobs:
 
 
   build:
-    # build job runs on the latest ubuntu environment.
+    # build job depends on the test job.
     needs: test
     runs-on: ubuntu-latest
 
