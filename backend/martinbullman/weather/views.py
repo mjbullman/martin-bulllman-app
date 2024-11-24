@@ -9,13 +9,13 @@ interacting with an external Weather API.
 import requests
 from decouple import config
 
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import APIException
 from rest_framework.throttling import UserRateThrottle
 
-# base weather api url.
-weather_api_url = 'https://api.weatherapi.com/v1'
+WEATHER_API_URL = 'https://api.weatherapi.com/v1'
 
 
 class WeatherAPIException(APIException):
@@ -56,21 +56,28 @@ class WeatherCurrent(APIView):
     """
     throttle_classes = [UserRateThrottle]
 
-    def get(self, request):
+    def get(self, request) -> Response:
         try:
-            response = requests.get(weather_api_url + '/current.json', {
+
+            response = requests.get(f"{WEATHER_API_URL}/current.json", {
                 'key': config('WEATHER_API_KEY'),
                 'q'  : 'Tallinn',
                 'aqi': 'yes'
             })
 
-            # raise exception for HTTP errors.
             response.raise_for_status()
-
             return Response(response.json())
 
-        except requests.RequestException as e:
-            raise WeatherAPIException(detail=str(e))
+        except requests.RequestException as exception:
+            print(f"Error fetching current weather: {exception}")
+            raise WeatherAPIException(detail = "Error fetching current weather.")
+
+        except Exception as exception:
+            print(f"Unexpected error: {exception}")
+            raise APIException(
+                detail = f"An unexpected error occurred.",
+                code = status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
 
 
 class WeatherForecast(APIView):
@@ -94,9 +101,9 @@ class WeatherForecast(APIView):
     """
     throttle_classes = [UserRateThrottle]
 
-    def get(self, request):
+    def get(self, request) -> Response:
         try:
-            response = requests.get(weather_api_url + '/forecast.json', {
+            response = requests.get(f"{WEATHER_API_URL}/forecast.json", {
                 'key'    : config('WEATHER_API_KEY'),
                 'q'      : 'Tallinn',
                 'aqi'    : 'yes',
@@ -104,10 +111,16 @@ class WeatherForecast(APIView):
                 'alerts' : 'yes'
             })
 
-            # raise exception for HTTP errors.
-            response.raise_for_status()  # Raise exception for HTTP errors
-
+            response.raise_for_status()
             return Response(response.json())
 
-        except requests.RequestException as e:
-            raise WeatherAPIException(detail=str(e))
+        except requests.RequestException as exception:
+            print(f"Error fetching weather forecast: {exception}")
+            raise WeatherAPIException(detail="Error fetching weather forecast")
+
+        except Exception as exception:
+            print(f"Unexpected error: {exception}")
+            raise APIException(
+                detail = f"An unexpected error occurred.",
+                code = status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
