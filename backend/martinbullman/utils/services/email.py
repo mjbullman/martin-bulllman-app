@@ -1,8 +1,8 @@
 import logging
 
+from ..constants import *
 from decouple import config
 from datetime import datetime
-from utils.constants import *
 from mailjet_rest import Client
 
 logger = logging.getLogger(__name__)

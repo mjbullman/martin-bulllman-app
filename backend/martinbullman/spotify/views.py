@@ -6,7 +6,7 @@ It handles Spotify's OAuth token refresh and API requests for personalized data.
 """
 
 import requests
-from constants import *
+from .constants import *
 from decouple import config
 
 from rest_framework import status

@@ -7,7 +7,7 @@ interacting with an external Weather API.
 """
 
 import requests
-from constants import *
+from .constants import *
 from decouple import config
 
 from rest_framework import status
