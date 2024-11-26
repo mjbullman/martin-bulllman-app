@@ -1,5 +1,9 @@
 """
-Apps configurations for the core module of Martin Bullman application.
+This module defines the configuration for the Core application.
+
+It specifies the app's metadata and provides an entry point for
+app-specific initialization, such as signal registration or
+custom setup tasks.
 """
 from django.apps import AppConfig
 
