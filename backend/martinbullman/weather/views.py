@@ -9,8 +9,8 @@ interacting with an external Weather API.
 import requests
 from .constants import *
 from decouple import config
+from requests.exceptions import RequestException
 
-from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import APIException
@@ -18,108 +18,77 @@ from rest_framework.throttling import UserRateThrottle
 
 
 class WeatherAPIException(APIException):
-    """
-    Custom exception for handling Weather API errors.
-
-    This exception is raised when there are issues communicating with
-    the external Weather API, such as network errors or invalid responses.
-
-    Attributes:
-        status_code (int): HTTP status code for the error (default: 500).
-        default_detail (str): Default error message.
-        default_code (str): Default error code.
-    """
-    status_code = 500
+    """ Custom exception for handling Weather API errors. """
+    status_code    = 500
+    default_code   = "weather_api_error"
     default_detail = "An error occurred while communicating with the Weather API."
-    default_code = "weather_api_error"
 
 
 class WeatherCurrent(APIView):
-    """
-    API endpoint to retrieve current weather data.
+    """ API endpoint to retrieve current weather data. """
 
-    This endpoint communicates with the external Weather API to fetch
-    the current weather for a specified location. The location can be
-    provided via the `q` query parameter. If no location is provided,
-    it defaults to "Tallinn".
-
-    Throttling:
-        The endpoint is throttled using `UserRateThrottle` to prevent abuse.
-
-    Response:
-        A JSON object containing current weather details, such as temperature,
-        humidity, and air quality.
-
-    Raises:
-        WeatherAPIException: If there is an error communicating with the Weather API.
-    """
     throttle_classes = [UserRateThrottle]
 
-    def get(self, request) -> Response:
+    def get(self) -> Response:
+        """
+        Handle GET requests to fetch the current weather data for Tallinn.
+
+        Returns: Response: A JSON response containing the current weather data, including
+        temperature, humidity, and air quality index (AQI).
+        Raises: WeatherAPIException: If there is an error communicating with the Weather API.
+        """
+        params = {
+            'q': 'Tallinn',
+            'aqi': 'yes',
+            'key': config('WEATHER_API_KEY')
+        }
+
         try:
-
-            response = requests.get(f"{WEATHER_API_URL}/current.json", {
-                'key': config('WEATHER_API_KEY'),
-                'q'  : 'Tallinn',
-                'aqi': 'yes'
-            })
-
+            response = requests.get(
+                url = f"{WEATHER_API_URL}/current.json",
+                params = params,
+                timeout = 30
+            )
             response.raise_for_status()
+
             return Response(response.json())
 
-        except requests.RequestException as exception:
+        except RequestException as exception:
             print(f"Error fetching current weather: {exception}")
-            raise WeatherAPIException(detail = "Error fetching current weather.")
-
-        except Exception as exception:
-            print(f"Unexpected error: {exception}")
-            raise APIException(
-                detail = f"An unexpected error occurred.",
-                code = status.HTTP_500_INTERNAL_SERVER_ERROR
-            )
+            raise WeatherAPIException(detail = "Error fetching current weather.") from exception
 
 
 class WeatherForecast(APIView):
-    """
-    API endpoint to retrieve a 10-day weather forecast.
+    """ API endpoint to retrieve a 10-day weather forecast for a given location. """
 
-    This endpoint communicates with the external Weather API to fetch
-    weather forecast data for a specified location. The location can
-    be provided via the `q` query parameter. If no location is provided,
-    it defaults to "Tallinn".
-
-    Throttling:
-        The endpoint is throttled using `UserRateThrottle` to prevent abuse.
-
-    Response:
-        A JSON object containing the 10-day weather forecast, including
-        daily temperatures, precipitation, alerts, and air quality.
-
-    Raises:
-        WeatherAPIException: If there is an error communicating with the Weather API.
-    """
     throttle_classes = [UserRateThrottle]
 
-    def get(self, request) -> Response:
-        try:
-            response = requests.get(f"{WEATHER_API_URL}/forecast.json", {
-                'key'    : config('WEATHER_API_KEY'),
-                'q'      : 'Tallinn',
-                'aqi'    : 'yes',
-                'days'   : 10,
-                'alerts' : 'yes'
-            })
+    def get(self) -> Response:
+        """
+        Handle GET request to fetch the 10-day weather forecast for Tallinn.
 
+        Returns: Response: A JSON response containing the 10-day weather forecast data,
+        including temperature, humidity, air quality index (AQI), and any weather alerts.
+        Raises: WeatherAPIException: If there is an error communicating with the Weather API.
+        """
+        params = {
+            'key': config('WEATHER_API_KEY'),
+            'q': 'Tallinn',
+            'aqi': 'yes',
+            'days': 10,
+            'alerts': 'yes'
+        }
+
+        try:
+            response = requests.get(
+                url = f"{WEATHER_API_URL}/forecast.json",
+                params = params,
+                timeout = 30
+            )
             response.raise_for_status()
+
             return Response(response.json())
 
-        except requests.RequestException as exception:
+        except RequestException as exception:
             print(f"Error fetching weather forecast: {exception}")
-            raise WeatherAPIException(detail="Error fetching weather forecast")
-
-        except Exception as exception:
-            print(f"Unexpected error: {exception}")
-            raise APIException(
-                detail = f"An unexpected error occurred.",
-                code = status.HTTP_500_INTERNAL_SERVER_ERROR
-            )
+            raise WeatherAPIException(detail="Error fetching weather forecast") from exception
