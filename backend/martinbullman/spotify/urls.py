@@ -18,11 +18,11 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('profile', views.Profile().as_view()),
-    path('playlists', views.Playlist().as_view()),
-    path('following', views.Following().as_view()),
-    path('top_tracks', views.TopTracks().as_view()),
-    path('top_artists', views.TopArtists().as_view()),
-    path('recently_played', views.RecentlyPlayed().as_view()),
-    path('currently_playing', views.CurrentlyPlaying().as_view())
+    path('profile', views.Profile().as_view(), name='profile'),
+    path('playlists', views.Playlist().as_view(), name='playlists'),
+    path('following', views.Following().as_view(), name='following'),
+    path('top_tracks', views.TopTracks().as_view(), name='top_tracks'),
+    path('top_artists', views.TopArtists().as_view(), name='top_artists'),
+    path('recently_played', views.RecentlyPlayed().as_view(), name='recently_played'),
+    path('currently_playing', views.CurrentlyPlaying().as_view(), name='currently_playing'),
 ]
