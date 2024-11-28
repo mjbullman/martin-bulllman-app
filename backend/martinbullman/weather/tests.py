@@ -5,7 +5,7 @@ The tests verify the functionality of weather data retrieval
 via the API endpoints for both current and forecast data.
 """
 
-from .constants import *
+from .constants import WEATHER_API_URL
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
 

@@ -8,7 +8,7 @@ Each test checks the correctness of the API responses and the presence
 of expected data fields in the responses.
 """
 
-from .constants import *
+from .constants import SPOTIFY_API_URL
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
 
