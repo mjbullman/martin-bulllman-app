@@ -1,16 +1,12 @@
 import logging
 
-from ..constants import *
+from .constants import *
 from decouple import config
 from datetime import datetime
 from mailjet_rest import Client
+from requests.exceptions import RequestException
 
-logger = logging.getLogger(__name__)
-
-api_key = config('MAILJET_API_KEY')
-api_secret = config('MAILJET_API_SECRET')
-mailjet = Client(auth=(api_key, api_secret), version='v3.1')
-
+mailjet = Client(auth=(config('MAILJET_API_KEY'), config('MAILJET_API_SECRET')), version='v3.1')
 
 def send_contact_form_receipt_email(name, email):
     """
@@ -49,10 +45,10 @@ def send_contact_form_receipt_email(name, email):
     }
 
     try:
-        return mailjet.send.create(data=data)
-    except Exception as e:
-        logger.error('send_contact_form_receipt_email error: {}'.format(e))
-        return None
+        return mailjet.send.create(data = data)
+    except RequestException as exception:
+        print(f"Error sending Mailjet email : {exception}")
+        raise
 
 
 def send_contact_form_message_email(name, email, message):
@@ -95,8 +91,7 @@ def send_contact_form_message_email(name, email, message):
     }
 
     try:
-        return mailjet.send.create(data=data)
-    except Exception as e:
-        logger.error('send_contact_form_receipt_email error: {}'.format(e))
-        return None
-
+        return mailjet.send.create(data = data)
+    except RequestException as exception:
+        print(f"Error sending Mailjet email : {exception}")
+        raise
