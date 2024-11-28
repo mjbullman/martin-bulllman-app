@@ -5,7 +5,7 @@ from decouple import config, Csv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('APP_DEBUG', default=False, cast=bool)
+DEBUG = config('APP_DEBUG', default = False, cast = bool)
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -145,8 +145,6 @@ REST_FRAMEWORK = {
     }
 }
 
-import os
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 LOGGING = {
@@ -164,18 +162,17 @@ LOGGING = {
             'class': 'logging.StreamHandler',
         },
         'file': {
-            'level': 'ERROR',  # Capture only ERROR and CRITICAL logs
+            'level': 'ERROR',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs/errors.log'),  # Specify the file where errors are logged
-            'formatter': 'detailed',  # Use the detailed formatter
+            'filename': os.path.join(BASE_DIR, 'logs/errors.log'),
+            'formatter': 'detailed',
         },
     },
     'loggers': {
         'django': {
             'handlers': ['file'],
-            'level': 'ERROR',  # Log only errors and critical issues
+            'level': 'ERROR',
             'propagate': True,
         },
     },
 }
-
