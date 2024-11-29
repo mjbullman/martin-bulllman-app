@@ -6,7 +6,7 @@ The views handle API requests for retrieving weather data, including current wea
 """
 
 import requests
-from .constants import *
+from .constants import WEATHER_API_URL
 from decouple import config
 from requests.exceptions import RequestException
 
