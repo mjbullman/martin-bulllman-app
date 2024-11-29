@@ -1,4 +1,4 @@
-import logging
+""" This module defines methods for sending emails in Utils application. """
 
 from .constants import *
 from decouple import config
@@ -6,7 +6,11 @@ from datetime import datetime
 from mailjet_rest import Client
 from requests.exceptions import RequestException
 
-mailjet = Client(auth=(config('MAILJET_API_KEY'), config('MAILJET_API_SECRET')), version='v3.1')
+mailjet = Client(
+    auth = (config('MAILJET_API_KEY'), config('MAILJET_API_SECRET')),
+    version = 'v3.1'
+)
+
 
 def send_contact_form_receipt_email(name, email):
     """
