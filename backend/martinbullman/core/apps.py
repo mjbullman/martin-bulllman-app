@@ -5,6 +5,7 @@ It specifies the app's metadata and provides an entry point for
 app-specific initialization, such as signal registration or
 custom setup tasks.
 """
+
 from django.apps import AppConfig
 
 
