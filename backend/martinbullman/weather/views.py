@@ -1,9 +1,8 @@
 """
-This module contains views for the Weather application.
+This module contains views for interacting with the Weather API.
 
-The views handle API requests for retrieving weather data,
-including current weather and 10-day forecasts, by
-interacting with an external Weather API.
+The views handle API requests for retrieving weather data, including current weather and
+10-day forecasts, by interacting with an external Weather API.
 """
 
 import requests
