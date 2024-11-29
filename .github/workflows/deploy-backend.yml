@@ -46,7 +46,7 @@ jobs:
 
   test:
     # test job depends on the lint job.
-    # needs: lint
+    needs: lint
     runs-on: ubuntu-latest
 
     steps:
