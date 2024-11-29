@@ -1,4 +1,4 @@
-""" This module contains views for the Utils application. """
+""" This module defines views for the Utils application. """
 
 # from django.shortcuts import render
 

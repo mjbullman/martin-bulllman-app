@@ -1,4 +1,4 @@
-""" This module contains views for the Core application. """
+""" This module defines views for the Core application. """
 
 import requests
 from decouple import config

@@ -1,5 +1,5 @@
 """
-This module contains views for interacting with the Weather API.
+This module defines views for interacting with the Weather API.
 
 The views handle API requests for retrieving weather data, including current weather and
 10-day forecasts, by interacting with an external Weather API.
