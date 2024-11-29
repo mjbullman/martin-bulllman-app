@@ -1,6 +1,8 @@
+""" Settings for martinbullman project. """
+
 import os
 from pathlib import Path
-from decouple import config, Csv
+from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -15,7 +17,7 @@ ALLOWED_HOSTS = [
     'www.martinbullman.xyz'
 ]
 
-# Application definition.
+# application definition.
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -93,7 +95,7 @@ if os.environ.get('GITHUB_WORKFLOW'):
         }
     }
 
-# Email settings.
+# email settings.
 EMAIL_HOST          = config('EMAIL_HOST')
 EMAIL_PORT          = config('EMAIL_PORT')
 EMAIL_USE_TLS       = True
@@ -102,7 +104,7 @@ EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST_USER     = config('EMAIL_USERNAME')
 EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
 
-# Password validation.
+# password validation.
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -118,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization.
+# internationalization.
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -127,11 +129,11 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images).
+# static files (CSS, JavaScript, Images).
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = 'static/'
 
-# Default primary key field type.
+# default primary key field type.
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
