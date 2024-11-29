@@ -1,5 +1,5 @@
 """
-This module contains unit tests for the Spotify application.
+This module defines unit tests for the Spotify application.
 
 The tests verify the functionality of the Spotify API endpoints,
 including user profile retrieval, playlist details, following artists,

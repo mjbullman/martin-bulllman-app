@@ -1,5 +1,5 @@
 """
-This module contains unit tests for the Weather application.
+This module defines unit tests for the Weather application.
 
 The tests verify the functionality of weather data retrieval
 via the API endpoints for both current and forecast data.
