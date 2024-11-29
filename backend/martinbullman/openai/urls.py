@@ -11,4 +11,3 @@ from django.urls import path
 urlpatterns = [
     path('chat', views.OpenAI.as_view(), name = 'chat-bot')
 ]
-
