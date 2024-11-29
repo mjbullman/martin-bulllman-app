@@ -39,9 +39,9 @@ jobs:
 
       # step 4: run the pylint.
       - name: Run Pylint
-        working-directory: ./backend/martinbullman
+        working-directory: ./backend
         run: |
-          pylint $(git ls-files '*.py')
+          pylint martinbullman
 
   test:
     # test job depends on the lint job.
@@ -53,17 +53,20 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      # step 2: setup python.
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
+      # step 3: install project dependencies.
       - name: Install Dependencies
         working-directory: ./backend/martinbullman
         run: |
             python -m pip install --upgrade pip
             pip install -r requirements.txt    
 
+      # step 4: run tests.
       - name: Run Tests
         working-directory: ./backend/martinbullman
         env:
@@ -92,12 +95,10 @@ jobs:
         run: |
           python manage.py test    
 
-
   build:
     # build job depends on the test job.
     needs: test
     runs-on: ubuntu-latest
-
 
     steps:
     - uses: actions/checkout@v3
