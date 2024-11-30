@@ -8,7 +8,7 @@ Each test checks the correctness of the API responses and the presence
 of expected data fields in the responses.
 """
 
-from .constants import SPOTIFY_API_URL
+from .constants import SPOTIFY_APP_URL
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
 
@@ -22,9 +22,10 @@ class SpotifyTest (APITestCase):
     top artists, and recently played tracks. Each test checks if the response
     is successful (status code 200) and validates the expected data fields.
     """
+
     def __init__(self, *args, **kwargs):
         """
-        Init the class and  API client for testing.
+        Init the class and API client for testing.
 
         """
         super().__init__(*args, **kwargs)
@@ -38,7 +39,7 @@ class SpotifyTest (APITestCase):
         This test checks if the profile endpoint returns the correct user profile data.
         It verifies that the response contains the 'display_name' and 'email' fields.
         """
-        response = self.client.get(f"{SPOTIFY_API_URL}/profile", format = 'json')
+        response = self.client.get(f"{SPOTIFY_APP_URL}/profile", format = 'json')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -53,7 +54,7 @@ class SpotifyTest (APITestCase):
         with the expected fields. It verifies that the response contains the 'items'
         and 'total' fields.
         """
-        response = self.client.get(f"{SPOTIFY_API_URL}/playlists", format='json')
+        response = self.client.get(f"{SPOTIFY_APP_URL}/playlists", format='json')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('items', response.data)
@@ -67,7 +68,7 @@ class SpotifyTest (APITestCase):
         the user is following. It verifies that the response contains the 'artists'
         field.
         """
-        response = self.client.get(f"{SPOTIFY_API_URL}/following", format = 'json')
+        response = self.client.get(f"{SPOTIFY_APP_URL}/following", format = 'json')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('artists', response.data)
@@ -80,7 +81,7 @@ class SpotifyTest (APITestCase):
         with the expected fields. It verifies that the response contains the 'items'
         and 'total' fields.
         """
-        response = self.client.get(f"{SPOTIFY_API_URL}/top_tracks", format = 'json')
+        response = self.client.get(f"{SPOTIFY_APP_URL}/top_tracks", format = 'json')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('items', response.data)
@@ -94,7 +95,7 @@ class SpotifyTest (APITestCase):
         with the expected fields. It verifies that the response contains the 'items'
         and 'total' fields.
         """
-        response = self.client.get(f"{SPOTIFY_API_URL}/top_artists", format = 'json')
+        response = self.client.get(f"{SPOTIFY_APP_URL}/top_artists", format = 'json')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('items', response.data)
@@ -108,7 +109,7 @@ class SpotifyTest (APITestCase):
         list of tracks that the user has recently played. It verifies that the
         response contains the 'items' field.
         """
-        response = self.client.get(f"{SPOTIFY_API_URL}/recently_played", format = 'json')
+        response = self.client.get(f"{SPOTIFY_APP_URL}/recently_played", format = 'json')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('items', response.data)

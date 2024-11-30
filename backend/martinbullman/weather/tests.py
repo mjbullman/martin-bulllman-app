@@ -5,7 +5,7 @@ The tests verify the functionality of weather data retrieval
 via the API endpoints for both current and forecast data.
 """
 
-from .constants import WEATHER_API_URL
+from .constants import WEATHER_APP_URL
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
 
@@ -18,14 +18,12 @@ class WeatherTest(APITestCase):
     - Current weather data retrieval.
     - 10-day weather forecast data retrieval.
     """
-
-    def setUp(self):
+    def __init__(self, *args, **kwargs):
         """
-        Set up the API client used for testing.
+        Init the class and API client for testing.
 
-        This method is run before each test to ensure a fresh
-        client instance for consistent testing results.
         """
+        super().__init__(*args, **kwargs)
         self.client = APIClient()
 
     def test_weather_current(self):
@@ -36,7 +34,7 @@ class WeatherTest(APITestCase):
         - The endpoint returns a 200 OK status.
         - The response contains both 'location' and 'current' data.
         """
-        response = self.client.get(f"{WEATHER_API_URL}/current", format='json')
+        response = self.client.get(f"{WEATHER_APP_URL}/current", format = 'json')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('location', response.data, "Response missing 'location' data.")
@@ -50,7 +48,7 @@ class WeatherTest(APITestCase):
         - The endpoint returns a 200 OK status.
         - The response contains both 'location' and 'forecast' data.
         """
-        response = self.client.get(f"{WEATHER_API_URL}/forecast", format='json')
+        response = self.client.get(f"{WEATHER_APP_URL}/forecast", format = 'json')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('location', response.data, "Response missing 'location' data.")
