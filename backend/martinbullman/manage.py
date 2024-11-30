@@ -10,7 +10,7 @@ def main():
     """ Run administrative tasks. """
 
     # add project root to python path.
-    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    # sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     # set the settings to environment.
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'martinbullman.settings')
 

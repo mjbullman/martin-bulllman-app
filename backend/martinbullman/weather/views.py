@@ -28,7 +28,7 @@ class WeatherCurrent(APIView):
 
     throttle_classes = [UserRateThrottle]
 
-    def get(self) -> Response:
+    def get(self, request) -> Response:
         """
         Handle GET requests to fetch the current weather data for Tallinn.
 
@@ -62,7 +62,7 @@ class WeatherForecast(APIView):
 
     throttle_classes = [UserRateThrottle]
 
-    def get(self) -> Response:
+    def get(self, request) -> Response:
         """
         Handle GET request to fetch the 10-day weather forecast for Tallinn.
 
@@ -90,4 +90,4 @@ class WeatherForecast(APIView):
 
         except RequestException as exception:
             print(f"Error fetching weather forecast: {exception}")
-            raise WeatherAPIException(detail="Error fetching weather forecast") from exception
+            raise WeatherAPIException(detail = "Error fetching weather forecast") from exception
