@@ -10,7 +10,7 @@ from rest_framework.response import Response
 from rest_framework.throttling import UserRateThrottle
 
 from .constants import GOOGLE_RECAPTCHA_SITE_VERIFY
-from ..utils.email import (send_contact_form_message_email, send_contact_form_receipt_email)
+from utils.email import (send_contact_form_message_email, send_contact_form_receipt_email)
 
 
 class ContactForm(APIView):
