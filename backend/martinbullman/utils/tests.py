@@ -1,10 +1,10 @@
 """ This module defines unit tests for the Utils application. """
 
-from unittest.mock import patch, MagicMock
-from rest_framework.test import APITestCase
-from utils.email import (send_contact_form_receipt_email,
-                                       send_contact_form_message_email)
-
+# from unittest.mock import patch, MagicMock
+# from rest_framework.test import APITestCase
+# from utils.email import (send_contact_form_receipt_email,
+#                                        send_contact_form_message_email)
+#
 
 # class EmailTests(APITestCase):
 #     """

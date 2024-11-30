@@ -98,7 +98,7 @@ class SpotifyBaseView(APIView):
 class Profile(SpotifyBaseView):
     """ Fetch the user's Spotify profile information. """
 
-    def get(self, request) -> Response:
+    def get(self, request) -> Response:  # pylint: disable=unused-argument
         """
         Handle GET request to fetch the authenticated user's profile from Spotify.
 
@@ -122,7 +122,7 @@ class Profile(SpotifyBaseView):
 class Playlist(SpotifyBaseView):
     """ Fetch the user's playlists from Spotify. """
 
-    def get(self, request) -> Response:
+    def get(self, request) -> Response:  # pylint: disable=unused-argument
         """
         Handle GET request to fetch the user's playlists on Spotify.
 
@@ -152,7 +152,7 @@ class Playlist(SpotifyBaseView):
 class Following(SpotifyBaseView):
     """ Fetch the artists the user is following on Spotify. """
 
-    def get(self, request) -> Response:
+    def get(self, request) -> Response:  # pylint: disable=unused-argument
         """
         Handle GET request to fetch the artists that the user is following on Spotify.
 
@@ -184,7 +184,7 @@ class Following(SpotifyBaseView):
 class TopTracks(SpotifyBaseView):
     """ Fetch the user's top tracks from Spotify API """
 
-    def get(self, request) -> Response:
+    def get(self, request) -> Response:  # pylint: disable=unused-argument
         """
         Handle GET request to fetch the user's top tracks from Spotify.
 
@@ -221,7 +221,7 @@ class TopTracks(SpotifyBaseView):
 class TopArtists(SpotifyBaseView):
     """ Fetch the user's top artists from Spotify API """
 
-    def get(self, request) -> Response:
+    def get(self, request) -> Response:  # pylint: disable=unused-argument
         """
         Handle GET request to fetch the user's top artists from Spotify.
 
@@ -258,7 +258,7 @@ class TopArtists(SpotifyBaseView):
 class RecentlyPlayed(SpotifyBaseView):
     """ Fetch the user's recently played tracks from the Spotify API."""
 
-    def get(self, request) -> Response:
+    def get(self, request) -> Response:  # pylint: disable=unused-argument
         """
         Handle GET request to fetch the user's recently played tracks from Spotify.
 
@@ -290,7 +290,7 @@ class RecentlyPlayed(SpotifyBaseView):
 class CurrentlyPlaying(SpotifyBaseView):
     """ Fetch the currently playing track from the Spotify API. """
 
-    def get(self, request) -> Response:
+    def get(self, request) -> Response:  # pylint: disable=unused-argument
         """
         Handle GET request to fetch the currently playing track from Spotify.
 

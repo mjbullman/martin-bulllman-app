@@ -28,7 +28,7 @@ class WeatherCurrent(APIView):
 
     throttle_classes = [UserRateThrottle]
 
-    def get(self, request) -> Response:
+    def get(self, request) -> Response:  # pylint: disable=unused-argument
         """
         Handle GET requests to fetch the current weather data for Tallinn.
 
@@ -62,7 +62,7 @@ class WeatherForecast(APIView):
 
     throttle_classes = [UserRateThrottle]
 
-    def get(self, request) -> Response:
+    def get(self, request) -> Response:  # pylint: disable=unused-argument
         """
         Handle GET request to fetch the 10-day weather forecast for Tallinn.
 
