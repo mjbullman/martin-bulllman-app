@@ -42,7 +42,7 @@ jobs:
       - name: Run Pylint
         working-directory: ./backend
         run: |
-          pylint martinbullman
+          pylint $(git ls-files '*.py')     
 
   test:
     # test job depends on the lint job.
