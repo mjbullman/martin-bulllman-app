@@ -103,7 +103,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # step 4: archive the build output into a tarball.
+    # step 1: checkout the code from the repository.
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # step 4: archive the build output into a tarball.
     - name: Archive Artifacts
       run: tar czf ../"${{ env.github_sha }}".tar.gz backend
 
