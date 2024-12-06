@@ -103,22 +103,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # step 1: checkout the code from the repository.
-    - name: Checkout Code
-      uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-    # step 4: archive the build output into a tarball.
-    - name: Archive Artifacts
-      run: tar czf ../"${{ env.github_sha }}".tar.gz backend
+      - name: Verify Directory
+        run: ls -R
 
-    # step 5: upload the archived artifacts for later use in deployment.
-    - name: Store Artifacts
-      uses: actions/upload-artifact@v4
-      with:
-       name: backend-artifacts
-       path: ${{ env.github_sha }}.tar.gz
+      - name: Archive Artifacts
+        working-directory: ./backend/martinbullman
+        run: tar czf ../../${{ env.GITHUB_SHA }}.tar.gz .
 
-  deploy:
+      - name: List Generated Tarball
+        run: ls -l ../../
+
+      - name: Store Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-artifacts
+          path: ../../${{ env.GITHUB_SHA }}.tar.gz
+    
+
+    deploy:
     # Deployment depends on the test job.
     needs: build
     runs-on: ubuntu-latest
