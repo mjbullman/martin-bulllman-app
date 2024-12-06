@@ -105,7 +105,6 @@ jobs:
     steps:
       # step 4: archive the build output into a tarball.
     - name: Archive Artifacts
-      working-directory: ./backend/
       run: tar czf ../"${{ env.github_sha }}".tar.gz backend
 
     # step 5: upload the archived artifacts for later use in deployment.
