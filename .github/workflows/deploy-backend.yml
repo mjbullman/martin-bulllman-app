@@ -15,7 +15,6 @@ env:
   PYTHON_VERSION: 3.11.10
   GITHUB_SHA: ${{ github.sha }}
   GITHUB_REF: ${{ github.ref }}
-  PATH: "/home/ubuntu"
 
 jobs:
   lint:
