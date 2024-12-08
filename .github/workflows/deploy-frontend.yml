@@ -47,14 +47,14 @@ jobs:
       # step 4: archive the build output into a tarball.
       - name: Archive Artifacts
         working-directory: ./frontend/
-        run: tar czf ../${{ env.FILENAME }} .output
+        run: tar -czf ../${{ env.FILENAME }} .output
 
       # step 5: upload the archived artifacts for later use in deployment.
       - name: Store Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: frontend-artifacts
-          path: ${{ env.FILENAME }}.tar.gz
+          path: ${{ env.FILENAME }}
 
   deploy:
     # deployment job depends on the build job.
@@ -76,7 +76,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           target: /home/ubuntu
-          source: ${{ env.FILENAME }}.tar.gz
+          source: ${{ env.FILENAME }}
 
       # step 4: extract the artifacts and restart the application.
       - name: Extract and Restart Frontend
