@@ -87,7 +87,6 @@ jobs:
           script: |
             mkdir -p "frontend_releases/${{ env.GITHUB_SHA }}"
             tar -xzf ${{ env.GITHUB_SHA }}.tar.gz -C "frontend_releases/${{ env.GITHUB_SHA }}"
-            rm -r ${{ env.GITHUB_SHA }}.tar.gz 
             cp -r "frontend_releases/${{ env.GITHUB_SHA }}/*" "MartinBullmanApp/frontend"
             
             # ensure node.js environment is loaded.
