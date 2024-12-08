@@ -109,14 +109,14 @@ jobs:
 
     # step 4: archive the build output into a tarball.
     - name: Archive Artifacts
-      run: tar czf ../"${{ env.github_sha }}".tar.gz backend
+      run: tar czf ../"${{ env.GITHUB_SHA }}".tar.gz backend
 
     # step 5: upload the archived artifacts for later use in deployment.
     - name: Store Artifacts
       uses: actions/upload-artifact@v4
       with:
        name: backend-artifacts
-       path: ${{ env.github_sha }}.tar.gz
+       path: ${{ env.GITHUB_SHA }}.tar.gz
 
   deploy:
     # Deployment depends on the test job.
@@ -135,34 +135,34 @@ jobs:
       - name: Deploy Artifacts
         uses: appleboy/scp-action@master
         with:
-          host: ${{ secrets.lightsail_host }}
+          host: ${{ secrets.LIGHTSAIL_HOST }}
           username: ubuntu
-          key: ${{ secrets.lightsail_ssh_key }}
+          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           target: /home/ubuntu/MartinBullmanApp/backend
-          source: ./downloaded-artifacts/${{ env.github_sha }}.tar.gz
+          source: ./downloaded-artifacts/${{ env.GITHUB_SHA }}.tar.gz
 
       # Step 3: Extract the artifacts, run migrations, and restart the service.
       - name: Extract and Restart Backend
         uses: appleboy/ssh-action@v0.1.8
         with:
-          host: ${{ secrets.lightsail_host }}
+          host: ${{ secrets.LIGHTSAIL_HOST }}
           username: ubuntu
-          key: ${{ secrets.lightsail_ssh_key }}
+          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           script: |
             # Navigate to backend directory
-            mkdir -p "/home/ubuntu/releases/${{ env.github_sha }}"
-            tar xzf "/home/ubuntu/MartinBullmanApp/backend/${{ env.github_sha }}.tar.gz" -C "/home/ubuntu/backend/releases/${{ env.github_sha }}"
+            mkdir -p "/home/ubuntu/releases/${{ env.GITHUB_SHA }}"
+            tar xzf "/home/ubuntu/MartinBullmanApp/backend/${{ env.GITHUB_SHA }}.tar.gz" -C "/home/ubuntu/backend/releases/${{ env.GITHUB_SHA }}"
 
             # Activate Python virtual environment
           
             source /home/ubuntu/MartinBullmanApp/venv/bin/activate
 
             # Install dependencies and run migrations
-            pip install -r "/home/ubuntu/MartinBullmanApp/backend/releases/${{ env.github_sha }}/requirements.txt"
-            python "/home/ubuntu/backend/releases/${{ env.github_sha }}/manage.py" migrate
+            pip install -r "/home/ubuntu/MartinBullmanApp/backend/releases/${{ env.GITHUB_SHA }}/requirements.txt"
+            python "/home/ubuntu/backend/releases/${{ env.GITHUB_SHA }}/manage.py" migrate
 
             # Collect static files
-            python "/home/ubuntu/backend/releases/${{ env.github_sha }}/manage.py" collectstatic --noinput
+            python "/home/ubuntu/backend/releases/${{ env.GITHUB_SHA }}/manage.py" collectstatic --noinput
 
             # Restart backend application (systemd example)
             sudo systemctl restart martinbullman-backend.service
