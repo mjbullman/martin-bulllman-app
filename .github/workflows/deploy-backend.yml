@@ -38,7 +38,7 @@ jobs:
             python -m pip install --upgrade pip
             pip install -r requirements.txt  
 
-      # step 4: run the pylint.
+      # step 4: run pylint to check for code issues.
       - name: Run Pylint
         working-directory: ./backend
         run: |
@@ -54,7 +54,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # step 2: setup python.
+      # step 2: setup python with specific version.
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -99,6 +99,7 @@ jobs:
           python manage.py test    
 
   build:
+    # build depends on the test job.
     needs: test
     runs-on: ubuntu-latest
 
@@ -107,12 +108,12 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
 
-    # step 4: archive the build output into a tarball.
+    # step 2: archive the backend files into a tarball.
     - name: Archive Artifacts
       working-directory: ./backend
       run: tar -czf ../${{ env.GITHUB_SHA }}.tar.gz ./*
 
-    # step 5: upload the archived artifacts for later use in deployment.
+    # step 3: upload the archived artifacts for later use in deployment.
     - name: Store Artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -120,29 +121,28 @@ jobs:
        path: ${{ env.GITHUB_SHA }}.tar.gz
 
   deploy:
-    # Deployment depends on the test job.
+    # deployment depends on the test job.
     needs: build
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Download the build artifacts (optional, if you bundle or package backend code).
+      # step 1: download the build artifacts from the build job.
       - name: Download Artifacts
         uses: actions/download-artifact@v4
         with:
           name: backend-artifacts
-          #path: ./downloaded-artifacts
 
-      # Step 2: Copy the backend artifacts to the remote server.
+      # step 2: copy the backend artifacts to the remote server.
       - name: Deploy Artifacts
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.LIGHTSAIL_HOST }}
-          username: ubuntu
+          username: ${{ secrets.LIGHTSAIL_USER }}
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           target: /home/ubuntu/
           source: ${{ env.GITHUB_SHA }}.tar.gz
 
-      # Step 3: Extract the artifacts, run migrations, and restart the service.
+      # step 3: extract the artifacts, run migrations, and restart the service.
       - name: Extract and Restart Backend
         uses: appleboy/ssh-action@v0.1.8
         with:
@@ -151,20 +151,17 @@ jobs:
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           script: |
             # Navigate to backend directory
-            mkdir -p "backend_release/${{ env.GITHUB_SHA }}"
-            tar -xzf ${{ env.GITHUB_SHA }}.tar.gz -C "backend_release/${{ env.GITHUB_SHA }}"
+            mkdir -p "backend_releases/${{ env.GITHUB_SHA }}"
+            tar -xzf ${{ env.GITHUB_SHA }}.tar.gz -C "backend_releases/${{ env.GITHUB_SHA }}"
             rm -r ${{ env.GITHUB_SHA }}.tar.gz 
-            cp -r "backend_release/${{ env.GITHUB_SHA }}/"* "MartinBullmanApp/backend/"
+            cp -r "backend_releases/${{ env.GITHUB_SHA }}/"* "MartinBullmanApp/backend/"
 
-            # Activate Python virtual environment
+            # activate Python virtual environment.
             source MartinBullmanApp/backend/venv/bin/activate
 
-            # Install dependencies and run migrations
+            # install dependencies and run migrations.
             pip install -r "MartinBullmanApp/backend/martinbullman/requirements.txt"
             python "MartinBullmanApp/backend/martinbullman/manage.py" migrate
 
-#            # Collect static files
-#            python "/home/ubuntu/backend/releases/${{ env.GITHUB_SHA }}/manage.py" collectstatic --noinput
-#
-#            # Restart backend application (systemd example)
-#            sudo systemctl restart martinbullman-backend.service
+            # restart backend application.
+            sudo systemctl restart gunicorn
