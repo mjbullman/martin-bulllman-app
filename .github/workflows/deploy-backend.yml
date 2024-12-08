@@ -1,167 +1,168 @@
-## GitHub action to deploy MartinBullmanApp backend.
-#name: deploy-backend
-#
-#on:
-#  # trigger workflow on pushes to the main branch or pull requests targeting the main branch.
-#  push:
-#    branches:
-#      - main
-#  pull_request:
-#    branches:
-#      - main
-#
-#env:
-#  # set environment variables for node.js version and github context values.
-#  PYTHON_VERSION: 3.11.10
-#  GITHUB_SHA: "${{ github.sha }}-backend"
-#  GITHUB_REF: "${{ github.ref }}-backend"
-#
-#jobs:
-#  lint:
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      # step 1: checkout the code from the repository.
-#      - name: Checkout Code
-#        uses: actions/checkout@v4
-#
-#      # step2: setup python.
-#      - name: Set up Python
-#        uses: actions/setup-python@v4
-#        with:
-#          python-version: ${{ env.PYTHON_VERSION }}
-#
-#      # step 3: install project dependencies.
-#      - name: Install Dependencies
-#        working-directory: ./backend/martinbullman
-#        run: |
-#            python -m pip install --upgrade pip
-#            pip install -r requirements.txt
-#
-#      # step 4: run pylint to check for code issues.
-#      - name: Run Pylint
-#        working-directory: ./backend
-#        run: |
-#          pylint $(git ls-files '*.py')
-#
-#  test:
-#    # test job depends on the lint job.
-#    needs: lint
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      # step 1: checkout the code from the repository.
-#      - name: Checkout Code
-#        uses: actions/checkout@v4
-#
-#      # step 2: setup python with specific version.
-#      - name: Set up Python
-#        uses: actions/setup-python@v4
-#        with:
-#          python-version: ${{ env.PYTHON_VERSION }}
-#
-#      # step 3: install project dependencies.
-#      - name: Install Dependencies
-#        working-directory: ./backend/martinbullman
-#        run: |
-#            python -m pip install --upgrade pip
-#            pip install -r requirements.txt
-#
-#      # step 4: run tests.
-#      - name: Run Tests
-#        working-directory: ./backend/martinbullman
-#        env:
-#          API_URL: ${{secrets.API_URL}}
-#
-#          SECRET_KEY: ${{ secrets.SECRET_KEY }}
-#          DB_HOST: ${{ secrets.DB_HOST }}
-#          DB_PORT: ${{ secrets.DB_PORT }}
-#          DB_DATABASE: ${{ secrets.DB_DATABASE }}
-#          DB_USERNAME: ${{ secrets.DB_USERNAME }}
-#          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-#
-#          EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
-#          EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
-#          EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
-#          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-#          EMAIL_FROM_ADDRESS: ${{ secrets.EMAIL_FROM_ADDRESS }}
-#          EMAIL_FROM_NAME: ${{secrets.EMAIL_FROM_NAME}}
-#
-#          MAILJET_API_KEY: ${{secrets.MAILJET_API_KEY}}
-#          MAILJET_API_SECRET: ${{secrets.MAILJET_API_SECRET}}
-#
-#          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
-#          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
-#          SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
-#
-#          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
-#        run: |
-#          python manage.py test
-#
-#  build:
-#    # build depends on the test job.
-#    needs: test
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#    # step 1: checkout the code from the repository.
-#    - name: Checkout Code
-#      uses: actions/checkout@v4
-#
-#    # step 2: archive the backend files into a tarball.
-#    - name: Archive Artifacts
-#      working-directory: ./backend
-#      run: tar -czf ../${{ env.GITHUB_SHA }}.tar.gz ./*
-#
-#    # step 3: upload the archived artifacts for later use in deployment.
-#    - name: Store Artifacts
-#      uses: actions/upload-artifact@v4
-#      with:
-#       name: backend-artifacts
-#       path: ${{ env.GITHUB_SHA }}.tar.gz
-#
-#  deploy:
-#    # deployment depends on the test job.
-#    needs: build
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      # step 1: download the build artifacts from the build job.
-#      - name: Download Artifacts
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: backend-artifacts
-#
-#      # step 2: copy the backend artifacts to the remote server.
-#      - name: Deploy Artifacts
-#        uses: appleboy/scp-action@master
-#        with:
-#          host: ${{ secrets.LIGHTSAIL_HOST }}
-#          username: ${{ secrets.LIGHTSAIL_USER }}
-#          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
-#          target: /home/ubuntu/
-#          source: ${{ env.GITHUB_SHA }}.tar.gz
-#
-#      # step 3: extract the artifacts, run migrations, and restart the service.
-#      - name: Extract and Restart Backend
-#        uses: appleboy/ssh-action@v0.1.8
-#        with:
-#          host: ${{ secrets.LIGHTSAIL_HOST }}
-#          username: ubuntu
-#          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
-#          script: |
-#            # Navigate to backend directory
-#            mkdir -p "backend_releases/${{ env.GITHUB_SHA }}"
-#            tar -xzf ${{ env.GITHUB_SHA }}.tar.gz -C "backend_releases/${{ env.GITHUB_SHA }}"
-#            rm -r ${{ env.GITHUB_SHA }}.tar.gz
-#            cp -r "backend_releases/${{ env.GITHUB_SHA }}/"* "MartinBullmanApp/backend/"
-#
-#            # activate Python virtual environment.
-#            source MartinBullmanApp/backend/venv/bin/activate
-#
-#            # install dependencies and run migrations.
-#            pip install -r "MartinBullmanApp/backend/martinbullman/requirements.txt"
-#            python "MartinBullmanApp/backend/martinbullman/manage.py" migrate
-#
-#            # restart backend application.
-#            sudo systemctl restart gunicorn
+# GitHub action to deploy MartinBullmanApp backend.
+name: deploy-backend
+
+on:
+  # trigger workflow on pushes to the main branch or pull requests targeting the main branch.
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  # set environment variables for node.js version and github context values.
+  PYTHON_VERSION: 3.11.10
+  FILENAME: "${{ github.sha }}-${{ github.run_id }}"
+  GITHUB_SHA: "${{ github.sha }}"
+  GITHUB_REF: "${{ github.ref }}"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      # step 1: checkout the code from the repository.
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # step2: setup python.
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      # step 3: install project dependencies.
+      - name: Install Dependencies
+        working-directory: ./backend/martinbullman
+        run: |
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt  
+
+      # step 4: run pylint to check for code issues.
+      - name: Run Pylint
+        working-directory: ./backend
+        run: |
+          pylint $(git ls-files '*.py')     
+
+  test:
+    # test job depends on the lint job.
+    needs: lint
+    runs-on: ubuntu-latest
+
+    steps:
+      # step 1: checkout the code from the repository.
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # step 2: setup python with specific version.
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      # step 3: install project dependencies.
+      - name: Install Dependencies
+        working-directory: ./backend/martinbullman
+        run: |
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt    
+
+      # step 4: run tests.
+      - name: Run Tests
+        working-directory: ./backend/martinbullman
+        env:
+          API_URL: ${{secrets.API_URL}}
+
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_DATABASE: ${{ secrets.DB_DATABASE }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+
+          EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+          EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
+          EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_FROM_ADDRESS: ${{ secrets.EMAIL_FROM_ADDRESS }}
+          EMAIL_FROM_NAME: ${{secrets.EMAIL_FROM_NAME}}
+
+          MAILJET_API_KEY: ${{secrets.MAILJET_API_KEY}}
+          MAILJET_API_SECRET: ${{secrets.MAILJET_API_SECRET}}
+
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
+
+          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
+        run: |
+          python manage.py test    
+
+  build:
+    # build depends on the test job.
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+    # step 1: checkout the code from the repository.
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # step 2: archive the backend files into a tarball.
+    - name: Archive Artifacts
+      working-directory: ./backend
+      run: tar -czf ../${{ env.FILENAME }}.tar.gz ./*
+
+    # step 3: upload the archived artifacts for later use in deployment.
+    - name: Store Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+       name: backend-artifacts
+       path: ${{ env.FILENAME }}.tar.gz
+
+  deploy:
+    # deployment depends on the test job.
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      # step 1: download the build artifacts from the build job.
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: backend-artifacts
+
+      # step 2: copy the backend artifacts to the remote server.
+      - name: Deploy Artifacts
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.LIGHTSAIL_HOST }}
+          username: ${{ secrets.LIGHTSAIL_USER }}
+          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+          target: /home/ubuntu/
+          source: ${{ env.FILENAME }}.tar.gz
+
+      # step 3: extract the artifacts, run migrations, and restart the service.
+      - name: Extract and Restart Backend
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.LIGHTSAIL_HOST }}
+          username: ubuntu
+          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+          script: |
+            # Navigate to backend directory
+            mkdir -p "backend_releases/${{ env.FILENAME }}"
+            tar -xzf ${{ env.FILENAME }}.tar.gz -C "backend_releases/${{ env.FILENAME }}"
+            cp -r "backend_releases/${{ env.FILENAME }}/"* "MartinBullmanApp/backend/"
+            rm -r ${{ env.FILENAME }}.tar.gz 
+
+            # activate Python virtual environment.
+            source MartinBullmanApp/backend/venv/bin/activate
+
+            # install dependencies and run migrations.
+            pip install -r "MartinBullmanApp/backend/martinbullman/requirements.txt"
+            python "MartinBullmanApp/backend/martinbullman/manage.py" migrate
+
+            # restart backend application.
+            sudo systemctl restart gunicorn

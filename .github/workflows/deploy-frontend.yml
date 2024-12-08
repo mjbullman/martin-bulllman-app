@@ -89,6 +89,7 @@ jobs:
             mkdir -p frontend_releases/${{ env.FILENAME }}
             tar -xzf ${{ env.FILENAME }}.tar.gz -C frontend_releases/${{ env.FILENAME }}
             cp -r frontend_releases/${{ env.FILENAME }}/.output MartinBullmanApp/frontend
+            rm -r ${{ env.GITHUB_SHA }}.tar.gz 
             
             # ensure node.js environment is loaded.
             export NVM_DIR="$HOME/.nvm"
