@@ -138,8 +138,8 @@ jobs:
           host: ${{ secrets.LIGHTSAIL_HOST }}
           username: ubuntu
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
-          target: /home/ubuntu/MartinBullmanApp/backend
-          source: ./downloaded-artifacts/${{ env.GITHUB_SHA }}.tar.gz
+          target: /home/ubuntu/
+          source: ./${{ env.GITHUB_SHA }}.tar.gz
 
       # Step 3: Extract the artifacts, run migrations, and restart the service.
       - name: Extract and Restart Backend
