@@ -152,11 +152,9 @@ jobs:
           script: |
             # Navigate to backend directory
             mkdir -p "backend_release/${{ env.GITHUB_SHA }}"
-            tar xzf ${{ env.GITHUB_SHA }}.tar.gz -C "backend_release/${{ env.GITHUB_SHA }}"
+            tar -xzf ${{ env.GITHUB_SHA }}.tar.gz -C "backend_release/${{ env.GITHUB_SHA }}"
             rm -r ${{ env.GITHUB_SHA }}.tar.gz 
-            
-
-#            cp "/home/ubuntu/backend_release/${{ env.GITHUB_SHA }}"/* "/home/ubuntu/MartinBullmanApp/backend"
+            cp -r "backend_release/${{ env.GITHUB_SHA }}/"* "MartinBullmanApp/backend/"
 
 #            # Activate Python virtual environment
 #
