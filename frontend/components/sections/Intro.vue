@@ -6,7 +6,7 @@
 
             <h1 class="text-h2 text-md-h1 ma-5" >
 
-               <span class="text-gradient-animation">Martin 1 Bullman</span>
+               <span class="text-gradient-animation">Martin Bullman</span>
 
             </h1>
 
