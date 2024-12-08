@@ -13,7 +13,7 @@ on:
 env:
   # set environment variables for node.js version and github context values.
   NODE_VERSION: 20
-  FILENAME: "${{ github.sha }}-${{ github.run_id }}.tar.gz"
+  FILENAME: "${{ github.sha }}-${{ github.run_id }}"
   GITHUB_SHA: ${{ github.sha }}
   GITHUB_REF: ${{ github.ref }}
 
@@ -47,14 +47,14 @@ jobs:
       # step 4: archive the build output into a tarball.
       - name: Archive Artifacts
         working-directory: ./frontend/
-        run: tar -czf ../${{ env.FILENAME }} .output
+        run: tar -czf ../${{ env.FILENAME }}.tar.gz .output
 
       # step 5: upload the archived artifacts for later use in deployment.
       - name: Store Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: frontend-artifacts
-          path: ${{ env.FILENAME }}
+          path: ${{ env.FILENAME }}.tar.gz
 
   deploy:
     # deployment job depends on the build job.
@@ -76,7 +76,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           target: /home/ubuntu
-          source: ${{ env.FILENAME }}
+          source: ${{ env.FILENAME }}.tar.gz
 
       # step 4: extract the artifacts and restart the application.
       - name: Extract and Restart Frontend
@@ -86,9 +86,9 @@ jobs:
           username: ${{ secrets.LIGHTSAIL_USER }}
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           script: |
-            mkdir -p "frontend_releases/${{ env.FILENAME }}"
-            tar -xzf ${{ env.FILENAME }}.tar.gz -C "frontend_releases/${{ env.FILENAME }}"
-            cp -r "frontend_releases/${{ env.FILENAME }}/.output" "MartinBullmanApp/frontend"
+            mkdir -p frontend_releases/${{ env.FILENAME }}
+            tar -xzf ${{ env.FILENAME }}.tar.gz -C frontend_releases/${{ env.FILENAME }}
+            cp -r frontend_releases/${{ env.FILENAME }}/* MartinBullmanApp/frontend
             
             # ensure node.js environment is loaded.
             export NVM_DIR="$HOME/.nvm"
