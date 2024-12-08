@@ -156,14 +156,13 @@ jobs:
             rm -r ${{ env.GITHUB_SHA }}.tar.gz 
             cp -r "backend_release/${{ env.GITHUB_SHA }}/"* "MartinBullmanApp/backend/"
 
-#            # Activate Python virtual environment
-#
-#            source /home/ubuntu/MartinBullmanApp/backend/venv/bin/activate
-#
-#            # Install dependencies and run migrations
-#            pip install -r "/home/ubuntu/backend_release/${{ env.GITHUB_SHA }}/requirements.txt"
-#            python "/home/ubuntu/backend/releases/${{ env.GITHUB_SHA }}/manage.py" migrate
-#
+            # Activate Python virtual environment
+            source MartinBullmanApp/backend/venv/bin/activate
+
+            # Install dependencies and run migrations
+            pip install -r "MartinBullmanApp/backend/martinbullman/requirements.txt"
+            python "MartinBullmanApp/backend/martinbullman/manage.py" migrate
+
 #            # Collect static files
 #            python "/home/ubuntu/backend/releases/${{ env.GITHUB_SHA }}/manage.py" collectstatic --noinput
 #
