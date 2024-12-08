@@ -15,6 +15,7 @@ env:
   PYTHON_VERSION: 3.11.10
   GITHUB_SHA: ${{ github.sha }}
   GITHUB_REF: ${{ github.ref }}
+  PATH: "/home/ubuntu"
 
 jobs:
   lint:
@@ -150,20 +151,23 @@ jobs:
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           script: |
             # Navigate to backend directory
-            mkdir -p "/home/ubuntu/backend_release/${{ env.GITHUB_SHA }}"
-            tar xzf "/home/ubuntu/downloaded-artifacts/${{ env.GITHUB_SHA }}.tar.gz" -C "/home/ubuntu/backend_release/${{ env.GITHUB_SHA }}"
-            cp "/home/ubuntu/backend_release/${{ env.GITHUB_SHA }}"/* "/home/ubuntu/MartinBullmanApp/backend"
+            mkdir -p "backend_release/${{ env.GITHUB_SHA }}"
+            tar xzf ${{ env.GITHUB_SHA }}.tar.gz -C "backend_release/${{ env.GITHUB_SHA }}"
+            rm -r ${{ env.GITHUB_SHA }}.tar.gz 
+            
 
-            # Activate Python virtual environment
-          
-            source /home/ubuntu/MartinBullmanApp/backend/venv/bin/activate
+#            cp "/home/ubuntu/backend_release/${{ env.GITHUB_SHA }}"/* "/home/ubuntu/MartinBullmanApp/backend"
 
-            # Install dependencies and run migrations
-            pip install -r "/home/ubuntu/backend_release/${{ env.GITHUB_SHA }}/requirements.txt"
-            python "/home/ubuntu/backend/releases/${{ env.GITHUB_SHA }}/manage.py" migrate
-
-            # Collect static files
-            python "/home/ubuntu/backend/releases/${{ env.GITHUB_SHA }}/manage.py" collectstatic --noinput
-
-            # Restart backend application (systemd example)
-            sudo systemctl restart martinbullman-backend.service
+#            # Activate Python virtual environment
+#
+#            source /home/ubuntu/MartinBullmanApp/backend/venv/bin/activate
+#
+#            # Install dependencies and run migrations
+#            pip install -r "/home/ubuntu/backend_release/${{ env.GITHUB_SHA }}/requirements.txt"
+#            python "/home/ubuntu/backend/releases/${{ env.GITHUB_SHA }}/manage.py" migrate
+#
+#            # Collect static files
+#            python "/home/ubuntu/backend/releases/${{ env.GITHUB_SHA }}/manage.py" collectstatic --noinput
+#
+#            # Restart backend application (systemd example)
+#            sudo systemctl restart martinbullman-backend.service
