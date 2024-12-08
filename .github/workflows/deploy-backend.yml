@@ -13,8 +13,8 @@ on:
 env:
   # set environment variables for node.js version and github context values.
   PYTHON_VERSION: 3.11.10
-  GITHUB_SHA: ${{ github.sha }}
-  GITHUB_REF: ${{ github.ref }}
+  GITHUB_SHA: "${{ github.sha }}-backend"
+  GITHUB_REF: "${{ github.ref }}-backend"
 
 jobs:
   lint:

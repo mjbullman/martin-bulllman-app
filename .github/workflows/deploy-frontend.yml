@@ -13,8 +13,8 @@ on:
 env:
   # set environment variables for node.js version and github context values.
   NODE_VERSION: 20
-  GITHUB_SHA: ${{ github.sha }}
-  GITHUB_REF: ${{ github.ref }}
+  GITHUB_SHA: "${{ github.sha }}-frontend"
+  GITHUB_REF: "${{ github.ref }}-frontend"
 
 jobs:
   build:
