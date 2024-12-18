@@ -23,7 +23,7 @@
         "@nuxtjs/sitemap": "^6.1.5",
         "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
         "@nuxt/image": "^1.8.1",
-        "@pinia/nuxt": "^0.5.5",
+        "@pinia/nuxt": "^0.7.0",
         "@vueuse/motion": "^2.2.5",
         "nuxt": "^3.13.1",
         "nuxt-gtag": "^3.0.2",
