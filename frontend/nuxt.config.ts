@@ -1,12 +1,17 @@
 // nuxt main config.
-import vuetify          from 'vite-plugin-vuetify'
-import { isProduction } from 'std-env'
+import vuetify from 'vite-plugin-vuetify'
+
+// imports.
+import { useEnvironment } from './composables/environment'
+
+// composable.
+const { isProduction } = useEnvironment();
 
 export default defineNuxtConfig({
   ssr: true,
 
   devtools: {
-      enabled: false
+      enabled: !isProduction()
   },
 
   site: {
@@ -97,7 +102,7 @@ export default defineNuxtConfig({
       public: {
           baseUrl: process.env.BASE_URL,
           apiBaseUrl: process.env.API_BASE_URL,
-          isProduction: isProduction,
+          isProduction: isProduction(),
           recaptchaSiteKey: process.env.GOOGLE_RECAPTCHA_SITE_KEY
       }
   },
