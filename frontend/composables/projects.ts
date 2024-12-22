@@ -1,5 +1,3 @@
-import { Project } from '~/types/project'
-
 /**
  * A custom hook that retrieves a list of projects.
  *
@@ -18,7 +16,7 @@ import { Project } from '~/types/project'
  *
  * @returns {object} an object containing an array of projects.
  */
-export function useProjects(): { projects: Project[] } {
+export function useProjects(): { projects: object[] } {
 
     const projects: object[] = [
         {
