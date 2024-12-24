@@ -8,10 +8,11 @@
 
             <v-list lines="two" aria-label="My publications">
 
-                <v-list-item v-for="publication in publications.publications"
-                    :key="publication.title" role="option" aria-selected="false">
+                <v-list-item
+                    v-for="publication in publications.publications" :key="publication.title"
+                    role="option" aria-selected="false">
 
-                    <template v-slot:prepend>
+                    <template #prepend>
 
                         <div class="pa-5 d-none d-sm-flex">
 
@@ -21,7 +22,7 @@
 
                     </template>
 
-                    <template v-slot:title>
+                    <template #title>
 
                         <b>
                             <i>
@@ -34,9 +35,10 @@
 
                     </template>
 
-                    <template v-slot:append>
+                    <template #append>
 
-                        <v-btn v-for="link in publication.links" :href="link.href" icon
+                        <v-btn
+                            v-for="link in publication.links" :key="link.id" :href="link.href" icon
                             size="small" flat :aria-label="link.label" target="_blank"
                             class="d-none d-sm-flex">
 
@@ -52,12 +54,20 @@
 
                     </template>
 
-                    <div v-html="publication.text"></div>
+                    <div>
+
+                        {{ publication.text }}
+
+                    </div>
 
                     <div class="mt-2 d-sm-none">
 
-                        <v-btn v-for="link in publication.links" :href="link.href" icon
-                               size="small" flat :aria-label="link.label" target="_blank">
+                        <v-btn
+                            v-for="link in publication.links"
+                            :key="link.id"
+                            :href="link.href"
+                            :aria-label="link.label"
+                            icon size="small" flat target="_blank">
 
                             <v-icon color="primary" :icon="link.icon"></v-icon>
 

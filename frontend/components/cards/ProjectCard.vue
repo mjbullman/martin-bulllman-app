@@ -13,11 +13,18 @@
 
             </h2>
 
-            <v-chip v-if="project.chips" v-for="chip in project.chips" size="x-small" variant="outlined" color="warning" class="mt-3">
+            <span v-if="project.chips">
 
-                {{ chip }}
+                <v-chip
+                    v-for="chip in project.chips"
+                    :key="chip" size="x-small" variant="outlined"
+                    color="warning" class="mt-3">
 
-            </v-chip>
+                    {{ chip }}
+
+                </v-chip>
+
+            </span>
 
         </v-card-title>
 
@@ -29,7 +36,11 @@
 
         <v-card-text class="text-subtitle-1">
 
-            <div v-html="project.text"></div>
+            <div>
+
+                {{ project.text }}
+
+            </div>
 
         </v-card-text>
 
@@ -37,7 +48,10 @@
 
             <div>
 
-                <v-chip v-for="technology in project.technologies" size="small" color="secondary" class="mr-1">
+                <v-chip
+                    v-for="technology in project.technologies"
+                    :key="technology" size="small" color="secondary"
+                    class="mr-1">
 
                     {{ technology }}
 
@@ -49,7 +63,11 @@
 
         <v-card-actions>
 
-            <v-btn v-for="link in project.links" :href="link.href" target="_blank" variant="text" color="primary">
+            <v-btn
+                v-for="link in project.links"
+                :key="link"
+                :href="link.href"
+                target="_blank" variant="text" color="primary">
 
                 {{ link.title }}
 

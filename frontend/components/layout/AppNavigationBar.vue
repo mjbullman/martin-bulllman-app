@@ -19,29 +19,41 @@
         <!-- links -->
         <div class="nav d-none d-md-flex">
 
-            <v-btn to="/about">About</v-btn>
+            <v-btn to="/about">
 
-            <v-btn to="/projects">Projects</v-btn>
+                About
 
-            <v-btn to="/contact">Contact</v-btn>
+            </v-btn>
+
+            <v-btn to="/projects">
+
+                Projects
+
+            </v-btn>
+
+            <v-btn to="/contact">
+
+                Contact
+
+            </v-btn>
 
         </div>
 
         <v-spacer></v-spacer>
 
         <!-- settings & resume -->
-        <template v-slot:append>
+        <template #append>
 
             <!-- change theme -->
             <theme></theme>
 
             <!-- download resume -->
-            <!--<resume></resume>-->
+            <!-- <resume></resume> -->
 
             <!-- toggle mobile menu -->
             <v-menu>
 
-                <template v-slot:activator="{ props }">
+                <template #activator="{ props }">
 
                     <v-btn v-bind="props" icon size="small" class="d-md-none">
 
@@ -84,7 +96,7 @@
 <script setup lang="js">
 
     // components.
-    import Theme  from '~/components/buttons/Theme.vue'
+    import Theme from '~/components/buttons/Theme.vue'
 
 </script>
 

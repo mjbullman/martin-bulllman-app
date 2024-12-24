@@ -2,7 +2,7 @@
 
     <v-main>
 
-        <!-- nuxt router navigation-->
+        <!-- nuxt router navigation -->
         <nuxt-page></nuxt-page>
 
     </v-main>

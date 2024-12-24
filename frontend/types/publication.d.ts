@@ -6,11 +6,11 @@
  * @property {string} label - A short description or name for the link.
  * @property {string} href - The URL that the link points to.
  */
-interface Link {
-    title: string;
-    icon?: string;
-    label: string;
-    href: string;
+export interface Link {
+    title: string
+    icon?: string
+    label: string
+    href: string
 }
 
 /**
@@ -22,10 +22,10 @@ interface Link {
  * @property {string} text - The main content or text of the publication.
  * @property {Link[]} links - An array of Link objects associated with the publication.
  */
-interface Publication {
-    id: number;
-    year: string;
-    title: string;
-    text: string;
-    links: Link[];
+export interface Publication {
+    id: number
+    year: string
+    title: string
+    text: string
+    links: Link[]
 }

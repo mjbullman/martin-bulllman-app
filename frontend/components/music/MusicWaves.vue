@@ -41,7 +41,7 @@
         margin: 0 2px;
         animation: animate 1.2s linear infinite;
     }
-    
+
     @keyframes animate {
         50% {
             height: 20%;

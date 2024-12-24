@@ -24,7 +24,7 @@
 
     // props.
     const props = defineProps<{
-        subHeadingText?: String
+        subHeadingText?: string
     }>()
 
 </script>

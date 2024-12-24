@@ -38,16 +38,16 @@
 <script setup lang="ts">
 
     // components.
-    import ProjectCard    from '~/components/cards/ProjectCard.vue'
+    import ProjectCard from '~/components/cards/ProjectCard.vue'
     import PageSubHeading from '~/components/headings/PageSubHeading.vue'
 
     // composable.
-    import { useProjects }   from '~/composables/projects'
-    import { useAnimations } from '~/composables/animations'
+    import { useProjects } from '~/composables/projects'
+    // import { useAnimations } from '~/composables/animations'
 
     // variables.
-    const projects   = useProjects()
-    const animations = useAnimations()
+    const projects = useProjects()
+    // const animations = useAnimations()
 
 </script>
 
@@ -65,7 +65,7 @@
     .item:hover {
         transform: translateY(-5px);
     }
-    
+
     @media only screen and (min-width: 1920px) {
         .masonry {
             grid-template-columns: repeat(auto-fill, minmax(min(100%, 600px), 1fr));

@@ -13,7 +13,11 @@
                     <div class="masonry">
 
                         <!-- Projects List -->
-                        <project-card v-for="(project) in projects.projects" :project="project"></project-card>
+                        <project-card
+                            v-for="(project) in projects.projects"
+                            :key="project.id"
+                            :project="project">
+                        </project-card>
 
                     </div>
 
@@ -34,12 +38,10 @@
     import PageHeading from '~/components/headings/PageHeading.vue'
 
     // composable.
-    import { useProjects }   from '~/composables/projects'
-    import { useAnimations } from '~/composables/animations'
+    import { useProjects } from '~/composables/projects'
 
     // variables.
-    const projects   = useProjects()
-    const animations = useAnimations()
+    const projects = useProjects()
 
 </script>
 

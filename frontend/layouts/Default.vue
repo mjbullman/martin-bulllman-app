@@ -21,9 +21,9 @@
 
 <script setup lang="ts">
 
-    import AppMain          from '~/components/layout/AppMain.vue'
-    import SnackBar         from '~/components/snackbars/SnackBar.vue'
-    import AppFooter        from '~/components/layout/AppFooter.vue'
+    import AppMain from '~/components/layout/AppMain.vue'
+    import SnackBar from '~/components/snackbars/SnackBar.vue'
+    import AppFooter from '~/components/layout/AppFooter.vue'
     import AppNavigationBar from '~/components/layout/AppNavigationBar.vue'
 
 </script>

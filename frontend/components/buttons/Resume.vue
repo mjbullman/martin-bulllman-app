@@ -4,7 +4,7 @@
 
 <template>
 
-    <v-btn  variant="outlined" color="primary">
+    <v-btn variant="outlined" color="primary">
 
         Resume
 

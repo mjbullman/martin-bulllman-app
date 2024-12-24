@@ -1,5 +1,5 @@
-import { VueReCaptcha }           from 'vue-recaptcha-v3'
-import { type IReCaptchaOptions } from 'vue-recaptcha-v3/dist/IReCaptchaOptions'
+import { VueReCaptcha } from 'vue-recaptcha-v3'
+import type { IReCaptchaOptions } from 'vue-recaptcha-v3/dist/IReCaptchaOptions'
 
 /**
  * The plugin enables the usage of Google reCAPTCHA in a Nuxt.js application.
@@ -12,8 +12,8 @@ export default defineNuxtPlugin((nuxtApp) => {
         loaderOptions: {
             autoHideBadge: true,
             useRecaptchaNet: true
-        },
-    };
+        }
+    }
 
     nuxtApp.vueApp.use(VueReCaptcha, options)
 })

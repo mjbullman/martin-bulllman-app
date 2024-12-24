@@ -1,12 +1,12 @@
-import { ref }         from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useNotifications = defineStore('notifications', () => {
     // state
-    let snackbarData = ref(null)
+    const snackbarData = ref(null)
 
     // actions
-    function updateSnackbarData (payload:any) {
+    function updateSnackbarData (payload: never) {
         snackbarData.value = payload
     }
 

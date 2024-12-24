@@ -21,10 +21,10 @@
 
     // props.
     defineProps({
-        size   : String,
-        color  : String,
-        width  : Number,
-        height : Number
+        size: String,
+        color: String,
+        width: Number,
+        height: Number
     })
 
 </script>

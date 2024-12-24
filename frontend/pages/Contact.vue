@@ -65,15 +65,15 @@
                             prepend-inner-icon="fa-regular fa-message">
                         </v-textarea>
 
-                        <v-btn :loading="loading" class="me-4" type="submit" @click="handleSubmit" color="primary">
+                        <v-btn :loading="loading" class="me-4" type="submit" color="primary" @click="handleSubmit">
 
-                            submit
+                            Submit
 
                         </v-btn>
 
-                        <v-btn @click="handleReset" variant="text">
+                        <v-btn variant="text" @click="handleReset">
 
-                          clear
+                            Clear
 
                         </v-btn>
 
@@ -91,96 +91,96 @@
 
 <script setup lang="ts">
 
+    import { useField, useForm } from 'vee-validate'
     import PageHeading from '~/components/headings/PageHeading.vue'
 
-    import { useNotifications }  from '~/stores/notifications'
-    import { useField, useForm } from 'vee-validate'
-    import useGoogleRecaptcha, {RecaptchaAction} from '~/composables/recaptcha'
+    import { useNotifications } from '~/stores/notifications'
+    import useGoogleRecaptcha, { RecaptchaAction } from '~/composables/recaptcha'
 
-    const runtimeConfig        = useRuntimeConfig()
-    const notifications        = useNotifications()
+    const runtimeConfig = useRuntimeConfig()
+    const notifications = useNotifications()
     const { executeRecaptcha } = useGoogleRecaptcha()
 
-    let loading = ref(false)
+    const loading = ref(false)
 
     interface ContactForm {
-        name    ?: string | null;
-        email   ?: string | null;
-        message ?: string | null;
+        name?: string | null
+        email?: string | null
+        message?: string | null
     }
 
     const { handleSubmit, handleReset } = useForm<ContactForm>({
         validationSchema: {
-            name (value) {
+            name (value: string) {
                 if (value?.length >= 2) {
-                    return true;
+                    return true
                 }
                 else {
-                    return 'Name needs to be at least 2 characters.';
+                    return 'Name needs to be at least 2 characters.'
                 }
             },
-            email (value) {
+            email (value: string) {
                 if (/^[a-z.-]+@[a-z.-]+\.[a-z]+$/i.test(value)) {
-                    return true;
+                    return true
                 }
                 else {
-                    return 'Must be a valid e-mail.';
+                    return 'Must be a valid e-mail.'
                 }
             },
-            message (value) {
+            message (value: string) {
                 if (value?.length >= 2) {
-                    return true;
+                    return true
                 }
                 else {
-                    return 'Message needs to be at least 2 characters.';
+                    return 'Message needs to be at least 2 characters.'
                 }
             }
         }
     })
 
-    const name    = useField('name');
-    const email   = useField('email');
-    const message = useField('message');
+    const name = useField('name')
+    const email = useField('email')
+    const message = useField('message')
 
     const submit = handleSubmit(async values => {
-        loading.value   = true
+        loading.value = true
         const { token } = await executeRecaptcha(RecaptchaAction.contact)
 
         useFetch(runtimeConfig.public.apiBaseUrl + '/contact', {
             method: 'POST',
             body: {
-                name            : values.name,
-                email           : values.email,
-                message         : values.message,
-                recaptcha_token : token
+                name: values.name,
+                email: values.email,
+                message: values.message,
+                recaptcha_token: token
             }
         })
         .then(response => {
             handleReset()
 
             notifications.updateSnackbarData({
-                text       : response.data.value,
-                color      : 'info',
-                toggle     : true,
-                timeout    : 6000,
-                variant    : 'elevated',
-                location   : 'top',
-                multiLine  : false,
-                closeDelay : 100
+                text: response.data.value,
+                color: 'info',
+                toggle: true,
+                timeout: 6000,
+                variant: 'elevated',
+                location: 'top',
+                multiLine: false,
+                closeDelay: 100
             })
         })
         .catch(error => {
             console.log(error)
 
             notifications.updateSnackbarData({
-                text       : error.data.value,
-                color      : 'error',
-                toggle     : true,
-                timeout    : 6000,
-                variant    : 'elevated',
-                location   : 'top',
-                multiLine  : false,
-                closeDelay : 100
+                text: error.data.value,
+                color: 'error',
+                toggle: true,
+                timeout: 6000,
+                variant: 'elevated',
+                location: 'top',
+                multiLine: false,
+                closeDelay: 100
             })
         })
         .finally(() => {

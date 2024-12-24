@@ -10,14 +10,14 @@ export interface Link {
      *
      * @type {string}
      */
-    title: string;
+    title: string
 
     /**
      * The URL or hyperlink reference.
      *
      * @type {string}
      */
-    href: string;
+    href: string
 }
 
 /**
@@ -32,14 +32,14 @@ export interface Image {
      *
      * @type {string}
      */
-    href: string;
+    href: string
 
     /**
      * The alternative text for the image, used for accessibility.
      *
      * @type {string}
      */
-    alt: string;
+    alt: string
 }
 
 /**
@@ -54,54 +54,54 @@ export interface Project {
      *
      * @type {number}
      */
-    id: number;
+    id: number
 
     /**
      * The title of the project.
      *
      * @type {string}
      */
-    title: string;
+    title: string
 
     /**
      * The subtitle or brief description of the project.
      *
      * @type {string}
      */
-    subTitle: string;
+    subTitle: string
 
     /**
      * An optional image associated with the project.
      *
      * @type {Image | undefined}
      */
-    img?: Image;
+    img?: Image
 
     /**
      * The main text or description of the project.
      *
      * @type {string}
      */
-    text: string;
+    text: string
 
     /**
      * An array of technologies used in the project.
      *
      * @type {string[]}
      */
-    technologies: string[];
+    technologies: string[]
 
     /**
      * An optional array of chip labels or tags associated with the project.
      *
      * @type {string[] | undefined}
      */
-    chips?: string[];
+    chips?: string[]
 
     /**
      * An array of links related to the project.
      *
      * @type {Link[]}
      */
-    links: Link[];
+    links: Link[]
 }
