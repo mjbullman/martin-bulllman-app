@@ -35,7 +35,9 @@
 
         </v-col>
 
-        <v-col cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="text-center d-flex justify-center text-center pb-10">
+        <v-col
+            cols="12" sm="12" md="12" lg="12" xl="12"
+            align-self="center" class="text-center d-flex justify-center text-center pb-10">
 
             <div class="pl-5 pr-5">
 
@@ -88,7 +90,11 @@
         </v-col>
 
         <!-- now playing -->
-        <v-col v-if="playing" cols="12" sm="8" offset-sm="2" md="6" offset-md="3" lg="4" offset-lg="4" xl="12" align-self="center" class="pb-10">
+        <v-col
+            v-if="playing"
+            cols="12" sm="8" offset-sm="2" md="6"
+            offset-md="3" lg="4" offset-lg="4"
+            xl="12" align-self="center" class="pb-10">
 
             <div class="text-secondary text-center pa-2">
 
@@ -110,13 +116,13 @@
                         role="option"
                         aria-selected="false">
 
-                        <template v-slot:prepend>
+                        <template #prepend>
 
                             <v-avatar size="large" :image="playing.item.album.images[0].url"></v-avatar>
 
                         </template>
 
-                        <template v-slot:append>
+                        <template #append>
 
                             <music-waves class="pl-2"></music-waves>
 
@@ -181,7 +187,7 @@
                         role="option"
                         aria-selected="false">
 
-                        <template v-slot:prepend>
+                        <template #prepend>
 
                             <v-avatar size="large" :image="track.album.images[0].url"></v-avatar>
 
@@ -189,9 +195,9 @@
 
                         <v-list-item-subtitle class="text-truncate d-flex">
 
-                            <div v-for="(artist, index) in track.artists" class="pr-1 text-truncate">
+                            <div v-for="(artist, index) in track.artists" :key="artist.id" class="pr-1 text-truncate">
 
-                                {{ artist.name }}{{ index != track.artists.length - 1 ? ',' : ''}}
+                                {{ artist.name }}{{ index != track.artists.length - 1 ? ',' : '' }}
 
                             </div>
 
@@ -229,7 +235,7 @@
                         role="option"
                         aria-selected="false">
 
-                        <template v-slot:prepend>
+                        <template #prepend>
 
                             <v-avatar size="large" :image="playlist.images[0].url"></v-avatar>
 
@@ -266,7 +272,7 @@
                         role="option"
                         aria-selected="false">
 
-                        <template v-slot:prepend>
+                        <template #prepend>
 
                             <v-avatar size="large" :image="artist.images[0].url"></v-avatar>
 
@@ -274,7 +280,7 @@
 
                     </v-list-item>
 
-                 </v-list>
+                </v-list>
 
             </v-card>
 
@@ -291,41 +297,41 @@
 
     // api requests.
     const { data: profile } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/profile', {
-        lazy   : true,
-        server : false
+        lazy: true,
+        server: false
     })
 
     const { data: playlists } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/playlists', {
-        lazy   : true,
-        server : false
+        lazy: true,
+        server: false
     })
 
     const { data: tracks } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/top_tracks', {
-        lazy   : true,
-        server : false
+        lazy: true,
+        server: false
     })
 
     const { data: artists } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/top_artists', {
-        lazy   : true,
-        server : false
+        lazy: true,
+        server: false
     })
 
     const { data: following } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/following', {
-        lazy   : true,
-        server : false
+        lazy: true,
+        server: false
     })
 
-    let { data: playing } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/currently_playing', {
-        lazy   : true,
-        server : false
+    const { data: playing } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/currently_playing', {
+        lazy: true,
+        server: false
     })
 
     // methods.
-    function millisToMinutesAndSeconds(millis:number) {
-        let minutes:number = Math.floor(millis / 60000);
-        let seconds:number = ((millis % 60000) / 1000);
+    function millisToMinutesAndSeconds (millis: number) {
+        const minutes: number = Math.floor(millis / 60000)
+        const seconds: number = ((millis % 60000) / 1000)
 
-        return minutes + ":" + (seconds < 9 ? '0' : '') + seconds.toFixed(0);
+        return minutes + ':' + (seconds < 9 ? '0' : '') + seconds.toFixed(0)
     }
 
 </script>

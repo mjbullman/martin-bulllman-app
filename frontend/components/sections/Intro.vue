@@ -4,13 +4,17 @@
 
         <v-col>
 
-            <h1 class="text-h2 text-md-h1 ma-5" >
+            <h1 class="text-h2 text-md-h1 ma-5">
 
-               <span class="text-gradient-animation">Martin Bullman</span>
+                <span class="text-gradient-animation">
+
+                    Martin Bullman
+
+                </span>
 
             </h1>
 
-            <h2 class="text-h6 text-md-h4 text-medium-emphasis ma-5" >
+            <h2 class="text-h6 text-md-h4 text-medium-emphasis ma-5">
 
                 Software Engineer & Full Stack Developer
 
