@@ -4,12 +4,18 @@
     "scripts": {
         "dev": "nuxt dev",
         "build": "nuxt build",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
         "preview": "nuxt preview",
         "generate": "nuxt generate",
         "postinstall": "nuxt prepare"
     },
     "devDependencies": {
+        "@nuxt/eslint-config": "^0.7.4",
+        "@nuxt/eslint": "^0.7.4",
         "@types/node": "^20.10.0",
+        "eslint": "^9.17.0",
+        "prettier": "^3.4.2",
         "sass": "^1.58.0",
         "typescript": "^5.0.4",
         "vite-plugin-vuetify": "^2.0.4"
@@ -20,9 +26,9 @@
         "@fortawesome/free-regular-svg-icons": "^6.6.0",
         "@fortawesome/free-solid-svg-icons": "^6.6.0",
         "@fortawesome/vue-fontawesome": "^3.0.3",
+        "@nuxt/image": "^1.8.1",
         "@nuxtjs/sitemap": "^6.1.5",
         "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
-        "@nuxt/image": "^1.8.1",
         "@pinia/nuxt": "^0.5.5",
         "@vueuse/motion": "^2.2.5",
         "nuxt": "^3.13.1",
