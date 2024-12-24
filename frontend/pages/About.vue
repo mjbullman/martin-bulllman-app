@@ -20,8 +20,8 @@
 <script setup lang="ts">
 
     // components.
-    import AboutMe     from '~/components/sections/AboutMe.vue'
-    import Spotify     from '~/components/sections/Spotify.vue'
+    import AboutMe from '~/components/sections/AboutMe.vue'
+    import Spotify from '~/components/sections/Spotify.vue'
     import PageHeading from '~/components/headings/PageHeading.vue'
 
 </script>

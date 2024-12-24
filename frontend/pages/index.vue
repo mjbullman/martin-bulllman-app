@@ -21,9 +21,9 @@
 <script setup lang="ts">
 
     // components.
-    import Intro        from '~/components/sections/Intro.vue'
-    import Toolkit      from '~/components/sections/Toolkit.vue'
-    import projects     from '~/components/sections/Projects.vue'
+    import Intro from '~/components/sections/Intro.vue'
+    import Toolkit from '~/components/sections/Toolkit.vue'
+    import projects from '~/components/sections/Projects.vue'
     import Publications from '~/components/sections/Publications.vue'
 
 </script>
