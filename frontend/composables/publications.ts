@@ -1,4 +1,4 @@
-import { Publication } from '~/types/publication'
+import type { Publication } from '~/types/publication'
 
 /**
  * A custom hook that retrieves a list of research publications.
@@ -16,9 +16,9 @@ import { Publication } from '~/types/publication'
  *
  * @returns {object} an object containing an array of publications.
  */
-export function usePublications(): { publications: Publication[] } {
+export function usePublications (): { publications: Publication[] } {
 
-    const publications: object[] = [
+    const publications: Publication[] = [
         {
             id: 1,
             year: '2016',

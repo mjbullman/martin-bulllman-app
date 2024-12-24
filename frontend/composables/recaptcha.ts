@@ -24,24 +24,24 @@ export class RecaptchaAction {
      * @param {string} name - The name of the reCAPTCHA action.
      * @private
      */
-    private constructor(public readonly name: string) {}
+    private constructor (public readonly name: string) {}
 }
 
 /**
  * A composable function that provides reCAPTCHA functionalities.
  *
- * @returns {Object} An object containing the `executeRecaptcha` function.
- * @returns {Function} return.executeRecaptcha - A function to execute a reCAPTCHA action and retrieve the token and header options.
+ * @returns {object} An object containing:
+ *   - {Function} executeRecaptcha - A function to execute a reCAPTCHA action and retrieve the token and header options.
  */
 export default () => {
     // initialize the reCAPTCHA instance using the composable from vue-recaptcha-v3.
-    let recaptchaInstance = useReCaptcha()
+    const recaptchaInstance = useReCaptcha()
 
     /**
      * Executes the specified reCAPTCHA action and retrieves the corresponding reCAPTCHA token.
      *
      * @param {RecaptchaAction} action - An instance of RecaptchaAction representing the action to be executed.
-     * @returns {Promise<Object>} A promise that resolves to an object containing:
+     * @returns {Promise<object>} A promise that resolves to an object containing:
      *   - {string} token - The reCAPTCHA token.
      *   - {Object} headerOptions - The header options for API requests including the reCAPTCHA token.
      */

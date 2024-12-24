@@ -1,3 +1,5 @@
+import type { Project } from '~/types/project'
+
 /**
  * A custom hook that retrieves a list of projects.
  *
@@ -14,11 +16,11 @@
  * - technologies: an array of technologies used in the project
  * - links: an array of associated links (e.g., project websites, repositories, publications)
  *
- * @returns {object} an object containing an array of projects.
+ * @returns {Project} an object containing an array of projects.
  */
-export function useProjects(): { projects: object[] } {
+export function useProjects (): { projects: Project[] } {
 
-    const projects: object[] = [
+    const projects: Project[] = [
         {
             id: 1,
             title: 'Yester',
@@ -27,8 +29,9 @@ export function useProjects(): { projects: object[] } {
                 href: '/img/projects/yester_banner.webp',
                 alt: 'QuickMinutes banner image'
             },
-            text: 'Yester is a tool that helps you to create and manage your everyday processes. <br><br> ' +
-                   'You can create workflows unique to your company or choose one from our library.',
+            text: 'Yester is a tool that helps you to create and manage your everyday processes.'
+                + ' <br><br> You can create workflows unique to your company or choose one from '
+                + 'our library.',
             technologies: [
                 'AWS',
                 'VueJS',
@@ -46,9 +49,9 @@ export function useProjects(): { projects: object[] } {
             id: 2,
             title: 'Bitcoin Custodial Wallet',
             subTitle: 'Demos an end-to-end purchase of bitcoin with fiat.',
-            text: 'Users sign up with an email, provide basic details, link a sandbox bank account, ' +
-                  'and get a unique bitcoin address.<br><br> Authenticated users with linked ' +
-                  'accounts can purchase regtest bitcoin and see their balance update.',
+            text: 'Users sign up with an email, provide basic details, link a sandbox bank account, '
+                + 'and get a unique bitcoin address.<br><br> Authenticated users with linked '
+                + 'accounts can purchase regtest bitcoin and see their balance update.',
             technologies: [
                 'React',
                 'JavaScript',
@@ -71,9 +74,9 @@ export function useProjects(): { projects: object[] } {
                 href: '/img/projects/quickminutes_banner.webp',
                 alt: 'QuickMinutes banner image'
             },
-            text: 'A meeting planning & management tool for centralized collaboration and communication.' +
-                  '<br><br>QuickMinutes transforms the process of meeting management into an efficient and ' +
-                  'satisfying activity.',
+            text: 'A meeting planning & management tool for centralized collaboration and communication.'
+                + '<br><br>QuickMinutes transforms the process of meeting management into an efficient and '
+                + 'satisfying activity.',
             technologies: [
                 'Azure',
                 'VueJS',
@@ -97,9 +100,9 @@ export function useProjects(): { projects: object[] } {
                 href: '/img/projects/thestoryof_banner.webp',
                 alt: 'TheStoryOf banner image'
             },
-            text: 'Capture you or your loved ones stories and safeguard them on a dedicated ' +
-                  'webpage. <br><br> Digital profiles are accessible by QR code on an aluminium ' +
-                  'plate, letting anyone access treasured memories.',
+            text: 'Capture you or your loved ones stories and safeguard them on a dedicated '
+                + 'webpage. <br><br> Digital profiles are accessible by QR code on an aluminium '
+                + 'plate, letting anyone access treasured memories.',
             technologies: [
                 'Azure',
                 'VueJS',
@@ -119,9 +122,9 @@ export function useProjects(): { projects: object[] } {
             id: 5,
             title: 'Data Interoperability',
             subTitle: 'Interoperability Of Cloud Monitoring Data (FYP)',
-            text: 'This project addresses the challenge of incompatible data interchange formats in cloud monitoring ' +
-                  'data.<br><br> Published in the 2016 5th IEEE International Conference on Cloud Networking ' +
-                  '(CloudNet).',
+            text: 'This project addresses the challenge of incompatible data interchange formats in '
+                + 'cloud monitoring data.<br><br> Published in the 2016 5th IEEE International Conference'
+                + ' on Cloud Networking (CloudNet).',
             technologies: [
                 'Java',
                 'RabbitMQ'
@@ -239,7 +242,7 @@ export function useProjects(): { projects: object[] } {
                 {
                     title: 'Whitepaper',
                     href: '/documents/wagerr_white_paper_v1.pdf'
-                },
+                }
             ]
         },
         {
@@ -266,7 +269,7 @@ export function useProjects(): { projects: object[] } {
             id: 11,
             title: 'Drop Magnet',
             subTitle: 'NFT Marketplace',
-            text: 'The all-in-one, multi-chain, NFT marketplace aggregator and utility-adding ' +
+            text: 'The all-in-one, multichain, NFT marketplace aggregator and utility-adding ' +
                   'platform. <br><br> Discover NFTs from verified collections and build your web3 ' +
                   'social page with DropSwipe.',
             technologies: [
