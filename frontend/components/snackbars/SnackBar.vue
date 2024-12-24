@@ -12,11 +12,11 @@
 
         {{ notification.snackbarData.text }}
 
-        <template v-slot:actions>
+        <template #actions>
 
             <v-btn
-                @click="notification.close()"
-                icon="mdi mdi-close-circle-outline">
+                icon="mdi mdi-close-circle-outline"
+                @click="notification.close()">
             </v-btn>
 
         </template>
