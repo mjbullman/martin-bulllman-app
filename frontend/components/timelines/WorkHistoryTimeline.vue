@@ -2,7 +2,11 @@
 
     <v-container fluid pa="0">
 
-        <h2 class="text-h3 text-gradient-animation text-center pa-10">Work History</h2>
+        <h2 class="text-h3 text-gradient-animation text-center pa-10">
+
+            Work History
+
+        </h2>
 
         <v-row>
 
@@ -10,15 +14,15 @@
 
                 <v-timeline align="start">
 
-                    <v-timeline-item
-                        v-for="(job, i) in jobs"
-                        :key="i"
-                        dot-color="text-primary"
-                        size="small">
+                    <v-timeline-item v-for="(job, i) in jobs" :key="i" dot-color="text-primary" size="small">
 
-                        <template v-slot:opposite>
+                        <template #opposite>
 
-                            <div class="pt-1 headline" :class="i % 2 == 0 ? 'text-primary' : 'text-secondary'" v-text="job.year"></div>
+                            <div class="pt-1 headline" :class="i % 2 == 0 ? 'text-primary' : 'text-secondary'">
+
+                                {{ job.year }}
+
+                            </div>
 
                         </template>
 
@@ -30,7 +34,9 @@
 
                             </h2>
 
-                            <h3 class="mt-n1 font-weight-light mb-4" :class="i % 2 == 0 ? 'text-primary' : 'text-secondary'">
+                            <h3
+                                :class="i % 2 == 0 ? 'text-primary' : 'text-secondary'"
+                                class="mt-n1 font-weight-light mb-4">
 
                                 {{ job.company }}
 
@@ -63,48 +69,48 @@
         {
             company: 'QuickMinutes',
             title: 'Chief Technology Officer',
-            year: 'Oct 2020 - Present',
+            year: 'Oct 2020 - Present'
         },
         {
             company: 'Taoglas',
             title: 'Senior Software Engineer',
-            year: 'Jun 2019 - Nov 2023',
+            year: 'Jun 2019 - Nov 2023'
         },
         {
             company: 'QuickMinutes',
             title: 'Senior Software Engineer',
-            year: 'June 2018 - Sep 2020',
+            year: 'June 2018 - Sep 2020'
         },
         {
             company: 'TechSquad',
             title: 'Blockchain Developer',
-            year: 'Apr 2017 - May 2022',
+            year: 'Apr 2017 - May 2022'
         },
         {
             company: 'QuickMinutes',
             title: 'Software Engineer',
-            year: 'May 2016 - Apr 2018',
+            year: 'May 2016 - Apr 2018'
         },
         {
             company: 'ThinkSmarter Analytics',
             title: 'Software Engineer',
-            year: 'Apr 2015 - May 2019',
+            year: 'Apr 2015 - May 2019'
         },
         {
             company: 'Intel',
             title: 'Product Application Engineer',
-            year: 'Apr 2015 - Sep 2015',
+            year: 'Apr 2015 - Sep 2015'
         },
         {
             company: 'Insight SFI Centre for Data Analytics',
             title: 'Research Inter',
-            year: 'Jun 2014 - Sep 2014',
+            year: 'Jun 2014 - Sep 2014'
         },
         {
             company: 'University College Cork',
             title: 'Lab Demonstrator',
-            year: 'Sep 2013 - Sep 2014',
-        },
+            year: 'Sep 2013 - Sep 2014'
+        }
     ])
 
 </script>
