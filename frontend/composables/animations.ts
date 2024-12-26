@@ -1,7 +1,13 @@
 import { ref } from 'vue'
 
+/**
+ * Composable for defining and reusing animation configurations in Vue components.
+ */
 export function useAnimations () {
 
+    /**
+     *  A quick fade-down effect.
+     */
     const minimalFastFadeDown = ref({
         initial: {
             opacity: 0,
@@ -16,6 +22,9 @@ export function useAnimations () {
         }
     })
 
+    /**
+     * A quick fade-up effect.
+     */
     const minimalFastFadeUp = ref({
         initial: {
             opacity: 0,
@@ -30,6 +39,13 @@ export function useAnimations () {
         }
     })
 
+    /**
+     * Generates a fade-up or fade-down animation configuration.
+     * @param {number} delay - Delay in milliseconds before the animation starts.
+     * @param {number} start - Starting y-offset position (positive for down, negative for up).
+     * @param {number} duration - Duration of the animation in milliseconds.
+     * @returns {object} - Animation configuration for motion effects.
+     */
     function visibleUpDown (delay: number, start: number, duration: number) {
         return {
             initial: {
