@@ -1,8 +1,8 @@
 <template>
 
-    <v-btn icon size="small" aria-label="change theme" @click="darkModeToggle()">
+    <v-btn icon size="small" aria-label="change theme" @click="toggleDarkMode()">
 
-        <v-icon color="primary" :icon="store.getDarkMode ? 'fa-regular fa-moon' : 'fa-regular fa-sun'"></v-icon>
+        <v-icon color="primary" :icon="store.getDarkMode ? 'fa-regular fa-sun' : 'fa-regular fa-moon'"></v-icon>
 
     </v-btn>
 
@@ -17,8 +17,8 @@
     const store = useSettingsStore()
 
     // methods.
-    function darkModeToggle () {
-        store.setDarkMode()
+    function toggleDarkMode () {
+        store.toggleDarkMode()
     }
 
 </script>
