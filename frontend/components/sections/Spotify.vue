@@ -1,6 +1,6 @@
 <template>
 
-    <v-row v-if="profile && following && playlists" class="mt-10">
+    <v-row v-if="profile && following && playlists && tracks && artists" class="mt-10">
 
         <v-col cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="text-center">
 
@@ -162,12 +162,12 @@
 
     </v-row>
 
-    <v-row v-if="playlists && tracks && artists">
+    <v-row v-if="playlists && tracks && artists && tracks && artists">
 
         <!-- top tracks -->
         <v-col cols="12" sm="12" md="4" lg="4" xl="4" align-self="center">
 
-            <h3 class="text-h5 pb-5 text-primary font-weight-bold text-center">
+            <h3 class="text-h5 pb-5 text-gradient font-weight-bold text-center">
 
                 Top Tracks
 
@@ -214,7 +214,7 @@
         <!-- top playlists -->
         <v-col cols="12" sm="12" md="4" lg="4" xl="4" align-self="center">
 
-            <h3 class="text-h5 pb-5 text-primary font-weight-bold text-center">
+            <h3 class="text-h5 pb-5 text-gradient font-weight-bold text-center ">
 
                 Top Playlists
 
@@ -252,7 +252,7 @@
         <!-- top artists -->
         <v-col cols="12" sm="12" md="4" lg="4" xl="4" align-self="center">
 
-            <h3 class="text-h5 pb-5 text-primary font-weight-bold text-center">
+            <h3 class="text-h5 pb-5 text-gradient font-weight-bold text-center">
 
                 Top Artists
 
@@ -292,47 +292,19 @@
 
 <script setup lang="ts">
 
+    import { useTimeUtils } from '~/composables/timeUtils'
+
     // composable.
     const runtimeConfig = useRuntimeConfig()
+    const { millisToMinutesAndSeconds } = useTimeUtils()
 
     // api requests.
-    const { data: profile } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/profile', {
-        lazy: true,
-        server: false
-    })
-
-    const { data: playlists } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/playlists', {
-        lazy: true,
-        server: false
-    })
-
-    const { data: tracks } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/top_tracks', {
-        lazy: true,
-        server: false
-    })
-
-    const { data: artists } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/top_artists', {
-        lazy: true,
-        server: false
-    })
-
-    const { data: following } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/following', {
-        lazy: true,
-        server: false
-    })
-
-    const { data: playing } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/currently_playing', {
-        lazy: true,
-        server: false
-    })
-
-    // methods.
-    function millisToMinutesAndSeconds (millis: number) {
-        const minutes: number = Math.floor(millis / 60000)
-        const seconds: number = ((millis % 60000) / 1000)
-
-        return minutes + ':' + (seconds < 9 ? '0' : '') + seconds.toFixed(0)
-    }
+    const { data: profile } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/profile')
+    const { data: playlists } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/playlists')
+    const { data: tracks } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/top_tracks')
+    const { data: artists } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/top_artists')
+    const { data: following } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/following')
+    const { data: playing } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/currently_playing')
 
 </script>
 
