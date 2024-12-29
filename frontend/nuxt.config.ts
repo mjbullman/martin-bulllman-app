@@ -15,6 +15,7 @@ export default defineNuxtConfig({
         '@nuxtjs/sitemap',
         'nuxt-schema-org',
         '@vueuse/motion/nuxt',
+        '@nuxt/test-utils/module',
         '@pinia-plugin-persistedstate/nuxt',
         // vuetify tree shaking configuration: https://next.vuetifyjs.com/en/features/treeshaking/
         async (options, nuxt) => {
