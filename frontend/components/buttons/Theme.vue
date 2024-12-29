@@ -11,14 +11,17 @@
 <script setup>
 
     // imports.
+    import { useTheme } from 'vuetify'
     import { useSettingsStore } from '@/stores/settings'
 
     // state.
     const store = useSettingsStore()
+    const theme = useTheme()
 
     // methods.
     function toggleDarkMode () {
         store.toggleDarkMode()
+        theme.global.name.value = store.getDarkMode ? 'customDarkTheme' : 'customLightTheme'
     }
 
 </script>
