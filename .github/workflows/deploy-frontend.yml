@@ -68,7 +68,7 @@ jobs:
         run: npm run test
 
   build:
-    needs: lint
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
