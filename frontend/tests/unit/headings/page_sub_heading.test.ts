@@ -18,7 +18,7 @@ describe('Page Sub Heading Component', () => {
         expect(component.exists()).toBe(true)
     })
 
-    it('displays the correct heading text', async () => {
+    it('displays the correct sub heading text', async () => {
         const headingText = 'Test Heading'
         const component = await mountComponent()
         const heading = component.find('h1')
