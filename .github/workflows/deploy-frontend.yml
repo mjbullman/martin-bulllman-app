@@ -42,6 +42,31 @@ jobs:
         working-directory: ./frontend
         run: npm run lint
 
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+
+    steps:
+      # step 1: checkout the code from the repository.
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # step 2: set up Node.js environment.
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      # step 3: install project dependencies.
+      - name: Install Dependencies
+        working-directory: ./frontend
+        run: npm install
+
+      # Step 4: Run ESLint to lint the code.
+      - name: Run Tests
+        working-directory: ./frontend
+        run: npm run test
+
   build:
     needs: lint
     runs-on: ubuntu-latest

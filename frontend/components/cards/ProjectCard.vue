@@ -65,9 +65,9 @@
 
             <v-btn
                 v-for="link in project.links"
-                :key="link"
+                :key="link.title"
                 :href="link.href"
-                target="_blank" variant="text" color="primary">
+                color="primary" target="_blank" variant="text">
 
                 {{ link.title }}
 
@@ -82,8 +82,10 @@
 <script setup lang="ts">
 
     // props.
+    import type { Project } from '~/types/project'
+
     defineProps<{
-        project: object
+        project: Project
     }>()
 
 </script>
