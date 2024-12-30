@@ -22,10 +22,14 @@
 
     // props.
     defineProps({
-        label: { type: String, default: '' }
+        label: {
+            type: String,
+            default: ''
+        }
     })
 
 </script>
 
 <style scoped>
+
 </style>

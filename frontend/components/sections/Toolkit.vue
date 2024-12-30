@@ -4,71 +4,22 @@
 
         <page-sub-heading :sub-heading-text="'Toolkit'"></page-sub-heading>
 
-        <v-col cols="12" sm="12" md="3" lg="3" xl="3" class="d-flex flex-wrap justify-center align-content-center">
+        <v-col
+            v-for="(group, index) in iconGroups"
+            :key="index"
+            cols="12"
+            sm="12"
+            md="3"
+            lg="3"
+            xl="3"
+            class="d-flex flex-wrap justify-center align-content-center">
 
-            <HTML></HTML>
-
-            <CSS></CSS>
-
-            <javascript></javascript>
-
-            <type-script></type-script>
-
-            <vueJS></vueJS>
-
-            <vuetify></vuetify>
-
-            <nuxtJS></nuxtJS>
-
-        </v-col>
-
-        <v-col cols="12" sm="12" md="3" lg="3" xl="3" class="d-flex flex-wrap justify-center align-content-center">
-
-            <java></java>
-
-            <PHP></PHP>
-
-            <python></python>
-
-            <Laravel></Laravel>
-
-            <Django></Django>
-
-            <nodeJS></nodeJS>
-
-        </v-col>
-
-        <v-col cols="12" sm="12" md="3" lg="3" xl="3" class="d-flex flex-wrap justify-center align-content-center">
-
-            <jetbrains></jetbrains>
-
-            <linux></linux>
-
-            <docker></docker>
-
-            <git></git>
-
-            <git-hub></git-hub>
-
-            <jira></jira>
-
-        </v-col>
-
-        <v-col cols="12" sm="12" md="3" lg="3" xl="3" class="d-flex flex-wrap justify-center align-content-center">
-
-            <AWS></AWS>
-
-            <azure></azure>
-
-            <google-cloud></google-cloud>
-
-            <digital-ocean></digital-ocean>
-
-            <mySQL></mySQL>
-
-            <postgres></postgres>
-
-            <mongoDB></mongoDB>
+            <component
+                :is="icon"
+                v-for="(icon, i) in group"
+                :key="i"
+                class="icon">
+            </component>
 
         </v-col>
 
@@ -107,6 +58,14 @@
     import DigitalOcean from '~/components/icons/technologies/DigitalOcean.vue'
 
     import PageSubHeading from '~/components/headings/PageSubHeading.vue'
+
+    // grouping icons into categories.
+    const iconGroups = [
+        [HTML, CSS, Javascript, TypeScript, VueJS, Vuetify, NuxtJS],
+        [Java, PHP, Python, Laravel, Django, NodeJS],
+        [Jetbrains, Linux, Docker, Git, GitHub, Jira],
+        [AWS, Azure, GoogleCloud, DigitalOcean, MySQL, Postgres, MongoDB]
+    ]
 
 </script>
 

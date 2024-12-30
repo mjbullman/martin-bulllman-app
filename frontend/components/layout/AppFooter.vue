@@ -6,19 +6,18 @@
 
             <v-col cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="text-center">
 
-                <git-hub :size="'large'" :width="30" :height="30" :color="'#B9B9B9'"></git-hub>
+                <!-- list social media icons -->
+                <template v-for="(icon, index) in socialIcons" :key="index">
 
-                <linked-in :size="'large'" :width="30" :height="30" :color="'#B9B9B9'"></linked-in>
+                    <component
+                        :is="icon.component"
+                        :size="'large'"
+                        :width="icon.width"
+                        :height="icon.height"
+                        :color="'#B9B9B9'"
+                    />
 
-                <instagram :size="'large'" :width="30" :height="30" :color="'#B9B9B9'"></instagram>
-
-                <facebook :size="'large'" :width="30" :height="30" :color="'#B9B9B9'"></facebook>
-
-                <twitter :size="'large'" :width="28" :height="28" :color="'#B9B9B9'"></twitter>
-
-                <spotify :size="'large'" :width="35" :height="35" :color="'#B9B9B9'"></spotify>
-
-                <good-reads :size="'large'" :width="30" :height="30" :color="'#B9B9B9'"></good-reads>
+                </template>
 
             </v-col>
 
@@ -32,12 +31,25 @@
 
                 The frontend is developed using
 
-                <NuxtLink to="https://vuejs.org/" target="_blank" aria-label="VueJS (opens a new tab)" class="link">Vue.js</NuxtLink>,
-                <NuxtLink to="https://vuetifyjs.com/en/" target="_blank" aria-label="Vuetify (opens a new tab)" class="link">Vuetify</NuxtLink>
+                <NuxtLink to="https://vuejs.org/" target="_blank" aria-label="VueJS (opens a new tab)" class="link">
 
-                and
+                    Vue.js
 
-                <NuxtLink to="https://nuxt.com/" target="_blank" aria-label="NuxtJS (opens a new tab)" class="link">Nuxt.js</NuxtLink>,
+                </NuxtLink>
+
+                <NuxtLink
+                    to="https://vuetifyjs.com/en/"
+                    target="_blank" aria-label="Vuetify (opens a new tab)">
+
+                    Vuetify
+
+                </NuxtLink>
+
+                <NuxtLink to="https://nuxt.com/" target="_blank" aria-label="NuxtJS (opens a new tab)" class="link">
+
+                    Nuxt.js
+
+                </NuxtLink>
 
                 while the backend is powered by the
 
@@ -49,7 +61,7 @@
 
     </v-container>
 
-    <div class="spacer end"></div>
+    <div class="spacer graphic"></div>
 
 </template>
 
@@ -63,9 +75,22 @@
     import LinkedIn from '~/components/icons/social/LinkedIn.vue'
     import Instagram from '~/components/icons/social/Instagram.vue'
     import GoodReads from '~/components/icons/social/GoodReads.vue'
+    import HackTheBox from '~/components/icons/social/HackTheBox.vue'
 
     // variables.
     const year = new Date().getFullYear()
+
+    // Array of social media icons
+    const socialIcons = [
+        { component: GitHub, width: 30, height: 30 },
+        { component: HackTheBox, width: 28, height: 28 },
+        { component: LinkedIn, width: 30, height: 30 },
+        { component: Instagram, width: 30, height: 30 },
+        { component: Facebook, width: 30, height: 30 },
+        { component: Twitter, width: 28, height: 28 },
+        { component: Spotify, width: 35, height: 35 },
+        { component: GoodReads, width: 30, height: 30 }
+    ]
 
 </script>
 
@@ -80,8 +105,8 @@
         margin-top: 10px;
     }
 
-    .end {
-        background-image: url("../../public/img/backgrounds/coloured.svg");
+    .graphic {
+        background-image: url('../../public/img/backgrounds/coloured.svg');
     }
 
 </style>
