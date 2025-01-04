@@ -2,15 +2,16 @@
   <img alt="Logo" src="./frontend/public/img/icon.svg" width="100" style="margin-top: 50px" />
 </div>
 
-<h1 align="center">
+<h1 align="center" style="margin-top: 15px">
   martinbullman.xyz
 </h1>
 
-<hr>
+<div align="center">
 
 [![deploy-frontend](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-frontend.yml/badge.svg?branch=main)](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-frontend.yml)
 [![deploy-backend](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-backend.yml/badge.svg)](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-backend.yml)
 
+</div>
 
 ![demo](./frontend/public/img/projects/martinbullman_banner.png)
 
@@ -19,15 +20,12 @@
 
 This is a personal web application built using modern technologies for a seamless and efficient user experience. The application uses **Vue 3**, **Nuxt 3**, and **Vuetify 3** for the frontend and a **Django backend** with a REST API for managing data and business logic.
 
-
-
-
 ## Prerequisites
 
 Before running the application, ensure you have the following installed:
 
-- **Node.js** (v16 or later)
-- **Python** (v3.9 or later)
+- **Node.js** (v20.10.0 or later)
+- **Python** (3.11.10 or later)
 - **Docker** and **Docker Compose**
 - **Nuxt CLI** (for Nuxt 3 projects)
 
@@ -49,6 +47,20 @@ Navigate to the `frontend` directory and install dependencies:
 ```bash
 cd frontend
 npm install
+```
+
+Run Vitest Tests
+
+```bash
+cd frontend
+npm run test
+```
+
+Run Lint
+
+```bash
+cd frontend
+npm run lint
 ```
 
 ### 3. Backend Setup
