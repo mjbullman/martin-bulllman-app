@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Logo" src="https://martinbullman.xyz/_ipx/w_100/img/icon.svg" width="100" />
+  <img alt="Logo" src="./frontend/public/img/icon.svg" width="100" style="margin-top: 50px" />
 </div>
 
 <h1 align="center">
@@ -10,31 +10,17 @@
 
 [![deploy-frontend](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-frontend.yml/badge.svg?branch=main)](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-frontend.yml)
 [![deploy-backend](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-backend.yml/badge.svg)](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-backend.yml)
+
+
+![demo](./frontend/public/img/projects/martinbullman_banner.png)
+
+
 # Personal Web Application
 
 This is a personal web application built using modern technologies for a seamless and efficient user experience. The application uses **Vue 3**, **Nuxt 3**, and **Vuetify 3** for the frontend and a **Django backend** with a REST API for managing data and business logic.
 
 
 
-## Features
-
-- **Frontend**:
-  - Built with **Vue 3** for reactive and efficient UI.
-  - **Nuxt 3** for server-side rendering (SSR) and static site generation (SSG).
-  - **Vuetify 3** for a modern, responsive design with Material Design components.
-- **Backend**:
-  - **Django** framework for robust backend development.
-  - **Django REST Framework (DRF)** for creating RESTful APIs.
-- **Testing**:
-  - End-to-end and unit testing for both frontend and backend.
-- **Docker**:
-  - Containerized setup for seamless development and deployment.
-- **API Integration**:
-  - Backend APIs handle CRUD operations and dynamic data exchanges.
-- **Scalable Architecture**:
-  - Decoupled frontend and backend for scalability and modular development.
-
----
 
 ## Prerequisites
 
