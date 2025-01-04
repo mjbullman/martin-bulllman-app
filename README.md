@@ -10,10 +10,14 @@
 
 [![deploy-frontend](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-frontend.yml/badge.svg?branch=main)](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-frontend.yml)
 [![deploy-backend](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-backend.yml/badge.svg)](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-backend.yml)
+![GitHub License](https://img.shields.io/github/license/mjbullman/martin-bulllman-app)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D%2020.10.0-brightgreen.svg)](https://nodejs.org/)
+[![Last Commit](https://img.shields.io/github/last-commit/mjbullman/martin-bulllman-app.svg)](https://github.com/mjbullman/martin-bulllman-app/commits/main)
+
 
 </div>
 
-![demo](./frontend/public/img/projects/martinbullman_banner.png)
+![demo](./frontend/public/img/projects/martinbullman_banner.gif)
 
 
 # Personal Web Application
