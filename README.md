@@ -84,13 +84,17 @@ cd personal-web-app
 
 ### 2. Frontend (`frontend/.env`):
 
-1. Create a file named .env in the `frontend` directory:
+1. Navigate to the `frontend` directory:
 ```
-cd backend/martinbullman
+cd frontend
+```
+
+2. Create a file named .env:
+```
 touch .env
 ```
 
-2. Add the required environment variables:
+3. Add the required environment variables:
 ```
 BASE_URL=http://localhost:3000
 API_BASE_URL=http://localhost:8000/api/v1
@@ -99,15 +103,24 @@ GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
 GOOGLE_RECAPTCHA_SITE_KEY=your_recaptcha_site_key_here
 ``` 
 
+4. Navigate back to root directory:
+``` 
+cd .. 
+```
+
 ### 3. Backend (`backend/martinbullman/.env`):
 
-Create a file named .env in the `backend/martinbullman` directory:
+1. Navigate to the `backend/martinbullman` directory:
 ```
-cd frontend
+cd backend/martinbullman
+```
+
+2. Create a file named .env:
+```
 touch .env
 ```
 
-Add the required environment variables:
+3. Add the required environment variables:
 ```
 APP_NAME=MartinBullmanApp
 APP_ENV=local
@@ -161,20 +174,23 @@ NASA_API_KEY=your_nasa_api_key_here
 SLACK_REFRESH_TOKEN=your_slack_refresh_token_here
 OPENAI_API_KEY=your_openai_api_key_here
 PAGE_SPEED_API_KEY=your_google_page_speed_api_key_here
+```
+
+4. Navigate back to root directory:
 ``` 
+cd ../../ 
+```
 
 ### Docker Compose Setup
 You can run the docekr compose command to build the application. We need to pass the backend .env so comose has the correct values  
 
 1. Build and Start the Containers:
-
 ```
 docker-compose --env-file ./backend/martinbullman/.env up --build
 ```
 The docker-compose.yml file will set up both the frontend and backend services.
 
 2. Access the Application:
-
 ```
 Frontend: http://localhost:3000
 Backend: http://localhost:8000
@@ -191,15 +207,28 @@ docker-compose down
 #### 1. Frontend Setup
 
 Navigate to the `frontend` directory:
-
 ```
 cd frontend
 ```
 
 Install dependencies:
-
 ```
 npm install
+```
+
+Run development server:
+```
+npm run dev
+```
+
+Access App at:
+```
+http://localhost:3000
+```
+
+Run Nuxt build:
+```
+npm run build
 ```
 
 Return to the project root directory:
@@ -207,7 +236,7 @@ Return to the project root directory:
 cd ..
 ```
 
-### 3. Backend Setup
+### 2. Backend Setup
 
 Navigate to the `backend` directory:
 ```
@@ -216,7 +245,7 @@ cd backend
 
 Create virtual environment and activate:
 ```
-python3 -m venv venv
+python -m venv venv
 source venv/bin/activate
 ```
 
@@ -230,14 +259,20 @@ Run database migrations for the Django backend:
 python3 martinbullman/manage.py migrate
 ```
 
+Run development server:
+```
+python martinbullman/manage.py runserver 
+```
+
+Access API at:
+```
+http://localhost:8000/api/v1
+```
+
 Return to the project root directory:
 ```
 cd ..
 ```
-
-
-
-
 
 ---
 
@@ -245,24 +280,23 @@ cd ..
 
 ### Frontend
 
-Run unit tests for the frontend using **Jest** (or your preferred testing library):
+Run unit tests for the frontend using **Vitest**:
 
-```bash
+1. Navigate to the `frontend` directory:
+```
 cd frontend
-npm run test
 ```
 
-For end-to-end tests using **Playwright** or **Cypress**:
-
-```bash
-npm run test:e2e
+2. Run tests:
+```
+npm run test
 ```
 
 ### Backend
 
 Run tests for the Django backend using **pytest**:
 
-```bash
+```
 cd backend
 pytest
 ```
