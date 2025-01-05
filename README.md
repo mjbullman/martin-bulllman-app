@@ -24,11 +24,14 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mjbullman/martin-bulllman-app)
 
 
-[![Node](https://img.shields.io/badge/NodeJS-v20.10.0-brightgreen.svg)](https://nodejs.org/)
 [![Vue](https://img.shields.io/badge/VueJS-v3.x-brightgreen.svg)](https://vuejs.org/)
 [![Nuxt](https://img.shields.io/badge/Nuxt-v3.x-brightgreen.svg)](https://nuxt.com/)
 [![Vuetify](https://img.shields.io/badge/Vuetify-v3.x-brightgreen.svg)](https://vuetifyjs.com/)
 [![Django](https://img.shields.io/badge/Django-v5.x-brightgreen.svg)](https://www.djangoproject.com/)
+[![Node](https://img.shields.io/badge/NodeJS-v20.x-brightgreen.svg)](https://nodejs.org/)
+[![Python](https://img.shields.io/badge/Python-3.11.x-brightgreen.svg)](https://www.python.org/)
+[![Pip](https://img.shields.io/badge/pip-24.x-brightgreen.svg)](https://pypi.org/project/pip/)
+
 
 [//]: # (![Tech Stack]&#40;https://img.shields.io/badge/Stack-Nuxt%203%20%2B%20Vuetify%203%20%2B%20Django%205-blueviolet?style=flat-square&#41;)
 [//]: # (![Twitter]&#40;https://img.shields.io/twitter/follow/<username>?style=social&#41;)
@@ -56,8 +59,9 @@ Before running the application, ensure you have the following installed:
 - **Docker** & **Docker Compose**
 
 ## Installation
-Set up the project using either a manual process or Docker Compose for a seamless, containerized
-environment.
+Set up the project using either Docker Compose for a seamless, containerized or manually to allow
+more control for debugging and testing.
+
 
 ### 1. Clone the Repository
 ```
