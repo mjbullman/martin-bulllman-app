@@ -68,11 +68,12 @@ jobs:
         run: npm run test
 
       # step 5: run code coverage and upload report
-      - name: Upload coverage reports to Codecov
+      - name: Upload Report Codecov
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: mjbullman/martin-bulllman-app
+          files: ./frontend/coverage/coverage-final.json
 
   build:
     needs: test
