@@ -64,84 +64,180 @@
 Before running the application, ensure you have the following installed:
 
 - **Node.js** (v20.10.0 or later)
-- **Python** (3.11.10 or later)
-- **Docker** and **Docker Compose**
+- **NPM** (v10.2.3 or later)
+- **Python** (v3.11.10 or later)
+- **PIP** (v24.3.1  or later)
+- **Docker** & **Docker Compose**
 
 ---
 
 ## Installation
+You can set up the project manually or using Docker Compose for a containerized environment.
+
+The application requires separate .env files for the frontend and backend. Follow the steps below to configure them:
 
 ### 1. Clone the Repository
-
-```bash
+```
 git clone https://github.com/your-username/personal-web-app.git
 cd personal-web-app
 ```
 
-### 2. Frontend Setup
+### 2. Frontend (`frontend/.env`):
+
+1. Create a file named .env in the `frontend` directory:
+```
+cd backend/martinbullman
+touch .env
+```
+
+2. Add the required environment variables:
+```
+BASE_URL=http://localhost:3000
+API_BASE_URL=http://localhost:8000/api/v1
+
+GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
+GOOGLE_RECAPTCHA_SITE_KEY=your_recaptcha_site_key_here
+``` 
+
+### 3. Backend (`backend/martinbullman/.env`):
+
+Create a file named .env in the `backend/martinbullman` directory:
+```
+cd frontend
+touch .env
+```
+
+Add the required environment variables:
+```
+APP_NAME=MartinBullmanApp
+APP_ENV=local
+APP_DEBUG=True
+APP_URL=http://localhost:8000
+API_URL=http://localhost:8000/api/v1
+
+SECRET_KEY=your_django_secret_key_here
+
+# Database Configuration (choose one)
+# Localhost
+#DB_CONNECTION=postgres
+#DB_HOST=127.0.0.1
+#DB_PORT=5432
+#DB_DATABASE=your_database_name_here
+#DB_USERNAME=your_database_user_here
+#DB_PASSWORD=your_database_password_here
+
+# Docker
+DB_CONNECTION=postgres
+DB_HOST=db
+DB_PORT=5432
+DB_DATABASE=your_docker_database_name_here
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+
+# Email Configuration
+EMAIL_HOST=your_email_host_here
+EMAIL_PORT=2525
+EMAIL_USERNAME=your_email_username_here
+EMAIL_PASSWORD=your_email_password_here
+EMAIL_FROM_ADDRESS=info@yourdomain.com
+EMAIL_FROM_NAME=Your Name or App Name
+
+# MailJet API
+MAILJET_API_KEY=your_mailjet_api_key_here
+MAILJET_API_SECRET=your_mailjet_api_secret_here
+
+# Spotify API
+SPOTIFY_CLIENT_ID=your_spotify_client_id_here
+SPOTIFY_CLIENT_SECRET=your_spotify_client_secret_here
+SPOTIFY_REFRESH_TOKEN=your_spotify_refresh_token_here
+
+# Google reCAPTCHA
+GOOGLE_RECAPTCHA_SCORE=0.5  # Recommended score threshold
+GOOGLE_RECAPTCHA_SECRET_KEY=your_recaptcha_secret_key_here
+
+# API Keys
+WEATHER_API_KEY=your_weather_api_key_here
+NASA_API_KEY=your_nasa_api_key_here
+SLACK_REFRESH_TOKEN=your_slack_refresh_token_here
+OPENAI_API_KEY=your_openai_api_key_here
+PAGE_SPEED_API_KEY=your_google_page_speed_api_key_here
+``` 
+
+### Docker Compose Setup
+You can run the docekr compose command to build the application. We need to pass the backend .env so comose has the correct values  
+
+1. Build and Start the Containers:
+
+```
+docker-compose --env-file ./backend/martinbullman/.env up --build
+```
+The docker-compose.yml file will set up both the frontend and backend services.
+
+2. Access the Application:
+
+```
+Frontend: http://localhost:3000
+Backend: http://localhost:8000
+```
+
+3. Stopping and Removing Containers:
+```
+docker-compose down
+```
+
+
+### Manual Setup
+
+#### 1. Frontend Setup
 
 Navigate to the `frontend` directory:
 
-```bash
+```
 cd frontend
 ```
 
-Install NPM dependencies:
+Install dependencies:
 
-```bash
+```
 npm install
+```
+
+Return to the project root directory:
+```
+cd ..
 ```
 
 ### 3. Backend Setup
 
 Navigate to the `backend` directory:
-
-```bash
+```
 cd backend
 ```
 
 Create virtual environment and activate:
-```bash
+```
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-Install PIP dependencies:
+Install dependencies:
 ```
 pip install -r martinbullman/requirements.txt
 ```
 
 Run database migrations for the Django backend:
-
-```bash
+```
 python3 martinbullman/manage.py migrate
 ```
 
-### 4. Database Migration
-
-Run database migrations for the Django backend:
-
-```bash
-python manage.py migrate
+Return to the project root directory:
+```
+cd ..
 ```
 
-### 5. Environment Variables
 
-Create `.env` files in both `frontend` and `backend` directories with appropriate environment variables:
 
-#### Frontend (`frontend/.env`):
 
-```env
-API_BASE_URL=http://127.0.0.1:8000/api
-```
-
-#### Backend (`backend/.env`):
-
-```env
-SECRET_KEY=your-secret-key
-DEBUG=True
-ALLOWED_HOSTS=127.0.0.1,localhost
-```
 
 ---
 
