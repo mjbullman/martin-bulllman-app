@@ -47,7 +47,6 @@
 </h3>
 
 ## Prerequisites
-
 Before running the application, ensure you have the following installed:
 
 - **Node.js** (v20.10.0 or later)
@@ -57,10 +56,8 @@ Before running the application, ensure you have the following installed:
 - **Docker** & **Docker Compose**
 
 ## Installation
-You can set up the project manually or using Docker Compose for a containerized environment.
-
-The application requires separate .env files for the frontend and backend. Follow the steps below to
-configure them:
+Set up the project using either a manual process or Docker Compose for a seamless, containerized
+environment.
 
 ### 1. Clone the Repository
 ```
@@ -72,7 +69,6 @@ The application requires separate .env files for both the frontend and backend t
 management of environment-specific configurations and sensitive data. 
 
 #### Frontend (`frontend/.env`):
-
 1. Navigate to the `frontend` directory:
 ```
 cd frontend
@@ -98,7 +94,6 @@ cd ..
 ```
 
 #### Backend (`backend/martinbullman/.env`):
-
 1. Navigate to the `backend/martinbullman` directory:
 ```
 cd backend/martinbullman
@@ -200,9 +195,11 @@ Backend: http://localhost:8000
 
 
 ### Manual Setup
+Follow these instructions to manually set up and run the application without Docker. This approach 
+allows you to configure and run the frontend and backend services independently for development and
+debugging purposes.
 
 #### Frontend Setup
-
 1. Navigate to the `frontend` directory:
 ```
 cd frontend
@@ -234,7 +231,6 @@ cd ..
 ```
 
 #### Backend Setup
-
 1. Navigate to the `backend` directory:
 ```
 cd backend
@@ -271,12 +267,9 @@ http://localhost:8000/api/v1
 cd ..
 ```
 
----
 
 ## Testing
-
 ### Frontend
-
 Run unit tests for the frontend using **Vitest**:
 
 1. Navigate to the `frontend` directory:
@@ -290,7 +283,6 @@ npm run test
 ```
 
 ### Backend
-
 Run unit tests for the backend using **Django**:
 
 1. Navigate to the `backend/martinbullman` directory:
@@ -303,14 +295,12 @@ cd backend/martinbullman
 python manage.py test
 ```
 
+
 ## Linting
-
 ### Frontend
-
 Run linting for the frontend using **Eslint**:
 
 1. Navigate to the `frontend` directory:
-
 ```
 cd frontend
 ```
@@ -321,11 +311,9 @@ npm run lint
 ```
 
 ### Backend
-
 Run linting for the backend using **Pylint**:
 
 1. Navigate to the `backend` directory:
-
 ```
 cd backend
 ```
@@ -335,14 +323,10 @@ cd backend
 pylint $(git ls-files '*.py') 
 ```
 
----
 
 ## Contributing
-
 Feel free to fork this repository, raise issues, or submit pull requests.
 
----
 
 ## License
-
 This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
