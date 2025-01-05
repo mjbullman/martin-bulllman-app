@@ -37,7 +37,7 @@ jobs:
         working-directory: ./frontend
         run: npm install
 
-      # Step 4: Run ESLint to lint the code.
+      # step 4: run ESLint to lint the code.
       - name: Run Lint
         working-directory: ./frontend
         run: npm run lint
@@ -62,10 +62,17 @@ jobs:
         working-directory: ./frontend
         run: npm install
 
-      # Step 4: Run ESLint to lint the code.
+      # step 4: run ESLint to lint the code.
       - name: Run Tests
         working-directory: ./frontend
         run: npm run test
+
+      # step 5: run code coverage and upload report
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: mjbullman/martin-bulllman-app
 
   build:
     needs: test
@@ -118,7 +125,7 @@ jobs:
         with:
           name: frontend-artifacts
 
-      # step 3: copy the frontend artifacts to the remote server.
+      # step 2: copy the frontend artifacts to the remote server.
       - name: Deploy Artifacts
         uses: appleboy/scp-action@master
         with:
@@ -128,7 +135,7 @@ jobs:
           target: /home/ubuntu
           source: ${{ env.FILENAME }}.tar.gz
 
-      # step 4: extract the artifacts and restart the application.
+      # step 3: extract the artifacts and restart the application.
       - name: Extract and Restart Frontend
         uses: appleboy/ssh-action@v0.1.8
         with:
