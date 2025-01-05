@@ -30,7 +30,6 @@
 [![Vuetify](https://img.shields.io/badge/Vuetify-v3.x-brightgreen.svg)](https://vuetifyjs.com/)
 [![Django](https://img.shields.io/badge/Django-v5.x-brightgreen.svg)](https://www.djangoproject.com/)
 
-
 [//]: # (![Tech Stack]&#40;https://img.shields.io/badge/Stack-Nuxt%203%20%2B%20Vuetify%203%20%2B%20Django%205-blueviolet?style=flat-square&#41;)
 [//]: # (![Twitter]&#40;https://img.shields.io/twitter/follow/<username>?style=social&#41;)
 [//]: # (![Stack]&#40;https://img.shields.io/badge/stack-React%20%2B%20Node.js%20%2B%20GraphQL-blue&#41;)
@@ -47,18 +46,6 @@
     and <b>Django</b> to showcase cutting-edge web development practices. 🚀
 </h3>
 
-
-## Key Features
-
-- **Frontend:**
-  - Developed using [Vue 3](https://vuejs.org/), [Nuxt 3](https://nuxt.com/), and [Vuetify 3](https://vuetifyjs.com/), offering a responsive and dynamic user interface.
-  
-- **Backend:**
-  - Powered by [Django](https://www.djangoproject.com/), providing a robust backend with RESTful API endpoints for handling data and user interactions.
-
-- **Deployment:**
-  - The application is deployed using Docker and Docker Compose for simplified environment setup and scalability.
-
 ## Prerequisites
 
 Before running the application, ensure you have the following installed:
@@ -69,20 +56,22 @@ Before running the application, ensure you have the following installed:
 - **PIP** (v24.3.1  or later)
 - **Docker** & **Docker Compose**
 
----
-
 ## Installation
 You can set up the project manually or using Docker Compose for a containerized environment.
 
-The application requires separate .env files for the frontend and backend. Follow the steps below to configure them:
+The application requires separate .env files for the frontend and backend. Follow the steps below to
+configure them:
 
 ### 1. Clone the Repository
 ```
 git clone https://github.com/your-username/personal-web-app.git
-cd personal-web-app
 ```
 
-### 2. Frontend (`frontend/.env`):
+### 2. Environment Variables
+The application requires separate .env files for both the frontend and backend to ensure proper
+management of environment-specific configurations and sensitive data. 
+
+#### Frontend (`frontend/.env`):
 
 1. Navigate to the `frontend` directory:
 ```
@@ -108,7 +97,7 @@ GOOGLE_RECAPTCHA_SITE_KEY=your_recaptcha_site_key_here
 cd .. 
 ```
 
-### 3. Backend (`backend/martinbullman/.env`):
+#### Backend (`backend/martinbullman/.env`):
 
 1. Navigate to the `backend/martinbullman` directory:
 ```
@@ -181,95 +170,103 @@ PAGE_SPEED_API_KEY=your_google_page_speed_api_key_here
 cd ../../ 
 ```
 
-### Docker Compose Setup
-You can run the docekr compose command to build the application. We need to pass the backend .env so comose has the correct values  
+### 3. Application Setup
+### Docker Compose
+You can use the Docker Compose command to build and run the application seamlessly. The backend 
+.env file should be passed as a parameter to ensure the services are correctly configured. The 
+docker-compose.yml file orchestrates both the frontend and backend services, setting them up together
+for a fully integrated development environment.
 
-1. Build and Start the Containers:
+1. Build Docker containers:
 ```
-docker-compose --env-file ./backend/martinbullman/.env up --build
-```
-The docker-compose.yml file will set up both the frontend and backend services.
+docker-compose --env-file ./backend/martinbullman/.env build
+``` 
 
-2. Access the Application:
+2. Start Docker containers:
+```
+docker-compose --env-file ./backend/martinbullman/.env up
+```
+
+3. Stop Docker containers:
+```
+docker-compose down
+```
+
+4. Access the Application:
 ```
 Frontend: http://localhost:3000
 Backend: http://localhost:8000
 ```
 
-3. Stopping and Removing Containers:
-```
-docker-compose down
-```
-
 
 ### Manual Setup
 
-#### 1. Frontend Setup
+#### Frontend Setup
 
-Navigate to the `frontend` directory:
+1. Navigate to the `frontend` directory:
 ```
 cd frontend
 ```
 
-Install dependencies:
+2. Install dependencies:
 ```
 npm install
 ```
 
-Run development server:
+3. Run development server:
 ```
 npm run dev
 ```
 
-Access App at:
+4. Access App at:
 ```
 http://localhost:3000
 ```
 
-Run Nuxt build:
+5. Run Nuxt build:
 ```
 npm run build
 ```
 
-Return to the project root directory:
+6. Return to the project root directory:
 ```
 cd ..
 ```
 
-### 2. Backend Setup
+#### Backend Setup
 
-Navigate to the `backend` directory:
+1. Navigate to the `backend` directory:
 ```
 cd backend
 ```
 
-Create virtual environment and activate:
+2. Create virtual environment and activate:
 ```
 python -m venv venv
 source venv/bin/activate
 ```
 
-Install dependencies:
+3. Install dependencies:
 ```
 pip install -r martinbullman/requirements.txt
 ```
 
-Run database migrations for the Django backend:
+4. Run database migrations for the Django backend:
 ```
 python3 martinbullman/manage.py migrate
 ```
 
-Run development server:
+5. Run development server:
 ```
 python martinbullman/manage.py runserver 
 ```
 
-Access API at:
+6. Access API at:
 ```
 http://localhost:8000/api/v1
 ```
 
-Return to the project root directory:
+7. Return to the project root directory:
 ```
 cd ..
 ```
@@ -294,67 +291,49 @@ npm run test
 
 ### Backend
 
-Run tests for the Django backend using **pytest**:
+Run unit tests for the backend using **Django**:
+
+1. Navigate to the `backend/martinbullman` directory:
+```
+cd backend/martinbullman
+```
+
+2. Run pytest
+```
+python manage.py test
+```
+
+## Linting
+
+### Frontend
+
+Run linting for the frontend using **Eslint**:
+
+1. Navigate to the `frontend` directory:
 
 ```
-cd backend
-pytest
-```
-
-```bash
 cd frontend
-npm run test
 ```
 
-Run Lint
-
-```bash
-cd frontend
+2. Run lint:
+```
 npm run lint
 ```
 
-To check test coverage:
+### Backend
 
-```bash
-pytest --cov=.
+Run linting for the backend using **Pylint**:
+
+1. Navigate to the `backend` directory:
+
+```
+cd backend
 ```
 
----
-
-## Docker Setup
-
-### 1. Build Docker Images
-
-```bash
-docker-compose build
+2. Run lint:
 ```
-
-### 2. Start the Containers
-
-```bash
-docker-compose up
+pylint $(git ls-files '*.py') 
 ```
-
-The application will be available at:
-
-- **Frontend**: `http://localhost:3000`
-- **Backend API**: `http://localhost:8000/api`
-
-### 3. Stop the Containers
-
-To stop and remove containers, networks, and volumes:
-
-```bash
-docker-compose down
-```
-
----
-
-## Deployment
-
-- **Frontend**: Use static hosting platforms like Vercel or Netlify for Nuxt 3 apps.
-- **Backend**: Deploy the Django application using services like AWS, Heroku, or DigitalOcean with a WSGI/ASGI server (e.g., Gunicorn).
-- **Docker**: Use Docker containers for deployment in cloud services or Kubernetes environments.
 
 ---
 
@@ -366,16 +345,4 @@ Feel free to fork this repository, raise issues, or submit pull requests.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-## Acknowledgments
-
-
-- [Vue.js](https://vuejs.org/)
-- [Nuxt 3](https://nuxt.com/)
-- [Vuetify](https://vuetifyjs.com/)
-- [Django](https://www.djangoproject.com/)
-- [Django REST Framework](https://www.django-rest-framework.org/)
-- [Docker](https://www.docker.com/)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
