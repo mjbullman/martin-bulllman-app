@@ -1,28 +1,63 @@
 <div align="center">
-  <img alt="Logo" src="./frontend/public/img/icon.svg" width="100" style="margin-top: 50px" />
+    <img alt="Logo" src="./frontend/public/img/icon.svg" width="100" style="margin-top: 50px" />
 </div>
 
 <h1 align="center" style="margin-top: 15px">
-  martinbullman.xyz
+    Martin Bullman Portfolio Application <br>
 </h1>
 
-<div align="center">
+<h3 align="center" style="margin-top: -20px;">
+    <a href="https://martinbullman.xyz">https://martinbullman.xyz</a>
+</h3><br>
+
+<div align="center" style="margin-top: 20px">
 
 [![deploy-frontend](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-frontend.yml/badge.svg?branch=main)](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-frontend.yml)
 [![deploy-backend](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-backend.yml/badge.svg)](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-backend.yml)
-![GitHub License](https://img.shields.io/github/license/mjbullman/martin-bulllman-app)
-[![Node.js Version](https://img.shields.io/badge/node-%3E%3D%2020.10.0-brightgreen.svg)](https://nodejs.org/)
-[![Last Commit](https://img.shields.io/github/last-commit/mjbullman/martin-bulllman-app.svg)](https://github.com/mjbullman/martin-bulllman-app/commits/main)
+[![codecov](https://codecov.io/gh/mjbullman/martin-bulllman-app/branch/main/graph/badge.svg)](https://codecov.io/gh/mjbullman/martin-bulllman-app)
+[![Sponsor](https://img.shields.io/badge/sponsor-%E2%9D%A4-red?style=flat-square)](https://github.com/sponsors/mjbullman)
 
+
+[![License](https://img.shields.io/github/license/mjbullman/martin-bulllman-app.svg)](https://github.com/mjbullman/martin-bulllman-app/blob/readme-updates/LICENSE.md)
+![Version](https://img.shields.io/github/v/tag/mjbullman/martin-bulllman-app)
+[![Last Commit](https://img.shields.io/github/last-commit/mjbullman/martin-bulllman-app)](https://github.com/mjbullman/martin-bulllman-app/commits/main)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mjbullman/martin-bulllman-app)
+
+
+[![Node](https://img.shields.io/badge/NodeJS-v20.10.0-brightgreen.svg)](https://nodejs.org/)
+[![Vue](https://img.shields.io/badge/VueJS-v3.x-brightgreen.svg)](https://vuejs.org/)
+[![Nuxt](https://img.shields.io/badge/Nuxt-v3.x-brightgreen.svg)](https://nuxt.com/)
+[![Vuetify](https://img.shields.io/badge/Vuetify-v3.x-brightgreen.svg)](https://vuetifyjs.com/)
+[![Django](https://img.shields.io/badge/Django-v5.x-brightgreen.svg)](https://www.djangoproject.com/)
+
+
+[//]: # (![Tech Stack]&#40;https://img.shields.io/badge/Stack-Nuxt%203%20%2B%20Vuetify%203%20%2B%20Django%205-blueviolet?style=flat-square&#41;)
+[//]: # (![Twitter]&#40;https://img.shields.io/twitter/follow/<username>?style=social&#41;)
+[//]: # (![Stack]&#40;https://img.shields.io/badge/stack-React%20%2B%20Node.js%20%2B%20GraphQL-blue&#41;)
+[//]: # (![PRs Welcome]&#40;https://img.shields.io/badge/PRs-welcome-brightgreen&#41;)
 
 </div>
 
-![demo](./frontend/public/img/projects/martinbullman_banner.gif)
+<div align="center">
+    <img src="./frontend/public/img/projects/martinbullman_banner.gif" alt="Demo Banner" />
+</div>
+
+<h3 align="center">
+    A modern portfolio application built with <b>Vue 3</b>, <b>Nuxt 3</b>, <b>Vuetify 3</b>,
+    and <b>Django</b> to showcase cutting-edge web development practices. 🚀
+</h3>
 
 
-# Personal Web Application
+## Key Features
 
-This is a personal web application built using modern technologies for a seamless and efficient user experience. The application uses **Vue 3**, **Nuxt 3**, and **Vuetify 3** for the frontend and a **Django backend** with a REST API for managing data and business logic.
+- **Frontend:**
+  - Developed using [Vue 3](https://vuejs.org/), [Nuxt 3](https://nuxt.com/), and [Vuetify 3](https://vuetifyjs.com/), offering a responsive and dynamic user interface.
+  
+- **Backend:**
+  - Powered by [Django](https://www.djangoproject.com/), providing a robust backend with RESTful API endpoints for handling data and user interactions.
+
+- **Deployment:**
+  - The application is deployed using Docker and Docker Compose for simplified environment setup and scalability.
 
 ## Prerequisites
 
@@ -31,7 +66,6 @@ Before running the application, ensure you have the following installed:
 - **Node.js** (v20.10.0 or later)
 - **Python** (3.11.10 or later)
 - **Docker** and **Docker Compose**
-- **Nuxt CLI** (for Nuxt 3 projects)
 
 ---
 
@@ -46,36 +80,41 @@ cd personal-web-app
 
 ### 2. Frontend Setup
 
-Navigate to the `frontend` directory and install dependencies:
+Navigate to the `frontend` directory:
 
 ```bash
 cd frontend
+```
+
+Install NPM dependencies:
+
+```bash
 npm install
-```
-
-Run Vitest Tests
-
-```bash
-cd frontend
-npm run test
-```
-
-Run Lint
-
-```bash
-cd frontend
-npm run lint
 ```
 
 ### 3. Backend Setup
 
-Navigate to the `backend` directory and set up a Python virtual environment:
+Navigate to the `backend` directory:
 
 ```bash
 cd backend
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
+```
+
+Create virtual environment and activate:
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+Install PIP dependencies:
+```
+pip install -r martinbullman/requirements.txt
+```
+
+Run database migrations for the Django backend:
+
+```bash
+python3 martinbullman/manage.py migrate
 ```
 
 ### 4. Database Migration
@@ -130,6 +169,18 @@ Run tests for the Django backend using **pytest**:
 ```bash
 cd backend
 pytest
+```
+
+```bash
+cd frontend
+npm run test
+```
+
+Run Lint
+
+```bash
+cd frontend
+npm run lint
 ```
 
 To check test coverage:
