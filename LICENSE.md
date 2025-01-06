@@ -1,40 +1,15 @@
-MIT License
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License
 
-Copyright (c) 2025 Martin Bullman
+You are free to:
+- Share — copy and redistribute the material in any medium or format.
+- Adapt — remix, transform, and build upon the material.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Under the following terms:
+- Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+- NonCommercial — You may not use the material for commercial purposes.
+- ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 
-**Attribution**:  
-Any use of this Software must include clear and visible attribution to the
-original author, Martin Bullman.This includes acknowledgment in documentation,
-about pages, or any other visible part of the distributed project, such as:
-This project includes software created by Martin Bullman. Original source:
-https://github.com/mjbullman/martin-bulllman-app
-
-**Contact Me**:  
-For inquiries, feedback, or permission to use this software in ways not covered 
-by this license, please contact me at:  
-
-**Email**: martin.j.bullman@gmail.com  
-**Website**: martinbullman.xyz
-
-
-**Non-Misrepresentation**:  
-You may not imply that Martin Bullman endorses your use of the Software without
-explicit prior permission.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+To view the full license, visit:
+https://creativecommons.org/licenses/by-nc-sa/4.0/
