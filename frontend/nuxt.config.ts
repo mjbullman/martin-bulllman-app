@@ -1,6 +1,5 @@
 // imports.
 import vuetify from 'vite-plugin-vuetify'
-import { codecovVitePlugin } from '@codecov/vite-plugin'
 import { useEnvironment } from './composables/environment'
 
 // composable.
@@ -112,14 +111,7 @@ export default defineNuxtConfig({
                         + ' @use "~/assets/scss/_animations.scss" as *;'
                 }
             }
-        },
-        plugins: [
-            codecovVitePlugin({
-                enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
-                bundleName: 'MartinBullmanApp',
-                uploadToken: process.env.CODECOV_TOKEN
-            })
-        ]
+        }
     },
 
     eslint: {

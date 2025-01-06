@@ -12,16 +12,18 @@
 
 <div align="center" style="margin-top: 20px">
 
-[![deploy-frontend](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-frontend.yml/badge.svg?branch=main)](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-frontend.yml)
-[![deploy-backend](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-backend.yml/badge.svg)](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-backend.yml)
+[![deploy-frontend](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-frontend.yml/badge.svg?branch=main&color=blue)](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-frontend.yml)
+[![deploy-backend](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-backend.yml/badge.svg?branch=main)](https://github.com/mjbullman/martin-bulllman-app/actions/workflows/deploy-backend.yml)
 [![codecov](https://codecov.io/gh/mjbullman/martin-bulllman-app/branch/main/graph/badge.svg)](https://codecov.io/gh/mjbullman/martin-bulllman-app)
 [![Sponsor](https://img.shields.io/badge/sponsor-%E2%9D%A4-red?style=flat-square)](https://github.com/sponsors/mjbullman)
 
 
-[![License](https://img.shields.io/github/license/mjbullman/martin-bulllman-app.svg)](https://github.com/mjbullman/martin-bulllman-app/blob/readme-updates/LICENSE.md)
-![Version](https://img.shields.io/github/v/tag/mjbullman/martin-bulllman-app)
-[![Last Commit](https://img.shields.io/github/last-commit/mjbullman/martin-bulllman-app)](https://github.com/mjbullman/martin-bulllman-app/commits/main)
+[![License: CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/)
+![Version](https://img.shields.io/github/v/release/mjbullman/martin-bulllman-app)
+[![Last Commit](https://img.shields.io/github/last-commit/mjbullman/martin-bulllman-app?color=blue)](https://github.com/mjbullman/martin-bulllman-app/commits/main)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mjbullman/martin-bulllman-app)
+![Issues](https://img.shields.io/github/issues/mjbullman/martin-bulllman-app?color=blue)
+![Pull Requests](https://img.shields.io/github/issues-pr/mjbullman/martin-bulllman-app?color=blue)
 
 
 [![Vue](https://img.shields.io/badge/VueJS-v3.x-brightgreen.svg)](https://vuejs.org/)
@@ -30,7 +32,7 @@
 [![Django](https://img.shields.io/badge/Django-v5.x-brightgreen.svg)](https://www.djangoproject.com/)
 [![Node](https://img.shields.io/badge/NodeJS-v20.x-brightgreen.svg)](https://nodejs.org/)
 [![Python](https://img.shields.io/badge/Python-3.11.x-brightgreen.svg)](https://www.python.org/)
-[![Pip](https://img.shields.io/badge/pip-24.x-brightgreen.svg)](https://pypi.org/project/pip/)
+[![Pip](https://img.shields.io/badge/Pip-24.x-brightgreen.svg)](https://pypi.org/project/pip/)
 
 
 [//]: # (![Tech Stack]&#40;https://img.shields.io/badge/Stack-Nuxt%203%20%2B%20Vuetify%203%20%2B%20Django%205-blueviolet?style=flat-square&#41;)
@@ -253,7 +255,7 @@ pip install -r martinbullman/requirements.txt
 
 4. Run database migrations for the Django backend:
 ```
-python3 martinbullman/manage.py migrate
+python martinbullman/manage.py migrate
 ```
 
 5. Run development server:
@@ -294,7 +296,7 @@ Run unit tests for the backend using **Django**:
 cd backend/martinbullman
 ```
 
-2. Run pytest
+2. Run tests:
 ```
 python manage.py test
 ```
@@ -329,8 +331,13 @@ pylint $(git ls-files '*.py')
 
 
 ## Contributing
-Feel free to fork this repository, raise issues, or submit pull requests.
 
+Feel free to fork this repository, raise issues, or submit pull requests. Contributions are welcome and encouraged under the terms of the project's license.
+
+Please ensure that your contributions follow the project's coding standards and guidelines. After forking, clone your copy of the repository, create a branch for your work, and submit a pull request for review.
+
+Make sure to include tests, if applicable, and provide a clear description of the changes you've made.
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
+This project is licensed under the Creative Commons Attribution 4.0 International
+License. See the [LICENSE](LICENSE.md) file for details.
