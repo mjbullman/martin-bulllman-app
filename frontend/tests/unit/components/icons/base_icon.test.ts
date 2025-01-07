@@ -15,7 +15,6 @@ describe('BaseIcon Component', () => {
 
         const link = wrapper.find('a')
 
-        // check if the component renders a button with the correct attributes
         expect(link.exists()).toBe(true)
         expect(link.attributes('href')).toBe('https://facebook.com/mjbullman')
         expect(link.attributes('aria-label')).toBe('View my Facebook profile')
@@ -35,7 +34,6 @@ describe('BaseIcon Component', () => {
             }
         })
 
-        // Check if the SVG content in the default slot is rendered
         const svg = wrapper.find('svg')
         expect(svg.exists()).toBe(true)
         expect(svg.attributes('width')).toBe('40')
