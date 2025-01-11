@@ -28,10 +28,12 @@ export default createConfigForNuxt({
 
     .override('nuxt/vue/rules', {
         rules: {
+            'vue/no-v-html': 'off',
             'vue/html-self-closing': 'off',
             'vue/block-tag-newline': 'off',
             'vue/first-attribute-line-break': 'off',
             'vue/html-closing-bracket-newline': 'off',
+            'vue/no-v-text-v-html-on-component': 'off',
             'vue/multiline-html-element-content-newline': 'off',
             'vue/max-attributes-per-line': ['error', {
                 'singleline': 10,
