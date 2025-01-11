@@ -34,13 +34,7 @@
 
         </v-card-subtitle>
 
-        <v-card-text class="text-subtitle-1">
-
-            <div>
-
-                {{ project.text }}
-
-            </div>
+        <v-card-text class="text-subtitle-1" v-html="project.text">
 
         </v-card-text>
 
