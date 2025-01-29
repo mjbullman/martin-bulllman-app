@@ -38,11 +38,11 @@
         "@nuxtjs/sitemap": "^6.1.5",
         "@pinia/nuxt": "^0.5.5",
         "@vueuse/motion": "^2.2.5",
-        "nuxt": "^3.13.1",
+        "nuxt": "^3.15.4",
         "nuxt-gtag": "^3.0.2",
         "nuxt-schema-org": "^3.3.9",
         "vee-validate": "^4.13.2",
-        "vite": "^5.4.12",
+        "vite": "^5.4.13",
         "vue-recaptcha-v3": "^2.0.1",
         "vuetify": "^3.7.1"
     },
