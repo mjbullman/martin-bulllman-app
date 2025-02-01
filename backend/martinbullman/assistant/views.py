@@ -1,4 +1,6 @@
-""" This module defines API views for interacting with Assistant API. """
+"""
+This module defines API views for interacting with my Assistant API.
+"""
 
 from decouple import config
 from openai import OpenAI
@@ -9,14 +11,21 @@ from requests.exceptions import RequestException
 
 
 class Chat(APIView):
+    """ Chat API endpoint. """
     throttle_classes = [UserRateThrottle]
 
 
 class Greeting(APIView):
-
+    """ Greeting API endpoint. """
     throttle_classes = [UserRateThrottle]
 
     def get(self, request):  # pylint: disable=unused-argument
+        """
+        Retrieve a refreshed access token.
+
+        Returns: object: The response from ChatGPT3.
+        Raises: RequestException: If request fails.
+        """
 
         try:
             client = OpenAI(
@@ -37,4 +46,4 @@ class Greeting(APIView):
 
         except RequestException as exception:
             print(f"Error fetching Spotify profile: {exception}")
-
+            return Response(exception)
