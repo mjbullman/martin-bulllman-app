@@ -1,107 +1,44 @@
 /**
  * Represents a hyperlink with a title and URL.
  *
- * @export
- * @interface Link
+ * @property {string} title - The title of the hyperlink.
+ * @property {string} href - The URL or hyperlink reference.
  */
 export interface Link {
-    /**
-     * The title of the link.
-     *
-     * @type {string}
-     */
     title: string
-
-    /**
-     * The URL or hyperlink reference.
-     *
-     * @type {string}
-     */
     href: string
 }
 
 /**
  * Represents an image with a URL and alternative text.
  *
- * @export
- * @interface Image
+ * @property {string} href - The URL of the image.
+ * @property {string} alt - The alternative text for the image, used for accessibility.
  */
 export interface Image {
-    /**
-     * The URL of the image.
-     *
-     * @type {string}
-     */
     href: string
-
-    /**
-     * The alternative text for the image, used for accessibility.
-     *
-     * @type {string}
-     */
     alt: string
 }
 
 /**
  * Represents a project with various details, including images, text, technologies, and links.
  *
- * @export
- * @interface Project
+ * @property {number} id - The unique identifier for the project.
+ * @property {string} title - The title of the project.
+ * @property {string} subTitle - The subtitle or brief description of the project.
+ * @property {Image=} img - (Optional) An image associated with the project.
+ * @property {string} text - The main text or description of the project.
+ * @property {string[]} technologies - An array of technologies used in the project.
+ * @property {string[]=} chips - (Optional) An array of chip labels or tags associated with the project.
+ * @property {Link[]} links - An array of links related to the project.
  */
 export interface Project {
-    /**
-     * The unique identifier for the project.
-     *
-     * @type {number}
-     */
     id: number
-
-    /**
-     * The title of the project.
-     *
-     * @type {string}
-     */
     title: string
-
-    /**
-     * The subtitle or brief description of the project.
-     *
-     * @type {string}
-     */
     subTitle: string
-
-    /**
-     * An optional image associated with the project.
-     *
-     * @type {Image | undefined}
-     */
     img?: Image
-
-    /**
-     * The main text or description of the project.
-     *
-     * @type {string}
-     */
     text: string
-
-    /**
-     * An array of technologies used in the project.
-     *
-     * @type {string[]}
-     */
     technologies: string[]
-
-    /**
-     * An optional array of chip labels or tags associated with the project.
-     *
-     * @type {string[] | undefined}
-     */
     chips?: string[]
-
-    /**
-     * An array of links related to the project.
-     *
-     * @type {Link[]}
-     */
     links: Link[]
 }

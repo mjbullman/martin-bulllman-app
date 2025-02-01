@@ -1,6 +1,6 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { createTestingPinia } from '@pinia/testing'
-import { useSettingsStore } from '@/stores/settings'
+import { useSettingsStore } from '~/stores/settings'
 import Theme from '~/components/buttons/Theme.vue'
 
 describe('Theme Component', () => {

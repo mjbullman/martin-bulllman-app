@@ -8,6 +8,18 @@ export default defineVitestConfig({
             deps: {
                 inline: ['vuetify']
             }
+        },
+        coverage: {
+            provider: 'v8',
+            exclude: [
+                'nuxt.config.ts',
+                'node_modules/**',
+                'tests/*',
+                '**/.nuxt/**',
+                'eslint.config.mjs',
+                'vitest.config.mts',
+                'app.config.ts'
+            ]
         }
     }
 })
