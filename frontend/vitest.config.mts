@@ -15,7 +15,7 @@ export default defineVitestConfig({
                 'nuxt.config.ts',
                 'node_modules/**',
                 'tests/*',
-                '.nuxt/**',
+                '**/.nuxt/**',
                 'eslint.config.mjs',
                 'vitest.config.mts',
                 'app.config.ts'
