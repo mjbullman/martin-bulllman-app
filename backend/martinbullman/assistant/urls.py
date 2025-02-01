@@ -3,13 +3,13 @@ This module defines the URL routing for the Assistant application.
 
 Routes:
 - /chat
--/greeting
+- /greeting
 """
 
-import views
 from django.urls import path
+from assistant import views
 
 urlpatterns = [
-    path('chat', views.Chat.as_view(), name = 'chat-bot'),
+    path('chat', views.Chat.as_view(), name = 'chat_bot'),
     path('greeting', views.Greeting.as_view(), name = 'greeting')
 ]
