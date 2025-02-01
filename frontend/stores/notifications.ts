@@ -1,12 +1,13 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import type { SnackbarData } from '~/types/snackNotification'
 
 export const useNotifications = defineStore('notifications', () => {
     // state
-    const snackbarData = ref(null)
+    const snackbarData = ref<SnackbarData | null>(null)
 
     // actions
-    function updateSnackbarData (payload: never) {
+    function updateSnackbarData (payload: SnackbarData) {
         snackbarData.value = payload
     }
 

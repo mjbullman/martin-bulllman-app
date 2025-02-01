@@ -2,7 +2,7 @@ import { mountSuspended } from '@nuxt/test-utils/runtime'
 import type { DOMWrapper } from '@vue/test-utils'
 import FooterComponent from '~/components/layout/AppFooter.vue'
 
-describe('FooterComponent - User Interactions', () => {
+describe('Footer Component', () => {
     let mountComponent: () => Promise<ReturnType<typeof mountSuspended>>
 
     beforeEach(() => {

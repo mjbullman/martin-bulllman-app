@@ -1,5 +1,5 @@
 """
-This module defines the configuration for the OpenAI application.
+This module defines the configuration for the Assistant application.
 
 It specifies the app's metadata and provides an entry point for
 app-specific initialization, such as signal registration or
@@ -14,4 +14,4 @@ class AiConfig(AppConfig):
     Configuration class for the OpenAI app.
     """
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'openai'
+    name = 'assistant'
