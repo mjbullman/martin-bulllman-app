@@ -3,7 +3,7 @@ import { useEnvironment } from '~/composables/environment'
 
 describe('useEnvironment Composable', () => {
 
-    const setUpTestEnv = (env: string, windowValue: any) => {
+    const setUpTestEnv = (env: string, windowValue: object | undefined) => {
         vi.stubEnv('NODE_ENV', env)
         vi.stubGlobal('window', windowValue)
     }
