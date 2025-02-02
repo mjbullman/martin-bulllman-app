@@ -7,7 +7,7 @@ Routes:
 """
 
 from django.urls import path
-from assistant import views
+from . import views
 
 urlpatterns = [
     path('chat', views.Chat.as_view(), name = 'chat_bot'),
