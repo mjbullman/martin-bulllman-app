@@ -2,7 +2,7 @@
 .idea
 
 # backend ignore files and folders.
-backend/env
+backend/venv
 backend/martinbullman/.env
 
 # fontend ignore files and folders.
