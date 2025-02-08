@@ -17,5 +17,5 @@ urlpatterns = [
     path('api/v1/', include('core.urls'), name = 'api'),
     path('api/v1/spotify/', include('spotify.urls'), name = 'spotify'),
     path('api/v1/weather/', include('weather.urls') , name = 'weather'),
-    path('api/v1/assistant/', include('assistant.urls'), name='assistant')
+    path('api/v1/assistant/', include('assistant.urls'), name = 'assistant')
 ]
