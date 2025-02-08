@@ -11,8 +11,10 @@ from requests.exceptions import RequestException
 
 
 def extract_ai_message(messages):
+    """ Extract the assistant response text """
     for message in messages:
         role = next((item[1] for item in message if item[0] == "role"), None)
+
         if role == "assistant":
             content = next((item[1] for item in message if item[0] == "content"), None)
             if content:
@@ -21,6 +23,8 @@ def extract_ai_message(messages):
                 )
                 if text_content:
                     return next((item[1] for item in text_content if item[0] == "value"), None)
+
+    return None
 
 
 class Chat(APIView):
@@ -33,52 +37,44 @@ class Greeting(APIView):
     throttle_classes = [UserRateThrottle]
 
     def get(self, request):  # pylint: disable=unused-argument
-        """
-        Retrieve a refreshed access token.
-
-        Returns: object: The response from ChatGPT3.
-        Raises: RequestException: If request fails.
-        """
-
+        """ Greeting API endpoint. """
         try:
-            client = OpenAI(
-                api_key=config('OPENAI_API_KEY'),  # This is the default and can be omitted
-            )
+            client = OpenAI(api_key = config('OPENAI_API_KEY'))
 
             assistant = client.beta.assistants.create(
-                name="Martin Bullman Assistant",
-                instructions=(
+                name = "Martin Bullman Assistant",
+                instructions = (
                     "You are assisting Martin Bullman, a CTO and experienced developer. "
-                    "Provide precise and efficient solutions, keeping responses professional and technical. "
-                    "When discussing coding topics, offer best practices and optimizations. "
+                    "Provide precise and efficient solutions, keeping responses professional "
+                    "and technical. When discussing coding topics, offer best practices and "
+                    "optimizations. "
                 ),
-                tools=[{"type": "code_interpreter"}],
-                model="gpt-4o",
+                tools = [{"type": "code_interpreter"}],
+                model = "gpt-4o",
             )
 
             thread = client.beta.threads.create()
 
-            message = client.beta.threads.messages.create(
-                thread_id=thread.id,
-                role="user",
-                content="Can you tell me if martin avialable for work?"
-            )
-
+            # message = client.beta.threads.messages.create(
+            #     thread_id = thread.id,
+            #     role = "user",
+            #     content = "Can you tell me if martin avialable for work?"
+            # )
 
             run = client.beta.threads.runs.create_and_poll(
-                thread_id=thread.id,
-                assistant_id=assistant.id,
-                instructions="Can you tell me if martin avialable for work?"
+                thread_id = thread.id,
+                assistant_id = assistant.id,
+                instructions = "Can you tell me if martin avialable for work?"
             )
 
             if run.status == 'completed':
                 messages = client.beta.threads.messages.list(
-                    thread_id=thread.id
+                    thread_id = thread.id
                 )
+
                 return Response(extract_ai_message(messages))
-            else:
-                print(run.status)
 
         except RequestException as exception:
             print(f"Error fetching Spotify profile: {exception}")
-            return Response(exception)
+
+        return Response(None)
