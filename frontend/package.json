@@ -44,7 +44,7 @@
         "vee-validate": "^4.13.2",
         "vite": "^5.4.12",
         "vue-recaptcha-v3": "^2.0.1",
-        "vuetify": "^3.7.1"
+        "vuetify": "^3.7.12"
     },
     "overrides": {
         "vue": "latest"
