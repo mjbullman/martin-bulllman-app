@@ -95,8 +95,8 @@ jobs:
           echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
           echo "API_BASE_URL=${{ secrets.API_BASE_URL }}" >> .env
           echo "GOOGLE_ANALYTICS_ID=${{ secrets.GOOGLE_ANALYTICS_ID }}" >> .env
-          echo "GOOGLE_RECAPTCHA_ID=${{ secrets.GOOGLE_RECAPTCHA_ID }}" >> .env
           echo "GOOGLE_RECAPTCHA_SITE_KEY=${{ secrets.GOOGLE_RECAPTCHA_SITE_KEY }}" >> .env
+          echo "CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}" >> .env
 
       # step 3: build the frontend application.
       - name: Build Application
@@ -148,7 +148,8 @@ jobs:
             mkdir -p frontend_releases/${{ env.FILENAME }}
             tar -xzf ${{ env.FILENAME }}.tar.gz -C frontend_releases/${{ env.FILENAME }}
             cp -r frontend_releases/${{ env.FILENAME }}/.output MartinBullmanApp/frontend
-            rm -r ${{ env.GITHUB_SHA }}.tar.gz 
+            cp -r frontend_releases/${{ env.FILENAME }}/package.json MartinBullmanApp/frontend
+            rm -r ${{ env.FILENAME }}.tar.gz 
             
             # ensure node.js environment is loaded.
             export NVM_DIR="$HOME/.nvm"
