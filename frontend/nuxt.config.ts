@@ -22,6 +22,7 @@ export default defineNuxtConfig({
             })
         }
     ],
+    debug: true,
     ssr: true,
     devtools: {
         enabled: !isProduction()
