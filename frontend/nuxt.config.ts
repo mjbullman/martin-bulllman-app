@@ -119,6 +119,7 @@ export default defineNuxtConfig({
     },
 
     gtag: {
+        enabled: isProduction(),
         id: process.env.GOOGLE_ANALYTICS_ID
     },
 
