@@ -94,6 +94,7 @@ jobs:
         run: |
           echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
           echo "API_BASE_URL=${{ secrets.API_BASE_URL }}" >> .env
+          echo "GOOGLE_ANALYTICS_ID=${{ secrets.GOOGLE_ANALYTICS_ID }}" >> .env
           echo "GOOGLE_RECAPTCHA_ID=${{ secrets.GOOGLE_RECAPTCHA_ID }}" >> .env
           echo "GOOGLE_RECAPTCHA_SITE_KEY=${{ secrets.GOOGLE_RECAPTCHA_SITE_KEY }}" >> .env
 
