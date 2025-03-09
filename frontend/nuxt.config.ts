@@ -6,7 +6,6 @@ import { useEnvironment } from './composables/environment'
 const { isProduction } = useEnvironment()
 
 export default defineNuxtConfig({
-
     modules: [
         'nuxt-gtag',
         '@nuxt/image',
@@ -23,13 +22,10 @@ export default defineNuxtConfig({
             })
         }
     ],
-
     ssr: true,
-
     devtools: {
         enabled: !isProduction()
     },
-
     app: {
         head: {
             title: 'Martin Bullman | Software Engineer & Full Stack Developer',
@@ -59,20 +55,17 @@ export default defineNuxtConfig({
             mode: 'out-in'
         }
     },
-
     css: [
         '@/assets/scss/app.scss',
         'vuetify/lib/styles/main.sass',
         '@fortawesome/fontawesome-svg-core/styles.css'
     ],
-
     site: {
         url: process.env.BASE_URL,
         name: 'Martin Bullman | Software Engineer & Full Stack Developer',
         description: 'The portfolio of Martin Bullman, Software Engineer & Full Stack Developer.',
         defaultLocale: 'en'
     },
-
     runtimeConfig: {
         // the private keys which are only available server-side.
         apiSecret: '',
@@ -84,7 +77,6 @@ export default defineNuxtConfig({
             recaptchaSiteKey: process.env.GOOGLE_RECAPTCHA_SITE_KEY
         }
     },
-
     build: {
         transpile: [
             'vuetify',
@@ -95,9 +87,7 @@ export default defineNuxtConfig({
             '@fortawesome/free-brands-svg-icons'
         ]
     },
-
-    compatibilityDate: '2024-10-19',
-
+    compatibilityDate: '2025-03-07',
     vite: {
         define: {
             'process.env.DEBUG': true
@@ -113,16 +103,13 @@ export default defineNuxtConfig({
             }
         }
     },
-
     eslint: {
-        // Additional configs here
+        // additional configs here
     },
-
     gtag: {
         enabled: isProduction(),
         id: process.env.GOOGLE_ANALYTICS_ID
     },
-
     image: {
         // the screen sizes predefined by `@nuxt/image`:
         screens: {
@@ -134,7 +121,6 @@ export default defineNuxtConfig({
             xxl: 1536
         }
     },
-
     schemaOrg: {
         identity: {
             type: 'Person',
