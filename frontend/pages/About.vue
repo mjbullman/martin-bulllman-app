@@ -2,7 +2,7 @@
 
     <v-container fluid class="pa-0">
 
-        <page-heading heading-text="About1"></page-heading>
+        <page-heading heading-text="About"></page-heading>
 
         <v-container>
 
