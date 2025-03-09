@@ -12,7 +12,7 @@ on:
 
 env:
   # set environment variables for node.js version and github context values.
-  NODE_VERSION: 20
+  NODE_VERSION: 20.10.0
   FILENAME: "${{ github.sha }}-${{ github.run_id }}"
   GITHUB_SHA: ${{ github.sha }}
   GITHUB_REF: ${{ github.ref }}
@@ -106,7 +106,7 @@ jobs:
       # step 4: archive the build output into a tarball.
       - name: Archive Artifacts
         working-directory: ./frontend/
-        run: tar -czf ../${{ env.FILENAME }}.tar.gz .output
+        run: tar -czf ../${{ env.FILENAME }}.tar.gz .
 
       # step 5: upload the archived artifacts for later use in deployment.
       - name: Store Artifacts
@@ -147,8 +147,7 @@ jobs:
           script: |
             mkdir -p frontend_releases/${{ env.FILENAME }}
             tar -xzf ${{ env.FILENAME }}.tar.gz -C frontend_releases/${{ env.FILENAME }}
-            cp -r frontend_releases/${{ env.FILENAME }}/.output MartinBullmanApp/frontend
-            cp -r frontend_releases/${{ env.FILENAME }}/package.json MartinBullmanApp/frontend
+            cp -r frontend_releases/${{ env.FILENAME }}/* MartinBullmanApp/frontend
             rm -r ${{ env.FILENAME }}.tar.gz 
             
             # ensure node.js environment is loaded.
