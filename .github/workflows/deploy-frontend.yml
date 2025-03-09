@@ -62,7 +62,9 @@ jobs:
       # step 3: install project dependencies.
       - name: Install Dependencies
         working-directory: ./frontend
-        run: npm install
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
 
       # step 4: run ESLint to lint the code.
       - name: Run Tests
@@ -89,7 +91,9 @@ jobs:
       # step 2: install project dependencies.
       - name: Install Dependencies
         working-directory: ./frontend
-        run: npm install
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
 
       - name: Create .env File
         working-directory: ./frontend
