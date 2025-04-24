@@ -12,7 +12,7 @@ on:
 
 env:
   # set environment variables for node.js version and github context values.
-  PYTHON_VERSION: 3.11.10
+  PYTHON_VERSION: 3.12.2
   FILENAME: "${{ github.sha }}-${{ github.run_id }}"
   GITHUB_SHA: "${{ github.sha }}"
   GITHUB_REF: "${{ github.ref }}"
