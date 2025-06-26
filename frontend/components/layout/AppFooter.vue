@@ -31,7 +31,11 @@
 
                 The frontend is developed using
 
-                <NuxtLink to="https://vuejs.org/" target="_blank" aria-label="VueJS (opens a new tab)" class="link">
+                <NuxtLink
+                    to="https://vuejs.org/"
+                    target="_blank"
+                    aria-label="VueJS (opens a new tab)"
+                    class="text-decoration-none text-grey link">
 
                     Vue.js
 
@@ -39,13 +43,19 @@
 
                 <NuxtLink
                     to="https://vuetifyjs.com/en/"
-                    target="_blank" aria-label="Vuetify (opens a new tab)">
+                    target="_blank"
+                    aria-label="Vuetify (opens a new tab)"
+                    class="text-decoration-none text-grey link">
 
                     Vuetify
 
                 </NuxtLink>
 
-                <NuxtLink to="https://nuxt.com/" target="_blank" aria-label="NuxtJS (opens a new tab)" class="link">
+                <NuxtLink
+                    to="https://nuxt.com/"
+                    target="_blank"
+                    aria-label="NuxtJS (opens a new tab)"
+                    class="text-decoration-none text-grey link">
 
                     Nuxt.js
 
@@ -53,7 +63,15 @@
 
                 while the backend is powered by the
 
-                <NuxtLink to="https://www.djangoproject.com/" target="_blank" aria-label="Django (opens a new tab)" class="link">Django</NuxtLink> framework.
+                <NuxtLink
+                    to="https://www.djangoproject.com/"
+                    target="_blank"
+                    aria-label="Django (opens a new tab)"
+                    class="text-decoration-none text-grey link">
+
+                    Django
+
+                </NuxtLink> framework.
 
             </v-col>
 
