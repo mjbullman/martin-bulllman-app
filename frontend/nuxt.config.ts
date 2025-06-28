@@ -74,6 +74,7 @@ export default defineNuxtConfig({
             baseUrl: process.env.BASE_URL,
             apiBaseUrl: process.env.API_BASE_URL,
             isProduction: isProduction(),
+            mixpanelToken: process.env.MIXPANEL_TOKEN,
             recaptchaSiteKey: process.env.GOOGLE_RECAPTCHA_SITE_KEY
         }
     },
