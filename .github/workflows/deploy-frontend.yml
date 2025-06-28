@@ -100,9 +100,10 @@ jobs:
         run: |
           echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
           echo "API_BASE_URL=${{ secrets.API_BASE_URL }}" >> .env
+          echo "CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}" >> .env
+          echo "MIXPANEL_TOKEN=${{ secrets.MIXPANEL_TOKEN }}" >> .env
           echo "GOOGLE_ANALYTICS_ID=${{ secrets.GOOGLE_ANALYTICS_ID }}" >> .env
           echo "GOOGLE_RECAPTCHA_SITE_KEY=${{ secrets.GOOGLE_RECAPTCHA_SITE_KEY }}" >> .env
-          echo "CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}" >> .env
 
       # step 3: build the frontend application.
       - name: Build Application
