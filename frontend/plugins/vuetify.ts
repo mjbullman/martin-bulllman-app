@@ -1,8 +1,11 @@
-// vuetify plugin.
+// plugins/vuetify.ts
+
 import { createVuetify } from 'vuetify'
 import { aliases, fa } from 'vuetify/iconsets/fa-svg'
 
-// light theme configuration.
+/**
+ * Custom light theme configuration for Vuetify.
+ */
 const customLightTheme = {
     dark: false,
     colors: {
@@ -21,7 +24,9 @@ const customLightTheme = {
     }
 }
 
-// dark theme configuration.
+/**
+ * Custom dark theme configuration for Vuetify
+ */
 const customDarkTheme = {
     dark: true,
     colors: {
@@ -40,7 +45,14 @@ const customDarkTheme = {
     }
 }
 
-// vuetify nuxt plugin configuration.
+/**
+ * Nuxt plugin to set up Vuetify with custom themes and Font Awesome icons.
+ *
+ * This plugin registers Vuetify with SSR support, dark/light themes,
+ * and FontAwesome as the default icon set.
+ *
+ * @param {import('@nuxt/schema').NuxtApp} nuxtApp - The Nuxt app instance
+ */
 export default defineNuxtPlugin ((nuxtApp) => {
     const vuetify = createVuetify({
         ssr: true,

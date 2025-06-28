@@ -15,6 +15,7 @@
                         :width="icon.width"
                         :height="icon.height"
                         :color="'#B9B9B9'"
+                        @click="trackSocialClick"
                     />
 
                 </template>
@@ -93,23 +94,34 @@
     import LinkedIn from '~/components/icons/social/LinkedIn.vue'
     import Instagram from '~/components/icons/social/Instagram.vue'
     import GoodReads from '~/components/icons/social/GoodReads.vue'
-    import HackTheBox from '~/components/icons/social/HackTheBox.vue'
+    // import HackTheBox from '~/components/icons/social/HackTheBox.vue'
+
+    // constants.
+    import { MixpanelEvents } from '~/constants/mixpanelEvents'
+
+    // composables.
+    import { useMixpanel } from '~/composables/mixpanel'
 
     // variables.
     const year = new Date().getFullYear()
+    const { track } = useMixpanel()
 
-    // Array of social media icons
+    // social media icons.
     const socialIcons = [
-        { component: GitHub, width: 30, height: 30 },
-        { component: HackTheBox, width: 28, height: 28 },
-        { component: LinkedIn, width: 30, height: 30 },
-        { component: Instagram, width: 30, height: 30 },
-        { component: Facebook, width: 30, height: 30 },
-        { component: Twitter, width: 28, height: 28 },
-        { component: Spotify, width: 35, height: 35 },
-        { component: GoodReads, width: 30, height: 30 }
+        { component: GitHub, name: 'Github', width: 30, height: 30 },
+        // { component: HackTheBox, name: 'HackTheBox', width: 28, height: 28 },
+        { component: LinkedIn, name: 'LinkedIn', width: 30, height: 30 },
+        { component: Instagram, name: 'Instagram', width: 30, height: 30 },
+        { component: Facebook, name: 'Facebook', width: 30, height: 30 },
+        { component: Twitter, name: 'Twitter', width: 28, height: 28 },
+        { component: Spotify, name: 'Spotify', width: 35, height: 35 },
+        { component: GoodReads, name: 'GoodReads', width: 30, height: 30 }
     ]
 
+    // track social media clicks.
+    function trackSocialClick () {
+        track(MixpanelEvents.SOCIAL_VIEW)
+    }
 </script>
 
 <style scoped>
