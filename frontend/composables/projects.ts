@@ -41,7 +41,7 @@ export function useProjects (): { projects: Project[] } {
             links: [
                 {
                     title: 'View',
-                    href: 'https://yester.com'
+                    href: 'https://yester.eu'
                 }
             ]
         },
