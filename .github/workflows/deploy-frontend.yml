@@ -128,6 +128,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Setup Twingate
+        uses: twingate/github-action@v1
+        with:
+          service-key: ${{ secrets.TWINGATE_SERVICE_KEY }}
+
       # step 1: download the build artifacts from the build job.
       - name: Download Artifacts
         uses: actions/download-artifact@v4
