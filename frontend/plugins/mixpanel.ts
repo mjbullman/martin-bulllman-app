@@ -1,6 +1,7 @@
 // plugins/mixpanel.ts
 
 import mixpanel from 'mixpanel-browser'
+import { useEnvironment } from '~/composables/environment'
 
 /**
  * Nuxt 3 plugin to initialize and provide Mixpanel analytics.
@@ -14,10 +15,19 @@ import mixpanel from 'mixpanel-browser'
  */
 export default defineNuxtPlugin((nuxtApp) => {
     const config = useRuntimeConfig()
+    const { isProduction } = useEnvironment()
 
-    mixpanel.init(config.public.mixpanelToken, {
-        debug: process.env.NODE_ENV !== 'production'
-    })
+    if (isProduction()) {
+        mixpanel.init(config.public.mixpanelToken, {
+            debug: !isProduction()
+        })
 
-     nuxtApp.provide('mixpanel', mixpanel)
+        nuxtApp.provide('mixpanel', mixpanel)
+    }
+    else {
+        nuxtApp.provide('mixpanel', {
+            track: () => {},
+            identify: () => {}
+        })
+    }
 })

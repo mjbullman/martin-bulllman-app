@@ -1,4 +1,4 @@
-// composables/useMixpanel.ts
+// composables/mixpanel.ts
 
 import { useNuxtApp } from '#app'
 
