@@ -27,7 +27,7 @@ export function useProjects (): { projects: Project[] } {
             subTitle: 'Manage Company Everyday Workflows',
             img: {
                 href: '/img/projects/yester_banner.webp',
-                alt: 'QuickMinutes banner image'
+                alt: 'Yester banner image.'
             },
             text: 'Yester is a tool that helps you to create and manage your everyday processes.'
                 + ' <br><br> You can create workflows unique to your company or choose one from '
@@ -41,7 +41,7 @@ export function useProjects (): { projects: Project[] } {
             links: [
                 {
                     title: 'View',
-                    href: 'https://quickminutes.com'
+                    href: 'https://yester.com'
                 }
             ]
         },
