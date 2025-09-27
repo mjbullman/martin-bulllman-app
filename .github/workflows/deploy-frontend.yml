@@ -17,6 +17,10 @@ env:
   GITHUB_SHA: ${{ github.sha }}
   GITHUB_REF: ${{ github.ref }}
 
+permissions:
+  id-token: write   # required for OIDC
+  contents: read    # checkout etc.
+
 jobs:
   lint:
     runs-on: ubuntu-latest
