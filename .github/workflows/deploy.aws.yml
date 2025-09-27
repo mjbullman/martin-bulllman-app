@@ -20,6 +20,11 @@ jobs:
   AssumeRoleAndCallIdentity:
     runs-on: ubuntu-latest
     steps:
+      - name: Debug OIDC Token
+        run: |
+          curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+          -H "Accept: application/json" \
+          "$ACTIONS_ID_TOKEN_REQUEST_URL"
       - name: Git clone the repository
         uses: actions/checkout@v3
       - name: configure aws credentials
