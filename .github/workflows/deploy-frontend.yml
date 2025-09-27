@@ -122,68 +122,68 @@ jobs:
           name: frontend-artifacts
           path: ${{ env.FILENAME }}.tar.gz
 
-deploy:
-  needs: build
-  runs-on: ubuntu-latest
-  env:
-    AWS_REGION: eu-west-1
-    INSTANCE_NAME: MartinBullmanAppServer   # change to your instance name
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      AWS_REGION: eu-west-1
+      INSTANCE_NAME: MartinBullmanAppServer   # change to your instance name
 
-  steps:
-    - name: Configure AWS credentials (OIDC)
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        role-to-assume: arn:aws:iam::540652926412:role/GitHubAction-AssumeRoleWithAction
-        role-session-name: DeployFrontend
-        aws-region: ${{ env.AWS_REGION }}
+    steps:
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::540652926412:role/GitHubAction-AssumeRoleWithAction
+          role-session-name: DeployFrontend
+          aws-region: ${{ env.AWS_REGION }}
 
-    - name: Download Artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: frontend-artifacts
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-artifacts
 
-    - name: Install jq
-      run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
 
-    - name: Fetch Lightsail temp credentials
-      run: |
-        aws lightsail get-instance-access-details \
-          --instance-name "$INSTANCE_NAME" \
-          --protocol ssh \
-          --output json > access.json
+      - name: Fetch Lightsail temp credentials
+        run: |
+          aws lightsail get-instance-access-details \
+            --instance-name "$INSTANCE_NAME" \
+            --protocol ssh \
+            --output json > access.json
+  
+          jq -r '.accessDetails.privateKey' access.json > tempkey.pem
+          chmod 600 tempkey.pem
+          echo "USERNAME=$(jq -r '.accessDetails.username' access.json)" >> $GITHUB_ENV
+          echo "IP=$(aws lightsail get-instance --instance-name "$INSTANCE_NAME" --query 'instance.publicIpAddress' --output text)" >> $GITHUB_ENV
+  
+          mkdir -p ~/.ssh
+          jq -r '.accessDetails.hostKeys[]?.publicKey' access.json | while read -r key; do
+            echo "$IP $key" >> ~/.ssh/known_hosts
+          done
 
-        jq -r '.accessDetails.privateKey' access.json > tempkey.pem
-        chmod 600 tempkey.pem
-        echo "USERNAME=$(jq -r '.accessDetails.username' access.json)" >> $GITHUB_ENV
-        echo "IP=$(aws lightsail get-instance --instance-name "$INSTANCE_NAME" --query 'instance.publicIpAddress' --output text)" >> $GITHUB_ENV
+      - name: Copy build to server
+        run: |
+          scp -i tempkey.pem -o StrictHostKeyChecking=yes ${{ env.FILENAME }}.tar.gz \
+            $USERNAME@$IP:/home/ubuntu/
 
-        mkdir -p ~/.ssh
-        jq -r '.accessDetails.hostKeys[]?.publicKey' access.json | while read -r key; do
-          echo "$IP $key" >> ~/.ssh/known_hosts
-        done
+      - name: Deploy on server
+        run: |
+          ssh -i tempkey.pem -o StrictHostKeyChecking=yes $USERNAME@$IP <<'EOF'
+            set -e
+            mkdir -p frontend_releases/${{ env.FILENAME }}
+            tar -xzf ${{ env.FILENAME }}.tar.gz -C frontend_releases/${{ env.FILENAME }}
+            cp -r frontend_releases/${{ env.FILENAME }}/* MartinBullmanApp/frontend
+            cp -r frontend_releases/${{ env.FILENAME }}/.output MartinBullmanApp/frontend
+            rm ${{ env.FILENAME }}.tar.gz
+  
+            # reload Node and restart app
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+            nvm use 20.10.0
+            pm2 restart all
+          EOF
 
-    - name: Copy build to server
-      run: |
-        scp -i tempkey.pem -o StrictHostKeyChecking=yes ${{ env.FILENAME }}.tar.gz \
-          $USERNAME@$IP:/home/ubuntu/
-
-    - name: Deploy on server
-      run: |
-        ssh -i tempkey.pem -o StrictHostKeyChecking=yes $USERNAME@$IP <<'EOF'
-          set -e
-          mkdir -p frontend_releases/${{ env.FILENAME }}
-          tar -xzf ${{ env.FILENAME }}.tar.gz -C frontend_releases/${{ env.FILENAME }}
-          cp -r frontend_releases/${{ env.FILENAME }}/* MartinBullmanApp/frontend
-          cp -r frontend_releases/${{ env.FILENAME }}/.output MartinBullmanApp/frontend
-          rm ${{ env.FILENAME }}.tar.gz
-
-          # reload Node and restart app
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-          nvm use 20.10.0
-          pm2 restart all
-        EOF
-
-    - name: Cleanup
-      run: rm -f tempkey.pem access.json
+      - name: Cleanup
+        run: rm -f tempkey.pem access.json
 
