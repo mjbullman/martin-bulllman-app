@@ -122,51 +122,68 @@ jobs:
           name: frontend-artifacts
           path: ${{ env.FILENAME }}.tar.gz
 
-  deploy:
-    # deployment job depends on the build job.
-    needs: build
-    runs-on: ubuntu-latest
+deploy:
+  needs: build
+  runs-on: ubuntu-latest
+  env:
+    AWS_REGION: eu-west-1
+    INSTANCE_NAME: MartinBullmanAppServer   # change to your instance name
 
-    steps:
-#      - name: Setup Twingate
-#        uses: twingate/github-action@v1
-#        with:
-#          service-key: ${{ secrets.TWINGATE_SERVICE_KEY }}
+  steps:
+    - name: Configure AWS credentials (OIDC)
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: arn:aws:iam::540652926412:role/GitHubAction-AssumeRoleWithAction
+        role-session-name: DeployFrontend
+        aws-region: ${{ env.AWS_REGION }}
 
-      # step 1: download the build artifacts from the build job.
-      - name: Download Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: frontend-artifacts
+    - name: Download Artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: frontend-artifacts
 
-      # step 2: copy the frontend artifacts to the remote server.
-      - name: Deploy Artifacts
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.LIGHTSAIL_HOST }}
-          username: ubuntu
-          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
-          target: /home/ubuntu
-          source: ${{ env.FILENAME }}.tar.gz
+    - name: Install jq
+      run: sudo apt-get update && sudo apt-get install -y jq
 
-      # step 3: extract the artifacts and restart the application.
-      - name: Extract and Restart Frontend
-        uses: appleboy/ssh-action@v0.1.8
-        with:
-          host: ${{ secrets.LIGHTSAIL_HOST }}
-          username: ${{ secrets.LIGHTSAIL_USER }}
-          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
-          script: |
-            mkdir -p frontend_releases/${{ env.FILENAME }}
-            tar -xzf ${{ env.FILENAME }}.tar.gz -C frontend_releases/${{ env.FILENAME }}
-            cp -r frontend_releases/${{ env.FILENAME }}/* MartinBullmanApp/frontend
-            cp -r frontend_releases/${{ env.FILENAME }}/.output MartinBullmanApp/frontend
-            rm -r ${{ env.FILENAME }}.tar.gz 
-            
-            # ensure node.js environment is loaded.
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            nvm use 20.10.0
-            
-            # restart frontend application.
-            .nvm/versions/node/v20.13.1/bin/pm2 restart all
+    - name: Fetch Lightsail temp credentials
+      run: |
+        aws lightsail get-instance-access-details \
+          --instance-name "$INSTANCE_NAME" \
+          --protocol ssh \
+          --output json > access.json
+
+        jq -r '.accessDetails.privateKey' access.json > tempkey.pem
+        chmod 600 tempkey.pem
+        echo "USERNAME=$(jq -r '.accessDetails.username' access.json)" >> $GITHUB_ENV
+        echo "IP=$(aws lightsail get-instance --instance-name "$INSTANCE_NAME" --query 'instance.publicIpAddress' --output text)" >> $GITHUB_ENV
+
+        mkdir -p ~/.ssh
+        jq -r '.accessDetails.hostKeys[]?.publicKey' access.json | while read -r key; do
+          echo "$IP $key" >> ~/.ssh/known_hosts
+        done
+
+    - name: Copy build to server
+      run: |
+        scp -i tempkey.pem -o StrictHostKeyChecking=yes ${{ env.FILENAME }}.tar.gz \
+          $USERNAME@$IP:/home/ubuntu/
+
+    - name: Deploy on server
+      run: |
+        ssh -i tempkey.pem -o StrictHostKeyChecking=yes $USERNAME@$IP <<'EOF'
+          set -e
+          mkdir -p frontend_releases/${{ env.FILENAME }}
+          tar -xzf ${{ env.FILENAME }}.tar.gz -C frontend_releases/${{ env.FILENAME }}
+          cp -r frontend_releases/${{ env.FILENAME }}/* MartinBullmanApp/frontend
+          cp -r frontend_releases/${{ env.FILENAME }}/.output MartinBullmanApp/frontend
+          rm ${{ env.FILENAME }}.tar.gz
+
+          # reload Node and restart app
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+          nvm use 20.10.0
+          pm2 restart all
+        EOF
+
+    - name: Cleanup
+      run: rm -f tempkey.pem access.json
+
