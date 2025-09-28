@@ -166,9 +166,14 @@ jobs:
             echo "$IP $key" >> ~/.ssh/known_hosts
           done
 
+      - name: Add Lightsail host to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -t ed25519 52.31.195.51 >> ~/.ssh/known_hosts
+
       - name: Copy build to server
         run: |
-          scp -i tempkey.pem -o StrictHostKeyChecking=yes ${{ env.FILENAME }}.tar.gz \
+          scp -i tempkey.pem -o StrictHostKeyChecking=no ${{ env.FILENAME }}.tar.gz \
             $USERNAME@$IP:/home/ubuntu/
 
       - name: Deploy on server
