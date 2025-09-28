@@ -154,6 +154,7 @@ jobs:
           aws lightsail get-instance-access-details \
             --instance-name "$INSTANCE_NAME" \
             --protocol ssh \
+            --ssh-key-name MyLightsailKeyPair \
             --output json > access.json
 
           jq -r '.accessDetails.privateKey' access.json > tempkey.pem
