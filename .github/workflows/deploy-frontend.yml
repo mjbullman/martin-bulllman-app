@@ -154,8 +154,9 @@ jobs:
           aws lightsail get-instance-access-details \
             --instance-name "$INSTANCE_NAME" \
             --protocol ssh \
+            --ssh-key-name <the-value-from-above> \
             --output json > access.json
-  
+
           jq -r '.accessDetails.privateKey' access.json > tempkey.pem
           chmod 600 tempkey.pem
           echo "USERNAME=$(jq -r '.accessDetails.username' access.json)" >> $GITHUB_ENV
