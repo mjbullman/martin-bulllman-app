@@ -12,58 +12,58 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // import solid icons
 import {
-  faGlobe,
-  faBars,
-  faX,
-  faXmarkCircle,
-  faArrowUpRightFromSquare,
-  faLink
+    faGlobe,
+    faBars,
+    faX,
+    faXmarkCircle,
+    faArrowUpRightFromSquare,
+    faLink
 } from '@fortawesome/free-solid-svg-icons'
 
 // import regular icons
 import {
-  faMoon,
-  faSun,
-  faEnvelope,
-  faCircleXmark,
-  faMessage,
-  faUser,
-  faFilePdf
+    faMoon,
+    faSun,
+    faEnvelope,
+    faCircleXmark,
+    faMessage,
+    faUser,
+    faFilePdf
 } from '@fortawesome/free-regular-svg-icons'
 
 // import brand icons
 import {
-  faLinkedinIn,
-  faGithubAlt,
-  faInstagram,
-  faFacebook,
-  faXTwitter,
-  faYoutube,
-  faGithub
+    faLinkedinIn,
+    faGithubAlt,
+    faInstagram,
+    faFacebook,
+    faXTwitter,
+    faYoutube,
+    faGithub
 } from '@fortawesome/free-brands-svg-icons'
 
 // add all the imported icons to the Font Awesome library
 library.add(
-  faLinkedinIn,
-  faGithubAlt,
-  faInstagram,
-  faFacebook,
-  faXTwitter,
-  faGithub,
-  faBars,
-  faGlobe,
-  faSun,
-  faMoon,
-  faEnvelope,
-  faX,
-  faCircleXmark,
-  faYoutube,
-  faXmarkCircle,
-  faMessage,
-  faUser,
-  faFilePdf,
-  faArrowUpRightFromSquare,
-  faLink
+    faLinkedinIn,
+    faGithubAlt,
+    faInstagram,
+    faFacebook,
+    faXTwitter,
+    faGithub,
+    faBars,
+    faGlobe,
+    faSun,
+    faMoon,
+    faEnvelope,
+    faX,
+    faCircleXmark,
+    faYoutube,
+    faXmarkCircle,
+    faMessage,
+    faUser,
+    faFilePdf,
+    faArrowUpRightFromSquare,
+    faLink
 )
 
 // disable auto-injection of CSS because Nuxt handles it.
@@ -75,5 +75,5 @@ config.autoAddCss = false
  * @param {object} nuxtApp - The Nuxt app instance
  */
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.component('font-awesome-icon', FontAwesomeIcon)
+    nuxtApp.vueApp.component('font-awesome-icon', FontAwesomeIcon)
 })
