@@ -75,6 +75,11 @@ The Django backend follows a modular app-based architecture:
 - SSR enabled by default
 - Google Analytics (gtag) and Mixpanel for analytics
 - reCAPTCHA v3 for form protection
+- TypeScript types for third-party API responses live in `frontend/types/` (e.g. `types/spotify/`)
+- API-heavy sections use a dedicated composable (e.g. `composables/spotify.ts`) that owns all `useFetch` calls and derived computed state for that domain
+
+**`useFetch` TypeScript gotcha:**
+Passing an options object to `useFetch<T>(url, options)` causes the return type to expose raw Nuxt internal generics (`PickFrom<_ResT, KeysOf<DataT>>`) instead of resolving cleanly to `T | null`. Always prefer the simple `useFetch<T>(url)` form. If options are required, cast `data` explicitly on return: `data as Ref<T | null>`.
 
 ## Development Commands
 
@@ -151,6 +156,10 @@ Required variables include:
 
 **Important:** When using Docker, set `DB_HOST=db` (not `127.0.0.1`)
 
+### npm Overrides (`frontend/package.json`)
+
+`vue`, `minimatch`, and `citty` are pinned via npm `overrides` to resolve peer dependency conflicts from Nuxt's internal packages. Do not remove these.
+
 ## Testing
 
 ### Frontend Tests (Vitest)
@@ -162,8 +171,9 @@ Tests located in `frontend/tests/unit/`:
 
 Run from `frontend/` directory:
 ```bash
-npm run test              # Run all tests
-npm run test:coverage     # Generate coverage report
+npm run test                                          # Run all tests
+npm run test:coverage                                 # Generate coverage report
+npx vitest run tests/unit/path/to/test.ts             # Run a single test file
 ```
 
 ### Backend Tests (Django)
