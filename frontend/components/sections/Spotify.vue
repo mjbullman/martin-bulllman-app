@@ -1,5 +1,7 @@
 <template>
 
+    <v-progress-circular v-if="isLoading" indeterminate color="secondary"></v-progress-circular>
+
     <v-row v-if="profile && following && playlists && tracks && artists" class="mt-10">
 
         <v-col cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="text-center">
@@ -107,10 +109,10 @@
                 <v-list lines="two" class="pa-0" aria-label="currently playing spotify track">
 
                     <v-list-item
-                        :key="playing.item.id"
-                        :title="playing.item.name"
-                        :subtitle="playing.item.artists[0].name"
-                        :href="playing.item.external_urls.spotify"
+                        :key="playing?.item.id"
+                        :title="playing?.item.name"
+                        :subtitle="playing?.item.artists[0].name"
+                        :href="playing?.item.external_urls.spotify"
                         link
                         target="_blank"
                         role="option"
@@ -118,7 +120,7 @@
 
                         <template #prepend>
 
-                            <v-avatar size="large" :image="playing.item.album.images[0].url"></v-avatar>
+                            <v-avatar size="large" :image="playing?.item.album.images[0].url"></v-avatar>
 
                         </template>
 
@@ -136,12 +138,12 @@
 
                     <div class="pr-5">
 
-                        {{ millisToMinutesAndSeconds(playing.progress_ms) }}
+                        {{ millisToMinutesAndSeconds(playing?.progress_ms ?? 0) }}
 
                     </div>
 
                     <v-progress-linear
-                        :model-value="playing.progress_ms / playing.item.duration_ms * 100"
+                        :model-value="playingProgress"
                         color="secondary"
                         rounded
                         aria-label="currently playing progress bar"
@@ -150,7 +152,7 @@
 
                     <div class="pl-5">
 
-                        {{ millisToMinutesAndSeconds(playing.item.duration_ms) }}
+                        {{ millisToMinutesAndSeconds(playing?.item.duration_ms ?? 0) }}
 
                     </div>
 
@@ -292,19 +294,12 @@
 
 <script setup lang="ts">
 
-    import { useTimeUtils } from '~/composables/timeUtils'
-
-    // composable.
-    const runtimeConfig = useRuntimeConfig()
+    // composables.
     const { millisToMinutesAndSeconds } = useTimeUtils()
-
-    // api requests.
-    const { data: profile } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/profile')
-    const { data: playlists } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/playlists')
-    const { data: tracks } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/top_tracks')
-    const { data: artists } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/top_artists')
-    const { data: following } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/following')
-    const { data: playing } = useFetch(runtimeConfig.public.apiBaseUrl + '/spotify/currently_playing')
+    const { 
+        profile, following, playlists, tracks,
+        artists, playing, playingProgress, isLoading
+    } = useSpotify()
 
 </script>
 
