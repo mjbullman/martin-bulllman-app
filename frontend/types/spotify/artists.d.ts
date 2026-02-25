@@ -1,3 +1,7 @@
+export interface SpotifyFollowing {
+    artists: { total: number }
+}
+
 export interface SpotifyArtists {
     id: string,
     href: string,
