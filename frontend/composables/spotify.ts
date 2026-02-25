@@ -1,12 +1,8 @@
 import type { SpotifyPaging } from '~/types/spotify/responses'
 import type { SpotifyProfile } from '~/types/spotify/profile'
-import type { SpotifyArtists } from '~/types/spotify/artists'
+import type { SpotifyArtists, SpotifyFollowing } from '~/types/spotify/artists'
 import type { SpotifyPlaylist } from '~/types/spotify/playlists'
 import type { SpotifyTracks, PlayingTrack } from '~/types/spotify/tracks'
-
-interface SpotifyFollowing {
-    artists: { total: number }
-}
 
 export function useSpotify () {
 
@@ -36,7 +32,7 @@ export function useSpotify () {
 
     // computed properties.
     const isLoading = computed(() => profileStatus.value === 'pending')
- 
+
     const playingProgress = computed(() => {
         if (!playing.value) {
             return 0

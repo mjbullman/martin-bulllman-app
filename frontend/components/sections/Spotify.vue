@@ -296,7 +296,7 @@
 
     // composables.
     const { millisToMinutesAndSeconds } = useTimeUtils()
-    const { 
+    const {
         profile, following, playlists, tracks,
         artists, playing, playingProgress, isLoading
     } = useSpotify()
