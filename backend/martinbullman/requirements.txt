@@ -42,5 +42,5 @@ status==0.2.5
 tomlkit==0.13.2
 tqdm==4.66.5
 typing_extensions==4.12.2
-urllib3==2.5.0
+urllib3==2.6.3
 utils==1.0.2
