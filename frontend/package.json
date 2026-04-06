@@ -45,7 +45,7 @@
         "nuxt-gtag": "^4.1.0",
         "nuxt-schema-org": "^5.0.10",
         "vee-validate": "^4.13.2",
-        "vite": "^6.3.6",
+        "vite": "^6.4.2",
         "vue-recaptcha-v3": "^2.0.1",
         "vuetify": "^3.7.12"
     },
