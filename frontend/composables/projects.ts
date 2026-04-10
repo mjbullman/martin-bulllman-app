@@ -88,7 +88,7 @@ export function useProjects (): { projects: Project[] } {
             links: [
                 {
                     title: 'View',
-                    href: 'https://quickminutes.com'
+                    href: 'https://marketplace.microsoft.com/en-us/product/office/wa200004414?tab=overview'
                 }
             ]
         },
@@ -189,7 +189,7 @@ export function useProjects (): { projects: Project[] } {
             links: [
                 {
                     title: 'View',
-                    href: 'https://crowdinsights.taoglas.com/'
+                    href: 'https://www.taoglas.com/news/pr-taoglas-introduces-crowd-insights-for-people-movement-analytics-to-assist-in-the-battle-against-covid-19'
                 }
             ]
         },
