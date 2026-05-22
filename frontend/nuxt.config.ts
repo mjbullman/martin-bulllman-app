@@ -61,7 +61,7 @@ export default defineNuxtConfig({
         '@fortawesome/fontawesome-svg-core/styles.css'
     ],
     site: {
-        url: 'https://martinbullman.com',
+        url: 'https://martinbullman.xyz',
         name: 'Martin Bullman | Software Engineer & Full Stack Developer',
         description: 'The portfolio of Martin Bullman, Software Engineer & Full Stack Developer.',
         defaultLocale: 'en'
