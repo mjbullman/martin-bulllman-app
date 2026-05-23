@@ -97,6 +97,14 @@
     import { useNotifications } from '~/stores/notifications'
     import useGoogleRecaptcha, { RecaptchaAction } from '~/composables/recaptcha'
 
+    useSeoMeta({
+        title: 'Contact | Martin Bullman',
+        description: 'Get in touch with Martin Bullman — open to collaborations, opportunities, and conversations about tech.',
+        ogTitle: 'Contact | Martin Bullman',
+        ogDescription: 'Get in touch with Martin Bullman — open to collaborations, opportunities, and conversations about tech.',
+        ogUrl: 'https://martinbullman.xyz/contact'
+    })
+
     const runtimeConfig = useRuntimeConfig()
     const notifications = useNotifications()
     const { executeRecaptcha } = useGoogleRecaptcha()

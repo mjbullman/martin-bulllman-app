@@ -33,6 +33,14 @@
 
 <script setup lang="ts">
 
+    useSeoMeta({
+        title: 'Projects | Martin Bullman',
+        description: 'Software projects built by Martin Bullman, including web applications, APIs, and open-source work.',
+        ogTitle: 'Projects | Martin Bullman',
+        ogDescription: 'Software projects built by Martin Bullman, including web applications, APIs, and open-source work.',
+        ogUrl: 'https://martinbullman.xyz/projects'
+    })
+
     // components.
     import ProjectCard from '~/components/cards/ProjectCard.vue'
     import PageHeading from '~/components/headings/PageHeading.vue'

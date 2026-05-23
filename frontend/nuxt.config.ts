@@ -59,6 +59,10 @@ export default defineNuxtConfig({
         '@/assets/scss/app.scss',
         'vuetify/lib/styles/main.sass'
     ],
+    routeRules: {
+        '/img/**': { headers: { 'cache-control': 'public, max-age=2592000, stale-while-revalidate=86400' } },
+        '/_ipx/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } }
+    },
     site: {
         url: 'https://martinbullman.xyz',
         name: 'Martin Bullman | Software Engineer & Full Stack Developer',
