@@ -106,7 +106,7 @@
 
             <v-card variant="outlined" color="primary" class="border-gradient rounded-lg">
 
-                <v-list lines="two" class="pa-0" aria-label="currently playing spotify track">
+                <v-list lines="two" role="list" class="pa-0" aria-label="currently playing spotify track">
 
                     <v-list-item
                         :key="playing?.item.id"
@@ -114,9 +114,7 @@
                         :subtitle="playing?.item.artists[0].name"
                         :href="playing?.item.external_urls.spotify"
                         link
-                        target="_blank"
-                        role="option"
-                        aria-selected="false">
+                        target="_blank">
 
                         <template #prepend>
 
@@ -177,7 +175,7 @@
 
             <v-card variant="outlined" color="primary" class="border-gradient rounded-xl">
 
-                <v-list lines="two" class="pa-0" aria-label="my spotify top tracks list">
+                <v-list lines="two" role="list" class="pa-0" aria-label="my spotify top tracks list">
 
                     <v-list-item
                         v-for="track in tracks.items"
@@ -185,9 +183,7 @@
                         :title="track.name"
                         :href="track.external_urls.spotify"
                         link
-                        target="_blank"
-                        role="option"
-                        aria-selected="false">
+                        target="_blank">
 
                         <template #prepend>
 
@@ -224,7 +220,7 @@
 
             <v-card variant="outlined" color="primary" class="border-gradient rounded-xl">
 
-                <v-list lines="two" class="pa-0" aria-label="my spotify top playlists">
+                <v-list lines="two" role="list" class="pa-0" aria-label="my spotify top playlists">
 
                     <v-list-item
                         v-for="playlist in playlists.items"
@@ -233,9 +229,7 @@
                         :subtitle="playlist.owner.display_name"
                         :href="playlist.external_urls.spotify"
                         link
-                        target="_blank"
-                        role="option"
-                        aria-selected="false">
+                        target="_blank">
 
                         <template #prepend>
 
@@ -262,7 +256,7 @@
 
             <v-card variant="outlined" color="primary" class="border-gradient rounded-xl">
 
-                <v-list lines="two" class="pa-0" aria-label="my spotify top artists list">
+                <v-list lines="two" role="list" class="pa-0" aria-label="my spotify top artists list">
 
                     <v-list-item
                         v-for="artist in artists.items"
@@ -270,9 +264,7 @@
                         :title="artist.name"
                         :href="artist.external_urls.spotify"
                         link
-                        target="_blank"
-                        role="option"
-                        aria-selected="false">
+                        target="_blank">
 
                         <template #prepend>
 
