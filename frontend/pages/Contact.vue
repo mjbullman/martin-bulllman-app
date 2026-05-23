@@ -101,6 +101,13 @@
     const notifications = useNotifications()
     const { executeRecaptcha } = useGoogleRecaptcha()
 
+    useHead({
+        script: [{
+            src: `https://www.google.com/recaptcha/api.js?render=${runtimeConfig.public.recaptchaSiteKey}`,
+            defer: true
+        }]
+    })
+
     const loading = ref(false)
 
     interface ContactForm {

@@ -3,7 +3,15 @@
     <!-- Project Card -->
     <v-card class="d-flex flex-column item" :class="'item' + project.id">
 
-        <nuxt-img v-if="project.img" :src="project.img.href" :alt="project.img.alt" height=""></nuxt-img>
+        <nuxt-img
+            v-if="project.img"
+            :src="project.img.href"
+            :alt="project.img.alt"
+            width="600"
+            height="295"
+            sizes="sm:100vw md:50vw lg:600px"
+            loading="lazy"
+        ></nuxt-img>
 
         <v-card-title class="pt-5 d-flex">
 
