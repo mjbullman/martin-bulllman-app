@@ -89,7 +89,8 @@ export default defineNuxtConfig({
     vite: {
         build: {
             target: 'es2020',
-            cssCodeSplit: false
+            cssCodeSplit: false,
+            sourcemap: true
         },
         server: {
             allowedHosts: ['martinbullman.xyz']

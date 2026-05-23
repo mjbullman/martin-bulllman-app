@@ -17,21 +17,21 @@
         <v-spacer></v-spacer>
 
         <!-- links -->
-        <div class="nav d-none d-md-flex">
+        <div class="nav d-none d-md-flex" aria-hidden="true">
 
-            <v-btn to="/about">
+            <v-btn to="/about" tabindex="-1">
 
                 About
 
             </v-btn>
 
-            <v-btn to="/projects">
+            <v-btn to="/projects" tabindex="-1">
 
                 Projects
 
             </v-btn>
 
-            <v-btn to="/contact">
+            <v-btn to="/contact" tabindex="-1">
 
                 Contact
 
@@ -55,7 +55,7 @@
 
                 <template #activator="{ props }">
 
-                    <v-btn v-bind="props" icon size="small" class="d-md-none">
+                    <v-btn v-bind="props" icon class="d-md-none">
 
                         <v-icon v-bind="props" color="primary" icon="fa-solid fa-bars" aria-label="open navigation menu"></v-icon>
 
