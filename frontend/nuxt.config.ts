@@ -34,8 +34,7 @@ export default defineNuxtConfig({
             meta: [
                 {
                     name: 'description',
-                    content: 'The portfolio of Martin Bullman, Software Engineer & Full '
-                        + 'Stack Developer.'
+                    content: 'The portfolio of Martin Bullman, Software Engineer & Full Stack Developer.'
                 },
                 {
                     name: 'keywords',
@@ -86,9 +85,23 @@ export default defineNuxtConfig({
         ]
     },
     routeRules: {
-        '/img/**': { headers: { 'cache-control': 'public, max-age=2592000, stale-while-revalidate=86400' } },
-        '/_ipx/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
-        '/sitemap.xml': { prerender: true }
+        '/img/**': {
+            headers: { 
+                'cache-control': 'public, max-age=2592000, stale-while-revalidate=86400'
+            }
+        },
+        '/_ipx/**': {
+            headers: {
+                'cache-control': 'public, max-age=31536000, immutable'
+            }
+        },
+        '/sitemap.xml': { 
+            prerender: true
+        }
+    },
+    sourcemap: {
+        server: true,
+        client: true
     },
     compatibilityDate: '2025-03-07',
     vite: {
