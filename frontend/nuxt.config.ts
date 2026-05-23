@@ -88,7 +88,8 @@ export default defineNuxtConfig({
     compatibilityDate: '2025-03-07',
     vite: {
         build: {
-            target: 'es2020'
+            target: 'es2020',
+            cssCodeSplit: false
         },
         server: {
             allowedHosts: ['martinbullman.xyz']
