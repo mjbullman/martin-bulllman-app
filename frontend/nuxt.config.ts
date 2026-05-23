@@ -61,7 +61,16 @@ export default defineNuxtConfig({
     ],
     routeRules: {
         '/img/**': { headers: { 'cache-control': 'public, max-age=2592000, stale-while-revalidate=86400' } },
-        '/_ipx/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } }
+        '/_ipx/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+        '/sitemap.xml': { prerender: true }
+    },
+    sitemap: {
+        urls: [
+            { loc: '/', changefreq: 'weekly', priority: 1.0 },
+            { loc: '/about', changefreq: 'monthly', priority: 0.8 },
+            { loc: '/projects', changefreq: 'weekly', priority: 0.9 },
+            { loc: '/contact', changefreq: 'yearly', priority: 0.5 }
+        ]
     },
     site: {
         url: 'https://martinbullman.xyz',
