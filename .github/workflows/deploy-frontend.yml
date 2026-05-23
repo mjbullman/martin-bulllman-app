@@ -1,6 +1,9 @@
 # GitHub action to deploy MartinBullmanApp frontend.
 name: deploy-frontend
 
+permissions:
+  contents: read
+
 on:
   # trigger workflow on pushes to the main branch or pull requests targeting the main branch.
   push:
