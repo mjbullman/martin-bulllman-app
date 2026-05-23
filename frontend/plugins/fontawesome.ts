@@ -1,4 +1,5 @@
 // plugins/fontawesome.ts
+import '@fortawesome/fontawesome-svg-core/styles.css'
 
 /**
  * Font Awesome plugin for Nuxt 3

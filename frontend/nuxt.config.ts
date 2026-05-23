@@ -57,8 +57,7 @@ export default defineNuxtConfig({
     },
     css: [
         '@/assets/scss/app.scss',
-        'vuetify/lib/styles/main.sass',
-        '@fortawesome/fontawesome-svg-core/styles.css'
+        'vuetify/lib/styles/main.sass'
     ],
     site: {
         url: 'https://martinbullman.xyz',
@@ -82,9 +81,7 @@ export default defineNuxtConfig({
         transpile: [
             'vuetify',
             '@fortawesome/vue-fontawesome',
-            '@fortawesome/pro-solid-svg-icons',
             '@fortawesome/fontawesome-svg-core',
-            '@fortawesome/pro-regular-svg-icons',
             '@fortawesome/free-brands-svg-icons'
         ]
     },

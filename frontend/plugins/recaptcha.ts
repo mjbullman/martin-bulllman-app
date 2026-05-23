@@ -14,6 +14,10 @@ import type { IReCaptchaOptions } from 'vue-recaptcha-v3/dist/IReCaptchaOptions'
  * Docs: https://www.npmjs.com/package/vue-recaptcha-v3.
  */
 export default defineNuxtPlugin((nuxtApp) => {
+    if (!import.meta.client) {
+        return
+    }
+
     const config = useRuntimeConfig()
 
     /**
