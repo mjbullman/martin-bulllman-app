@@ -36,7 +36,7 @@
                     to="https://vuejs.org/"
                     target="_blank"
                     aria-label="VueJS (opens a new tab)"
-                    class="text-decoration-none text-grey link">
+                    class="text-decoration-none text-secondary link">
 
                     Vue.js
 
@@ -46,7 +46,7 @@
                     to="https://vuetifyjs.com/en/"
                     target="_blank"
                     aria-label="Vuetify (opens a new tab)"
-                    class="text-decoration-none text-grey link">
+                    class="text-decoration-none text-secondary link">
 
                     Vuetify
 
@@ -56,7 +56,7 @@
                     to="https://nuxt.com/"
                     target="_blank"
                     aria-label="NuxtJS (opens a new tab)"
-                    class="text-decoration-none text-grey link">
+                    class="text-decoration-none text-secondary link">
 
                     Nuxt.js
 
@@ -68,7 +68,7 @@
                     to="https://www.djangoproject.com/"
                     target="_blank"
                     aria-label="Django (opens a new tab)"
-                    class="text-decoration-none text-grey link">
+                    class="text-decoration-none text-secondary link">
 
                     Django
 
