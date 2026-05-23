@@ -8,7 +8,7 @@
             <NuxtLink to="/">
 
                 <!-- show icon on small devices -->
-                <nuxt-img src="/img/icon.svg" width="50" class="mt-2" role="link" alt="Martin Bullman Logo"></nuxt-img>
+                <nuxt-img src="/img/icon.svg" width="50" height="50" class="mt-2" role="link" alt="Martin Bullman Logo"></nuxt-img>
 
             </NuxtLink>
 
