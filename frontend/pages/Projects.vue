@@ -33,6 +33,13 @@
 
 <script setup lang="ts">
 
+    // components.
+    import ProjectCard from '~/components/cards/ProjectCard.vue'
+    import PageHeading from '~/components/headings/PageHeading.vue'
+
+    // composable.
+    import { useProjects } from '~/composables/projects'
+
     useSeoMeta({
         title: 'Projects | Martin Bullman',
         description: 'Software projects built by Martin Bullman, including web applications, APIs, and open-source work.',
@@ -40,13 +47,6 @@
         ogDescription: 'Software projects built by Martin Bullman, including web applications, APIs, and open-source work.',
         ogUrl: 'https://martinbullman.xyz/projects'
     })
-
-    // components.
-    import ProjectCard from '~/components/cards/ProjectCard.vue'
-    import PageHeading from '~/components/headings/PageHeading.vue'
-
-    // composable.
-    import { useProjects } from '~/composables/projects'
 
     // variables.
     const projects = useProjects()

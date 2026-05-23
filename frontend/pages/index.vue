@@ -20,6 +20,12 @@
 
 <script setup lang="ts">
 
+    // components.
+    import Intro from '~/components/sections/Intro.vue'
+    import Toolkit from '~/components/sections/Toolkit.vue'
+    import Projects from '~/components/sections/Projects.vue'
+    import Publications from '~/components/sections/Publications.vue'
+
     useSeoMeta({
         title: 'Martin Bullman | Software Engineer & Full Stack Developer',
         description: 'Portfolio of Martin Bullman — Software Engineer & Full Stack Developer specialising in Django, Vue, Nuxt and cloud infrastructure.',
@@ -27,12 +33,6 @@
         ogDescription: 'Portfolio of Martin Bullman — Software Engineer & Full Stack Developer specialising in Django, Vue, Nuxt and cloud infrastructure.',
         ogUrl: 'https://martinbullman.xyz'
     })
-
-    // components.
-    import Intro from '~/components/sections/Intro.vue'
-    import Toolkit from '~/components/sections/Toolkit.vue'
-    import Projects from '~/components/sections/Projects.vue'
-    import Publications from '~/components/sections/Publications.vue'
 
 </script>
 

@@ -59,19 +59,6 @@ export default defineNuxtConfig({
         '@/assets/scss/app.scss',
         'vuetify/lib/styles/main.sass'
     ],
-    routeRules: {
-        '/img/**': { headers: { 'cache-control': 'public, max-age=2592000, stale-while-revalidate=86400' } },
-        '/_ipx/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
-        '/sitemap.xml': { prerender: true }
-    },
-    sitemap: {
-        urls: [
-            { loc: '/', changefreq: 'weekly', priority: 1.0 },
-            { loc: '/about', changefreq: 'monthly', priority: 0.8 },
-            { loc: '/projects', changefreq: 'weekly', priority: 0.9 },
-            { loc: '/contact', changefreq: 'yearly', priority: 0.5 }
-        ]
-    },
     site: {
         url: 'https://martinbullman.xyz',
         name: 'Martin Bullman | Software Engineer & Full Stack Developer',
@@ -97,6 +84,11 @@ export default defineNuxtConfig({
             '@fortawesome/fontawesome-svg-core',
             '@fortawesome/free-brands-svg-icons'
         ]
+    },
+    routeRules: {
+        '/img/**': { headers: { 'cache-control': 'public, max-age=2592000, stale-while-revalidate=86400' } },
+        '/_ipx/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+        '/sitemap.xml': { prerender: true }
     },
     compatibilityDate: '2025-03-07',
     vite: {
@@ -147,5 +139,13 @@ export default defineNuxtConfig({
             url: process.env.BASE_URL,
             logo: process.env.BASE_URL + '/img/logo.svg'
         }
+    },
+    sitemap: {
+        urls: [
+            { loc: '/', changefreq: 'weekly', priority: 1.0 },
+            { loc: '/about', changefreq: 'monthly', priority: 0.8 },
+            { loc: '/projects', changefreq: 'weekly', priority: 0.9 },
+            { loc: '/contact', changefreq: 'yearly', priority: 0.5 }
+        ]
     }
 })
