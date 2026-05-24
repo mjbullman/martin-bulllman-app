@@ -4,7 +4,7 @@
 
         <page-sub-heading :sub-heading-text="'Projects'"></page-sub-heading>
 
-        <v-col cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="text-center">
+        <v-col cols="12" sm="12" md="12" lg="12" xl="12" align-self="center" class="text-center px-0">
 
             <div class="masonry">
 
