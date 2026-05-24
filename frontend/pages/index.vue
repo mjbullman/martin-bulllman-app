@@ -8,7 +8,7 @@
         <!-- projects -->
         <projects></projects>
 
-        <!-- projects -->
+        <!-- toolkit -->
         <toolkit></toolkit>
 
         <!-- publications -->
@@ -21,10 +21,12 @@
 <script setup lang="ts">
 
     // components.
+    import { defineAsyncComponent } from 'vue'
     import Intro from '~/components/sections/Intro.vue'
-    import Toolkit from '~/components/sections/Toolkit.vue'
-    import Projects from '~/components/sections/Projects.vue'
-    import Publications from '~/components/sections/Publications.vue'
+
+    const Projects = defineAsyncComponent(() => import('~/components/sections/Projects.vue'))
+    const Toolkit = defineAsyncComponent(() => import('~/components/sections/Toolkit.vue'))
+    const Publications = defineAsyncComponent(() => import('~/components/sections/Publications.vue'))
 
     useSeoMeta({
         title: 'Martin Bullman | Software Engineer & Full Stack Developer',

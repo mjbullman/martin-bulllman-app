@@ -20,9 +20,11 @@
 <script setup lang="ts">
 
     // components.
+    import { defineAsyncComponent } from 'vue'
     import AboutMe from '~/components/sections/AboutMe.vue'
-    import Spotify from '~/components/sections/Spotify.vue'
     import PageHeading from '~/components/headings/PageHeading.vue'
+
+    const Spotify = defineAsyncComponent(() => import('~/components/sections/Spotify.vue'))
 
     useSeoMeta({
         title: 'About | Martin Bullman',
