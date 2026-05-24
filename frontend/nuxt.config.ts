@@ -107,7 +107,6 @@ export default defineNuxtConfig({
     vite: {
         build: {
             target: 'es2020',
-            cssCodeSplit: false,
             sourcemap: true
         },
         server: {
