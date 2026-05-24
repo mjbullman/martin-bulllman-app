@@ -11,6 +11,7 @@
             height="295"
             sizes="sm:100vw md:50vw lg:600px"
             loading="lazy"
+            class="project-img"
         ></nuxt-img>
 
         <v-card-title class="pt-5 d-flex">
@@ -93,6 +94,12 @@
 </script>
 
 <style scoped>
+
+    .project-img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
 
     .item1, .item3, .item4, .item7, .item9 {
         grid-row: span 20;

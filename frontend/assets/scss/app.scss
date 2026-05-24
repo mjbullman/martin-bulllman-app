@@ -3,6 +3,11 @@
 html, body {
     height: 100%;
     margin: 0;
+    background-color: rgb(var(--v-theme-background, 18, 18, 18));
+}
+
+.v-app-bar {
+    background-color: rgb(var(--v-theme-surface, 30, 30, 30)) !important;
 }
 
 .text-gradient {
