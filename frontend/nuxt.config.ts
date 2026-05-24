@@ -86,7 +86,7 @@ export default defineNuxtConfig({
     },
     routeRules: {
         '/img/**': {
-            headers: { 
+            headers: {
                 'cache-control': 'public, max-age=2592000, stale-while-revalidate=86400'
             }
         },
@@ -95,7 +95,7 @@ export default defineNuxtConfig({
                 'cache-control': 'public, max-age=31536000, immutable'
             }
         },
-        '/sitemap.xml': { 
+        '/sitemap.xml': {
             prerender: true
         }
     },
