@@ -12,8 +12,8 @@
                 <template #prepend>
                     <v-icon
                         color="primary"
-                        icon="fa-regular fa-address-card" 
-                        size="small" 
+                        icon="fa-regular fa-address-card"
+                        size="small"
                         class="mr-3">
                     </v-icon>
                 </template>
@@ -27,8 +27,8 @@
                 <template #prepend>
                     <v-icon
                         color="primary"
-                        icon="fa-solid fa-code" 
-                        size="small" 
+                        icon="fa-solid fa-code"
+                        size="small"
                         class="mr-3">
                     </v-icon>
                 </template>
@@ -40,10 +40,10 @@
             <v-list-item to="/contact" @click="store.toggleMobileNavigationDrawer()">
 
                 <template #prepend>
-                    <v-icon 
-                        color="primary" 
-                        icon="fa-regular fa-envelope" 
-                        size="small" 
+                    <v-icon
+                        color="primary"
+                        icon="fa-regular fa-envelope"
+                        size="small"
                         class="mr-3">
                     </v-icon>
                 </template>
