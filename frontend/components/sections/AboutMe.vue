@@ -4,13 +4,20 @@
 
         <v-col cols="12" sm="12" md="4" lg="5" xl="5" class="text-center">
 
-            <nuxt-img src="/img/personal/martin_hektor_container_hotel.webp" class="profile-image" alt="Martin at Hektor Container Hotel"></nuxt-img>
+            <nuxt-img
+                src="/img/personal/martin_hektor_container_hotel.webp"
+                class="profile-image"
+                alt="Martin at Hektor Container Hotel"
+                width="300"
+                height="400"
+                sizes="sm:100vw md:300px">
+            </nuxt-img>
 
         </v-col>
 
-        <v-col cols="12" sm="12" md="8" lg="7" xl="7" class="">
+        <v-col cols="12" sm="12" md="7" lg="7" xl="7">
 
-            <h2 class="text-gradient text-h4 text-medium-emphasis mb-5 text-center">
+            <h2 class="text-gradient text-h5 text-sm-h4 text-medium-emphasis mb-5 text-center">
 
                 Welcome to my digital corner!
 
@@ -55,10 +62,10 @@
 
 <script setup lang="ts">
 
-    // composable
+    // composable.
     const runtimeConfig = useRuntimeConfig()
 
-    // api requests..
+    // api requests.
     const { data: weather } = useFetch(runtimeConfig.public.apiBaseUrl + '/weather/current')
 
 </script>
@@ -66,7 +73,9 @@
 <style scoped>
 
     .profile-image {
-        width: 300px;
+        width: 100%;
+        max-width: 300px;
+        height: auto;
         border-radius: 15px 50px 30px;
     }
 
