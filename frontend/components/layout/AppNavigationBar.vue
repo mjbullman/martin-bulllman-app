@@ -7,8 +7,14 @@
 
             <NuxtLink to="/">
 
-                <!-- show icon on small devices -->
-                <nuxt-img src="/img/icon.svg" width="50" height="50" class="mt-2" role="link" alt="Martin Bullman Logo"></nuxt-img>
+                <nuxt-img
+                    src="/img/icon.svg"
+                    width="50"
+                    height="50"
+                    class="mt-2"
+                    role="link"
+                    alt="Martin Bullman Logo">
+                </nuxt-img>
 
             </NuxtLink>
 
@@ -16,76 +22,40 @@
 
         <v-spacer></v-spacer>
 
-        <!-- links -->
-        <div class="nav d-none d-md-flex" aria-hidden="true">
+        <!-- desktop links -->
+        <div class="nav d-none d-sm-flex" aria-hidden="true">
 
-            <v-btn to="/about" tabindex="-1">
-
+            <v-btn to="/about" tabindex="-1" class="gradient-outline">
                 About
-
             </v-btn>
 
-            <v-btn to="/projects" tabindex="-1">
-
+            <v-btn to="/projects" tabindex="-1" class="gradient-outline">
                 Projects
-
             </v-btn>
 
-            <v-btn to="/contact" tabindex="-1">
-
+            <v-btn to="/contact" tabindex="-1" class="gradient-outline">
                 Contact
-
             </v-btn>
 
         </div>
 
         <v-spacer></v-spacer>
 
-        <!-- settings & resume -->
         <template #append>
 
             <!-- change theme -->
             <theme></theme>
 
-            <!-- download resume -->
-            <!-- <resume></resume> -->
+            <!-- toggle mobile drawer -->
+            <v-btn
+                icon
+                class="d-sm-none"
+                aria-label="open navigation menu"
+                @click="store.toggleMobileNavigationDrawer()">
 
-            <!-- toggle mobile menu -->
-            <v-menu>
+                <v-icon color="primary" icon="fa-solid fa-bars"></v-icon>
 
-                <template #activator="{ props }">
-
-                    <v-btn v-bind="props" icon class="d-md-none">
-
-                        <v-icon v-bind="props" color="primary" icon="fa-solid fa-bars" aria-label="open navigation menu"></v-icon>
-
-                    </v-btn>
-
-                </template>
-
-                <v-list>
-
-                    <v-list-item to="/about" link>
-
-                        <v-list-item-title>About</v-list-item-title>
-
-                    </v-list-item>
-
-                    <v-list-item to="/projects" link>
-
-                        <v-list-item-title>Projects</v-list-item-title>
-
-                    </v-list-item>
-
-                    <v-list-item to="/contact" link>
-
-                        <v-list-item-title>Contact</v-list-item-title>
-
-                    </v-list-item>
-
-                </v-list>
-
-            </v-menu>
+            </v-btn>
 
         </template>
 
@@ -93,10 +63,16 @@
 
 </template>
 
-<script setup lang="js">
+<script setup lang="ts">
 
     // components.
     import Theme from '~/components/buttons/Theme.vue'
+
+    // store.
+    import { useSettingsStore } from '~/stores/settings'
+
+    // state.
+    const store = useSettingsStore()
 
 </script>
 
@@ -110,6 +86,13 @@
     :deep(.v-toolbar__append) {
         width: 200px;
         justify-content: flex-end;
+    }
+
+    .gradient-outline {
+        background: linear-gradient(to right, #2196F3, #02E8CA) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
     }
 
 </style>

@@ -18,7 +18,8 @@ import {
     faX,
     faXmarkCircle,
     faArrowUpRightFromSquare,
-    faLink
+    faLink,
+    faCode
 } from '@fortawesome/free-solid-svg-icons'
 
 // import regular icons
@@ -29,7 +30,8 @@ import {
     faCircleXmark,
     faMessage,
     faUser,
-    faFilePdf
+    faFilePdf,
+    faAddressCard
 } from '@fortawesome/free-regular-svg-icons'
 
 // import brand icons
@@ -64,7 +66,9 @@ library.add(
     faUser,
     faFilePdf,
     faArrowUpRightFromSquare,
-    faLink
+    faLink,
+    faCode,
+    faAddressCard
 )
 
 // disable auto-injection of CSS because Nuxt handles it.

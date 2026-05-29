@@ -2,7 +2,10 @@
 
     <v-btn icon aria-label="change theme" @click="toggleDarkMode()">
 
-        <v-icon color="primary" :icon="store.getDarkMode ? 'fa-regular fa-sun' : 'fa-regular fa-moon'"></v-icon>
+        <v-icon
+            color="primary"
+            :icon="store.getDarkMode ? 'fa-regular fa-sun' : 'fa-regular fa-moon'">
+        </v-icon>
 
     </v-btn>
 
