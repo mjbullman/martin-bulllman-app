@@ -3,6 +3,7 @@ name: deploy-frontend
 
 permissions:
   contents: read
+  packages: write
 
 on:
   # trigger workflow on pushes to the main branch or pull requests targeting the main branch.
@@ -14,11 +15,7 @@ on:
       - main
 
 env:
-  # set environment variables for node.js version and github context values.
   NODE_VERSION: 24.14.0
-  FILENAME: "${{ github.sha }}-${{ github.run_id }}"
-  GITHUB_SHA: ${{ github.sha }}
-  GITHUB_REF: ${{ github.ref }}
 
 jobs:
   lint:
@@ -69,12 +66,12 @@ jobs:
           rm -rf node_modules package-lock.json
           npm install
 
-      # step 4: run ESLint to lint the code.
+      # step 4: run tests with coverage.
       - name: Run Tests
         working-directory: ./frontend
         run: npm run test:coverage
 
-      # step 5: run code coverage and upload report
+      # step 5: upload coverage report to codecov.
       - name: Upload Report Codecov
         uses: codecov/codecov-action@v5
         with:
@@ -91,85 +88,47 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # step 2: install project dependencies.
-      - name: Install Dependencies
-        working-directory: ./frontend
-        run: |
-          rm -rf node_modules package-lock.json
-          npm install
-
-      - name: Create .env File
-        working-directory: ./frontend
-        run: |
-          echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
-          echo "API_BASE_URL=${{ secrets.API_BASE_URL }}" >> .env
-          echo "CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}" >> .env
-          echo "MIXPANEL_TOKEN=${{ secrets.MIXPANEL_TOKEN }}" >> .env
-          echo "GOOGLE_ANALYTICS_ID=${{ secrets.GOOGLE_ANALYTICS_ID }}" >> .env
-          echo "GOOGLE_RECAPTCHA_SITE_KEY=${{ secrets.GOOGLE_RECAPTCHA_SITE_KEY }}" >> .env
-
-      # step 3: build the frontend application.
-      - name: Build Application
-        working-directory: ./frontend
-        run: npm run build
-
-      # step 4: archive the build output into a tarball.
-      - name: Archive Artifacts
-        working-directory: ./frontend/
-        run: tar -czf ../${{ env.FILENAME }}.tar.gz .
-
-      # step 5: upload the archived artifacts for later use in deployment.
-      - name: Store Artifacts
-        uses: actions/upload-artifact@v4
+      # step 2: log in to github container registry.
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
         with:
-          name: frontend-artifacts
-          path: ${{ env.FILENAME }}.tar.gz
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # step 3: build and push the frontend docker image.
+      - name: Build and Push Frontend Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          push: ${{ github.ref == 'refs/heads/main' }}
+          tags: |
+            ghcr.io/mjbullman/martin-bullman-app/frontend:latest
+            ghcr.io/mjbullman/martin-bullman-app/frontend:${{ github.sha }}
+          build-args: |
+            BASE_URL=${{ secrets.BASE_URL }}
+            API_BASE_URL=${{ secrets.API_BASE_URL }}
+            GOOGLE_ANALYTICS_ID=${{ secrets.GOOGLE_ANALYTICS_ID }}
+            GOOGLE_RECAPTCHA_SITE_KEY=${{ secrets.GOOGLE_RECAPTCHA_SITE_KEY }}
+            MIXPANEL_TOKEN=${{ secrets.MIXPANEL_TOKEN }}
+            CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}
 
   deploy:
-    # deployment job depends on the build job.
+    # deploy job depends on the build job.
     needs: build
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
 
     steps:
-#      - name: Setup Twingate
-#        uses: twingate/github-action@v1
-#        with:
-#          service-key: ${{ secrets.TWINGATE_SERVICE_KEY }}
-
-      # step 1: download the build artifacts from the build job.
-      - name: Download Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: frontend-artifacts
-
-      # step 2: copy the frontend artifacts to the remote server.
-      - name: Deploy Artifacts
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.LIGHTSAIL_HOST }}
-          username: ubuntu
-          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
-          target: /home/ubuntu
-          source: ${{ env.FILENAME }}.tar.gz
-
-      # step 3: extract the artifacts and restart the application.
-      - name: Extract and Restart Frontend
+      # step 1: ssh into server, pull latest image, and restart frontend.
+      - name: Deploy to Server
         uses: appleboy/ssh-action@v0.1.8
         with:
-          host: ${{ secrets.LIGHTSAIL_HOST }}
-          username: ${{ secrets.LIGHTSAIL_USER }}
-          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            mkdir -p frontend_releases/${{ env.FILENAME }}
-            tar -xzf ${{ env.FILENAME }}.tar.gz -C frontend_releases/${{ env.FILENAME }}
-            cp -r frontend_releases/${{ env.FILENAME }}/* MartinBullmanApp/frontend
-            cp -r frontend_releases/${{ env.FILENAME }}/.output MartinBullmanApp/frontend
-            rm -r ${{ env.FILENAME }}.tar.gz 
-            
-            # ensure node.js environment is loaded.
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            nvm use 20.10.0
-            
-            # restart frontend application.
-            .nvm/versions/node/v20.13.1/bin/pm2 restart all
+            cd ~/MartinBullmanApp
+            git pull origin main
+            docker compose -f docker-compose.prod.yml pull frontend
+            docker compose -f docker-compose.prod.yml up -d frontend
