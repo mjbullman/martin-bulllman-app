@@ -1,6 +1,7 @@
 # project ignore files and folders.
 .idea
 
+
 # backend ignore files and folders.
 backend/venv
 backend/martinbullman/.env
@@ -8,11 +9,12 @@ backend/martinbullman/.env
 # fontend ignore files and folders.
 /frontend/.env
 /frontend/.nuxt
+/frontend/.nuxtrc
 /frontend/.nitro
 /frontend/.cache
 /frontend/.output
 /frontend/dist
-frontend/node_modules
+/frontend/node_modules
 /frontend/coverage
 
 # ignore files with extensions.
