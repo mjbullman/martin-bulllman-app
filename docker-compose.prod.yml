@@ -53,8 +53,10 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./config/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - /etc/ssl/martinbullman:/etc/ssl/martinbullman:ro
     depends_on:
       - frontend
       - backend
