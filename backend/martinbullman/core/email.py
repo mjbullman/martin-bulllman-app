@@ -1,11 +1,15 @@
 """ This module defines methods for sending emails in Utils application. """
 
-from decouple import config
 from datetime import datetime
+
+from decouple import config
 from mailjet_rest import Client
 from requests.exceptions import RequestException
 
-from .constants import CONTACT_FORM_MESSAGE_TEMPLATE_ID, CONTACT_FORM_RECEIPT_TEMPLATE_ID
+from .constants import (
+    CONTACT_FORM_MESSAGE_TEMPLATE_ID,
+    CONTACT_FORM_RECEIPT_TEMPLATE_ID,
+)
 
 mailjet = Client(
     auth = (config('MAILJET_API_KEY'), config('MAILJET_API_SECRET')),
