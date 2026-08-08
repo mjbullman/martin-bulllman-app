@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 160 160" width="160" height="160">
+  <defs>
+    <linearGradient id="mb-a" x1="50.09" y1="23.49" x2="68.41" y2="52.01" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#081ae0"/>
+      <stop offset="1" stop-color="#02e8ca"/>
+    </linearGradient>
+    <linearGradient id="mb-b" x1="5.01" y1="-11.84" x2="72.2" y2="-11.84" gradientTransform="translate(-4.36 47.39)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#08a5fd"/>
+      <stop offset="1" stop-color="#02e8ca"/>
+    </linearGradient>
+    <linearGradient id="mb-c" x1="54.46" y1="-33.95" x2="14.59" y2="36.75" gradientTransform="translate(-4.36 47.39)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2196f3"/>
+      <stop offset="1" stop-color="#02e8ca"/>
+    </linearGradient>
+    <linearGradient id="mb-d" x1="92.29" y1="25.53" x2="119.33" y2="67.62" xlink:href="#mb-a"/>
+    <linearGradient id="mb-e" x1="46.58" y1="-11.84" x2="113.76" y2="-11.84" xlink:href="#mb-b"/>
+    <linearGradient id="mb-f" x1="96.03" y1="-33.95" x2="56.15" y2="36.75" xlink:href="#mb-b"/>
+  </defs>
+  <!-- the mark is 122.6 x 71.11, so scale it to 128 wide and centre it in the 160 square -->
+  <g transform="translate(16 42.87) scale(1.04405)">
+    <path fill="url(#mb-a)" d="m67.37,53.55c-4.46,2.92-10.71.61-12.77-3.59-.31-.55-15.58-28.24-15.58-28.24l16.18-9.78,15.58,28.25c2.58,4.68,1.05,10.66-3.42,13.36Z"/>
+    <path fill="url(#mb-b)" d="m51.33,4.9c-3.31-6.46-12.86-6.59-16.23-.07,0,0-35.11,63.65-35.11,63.65,8.78,5.39,20.43,2.2,25.53-7.16,0,0,24.58-44.57,24.58-44.57,1.65-2.81,6.1-2.83,7.76,0l-6.53-11.85Z"/>
+    <path fill="url(#mb-c)" d="m51.33,4.9c-1.27-2.43-4.7-2.48-6-.07,0,0-36.48,66.27-36.48,66.27,0,0,0,0,0,0,6.77.15,13.14-3.41,16.68-9.78,0,0,24.58-44.57,24.58-44.57,1.65-2.81,6.1-2.83,7.76,0l-6.53-11.85Z"/>
+    <path fill="url(#mb-d)" d="m117.92,69.8c-4.47,3.05-11,.31-12.77-3.59-.5-.9-25.28-45.8-25.28-45.8l16.18-9.78,25.28,45.81c2.58,4.68,1.05,10.66-3.42,13.36Z"/>
+    <path fill="url(#mb-e)" d="m92.9,4.9c-3.31-6.46-12.86-6.59-16.23-.07,0,0-35.11,63.65-35.11,63.65,8.78,5.39,20.43,2.2,25.53-7.16,0,0,24.58-44.57,24.58-44.57,1.65-2.81,6.1-2.83,7.75,0l-6.53-11.85Z"/>
+    <path fill="url(#mb-f)" d="m92.9,4.9c-1.27-2.43-4.7-2.48-6-.07,0,0-36.48,66.27-36.48,66.27,0,0,0,0,0,0,6.77.15,13.14-3.41,16.68-9.78,0,0,24.58-44.57,24.58-44.57,1.65-2.81,6.1-2.83,7.75,0l-6.53-11.85Z"/>
+  </g>
+</svg>
