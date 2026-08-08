@@ -110,7 +110,8 @@ export default defineNuxtConfig({
             allowedHosts: ['martinbullman.xyz']
         },
         define: {
-            'process.env.DEBUG': true
+            // define values are substituted as raw source, so they must be strings.
+            'process.env.DEBUG': 'true'
         },
         css: {
             preprocessorOptions: {
