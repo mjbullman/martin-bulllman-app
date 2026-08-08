@@ -1,6 +1,5 @@
 <template>
 
-    <!-- vuetify application wrapper -->
     <v-app>
 
         <!-- application navigation -->
