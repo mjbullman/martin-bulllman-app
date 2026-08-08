@@ -217,6 +217,10 @@ Similar structure: lint → test → build → deploy to Lightsail with Nginx re
 - TypeScript enabled
 - Vue 3 Composition API pattern
 
+**Lint rules to be aware of:**
+- `import/first` — all `import` statements must appear before any other code in `<script setup>`. Always place imports at the top, then composable calls (`useSeoMeta`, `useHead`, etc.) below them.
+- `nuxt/nuxt-config-keys-order` — keys in `defineNuxtConfig` must follow a specific order enforced by the Nuxt ESLint plugin. After adding new keys to `nuxt.config.ts`, run `npm run lint:fix` from `frontend/` to auto-correct the order rather than manually reordering.
+
 ### Backend
 - Pylint for linting with Django plugin (`pylint-django`)
 - Follow Django conventions for app structure
