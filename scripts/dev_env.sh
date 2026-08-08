@@ -13,12 +13,18 @@ else
     # create new session and start nvim
     tmux new-session -d -s "${SESSION_NAME}" -n nvim nvim
 
+    # create new window with split panes for the backend and frontend servers
     sleep 1
-    # split nvim window horizontally (top/bottom)
-    tmux split-window -v -t "${SESSION_NAME}"
+    tmux new-window -t "${SESSION_NAME}" -n servers
 
-    # activate the python environment in nvim window
-    tmux send-keys -t "${SESSION_NAME}" "source ${VENV_PATH}" C-m
+    # left pane: Django backend server
+    tmux send-keys -t "${SESSION_NAME}:servers" \
+        "source ${VENV_PATH} && cd ${SCRIPT_DIR}/../backend/martinbullman && python manage.py runserver" C-m
+
+    # right pane: Nuxt frontend server
+    tmux split-window -h -t "${SESSION_NAME}:servers"
+    tmux send-keys -t "${SESSION_NAME}:servers" \
+        "cd ${SCRIPT_DIR}/../frontend && npm run dev" C-m
 
     # create new window and run cluade code
     sleep 1
