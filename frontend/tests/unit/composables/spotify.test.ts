@@ -6,10 +6,6 @@ import { useSpotify } from '~/composables/spotify'
 const mockPlaying = ref<{ progress_ms: number, item: { duration_ms: number } } | null>(null)
 const mockProfileStatus = ref('success')
 
-mockNuxtImport('useRuntimeConfig', () => () => ({
-    public: { apiBaseUrl: 'http://localhost:8000/api/v1' }
-}))
-
 mockNuxtImport('useFetch', () => (url: string) => {
     if (url.includes('currently_playing')) {
         return { data: mockPlaying, status: ref('success') }

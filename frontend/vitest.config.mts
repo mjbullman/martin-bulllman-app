@@ -4,6 +4,17 @@ export default defineVitestConfig({
     test: {
         globals: true,
         environment: 'nuxt',
+        environmentOptions: {
+            nuxt: {
+                overrides: {
+                    runtimeConfig: {
+                        public: {
+                            apiBaseUrl: 'http://localhost:8000/api/v1'
+                        }
+                    }
+                }
+            }
+        },
         server: {
             deps: {
                 inline: ['vuetify']
