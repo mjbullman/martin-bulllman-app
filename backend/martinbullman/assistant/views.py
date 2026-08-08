@@ -36,45 +36,44 @@ class Greeting(APIView):
     """ Greeting API endpoint. """
     throttle_classes = [UserRateThrottle]
 
-    def get(self, request):  # pylint: disable=unused-argument
-        """ Greeting API endpoint. """
-        try:
-            client = OpenAI(api_key = config('OPENAI_API_KEY'))
-
-            assistant = client.beta.assistants.create(
-                name = "Martin Bullman Assistant",
-                instructions = (
-                    "You are assisting Martin Bullman, a CTO and experienced developer. "
-                    "Provide precise and efficient solutions, keeping responses professional "
-                    "and technical. When discussing coding topics, offer best practices and "
-                    "optimizations. "
-                ),
-                tools = [{"type": "code_interpreter"}],
-                model = "gpt-4o",
-            )
-
-            thread = client.beta.threads.create()
-
-            # message = client.beta.threads.messages.create(
-            #     thread_id = thread.id,
-            #     role = "user",
-            #     content = "Can you tell me if martin avialable for work?"
-            # )
-
-            run = client.beta.threads.runs.create_and_poll(
-                thread_id = thread.id,
-                assistant_id = assistant.id,
-                instructions = "Can you tell me if martin avialable for work?"
-            )
-
-            if run.status == 'completed':
-                messages = client.beta.threads.messages.list(
-                    thread_id = thread.id
-                )
-
-                return Response(extract_ai_message(messages))
-
-        except RequestException as exception:
-            print(f"Error fetching Spotify profile: {exception}")
-
-        return Response(None)
+    # Disabled: this endpoint is unauthenticated, unused by the frontend, and created a new
+    # OpenAI assistant + thread + gpt-4o run on every GET, so crawler traffic was draining
+    # tokens. Do not re-enable without reCAPTCHA, a real anon throttle, and a reusable
+    # assistant ID. See tasks/todo.md.
+    #
+    # def get(self, request):  # pylint: disable=unused-argument
+    #     """ Greeting API endpoint. """
+    #     try:
+    #         client = OpenAI(api_key = config('OPENAI_API_KEY'))
+    #
+    #         assistant = client.beta.assistants.create(
+    #             name = "Martin Bullman Assistant",
+    #             instructions = (
+    #                 "You are assisting Martin Bullman, a CTO and experienced developer. "
+    #                 "Provide precise and efficient solutions, keeping responses professional "
+    #                 "and technical. When discussing coding topics, offer best practices and "
+    #                 "optimizations. "
+    #             ),
+    #             tools = [{"type": "code_interpreter"}],
+    #             model = "gpt-4o",
+    #         )
+    #
+    #         thread = client.beta.threads.create()
+    #
+    #         run = client.beta.threads.runs.create_and_poll(
+    #             thread_id = thread.id,
+    #             assistant_id = assistant.id,
+    #             instructions = "Can you tell me if martin avialable for work?"
+    #         )
+    #
+    #         if run.status == 'completed':
+    #             messages = client.beta.threads.messages.list(
+    #                 thread_id = thread.id
+    #             )
+    #
+    #             return Response(extract_ai_message(messages))
+    #
+    #     except RequestException as exception:
+    #         print(f"Error fetching Spotify profile: {exception}")
+    #
+    #     return Response(None)
