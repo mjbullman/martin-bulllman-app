@@ -24,16 +24,18 @@
     import { defineAsyncComponent } from 'vue'
     import Intro from '~/components/sections/Intro.vue'
 
+    // constants.
+    import { SITE_TITLE, SITE_DESCRIPTION } from '~/constants/seo'
+
     const Projects = defineAsyncComponent(() => import('~/components/sections/Projects.vue'))
     const Toolkit = defineAsyncComponent(() => import('~/components/sections/Toolkit.vue'))
     const Publications = defineAsyncComponent(() => import('~/components/sections/Publications.vue'))
 
     useSeoMeta({
-        title: 'Martin Bullman | Software Engineer & Full Stack Developer',
-        description: 'Portfolio of Martin Bullman — Software Engineer & Full Stack Developer specialising in Django, Vue, Nuxt and cloud infrastructure.',
-        ogTitle: 'Martin Bullman | Software Engineer & Full Stack Developer',
-        ogDescription: 'Portfolio of Martin Bullman — Software Engineer & Full Stack Developer specialising in Django, Vue, Nuxt and cloud infrastructure.',
-        ogUrl: 'https://martinbullman.xyz'
+        title: SITE_TITLE,
+        description: SITE_DESCRIPTION,
+        ogTitle: SITE_TITLE,
+        ogDescription: SITE_DESCRIPTION
     })
 
 </script>

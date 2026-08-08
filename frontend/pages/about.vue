@@ -30,8 +30,7 @@
         title: 'About | Martin Bullman',
         description: 'Learn about Martin Bullman — his background, experience, and the technologies he works with.',
         ogTitle: 'About | Martin Bullman',
-        ogDescription: 'Learn about Martin Bullman — his background, experience, and the technologies he works with.',
-        ogUrl: 'https://martinbullman.xyz/about'
+        ogDescription: 'Learn about Martin Bullman — his background, experience, and the technologies he works with.'
     })
 
 </script>

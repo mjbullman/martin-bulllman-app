@@ -44,8 +44,7 @@
         title: 'Projects | Martin Bullman',
         description: 'Software projects built by Martin Bullman, including web applications, APIs, and open-source work.',
         ogTitle: 'Projects | Martin Bullman',
-        ogDescription: 'Software projects built by Martin Bullman, including web applications, APIs, and open-source work.',
-        ogUrl: 'https://martinbullman.xyz/projects'
+        ogDescription: 'Software projects built by Martin Bullman, including web applications, APIs, and open-source work.'
     })
 
     // variables.

@@ -2,6 +2,10 @@
 import vuetify from 'vite-plugin-vuetify'
 import { useEnvironment } from './composables/environment'
 
+// constants.
+import { SITE_URL } from './constants/site'
+import { SITE_TITLE, SITE_DESCRIPTION } from './constants/seo'
+
 // composable.
 const { isProduction } = useEnvironment()
 
@@ -28,20 +32,13 @@ export default defineNuxtConfig({
     },
     app: {
         head: {
-            title: 'Martin Bullman | Software Engineer & Full Stack Developer',
+            title: SITE_TITLE,
             charset: 'utf-8',
             viewport: 'width=device-width, initial-scale=1',
             meta: [
                 {
                     name: 'description',
-                    content: 'The portfolio of Martin Bullman, Software Engineer & Full Stack Developer.'
-                },
-                {
-                    name: 'keywords',
-                    content: 'Martin Bullman,Django,Vue,Vuetify,Nuxt,Software Engineering,'
-                        + 'Portfolio,Projects,Web Development,Data Analysis,Expertise,Skills,'
-                        + 'Innovation,Solutions,Excellence,Technical Abilities,Developer,'
-                        + 'Technology'
+                    content: SITE_DESCRIPTION
                 },
                 {
                     name: 'author',
@@ -59,9 +56,9 @@ export default defineNuxtConfig({
         'vuetify/lib/styles/main.sass'
     ],
     site: {
-        url: 'https://martinbullman.xyz',
-        name: 'Martin Bullman | Software Engineer & Full Stack Developer',
-        description: 'The portfolio of Martin Bullman, Software Engineer & Full Stack Developer.',
+        url: SITE_URL,
+        name: SITE_TITLE,
+        description: SITE_DESCRIPTION,
         defaultLocale: 'en'
     },
     runtimeConfig: {
@@ -148,8 +145,8 @@ export default defineNuxtConfig({
         identity: {
             type: 'Person',
             name: 'Martin Bullman',
-            url: process.env.BASE_URL,
-            logo: process.env.BASE_URL + '/img/logo.svg'
+            url: SITE_URL,
+            logo: SITE_URL + '/img/logo.svg'
         }
     },
     sitemap: {

@@ -101,8 +101,7 @@
         title: 'Contact | Martin Bullman',
         description: 'Get in touch with Martin Bullman — open to collaborations, opportunities, and conversations about tech.',
         ogTitle: 'Contact | Martin Bullman',
-        ogDescription: 'Get in touch with Martin Bullman — open to collaborations, opportunities, and conversations about tech.',
-        ogUrl: 'https://martinbullman.xyz/contact'
+        ogDescription: 'Get in touch with Martin Bullman — open to collaborations, opportunities, and conversations about tech.'
     })
 
     const runtimeConfig = useRuntimeConfig()
