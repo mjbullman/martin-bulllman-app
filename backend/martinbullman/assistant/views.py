@@ -2,29 +2,29 @@
 This module defines API views for interacting with my Assistant API.
 """
 
-from decouple import config
-from openai import OpenAI
-from rest_framework.response import Response
+# from decouple import config
+# from openai import OpenAI
 from rest_framework.throttling import UserRateThrottle
 from rest_framework.views import APIView
-from requests.exceptions import RequestException
+# from rest_framework.response import Response
+# from requests.exceptions import RequestException
 
 
-def extract_ai_message(messages):
-    """ Extract the assistant response text """
-    for message in messages:
-        role = next((item[1] for item in message if item[0] == "role"), None)
-
-        if role == "assistant":
-            content = next((item[1] for item in message if item[0] == "content"), None)
-            if content:
-                text_content = next(
-                    (text[1] for text in content[0] if text[0] == "text"), None
-                )
-                if text_content:
-                    return next((item[1] for item in text_content if item[0] == "value"), None)
-
-    return None
+# def extract_ai_message(messages):
+#     """ Extract the assistant response text """
+#     for message in messages:
+#         role = next((item[1] for item in message if item[0] == "role"), None)
+#
+#         if role == "assistant":
+#             content = next((item[1] for item in message if item[0] == "content"), None)
+#             if content:
+#                 text_content = next(
+#                     (text[1] for text in content[0] if text[0] == "text"), None
+#                 )
+#                 if text_content:
+#                     return next((item[1] for item in text_content if item[0] == "value"), None)
+#
+#     return None
 
 
 class Chat(APIView):
